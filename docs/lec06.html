@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture 6: Borel–Cantelli and Carathéodory&#x27;s Theorem</title>
+<meta name="description" content="Escaping mass; continuity of measure (recap); complete measures; the Borel–Cantelli lemma; proof that the μ*-measurable sets form a σ-algebra on which μ* is a complete measure; Lebesgue, Lebesgue–Stieltjes and Hausdorff measures.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;650&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="assets/book.css">
+<script>try{var t=localStorage.getItem("mintbook.theme");if(t)document.documentElement.setAttribute("data-theme",JSON.parse(t))}catch(e){}</script>
+<script defer src="assets/book.js"></script>
+<script defer src="assets/lec06.js"></script>
+</head>
+<body>
+<header class="topbar"><div class="inner">
+  <a class="brand" href="index.html">∫ Measure &amp; Integration</a>
+  <span class="spacer"></span>
+  <button id="stepsBtn" title="Toggle the 'why?' hints on proof steps">Proof hints: on</button>
+  <button id="themeBtn" title="Light / dark">◐</button>
+</div></header>
+<main>
+<div class="lecture-head"><div class="kicker">Lecture 6</div><h1>Borel–Cantelli and Carathéodory's Theorem</h1></div>
+<div class="howto">Every <b>underlined proof step</b> is selectable — hover or tap it for a detailed explanation of why it holds.
+Press <b>▶</b> in the bar at the bottom to have the lecture <b>read and explained aloud</b>; hover a paragraph and click its ▶ to start there.
+<b>Explainer</b> panels are narrated animations; <b>Interactive</b> panels respond to sliders and dragging.
+The small “original notes” links open the scanned page the text was transcribed from.</div>
+
+<span class="pg"><a href="scans/L06-01.jpg" target="_blank" rel="noopener">original notes · p. 1 ↗</a></span>
+<div class="env ex" data-label="Hmwk #1 / 1 (ii)">
+<template class="say">Lecture six opens with a homework example. Find continuous functions f n converging pointwise to f on zero one, but whose integrals don't converge to the integral of f. Take f n to be a tall thin block: height n on the interval from zero to one over n, zero elsewhere. Each has area one, but for every fixed x, eventually one over n is less than x and f n of x is zero. So f n goes to zero pointwise, while the integrals stay at one. To make them continuous, replace the block by a steep trapezoid. The mass escapes into a spike at zero and disappears in the limit.</template>
+<p>$f_n, f:[0,1]\to\R$ continuous, $f_n\to f$ pointwise, $\int_0^1 f_n\not\to\int_0^1 f$</p>
+<p>$$f_n(x) := \begin{cases}n & \text{if } 0\lt x\lt 1/n\\ 0 & x = 0\\ 0 & 1/n\le x\le1\end{cases}\qquad\int_0^1 f_n = 1$$</p>
+<p><span class="step">$f_n\to f\equiv0$, $\int f_n = 1$, $\int f = 0$<span class="why"><span class="wp">At $x = 0$: $f_n(0) = 0$ for all $n$. At $x\gt0$: as soon as $n\ge1/x$, we have $x\ge1/n$, so $f_n(x) = 0$. So every point is eventually at $0$. Meanwhile the area is height $\times$ width $= n\cdot\frac1n = 1$ for every $n$.</span></span></span></p>
+<p>Continuous version:
+$$f_n(x) := \begin{cases}\text{linear} & 0\lt x\lt 1/n^2\\ \text{linear} & \frac1n-\frac1{n^2}\lt x\lt\frac1n\\ 0 & x\gt1/n\end{cases}$$
+(equal to $n$ in between). <span class="ed">area under the trapezoid $= n\big(\frac1n-\frac1{n^2}\big) = 1-\frac1n\to1$</span></p>
+</div>
+
+<figure class="viz" data-viz="escape" data-title="Mass escaping into a spike">
+<figcaption>The area under $f_n$ stays (close to) $1$, but at every fixed $x$ the values $f_n(x)$ are eventually $0$. Pointwise convergence lets the mass escape. Drag the probe to see that each $x\gt0$ is eventually outside the spike.</figcaption>
+</figure>
+
+<details class="env rmk">
+<summary class="env-label">Recap in class: Props 4.6 and 4.7 (measure of increasing unions / decreasing sequences)</summary>
+<p><mark>Proposition 4.6 [Measure of an Increasing Function]</mark> $(X,\M,\mu)$ measure space, $E_n\in\M$, $n\in\N$, $E_n\subseteq E_{n+1}$, $n\in\N$ then $\mu\big(\bigcup_{n=1}^\infty E_n\big) = \lim_{n\to+\infty}\mu(E_n)$. <span class="note">[$\subset$, $\subsetneq$, $\subseteq$]</span></p>
+<p><u>Proof</u> If $\exists n\in\N$ s.t. $\mu(E_n) = +\infty$ then monotonicity $\Rightarrow$ $\forall m\ge n$ $\mu(E_m)\ge\mu(E_n) = +\infty$ and $\mu\big(\bigcup_{m=1}^\infty E_m\big)\ge\mu(E_n) = +\infty$ <u>done!</u> ($\infty = \infty$)</p>
+<p>Assume $\forall n\in\N$ $\mu(E_n)\lt+\infty$. $\bigcup_{n=1}^\infty E_n = \bigcup_{n=1}^\infty(E_n\setminus E_{n-1})$, $E_0 := \emptyset$
+$$\mu\Big(\bigcup_{n=1}^\infty E_n\Big) = \mu\Big(\bigcup_{n=1}^\infty(E_n\setminus E_{n-1})\Big) = \sum_{n=1}^\infty\mu(E_n\setminus E_{n-1}) = \lim_{k\to+\infty}\sum_{n=1}^k\mu(E_n\setminus E_{n-1})$$</p>
+<span class="pg"><a href="scans/L06-02.jpg" target="_blank" rel="noopener">original notes · p. 2 ↗</a></span>
+<p>$$\underset{(4.3\,(ii))}{=}\lim_{k\to+\infty}\sum_{n=1}^k\big[\mu(E_n)-\mu(E_{n-1})\big] = \lim_{k\to+\infty}\mu(E_k).\ \blacksquare$$</p>
+<p><mark>Proposition 4.7 [Measure of a Decreasing Sequence]</mark> $(X,\M,\mu)$ measure space, $E_n\in\M$, $E_n\supseteq E_{n+1}$ $\forall n\in\N$, $\mu(E_1)\lt+\infty$. Then $\mu\big(\bigcap_{n=1}^\infty E_n\big) = \lim_{n\to+\infty}\mu(E_n)$.</p>
+<p><u>Proof</u> De Morgan's law: $E_1\setminus\bigcap_{n=1}^\infty E_n = \bigcup_{n=1}^\infty(E_1\setminus E_n)$, $\emptyset = E_1\setminus E_1\subset E_1\setminus E_2\subset\dots\subset E_1\setminus E_n\subset\dots$</p>
+<p>Prop 4.6 $\Rightarrow\mu\big(E_1\setminus\bigcap_{n=1}^\infty E_n\big) = \mu\big(\bigcup_{n=1}^\infty(E_1\setminus E_n)\big) = \lim_{n\to+\infty}\mu(E_1\setminus E_n)\underset{(4.3\,(ii))}{=}\lim_{n\to+\infty}\big[\cancel{\mu(E_1)}-\mu(E_n)\big]$ and the left side is $\cancel{\mu(E_1)}-\mu\big(\bigcap_{n=1}^\infty E_n\big)$</p>
+<p>$\Rightarrow\mu\big(\bigcap_{n=1}^\infty E_n\big) = \lim_{n\to+\infty}\mu(E_n)$. <span class="qed">■</span></p>
+<p><mark>Def 4.8</mark> Given a measure space $(X,\M,\mu)$, the measure $\mu$ is said <mark>complete</mark> if $\forall E\in\M$ with $\mu(E) = 0$ then $F\in\M$ $\forall F\subseteq E$.</p>
+</details>
+
+<span class="pg"><a href="scans/L06-03.jpg" target="_blank" rel="noopener">original notes · p. 3 ↗</a></span>
+<div class="env thm" data-label="Thm 4.8*" data-title="[Borel–Cantelli]">
+<template class="say">Theorem four point eight star, the Borel Cantelli lemma. If the measures of the sets E n have a finite sum, then almost every point belongs to only finitely many of the E n. The set of points that lie in infinitely many E n has measure zero. In probability: if the probabilities of events add up to something finite, then with probability one only finitely many of the events happen.</template>
+<p>$(X,\M,\mu)$ measure space, $E_n\in\M$, $\sum_{n=1}^\infty\mu(E_n)\lt+\infty$.</p>
+<p>Then <u>almost every</u> $x\in X$ belongs to at most finitely many $E_n$'s, i.e.
+$$\mu\big(\{x\in X : x\in E_n \text{ for } \infty\text{'ly many } n\text{'s}\}\big) = 0.$$</p>
+</div>
+<div class="env proof" data-label="Proof">
+<template class="say">The proof. A point lies in infinitely many E n exactly when, for every n, it lies in some E k with k at least n. That's the intersection over n of the unions from n on, the lim sup of the sets. If it had positive measure alpha, then for every n, alpha is at most the measure of the union of E k for k at least n, which is at most the tail sum. But tails of a convergent series go to zero, so eventually the tail is below alpha over two. Contradiction.</template>
+<p><span class="step">$$\{x\in X : x\in E_n \text{ for } \infty\text{'ly many } n\text{'s}\} = \bigcap_{n=1}^\infty\bigcup_{k=n}^\infty E_k =: \boxed{\limsup_{n\to+\infty}E_n} =: E$$<span class="why"><span class="wp">$x\in\bigcap_n\bigcup_{k\ge n}E_k$ means: for every $n$ there is some $k\ge n$ with $x\in E_k$. That says the indices $k$ with $x\in E_k$ are unbounded, i.e. infinitely many. Conversely, infinitely many indices means arbitrarily large ones. Also $E\in\M$: countable unions and intersections of measurable sets.</span></span></span></p>
+<p>Suppose that $\mu(E) = \alpha\gt0$.</p>
+<p>So <span class="step">$$0\lt\alpha = \mu(E) = \mu\Big(\bigcap_{n=1}^\infty\bigcup_{k=n}^\infty E_k\Big)\underset{\text{(monotonicity)}}{\le}\mu\Big(\bigcup_{k=n}^\infty E_k\Big)\quad\forall n\in\N$$<span class="why"><span class="wp">An intersection is contained in each of the sets it intersects; here, in $\bigcup_{k\ge n}E_k$ for each fixed $n$. Then monotonicity (Prop 4.3 (i)).</span></span></span>
+<span class="step">$$\underset{\text{(subadditivity)}}{\le}\sum_{k=n}^\infty\mu(E_k).$$<span class="why"><span class="wp">Countable subadditivity, Prop 4.5.</span></span></span></p>
+<p>Since <span class="step">$\sum_{n\ge1}\mu(E_n)\lt+\infty$ choose $n\gg1$ $\sum_{k=n}^\infty\mu(E_k)\lt\alpha/2$ ⚡<span class="why"><span class="wp">For a convergent series, the tails $\sum_{k\ge n}$ tend to $0$ (they're the total minus the partial sums, which converge to the total). Then $\alpha\le\sum_{k\ge n}\mu(E_k)\lt\alpha/2$, impossible since $\alpha\gt0$.</span></span></span> <span class="qed">■</span></p>
+<p><u>N.B.</u> Still ok for outer measures.</p>
+</div>
+
+<div class="explainer" data-scene="borel-cantelli" data-title="Borel–Cantelli: summable sizes, finitely many hits">
+<template class="say">Let's watch Borel Cantelli happen. Each row is one set E n, an interval somewhere in zero one. Here the lengths are one over n squared, which have a finite sum: pi squared over six.</template>
+<template class="say">For each point x, count how many of the sets contain it. The curve on the bottom shows this count. As more and more sets arrive, the count grows only in a few places, and the newcomers are so short that they barely touch anything.</template>
+<template class="say">Why? The total length of all sets from n on is the tail of a convergent series. It goes to zero. And every point that's hit infinitely often is hit by some set from n on, for every n. So those points fit inside a set of tiny measure, for every n. Their measure is zero.</template>
+<template class="say">Now compare lengths one over n, whose sum diverges. Arrange the intervals to sweep across zero one again and again, like a typewriter. Each sweep covers everything, and there are infinitely many sweeps, since the harmonic series diverges. Now every single point is hit infinitely often. Summability was the whole story.</template>
+</div>
+
+<div class="env thm" data-label="Theorem 4.9" data-title="[Carathéodory]">
+<template class="say">Theorem four point nine, Carathéodory's theorem. Let mu star be an outer measure on X and let M star be the collection of mu star measurable sets. Then M star is a sigma algebra, and mu star restricted to M star is a complete measure. This is the machine that turns every outer measure into a measure.</template>
+<p>$X\ne\emptyset$ set, $\ms:\mathcal P(X)\to[0,+\infty]$ outer measure. Define (see (3.3))
+$$\M^* := \{E\subseteq X : E\ \ms\text{-measurable}\}$$
+Then $\M^*$ is a σ-algebra, $\ms|_{\M^*}:\M^*\to[0,+\infty]$ is a complete measure. (recall 3.2 (ii)).</p>
+</div>
+
+<span class="pg"><a href="scans/L06-04.jpg" target="_blank" rel="noopener">original notes · p. 4 ↗</a></span>
+<div class="env proof" data-label="Proof">
+<template class="say">The proof has five steps. Step one: M star contains the empty set, is closed under complements, because the definition is symmetric in A and its complement, and is closed under unions of two sets. For two sets, split any test set F into three pieces with E one and E two, and use subadditivity to glue the pieces back. Step two: mu star is finitely additive on M star, and more precisely it splits every test set F along finitely many disjoint measurable sets, formula four point one. Step three: for countably many disjoint measurable sets, pass to the limit to get both measurability of the union and countable additivity. Step four: disjointify to handle arbitrary countable unions. Step five: completeness, because null sets are always measurable. Use the Venn diagram figure to follow step one.</template>
+<p><u>Step 1</u> WTS that $\M^*$ is a σ-algebra (Def 3.4, (i)–(iii))</p>
+<p>(i) $\emptyset\in\M^*$<br>
+let $F\subseteq X$ <span class="step">$\ms(F) = \underbrace{\ms(F\cap\emptyset)}_{\ms(\emptyset) = 0}+\underbrace{\ms(F\setminus\emptyset)}_{=\ms(F)}$ ok!<span class="why"><span class="wp">$F\cap\emptyset = \emptyset$ has outer measure $0$ (Def 2.6 (i)), and $F\setminus\emptyset = F$. So the measurability identity reads $\ms(F) = 0 + \ms(F)$.</span></span></span></p>
+<p>(ii) $E\in\M^*$. ? $X\setminus E\in\M^*$?</p>
+<p>let $F\subseteq X$ <span class="step">$$\ms(F) = \ms(F\cap E)+\ms(F\setminus E) = \ms\big(F\setminus\underbrace{(X\setminus E)}\big)+\ms\big(F\cap\underbrace{(X\setminus E)}\big)$$<span class="why"><span class="wp">First equality: $E$ is measurable. Second: set identities $F\cap E = F\setminus(X\setminus E)$ and $F\setminus E = F\cap(X\setminus E)$. Reading the result, it is exactly the measurability identity for the set $X\setminus E$ (with the two terms swapped).</span></span></span>
+$\Rightarrow X\setminus E\in\M^*$.</p>
+<p>(iii)′ <u>claim</u> $E_1,E_2\in\M^*\Rightarrow E_1\cup E_2\in\M^*$</p>
+<p>[In Step 4 we extend to countable unions, i.e., (iii) … done!]</p>
+<p>Fix $F\subseteq X$. <span class="step">$\ms(F) = \ms(F\cap E_1)+\ms(F\setminus E_1)$<span class="why"><span class="wp">$E_1$ is measurable, test set $F$.</span></span></span></p>
+<p><span class="step">$\ms(F\setminus E_1) = \ms\big((F\setminus E_1)\cap E_2\big)+\ms\big((F\setminus E_1)\setminus E_2\big)$<span class="why"><span class="wp">$E_2$ is measurable, now tested on the set $F\setminus E_1$. (Measurability must hold for <em>every</em> test set — this flexibility is what makes the proof work.)</span></span></span></p>
+<p>Hence,
+<span class="step">$$\ms(F) = \ms(F\cap E_1)+\ms\big((F\setminus E_1)\cap E_2\big)+\ms\big((F\setminus E_1)\setminus E_2\big)$$<span class="why"><span class="wp">Substitute the second line into the first. $F$ is now split into three pieces: in $E_1$; in $E_2$ but not $E_1$; in neither.</span></span></span>
+<span class="step">$$\underset{\text{(Subadditivity)}}{\ge}\ms\big((F\cap E_1)\cup((F\setminus E_1)\cap E_2)\big)+\ms\big((F\setminus E_1)\setminus E_2\big)$$<span class="why"><span class="wp">Merge the first two pieces: the outer measure of their union is at most the sum of their outer measures.</span></span></span>
+<span class="step">$$= \ms\big(F\cap\underbrace{(E_1\cup E_2)}\big)+\ms\big(F\setminus\underbrace{(E_1\cup E_2)}\big).$$<span class="why"><span class="wp">The first two pieces together are exactly the points of $F$ in $E_1$ or in $E_2$; the last piece is the points of $F$ in neither. This gives (3.2) for $E_1\cup E_2$, and Rmk 3.2 says that suffices.</span></span></span></p>
+
+<p><u>Step 2</u> $\ms|_{\M^*}$ is finite additive</p>
+<p>$E_1,E_2\in\M^*$ disjoint sets, let $F\subseteq X$.</p>
+<p><span class="step">$$\ms\big(F\cap(E_1\cup E_2)\big) = \ms\big(F\cap(E_1\cup E_2)\cap E_1\big)+\ms\big((F\cap(E_1\cup E_2))\setminus E_1\big)\underset{(\text{used } E_1\cap E_2 = \emptyset)}{=}\ms(F\cap E_1)+\ms(F\cap E_2),$$<span class="why"><span class="wp">Measurability of $E_1$ with test set $F\cap(E_1\cup E_2)$. Then: $(F\cap(E_1\cup E_2))\cap E_1 = F\cap E_1$, and removing $E_1$ from $F\cap(E_1\cup E_2)$ leaves $F\cap E_2$ because $E_2$ doesn't meet $E_1$.</span></span></span></p>
+<span class="pg"><a href="scans/L06-05.jpg" target="_blank" rel="noopener">original notes · p. 5 ↗</a></span>
+<p>with <span class="step">$F = X\Rightarrow\ms(E_1\cup E_2) = \ms(E_1)+\ms(E_2)$<span class="why"><span class="wp">$X\cap(E_1\cup E_2) = E_1\cup E_2$, $X\cap E_i = E_i$.</span></span></span></p>
+<p><span class="step">By induction, if $E_1,\dots,E_n\in\M^*$ pairwise disjoint
+$$\ms\Big(F\cap\bigcup_{k=1}^n E_k\Big) = \sum_{k=1}^n\ms(F\cap E_k)\quad\forall F\subseteq X\tag{4.1}$$<span class="why"><span class="wp">Inductive step: $\bigcup_{k\lt n}E_k\in\M^*$ by Step 1 (iii)′ (repeated), and it's disjoint from $E_n$. Apply the two-set identity to these two sets, then the inductive hypothesis to the first term.</span></span></span></p>
+
+<p><u>Step 3</u> $\ms|_{\M^*}$ is countably additive.</p>
+<p>$E_n\in\M^*$, $n\in\N$, pairwise disjoint</p>
+<p><u>claim</u> $\displaystyle\bigcup_{n=1}^\infty E_n\in\M^*$ and $\displaystyle\ms\Big(\bigcup_{n=1}^\infty E_n\Big) = \sum_{n=1}^\infty\ms(E_n)$ (4.2)</p>
+<p>let $F\subseteq X$. know $\forall m\in\N$ $\bigcup_{n=1}^m E_n\in\M^*$ ((iii)′ step 1)</p>
+<div class="step">$$\text{So}\quad\ms(F) = \ms\Big(F\cap\Big(\bigcup_{n=1}^m E_n\Big)\Big)+\ms\Big(F\setminus\Big(\bigcup_{n=1}^m E_n\Big)\Big)$$<div class="why"><p>The finite union is measurable; test it on $F$.</p></div></div>
+<div class="step">$$\underset{(\text{by }(4.1))}{=}\sum_{n=1}^m\ms(F\cap E_n)+\ms\Big(F\setminus\Big(\bigcup_{n=1}^m E_n\Big)\Big)$$<div class="why"><p>Formula (4.1) splits the first term along the disjoint measurable $E_1,\dots,E_m$.</p></div></div>
+<div class="step">$$\underset{\text{(monotonicity)}}{\ge}\sum_{n=1}^m\ms(F\cap E_n)+\ms\Big(F\setminus\Big(\bigcup_{n=1}^\infty E_n\Big)\Big)$$<div class="why"><p>Removing <em>more</em> sets leaves a smaller set: $F\setminus\bigcup_{n=1}^\infty E_n\subseteq F\setminus\bigcup_{n=1}^m E_n$. The point of this step: the right side's last term no longer depends on $m$.</p></div></div>
+<p>let $m\to+\infty$; get</p>
+<div class="step">$$\ms(F)\ge\sum_{n=1}^\infty\ms(F\cap E_n)+\ms\Big(F\setminus\Big(\bigcup_{n=1}^\infty E_n\Big)\Big)\tag{4.3}$$<div class="why"><p>The inequality holds for every $m$, and the partial sums increase to the full series.</p></div></div>
+<div class="step">$$\underset{\text{(subadditivity)}}{\ge}\ms\Big(\bigcup_{n=1}^\infty(F\cap E_n)\Big)+\ms\Big(F\setminus\Big(\bigcup_{n=1}^\infty E_n\Big)\Big)$$<div class="why"><p>Countable subadditivity of $\ms$ applied to the sets $F\cap E_n$.</p></div></div>
+<div class="step">$$= \ms\Big(F\cap\Big(\bigcup_{n=1}^\infty E_n\Big)\Big)+\ms\Big(F\setminus\Big(\bigcup_{n=1}^\infty E_n\Big)\Big).$$<div class="why"><p>Distributivity: $\bigcup_n(F\cap E_n) = F\cap\bigcup_n E_n$. This is (3.2) for the union, so the union is measurable (and in fact, with subadditivity, equality holds throughout: "(=)" in the notes).</p></div></div>
+<p>Thus $\bigcup_{n=1}^\infty E_n\in\M^*$, and with $F := \bigcup_{n=1}^\infty E_n$
+<span class="step">$$(4.3)\Rightarrow\ms\Big(\bigcup_{n=1}^\infty E_n\Big)\ge\sum_{n=1}^\infty\ms(E_n)\quad(\le\text{ always!})$$<span class="why"><span class="wp">With this $F$: $F\cap E_n = E_n$ and $F\setminus\bigcup E_n = \emptyset$, so (4.3) reads $\ms(\bigcup E_n)\ge\sum\ms(E_n)+0$. The reverse is countable subadditivity, valid for any outer measure.</span></span></span></p>
+
+<span class="pg"><a href="scans/L06-06.jpg" target="_blank" rel="noopener">original notes · p. 6 ↗</a></span>
+<p><u>Step 4</u> To complete Step 1, need to show (iii) if $E_n\in\M^*$, $n\in\N$, then $\bigcup_{n=1}^\infty E_n\in\M^*$?</p>
+<p><span class="step">$E'_1 := E_1$, $E'_n := E_n\setminus\Big(\bigcup_{j=1}^{n-1}E_j\Big)\in\M^*$ pairwise disjoint<span class="why"><span class="wp">$\bigcup_{j\lt n}E_j\in\M^*$ by Step 1 (iii)′; its complement is in $\M^*$ by (ii); and $E'_n = E_n\cap(\text{complement})$, which is in $\M^*$ since intersections follow from unions and complements (De Morgan). Disjoint: same disjointification as Prop 4.5.</span></span></span></p>
+<p>By (4.2) $\bigcup_{n=1}^\infty E'_n\in\M^*\Leftrightarrow\bigcup_{n=1}^\infty E_n\in\M^*$ <span class="ed">(same set)</span></p>
+
+<p><u>step 5</u> [Completeness]</p>
+<p><u>claim</u> $\ms|_{\M^*}:\M^*\to[0,+\infty]$ is complete.</p>
+<p>let $E\in\M^*$, $\ms(E) = 0$ let $F\subseteq E$ ? $F\in\M^*$?</p>
+<p>let $A\subseteq X$. Then <span class="step">$$\ms(A) = \underbrace{\ms(A\cap E)}_{\subseteq E\ +\ \text{monotonicity}\ =0}+\ms(A\setminus E) = \ms(A\setminus E).\tag{4.3*}$$<span class="why"><span class="wp">$E$ is measurable, tested on $A$. The first term is the outer measure of a subset of the null set $E$, hence $0$.</span></span></span></p>
+<p><span class="step">$$\ms(A\setminus F) = \underbrace{\ms((A\setminus F)\cap E)}_{\subseteq E\ +\ \text{monotonicity}\ =0}+\ms((A\setminus F)\setminus E)\underset{F\subseteq E}{=}\ms(A\setminus E)\tag{4.3**}$$<span class="why"><span class="wp">Again $E$ measurable, now tested on $A\setminus F$. Since $F\subseteq E$, removing $F$ and then $E$ is the same as removing $E$: $(A\setminus F)\setminus E = A\setminus E$.</span></span></span></p>
+<p><span class="step">(4.3*) + (4.3**) $\ms(A) = \ms(A\setminus F) = \underbrace{\ms(A\cap F)}_{\subseteq F,\ \text{monotonicity},\ \ms(F) = 0}+\ms(A\setminus F)$.<span class="why"><span class="wp">Both equal $\ms(A\setminus E)$. And $\ms(A\cap F)\le\ms(F)\le\ms(E) = 0$, so adding it changes nothing. The result is exactly the measurability identity for $F$ with test set $A$. (Alternatively: Rmk 3.2 (ii), sets of outer measure zero are always measurable.)</span></span></span></p>
+<p>Hence $F\in\M^*$. <span class="qed">■</span></p>
+</div>
+
+<figure class="viz" data-viz="venn-proof" data-title="Following Step 1 (iii)′ on a Venn diagram">
+<template class="say">This Venn diagram follows step one. The test set F is the big rounded rectangle; E one and E two are the circles. First F is split by E one. Then the part outside E one is split again by E two, giving three pieces in total. Subadditivity glues the first two pieces back together into F intersect the union, and the third piece is F minus the union. Step through the lines with the buttons.</template>
+<figcaption>Click through the lines of the proof of Step 1 (iii)′. Each term $\ms(\cdot)$ in the current line is highlighted in its own colour.</figcaption>
+</figure>
+
+<span class="pg"><a href="scans/L06-07.jpg" target="_blank" rel="noopener">original notes · p. 7 ↗</a></span>
+<div class="env ex" data-label="Example 4.10">
+<template class="say">Example four point ten collects the three measures we get from Carathéodory. One: Lebesgue measure. The Lebesgue measurable sets form a sigma algebra, and the restriction of Lebesgue outer measure is a complete measure, the N dimensional Lebesgue measure. All Borel sets are measurable, in particular balls, and by scaling and translation invariance, the ball of radius r has measure r to the N times the measure of the unit ball, which is alpha N. Two: Lebesgue Stieltjes measure generated by an increasing function f. Three: the s dimensional Hausdorff measure.</template>
+<p>(i) Def 3.14 … the class of all $(\mathcal L^N)^*$-measurable sets is the σ-algebra of Lebesgue measurable sets, $\mathcal L(\R^N)$.</p>
+<p>Carathéodory Thm $\Rightarrow(\mathcal L^N)^*|_{\mathcal L(\R^N)}$ is a complete measure, called the <mark>$N$-dimensional Lebesgue measure</mark>, denoted by $\mathcal L^N$.</p>
+<p>Prop 3.13 all Borel sets of $\R^N$ are Lebesgue measurable. In particular, balls are Lebesgue measurable.</p>
+<p>Scaling + translation invariance $\forall x\in\R^N$, $r\gt0$
+<span class="step">$$\mathcal L^N(B(x,r)) = \mathcal L^N(B(0,r)) = r^N\underbrace{\mathcal L^N(B(0,1))}_{\alpha_N}$$<span class="why"><span class="wp"><strong>Translation:</strong> Rmk 2.12. <strong>Scaling:</strong> if $\{R_n\}$ covers $E$ then $\{rR_n\}$ covers $rE$, and $\ell(rR) = r^N\ell(R)$ since each of the $N$ side lengths is multiplied by $r$. So $(\mathcal L^N)^*(rE) = r^N(\mathcal L^N)^*(E)$ (apply with $r$ and $1/r$). Finally $B(0,r) = rB(0,1)$.</span></span></span></p>
+<p>(Rmk 2.5) $\displaystyle\alpha_N = \frac{\pi^{N/2}}{\Gamma(N/2+1)}$.</p>
+<p>(ii) $I\subseteq\R$ open interval, $f:I\to\R$ increasing function. Carathéodory Thm $\Rightarrow\mu_f^*$ restricted to the σ-algebra of all $\mu_f^*$-measurable subsets of $I$ is a <u>complete measure</u> denoted by $\mu_f$ (Lebesgue–Stieltjes measure generated by $f$).</p>
+<p>(iii) Carathéodory Thm $\Rightarrow\mathcal H^s_0$ restricted to the σ-algebra of all $\mathcal H^s_0$-measurable subsets of $\R^N$ is a <u>complete measure</u> denoted by $\mathcal H^s$, called <mark>$s$-dimensional Hausdorff measure</mark>.</p>
+</div>
+
+<figure class="viz" data-viz="ball-volume" data-title="Volume of the unit ball in N dimensions">
+<template class="say">A fun consequence of the formula for alpha N. The volume of the unit ball grows from dimension one to five, peaks at dimension five, where it's about five point two six, and then decays to zero. In high dimensions the unit ball is tiny compared to the unit cube around it.</template>
+<figcaption>$\alpha_N = \mathcal L^N(B(0,1))$: $\alpha_1 = 2$ (the interval $[-1,1]$), $\alpha_2 = \pi$, $\alpha_3 = \frac43\pi$, peaking near $N = 5$ and then tending to $0$. The dashed curve interpolates non-integer $s$, as used in Hausdorff measure. Hover a bar.</figcaption>
+</figure>
+
+
+<nav class="pager"><a href="lec05.html">← Lecture 5</a><a href="lec07.html">Lecture 7 →</a></nav>
+</main>
+</body>
+</html>

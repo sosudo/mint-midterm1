@@ -44,7 +44,7 @@
   Book.viz("layers", (fig, api) => {
     const g = api.canvas(900, 460);
     let evenOnly = false, k = 3;
-    const SC = 3.2; // display scale: layer n is 1/(n+1) <= SC*dist < 1/n
+    const SC = 6; // display scale: layer n is 1/(n+1) <= SC*dist < 1/n
     const dC = (x, y) => {
       const d1 = Math.max(0, Math.hypot(x + 0.25, y) - 0.22);
       const qx = Math.abs(x - 0.42) - 0.12, qy = Math.abs(y - 0.12) - 0.3;

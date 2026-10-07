@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture 7: Hausdorff Measure, Dimension, and a Non-Borel Set</title>
+<meta name="description" content="Properties of Hausdorff measure: H⁰ is counting measure, Hᴺ = Lᴺ via the isodiametric inequality and a covering theorem; Hausdorff dimension; a Lebesgue measurable set that is not Borel.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;650&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="assets/book.css">
+<script>try{var t=localStorage.getItem("mintbook.theme");if(t)document.documentElement.setAttribute("data-theme",JSON.parse(t))}catch(e){}</script>
+<script defer src="assets/book.js"></script>
+<script defer src="assets/lec07.js"></script>
+</head>
+<body>
+<header class="topbar"><div class="inner">
+  <a class="brand" href="index.html">∫ Measure &amp; Integration</a>
+  <span class="spacer"></span>
+  <button id="stepsBtn" title="Toggle the 'why?' hints on proof steps">Proof hints: on</button>
+  <button id="themeBtn" title="Light / dark">◐</button>
+</div></header>
+<main>
+<div class="lecture-head"><div class="kicker">Lecture 7</div><h1>Hausdorff Measure, Dimension, and a Non-Borel Set</h1></div>
+<div class="howto">Every <b>underlined proof step</b> is selectable — hover or tap it for a detailed explanation of why it holds.
+Press <b>▶</b> in the bar at the bottom to have the lecture <b>read and explained aloud</b>; hover a paragraph and click its ▶ to start there.
+<b>Explainer</b> panels are narrated animations; <b>Interactive</b> panels respond to sliders and dragging.
+The small “original notes” links open the scanned page the text was transcribed from.</div>
+
+<span class="pg"><a href="scans/L07-01.jpg" target="_blank" rel="noopener">original notes · p. 1 ↗</a></span>
+<div class="env ex" data-label="Example 4.10" data-title="Many of the following are addressed in Hmw #2">
+<template class="say">Lecture seven: properties of Hausdorff measure, many of which are in homework two. First, H zero is the counting measure: it counts the number of points, infinity if there are infinitely many. Second, and much deeper: in R N, the N dimensional Hausdorff measure equals Lebesgue outer measure. So they have the same measurable sets and the same values.</template>
+<p>(1) $\mathcal H^0_0$ counting measure
+$$\mathcal H^0_0(A) := \begin{cases}\#A & \text{if } A \text{ finite},\\ +\infty & \text{—}\end{cases}$$
+$\#A$ … cardinality of $A$</p>
+<p>(2) $\mathcal H^N_0 = (\mathcal L^N)^*$</p>
+<p>In particular, they have the same measurable sets, so $\mathcal H^N = \mathcal L^N$. Consider $N\gt1$.</p>
+</div>
+
+<div>
+<template class="say">To prove the inequality Lebesgue at most Hausdorff, we use the isodiametric inequality: among all sets of a given diameter, the ball has the largest volume. Precisely, the outer measure of any set A is at most alpha N times its diameter over two, to the N. Then for any cover of A by small sets E n, subadditivity followed by the isodiametric inequality bounds the Lebesgue outer measure of A by the Hausdorff sum. Taking the infimum gives Lebesgue at most H N delta, for every delta.</template>
+<p>Use <mark>Isodiametric Inequality</mark> (Evans &amp; Gariepy Thm 2.4)
+$$\forall A\subseteq\R^N\qquad(\mathcal L^N)^*(A)\le\alpha_N\Big(\frac{\operatorname{diam}A}{2}\Big)^N$$
+If $\operatorname{diam}A = 2$, then $\boxed{(\mathcal L^N)^*(A)\le\alpha_N = (\mathcal L^N)^*(B(0,1))}$.
+so the unit ball has the largest "volume" among all sets with same diameter 2.</p>
+<p>Let $\delta\gt0$ let $A\subseteq\bigcup_{n=1}^\infty E_n$, $\operatorname{diam}E_n\lt\delta$.</p>
+<div class="step">$$\text{Subadditivity}\Rightarrow(\mathcal L^N)^*(A)\le\sum_{n=1}^\infty(\mathcal L^N)^*(E_n)\underset{\text{(Isodiametric }\le)}{\le}\sum_{n=1}^\infty\alpha_N\Big(\frac{\operatorname{diam}E_n}{2}\Big)^N$$<div class="why"><p>First monotonicity + countable subadditivity of the outer measure ($A\subseteq\bigcup E_n$). Then the isodiametric inequality applied to each $E_n$: a set can't have more volume than the ball of the same diameter. Note the right side is exactly the cost of this cover in the definition of $\mathcal H^N_\delta$.</p></div></div>
+<p>Take inf over all such coverings, get $(\mathcal L^N)^*(A)\le\mathcal H^N_\delta(A)$.</p>
+<p><span class="step">Let $\delta\to0^+$ and conclude that $(\mathcal L^N)^*(A)\le\mathcal H^N_0(A)$.<span class="why"><span class="wp">$(\mathcal L^N)^*(A)$ is a lower bound for every $\mathcal H^N_\delta(A)$, hence for their supremum (= limit) $\mathcal H^N_0(A)$.</span></span></span></p>
+</div>
+
+<span class="pg"><a href="scans/L07-02.jpg" target="_blank" rel="noopener">original notes · p. 2 ↗</a></span>
+<div>
+<template class="say">For the converse we first get a weaker bound. A cube of side a has diameter a root N. So covering by cubes, each cube's Hausdorff cost is a constant C N times its volume, where C N is alpha N times root N over two, to the N. Since any rectangle can be approximated by rectangles with rational sides, which can be cut into cubes, we get H N at most C N times Lebesgue outer measure. Box four point three triple star. The constant C N is bigger than one, so this isn't the end; the covering theorem will remove it.</template>
+<p><u>Conversely</u>: $C_N := \alpha_N\Big(\frac{\sqrt N}{2}\Big)^N$.</p>
+<p><span class="step">$Q\subseteq\R^N$ cube $\alpha_N\Big(\frac{\operatorname{diam}Q}{2}\Big)^N = C_N\mathcal L^N(Q)$.<span class="why"><span class="wp">A cube of side $a$ has diameter $a\sqrt N$ (the main diagonal, by Pythagoras in $N$ dimensions) and volume $a^N$. So $\alpha_N(a\sqrt N/2)^N = \alpha_N(\sqrt N/2)^N a^N = C_N\,\mathcal L^N(Q)$.</span></span></span></p>
+<p>If $\delta\gt0$ then
+$$\mathcal H^N_\delta(A)\le\inf\Big\{\sum_{i=1}^\infty\alpha_N\Big(\frac{\operatorname{diam}Q_i}{2}\Big)^N : Q_i \text{ cubes},\ \operatorname{diam}Q_i\le\delta,\ A\subseteq\bigcup_{i=1}^\infty Q_i\Big\}$$
+$$= C_N\inf\Big\{\sum_{i=1}^\infty\ell(Q_i) : Q_i\text{ cubes},\ \operatorname{diam}Q_i\le\delta,\ A\subseteq\bigcup_{i=1}^\infty Q_i\Big\}.$$
+<span class="note">↓ Prop 2.11 &nbsp; $\lt\delta$</span></p>
+<p><span class="step">Any rectangle can be approximated in $(\mathcal L^N)^*$-measure by rectangles with rational sides lengths, and in turn, each rectangle with side lengths rational can be decomposed as unions of cubes.<span class="why"><span class="wp">Enlarge each side of a rectangle slightly to a rational length (rationals are dense), increasing its volume by as little as we like. A rectangle with rational sides $p_i/q$ (common denominator) is a grid of $\prod p_i$ cubes of side $1/q$, which can be refined further to have diameter $\le\delta$; volumes add up exactly. So cube covers are as cheap as rectangle covers, up to any $\eps$.</span></span></span></p>
+<p>$= C_N(\mathcal L^N)^*(A)$.</p>
+<p>Let $\delta\to0^+$ and get
+$$\boxed{\mathcal H^N_0(A)\le C_N(\mathcal L^N)^*(A)}\tag{4.3***}$$
+<span class="note">↑ ① ?</span></p>
+</div>
+
+<div class="env thm" data-label="Thm" data-title="[Covering Thm]">
+<template class="say">The covering theorem, a version of Vitali's covering theorem. Suppose F is a collection of closed balls, the set A tilde of their centres has finite outer measure, and around every centre there are balls in F of arbitrarily small radius. Then inside any open set U we can pick countably many disjoint balls from F, all inside U, that cover almost all of the centres in U: what's left over has outer measure zero. The figure shows a greedy packing filling a square with disjoint discs.</template>
+<p>Let $\mathcal F\subseteq\mathcal P(\R^N)$ be a collection of (nondegenerate) closed balls. Let $\tilde A$ denote the set of centers of the ball that belong to $\mathcal F$, and assume that $(\mathcal L^N)^*(\tilde A)\lt+\infty$ and
+$$\inf\{r\gt0 : B(a,r)\in\mathcal F\} = 0\quad\forall a\in\tilde A.$$
+If $U\subset\R^N$ is an open set, then there exists a <u>countable</u> collection $\mathcal G$ of <u>disjoint</u> ball in $\mathcal F$ s.t.
+$$\bigcup_{B\in\mathcal G}B\subset U\quad\text{and}\quad(\mathcal L^N)^*\Big((\tilde A\cap U)\setminus\bigcup_{B\in\mathcal G}B\Big) = 0.$$</p>
+</div>
+
+<figure class="viz" data-viz="ball-packing" data-title="Disjoint balls exhausting an open set">
+<figcaption>Greedily place disjoint closed discs inside the open square, each as large as possible around a random uncovered point. The uncovered area tends to $0$: up to a null set, a countable disjoint family of balls fills $U$ — which is what makes the Hausdorff cost of $U$ match its Lebesgue measure.</figcaption>
+</figure>
+
+<span class="pg"><a href="scans/L07-03.jpg" target="_blank" rel="noopener">original notes · p. 3 ↗</a></span>
+<div class="env proof" data-label="Proof of ① (Hᴺ ≤ Lᴺ)">
+<template class="say">Now we remove the constant. Take a nearly optimal cover of A by rectangles R i of small diameter. Fill the interior of each rectangle with disjoint closed balls using the covering theorem, so that what's left over has Lebesgue measure zero, and therefore, by the bound with C N, Hausdorff measure zero as well. A ball's Hausdorff cost is exactly its Lebesgue measure. So the Hausdorff cost of each rectangle is at most the total volume of its disjoint balls, which is at most the volume of the rectangle. Summing up, H N delta of A is at most the Lebesgue outer measure plus epsilon.</template>
+<p>Fix $\eps,\delta\gt0$ and let $R_i$ be rectangles s.t. for $A\subseteq\R^N$
+$$A\subseteq\bigcup_{i=1}^\infty R_i,\quad\operatorname{diam}R_i\lt\delta,\quad\sum_{i=1}^\infty\mathcal L^N(R_i)\le(\mathcal L^N)^*(A)+\eps.$$</p>
+<p>$\mathring R_i$ … interior of $R_i$</p>
+<p><span class="step">Write $\displaystyle\mathring R_i = \bigcup_{\substack{x\in\mathring R_i\\ r\lt\delta/2,\ \overline{B(x,r)}\subset\mathring R_i}}\overline{B(x,r)} = \bigcup\text{ balls}$, balls $\in\mathcal F$<span class="why"><span class="wp">Every point $x$ of the open set $\mathring R_i$ has a closed ball around it inside $\mathring R_i$, of every sufficiently small radius. Let $\mathcal F$ be the collection of all these balls with radius $\lt\delta/2$ (so diameter $\lt\delta$). Their centres fill $\mathring R_i$, and radii can be arbitrarily small, as required by the Covering Thm.</span></span></span></p>
+<p>$\tilde A := \{\text{centers of all these balls}\}\subset\bigcup\mathring R_i$, $(\mathcal L^N)^*(\tilde A)\lt+\infty$</p>
+<p><span class="step">Covering Thm $\Rightarrow\exists$ disjoint closed balls $\{B^i_k\}_{k=1}^\infty\subset\mathring R_i$ s.t.
+$$(\mathcal L^N)^*\Big(R_i\setminus\Big(\bigcup_{k=1}^\infty B^i_k\Big)\Big) = (\mathcal L^N)^*\Big(\mathring R_i\setminus\Big(\bigcup_{k=1}^\infty B^i_k\Big)\Big) = 0.\tag{4.3****}$$<span class="why"><span class="wp">Apply the Covering Thm with $U = \mathring R_i$ (open), $\tilde A\cap U = \mathring R_i$. The first equality: $R_i\setminus\mathring R_i$ is the boundary of the rectangle, a finite union of degenerate rectangles (faces), which has Lebesgue outer measure $0$.</span></span></span></p>
+<p><span class="step">By (4.3***) $\Rightarrow\mathcal H^N_0\Big(R_i\setminus\Big(\bigcup_{k=1}^\infty B^i_k\Big)\Big) = 0$.<span class="why"><span class="wp">$\mathcal H^N_0\le C_N(\mathcal L^N)^*$, and $C_N\cdot0 = 0$. A crude constant is harmless on null sets.</span></span></span></p>
+<p>We have</p>
+<div class="step">$$\mathcal H^N_\delta(A)\le\sum_{i=1}^\infty\mathcal H^N_\delta(R_i) = \sum_{i=1}^\infty\Big[\mathcal H^N_\delta\Big(\bigcup_{k=1}^\infty B^i_k\Big)+\underbrace{\mathcal H^N_\delta\Big(R_i\setminus\Big(\bigcup_{k=1}^\infty B^i_k\Big)\Big)}_{=0}\Big]$$<div class="why"><p>First: $\mathcal H^N_\delta$ is an outer measure (monotone and countably subadditive). Then split each rectangle into the balls and the leftover; for the "$=$", subadditivity gives $\le$, which is all we need. The leftover has $\mathcal H^N_\delta\le\mathcal H^N_0 = 0$ (since $\delta\mapsto\mathcal H^N_\delta$ increases to $\mathcal H^N_0$).</p></div></div>
+<div class="step">$$\le\sum_{i=1}^\infty\sum_{k=1}^\infty\mathcal H^N_\delta(B^i_k)\le\sum_{i=1}^\infty\sum_{k=1}^\infty\alpha_N\Big(\frac{\operatorname{diam}B^i_k}{2}\Big)^N$$<div class="why"><p>Subadditivity again; then each ball is its own admissible cover (diameter $\lt\delta$), with cost $\alpha_N(\operatorname{diam}/2)^N$.</p></div></div>
+<div class="step">$$= \sum_{i=1}^\infty\sum_{k=1}^\infty\mathcal L^N(B^i_k) \underset{\text{pairwise disjoint}}{=} \sum_{i=1}^\infty\mathcal L^N\Big(\bigcup_{k=1}^\infty B^i_k\Big)$$<div class="why"><p>For a ball, $\alpha_N(\operatorname{diam}/2)^N = \alpha_N r^N = \mathcal L^N(B(x,r))$ (Example 4.10 (i)): balls are exactly where the Hausdorff cost is sharp. Then countable additivity of $\mathcal L^N$ on the disjoint (Borel) balls.</p></div></div>
+<div class="step">$$\underset{(4.3****)}{=}\sum_{i=1}^\infty\mathcal L^N(R_i)\le(\mathcal L^N)^*(A)+\eps.\quad\text{let }\eps\to0^+,\ \delta\to0^+.\ \blacksquare$$<div class="why"><p>The balls fill $R_i$ up to a null set, so their union has the same measure as $R_i$. Then the choice of the cover. Letting $\eps\to0$ gives $\mathcal H^N_\delta(A)\le(\mathcal L^N)^*(A)$ for each $\delta$; letting $\delta\to0$ gives $\mathcal H^N_0(A)\le(\mathcal L^N)^*(A)$. Combined with page 1: equality.</p></div></div>
+</div>
+
+<span class="pg"><a href="scans/L07-04.jpg" target="_blank" rel="noopener">original notes · p. 4 ↗</a></span>
+<div class="env ex" data-label="Example 4.10 (cont.)">
+<template class="say">Three: if s is bigger than N, H s is identically zero in R N. Chop the unit cube into m to the N little cubes of diameter root N over m. The Hausdorff s cost is a constant times m to the N minus s, which goes to zero when s is bigger than N. And R N is a countable union of unit cubes. Four: Hausdorff measure is translation invariant and homogeneous of degree s: scaling a set by lambda multiplies H s by lambda to the s. Five: if H s of E is finite, then H t of E is zero for every larger t; if H t is positive, H s is infinite for every smaller s. And six: for s strictly between zero and N, H s is not sigma finite on R N.</template>
+<p>(3) $\mathcal H^s_0\equiv0$ if $s\gt N$ in $\R^N$</p>
+<p>Subdivide the unit cube $Q := [-\frac12,\frac12]^N$ into $m^N$ subcubes of side length $\frac1m$ and diameter $\frac{\sqrt N}{m}$.</p>
+<p>Let $\delta = \frac{\sqrt N}{m}$. Then
+<span class="step">$$\mathcal H^s_{\sqrt N/m}(Q)\le\sum_{n=1}^{m^N}\alpha_s\Big(\frac{\sqrt N}{2m}\Big)^s = \alpha_s\Big(\frac{\sqrt N}{2}\Big)^s\frac1{m^{s-N}}\underset{m\to+\infty}{\longrightarrow}0$$<span class="why"><span class="wp">The $m^N$ subcubes form an admissible cover at scale $\delta$ (diameter $\le\delta$; use a tiny bit larger $\delta$ for strict inequality). All terms are equal, so the sum is $m^N\cdot\alpha_s(\sqrt N/2)^s m^{-s} = \alpha_s(\sqrt N/2)^s m^{N-s}$, and $N - s\lt0$.</span></span></span></p>
+<p><span class="step">$\Rightarrow\mathcal H^s_0(Q) = \lim_{\delta\to0}\mathcal H^s_\delta(Q) = 0.$<span class="why"><span class="wp">The limit along $\delta = \sqrt N/m$ is $0$; since $\delta\mapsto\mathcal H^s_\delta(Q)$ is monotone, the full limit as $\delta\to0$ equals the limit along this sequence.</span></span></span></p>
+<p><span class="step">$\R^N$ can be written as a countable union of translations of the unit cube $\Rightarrow\mathcal H^s_0(\R^N) = 0$.<span class="why"><span class="wp">$\R^N = \bigcup_{k\in\Z^N}(k+Q)$, countably many; each has $\mathcal H^s_0 = 0$ by translation invariance (4); countable subadditivity.</span></span></span></p>
+<p>(4) <mark>Translation Invariance and Positivity Homogeneity of Degree $s$</mark></p>
+<p>For $E\subseteq\R^N$, $x\in\R^N$, $\lambda\gt0$, we have
+$$\mathcal H^s_0(x+E) = \mathcal H^s_0(E),\qquad\mathcal H^s_0(\lambda E) = \lambda^s\mathcal H^s_0(E).$$</p>
+<p>(5) $E\subseteq\R^N$, $0\le s\lt t\lt+\infty$.</p>
+<ol type="a">
+<li>If $\mathcal H^s_\delta(E) = 0$ for some $0\lt\delta\le\infty\Rightarrow\mathcal H^s_0(E) = 0$</li>
+<li>$\mathcal H^s_0(E)\lt+\infty\Rightarrow\mathcal H^t_0(E) = 0$</li>
+<li>$\mathcal H^t_0(E)\gt0\Rightarrow\mathcal H^s_0(E) = \infty$</li>
+</ol>
+<p>(6) $0\lt s\lt N$ then the Hausdorff measure $\mathcal H^s_0$ is not <mark>σ-finite</mark>, i.e., we cannot write
+$$\R^N = \bigcup_{n=1}^\infty A_n\quad\text{with}\quad\mathcal H^s_0(A_n)\lt+\infty\ \forall n\in\N.$$</p>
+<span class="pg"><a href="scans/L07-05.jpg" target="_blank" rel="noopener">original notes · p. 5 ↗</a></span>
+<p>Why: <span class="step">If $\exists s\in(0,N)$ s.t. $\R^N = \bigcup_{n=1}^\infty A_n$, $\mathcal H^s_0(A_n)\lt+\infty$ then $\Rightarrow$ (5 (b) with $t = N$) $\mathcal H^N_0(A_n) = 0$.<span class="why"><span class="wp">Each $A_n$ has finite $\mathcal H^s$ measure and $N\gt s$, so by (5)(b) its $\mathcal H^N$ measure is $0$.</span></span></span></p>
+<p><span class="step">By (2) above, $(\mathcal L^N)^*(A_n) = 0$. $\Rightarrow$ (subadditivity) $(\mathcal L^N)^*(\R^N) = 0$ ⚡<span class="why"><span class="wp">$\mathcal H^N_0 = (\mathcal L^N)^*$ by (2). Countable subadditivity gives $(\mathcal L^N)^*(\R^N)\le\sum_n 0 = 0$, but $\R^N$ contains the unit cube, of measure $1$.</span></span></span></p>
+</div>
+
+<div class="env defn" data-label="Definition 4.11">
+<template class="say">Definition four point eleven. The Hausdorff dimension of a set E is the infimum of the s for which H s of E is zero. It's a number between zero and infinity, not necessarily an integer, and in R N it's at most N. If the dimension is t, then H s is zero for s bigger than t, and infinite for s between zero and t. Only at s equal to t can H s be anything in between. The figure computes this for some fractals.</template>
+<p>The <mark>Hausdorff dimension</mark> of a set $E\subseteq\R^N$ is defined as
+$$\dim_{\mathcal H}(E) := \inf\{0\le s\lt+\infty : \mathcal H^s_0(E) = 0\}.$$</p>
+<p><u>Note</u>:</p>
+<ul>
+<li>$\dim_{\mathcal H}(E)\in[0,+\infty)$ <u>not</u> necessarily an integer number</li>
+<li>$\dim_{\mathcal H}(E)\le N$ $\forall E\subseteq\R^N$.<br>
+<span class="step">Indeed, if $\dim_{\mathcal H}(E)\gt N\Rightarrow\exists s\gt N$ s.t. $\mathcal H^s_0(E)\gt0$ contradicting Example 4.10 (3).<span class="why"><span class="wp">If the infimum of $\{s : \mathcal H^s_0(E) = 0\}$ is bigger than $N$, then some $s\in(N,\dim_{\mathcal H}E)$ is not in that set, i.e. $\mathcal H^s_0(E)\gt0$. But (3) says $\mathcal H^s_0\equiv0$ on $\R^N$ for $s\gt N$.</span></span></span></li>
+<li>If $\dim_{\mathcal H}(E) = t$ then
+<ul>
+<li>$s\gt t\Rightarrow\mathcal H^s_0(E) = 0$<br>
+<span class="step">Indeed if $s\gt t\Rightarrow\exists t'\in(t,s)$: $\mathcal H^{t'}_0(E) = 0$ $\Rightarrow$ (5 (b)) $\mathcal H^s_0(E) = 0$.<span class="why"><span class="wp">$t$ is an infimum, so there are values $t'$ of the set arbitrarily close above $t$, in particular one below $s$. Then $\mathcal H^{t'}_0(E) = 0\lt\infty$ and (5)(b) with $t'\lt s$ gives $\mathcal H^s_0(E) = 0$.</span></span></span></li>
+<li><span class="step">$0\lt s\lt t\Rightarrow\mathcal H^s_0(E) = \infty$. Cause 5 (c).<span class="why"><span class="wp">Pick $t'\in(s,t)$. Since $t'\lt t = \inf$, $\mathcal H^{t'}_0(E)\ne0$, so $\gt0$. By (5)(c) with $s\lt t'$: $\mathcal H^s_0(E) = \infty$.</span></span></span></li>
+</ul></li>
+</ul>
+</div>
+
+<figure class="viz" data-viz="fractal-dim" data-title="Fractional dimensions">
+<template class="say">Self similar fractals have fractional dimension. The Cantor set is made of two copies of itself scaled by one third. At level n it is covered by two to the n pieces of size three to the minus n, so the Hausdorff sum is two to the n times three to the minus n s. That stays bounded exactly when s equals log two over log three, about zero point six three. The Koch curve: four copies scaled by a third, dimension log four over log three, about one point two six. The Sierpinski triangle: three copies scaled by one half, about one point five eight. In the log log plot, the number of pieces against the scale is a straight line whose slope is the dimension.</template>
+<figcaption>At level $n$, the fractal is covered by $N_n$ pieces of diameter $r^n$. $\sum(\text{diam})^s = N_n r^{ns}$ stays bounded iff $s = \log N_1/\log(1/r)$. Right: $\log N_n$ against $\log(1/r^n)$, slope $= \dim_{\mathcal H}$.</figcaption>
+</figure>
+
+<span class="pg"><a href="scans/L07-06.jpg" target="_blank" rel="noopener">original notes · p. 6 ↗</a></span>
+<div class="env ex" data-label="Example 4.12" data-title="[A Lebesgue Measurable Set that is not Borel]">
+<template class="say">Example four point twelve: a Lebesgue measurable set that is not Borel. The trick uses the Cantor set and Cantor function. Lebesgue measure is complete, so every subset of the Cantor set is Lebesgue measurable, with measure zero. We'll find one that isn't Borel. Consider g of x equals x plus the Cantor function. It's continuous and strictly increasing from zero one onto zero two, so it has a continuous inverse. On each removed interval, the Cantor function is constant, so g just shifts it: the images of the removed intervals have the same total length, one. The image of the whole interval has length two, so the image of the Cantor set must have measure at least one! A set of measure zero has been stretched to a set of positive measure. Now a set of positive measure contains a non measurable subset E. Pull it back by g: F equals g inverse of E is a subset of the Cantor set, so it's Lebesgue measurable. If F were Borel, its image under g, which is the preimage under the continuous map g inverse, would be Borel, hence measurable. But that's E, which is not measurable. So F is measurable but not Borel. Watch the explainer.</template>
+<p>Consider the Cantor set $\mathfrak C$ [Example 3.15 (b)].</p>
+<p>$\mathfrak C\subset[0,1]$ is a Borel set and $\mathcal L^1(\mathfrak C) = 0$.</p>
+<p><u>claim</u> $\exists F\subset\mathfrak C$ s.t. $F$ is not Borel,</p>
+<p><span class="step">$\mathcal L^N$ is complete (4.10 (i)) and $\mathfrak C$ measurable of measure zero $\Rightarrow F$ Lebesgue-measurable.<span class="why"><span class="wp">Def 4.8 of completeness: subsets of measurable null sets are measurable (and automatically null by monotonicity of the outer measure).</span></span></span></p>
+<p>In particular, this will show that $\mathcal L^N|_{\B(\R^N)}:\B(\R^N)\to[0,+\infty]$ is <u>not</u> complete,</p>
+<p>Consider the Cantor function (Example 3.15 (b))
+$$f:[0,1]\to[0,1]\ \text{continuous, non-decreasing}$$
+define
+$$g:[0,1]\to[0,2],\qquad x\mapsto x+f(x).$$</p>
+<p>Then <span class="step">$g$ is continuous, strictly increasing, $g([0,1]) = [0,2]$.<span class="why"><span class="wp">Sum of continuous functions; $x$ is strictly increasing and $f$ non-decreasing, so the sum is strictly increasing; $g(0) = 0+0$, $g(1) = 1+1 = 2$, and the intermediate value theorem gives every value in between.</span></span></span></p>
+<p><span class="step">$g^{-1}:[0,2]\to[0,1]$ still continuous.<span class="why"><span class="wp">A continuous strictly increasing bijection between intervals has a continuous inverse (an increasing function whose image is an interval has no jumps). Alternatively: a continuous bijection from a compact space to a Hausdorff space is a homeomorphism.</span></span></span></p>
+<p><span class="step">$f$ is constant on each of the removed subintervals $\Rightarrow g$ maps those intervals onto intervals of same length<span class="why"><span class="wp">On $I_{k,n}$, $f\equiv c$, so $g(x) = x + c$ there: a translation. Translations preserve length.</span></span></span> $\Rightarrow$
+$$[0,1]\setminus\mathfrak C = \bigcup_{n=1}^\infty\bigcup_{k=1}^{2^{n-1}}I_{k,n}\quad\downarrow\text{ mutually disjoint}\quad\approx\text{“}J_{k,n}+\text{constant”}$$</p>
+<div class="step">$$\Rightarrow\mathcal L^1\big(g([0,1]\setminus\mathfrak C)\big) = \mathcal L^1\Big(\bigcup_{n=1}^\infty\bigcup_{k=1}^{2^{n-1}}\underbrace{g(I_{k,n})}_{\text{mutually disjoint because } g\ 1{:}1}\Big)$$<div class="why"><p>The image of a union is the union of the images. Since $g$ is injective, images of disjoint sets are disjoint. Each $g(I_{k,n})$ is an open interval, so everything is Borel and countable additivity applies.</p></div></div>
+<span class="pg"><a href="scans/L07-07.jpg" target="_blank" rel="noopener">original notes · p. 7 ↗</a></span>
+<div class="step">$$= \sum_{n=1}^\infty\sum_{k=1}^{2^{n-1}}\mathcal L^1(I_{k,n}) = \mathcal L^1([0,1]\setminus\mathfrak C) = 1.$$<div class="why"><p>Each image is a translate of $I_{k,n}$, of the same length. Then countable additivity backwards, and $\mathcal L^1([0,1]\setminus\mathfrak C) = 1 - 0$.</p></div></div>
+<p>In turn, $\mathcal L^1\big(g([0,1]\setminus\mathfrak C)\cup g(\mathfrak C)\big) = \mathcal L^1(g([0,1])) = \mathcal L^1([0,2]) = 2$</p>
+<div class="step">$$\Rightarrow 2 = \mathcal L^1\big(g([0,1]\setminus\mathfrak C)\cup g(\mathfrak C)\big)\le(\mathcal L^1)^*\big(g([0,1]\setminus\mathfrak C)\big)+\mathcal L^1(g(\mathfrak C)) = 1+\mathcal L^1(g(\mathfrak C))$$<div class="why"><p>Subadditivity. ($g(\mathfrak C) = [0,2]\setminus g([0,1]\setminus\mathfrak C)$ is closed, being the complement of a union of open intervals in $[0,2]$, so it is Borel and measurable.)</p></div></div>
+<p>⇓
+$$\mathcal L^1(g(\mathfrak C))\ge1.$$</p>
+<p><mark>Fact #1</mark> If $A\subseteq\R$ is Lebesgue measurable and $\mathcal L^1(A)\gt0$ then $\exists E\subset A$ that is <u>not</u> measurable. (Proof: uses inner and outer regularity of $\mathcal L^1$)</p>
+<p><span class="step">Fact #1 $\Rightarrow\exists E\subseteq g(\mathfrak C)$ <u>non measurable</u>.<span class="why"><span class="wp">This finishes the claim: let $F := g^{-1}(E)\subseteq\mathfrak C$. $F$ is Lebesgue measurable (subset of a null set, completeness). If $F$ were Borel, then $g(F) = (g^{-1})^{-1}(F)$ would be Borel, since preimages of Borel sets under the continuous map $g^{-1}$ are Borel (the sets $B$ with $(g^{-1})^{-1}(B)$ Borel form a σ-algebra containing the open sets). Borel sets are measurable, but $g(F) = E$ is not. So $F$ is Lebesgue measurable and not Borel.</span></span></span></p>
+<p><mark>Fact #2</mark></p>
+<ul>
+<li>In general, the image of a Borel set under a continuous function is <u>NOT</u> Borel: $B$ Borel, $h$ continuous $\not\Rightarrow h(B)$ Borel,</li>
+<li>In general, the image of Lebesgue measurable set under a continuous function is <u>NOT</u> Lebesgue measurable; $G$ Lebesgue meas., $h$ continuous $\not\Rightarrow h(G)$ measurable.<br>
+$\exists E\subset\R$ Lebesgue meas. s.t. $E+E := \{x+y : x,y\in E\}$ <u>not</u> meas.</li>
+</ul>
+<span class="pg"><a href="scans/L07-08.jpg" target="_blank" rel="noopener">original notes · p. 8 ↗</a></span>
+<ul>
+<li><u>However!</u> If $f:I\to\R$ is continuous, $I\subseteq\R$ interval, $E\subset I$ Borel $\Rightarrow f(E)$ is Lebesgue measurable!</li>
+</ul>
+<p>More generally: If $X$ is a complete, separable metric space, $f:X\to\R$ continuous, $B\subset X$ Borel set then $f(B)\subset\R$ is Lebesgue measurable (<u>NOT</u> necessarily Borel).</p>
+</div>
+
+<div class="explainer" data-scene="cantor-stretch" data-title="Stretching a null set to measure one">
+<template class="say">Here's the Cantor set, in yellow, inside zero one. Its measure is zero: the removed gaps, in blue, have total length one.</template>
+<template class="say">Now apply g of x equals x plus the Cantor function. Watch where each piece goes. On each gap the Cantor function is constant, so g simply slides the gap to the right, without stretching it. The gaps keep their total length, one.</template>
+<template class="say">But the image is the whole interval from zero to two, of length two. The gaps only account for one. So the image of the Cantor set must fill the remaining length: at least one. A set of measure zero has been mapped, by a continuous increasing function, onto a set of measure one.</template>
+<template class="say">That's the lever. The fat image contains a non measurable set E. Pull E back by g: you get a subset F of the Cantor set. F has measure zero, so it's Lebesgue measurable. But F can't be Borel, because continuous maps pull back Borel sets to Borel sets, and the pullback of F under g inverse is E. So there are more Lebesgue measurable sets than Borel sets.</template>
+</div>
+
+
+<nav class="pager"><a href="lec06.html">← Lecture 6</a><a href="index.html">Contents</a></nav>
+</main>
+</body>
+</html>

@@ -250,3 +250,9 @@ figcaption b { color: var(--ink); }
   .step { background-image: none !important; }
 }
 .wp { display: block; margin: 6px 0; }
+details.env > summary { cursor: pointer; display: list-item; margin-bottom: 6px; }
+details.env > p:first-of-type { display: block; }
+details.env:not([open]) { padding-bottom: 8px; }
+/* editorial remarks added in this edition (not in the handwritten notes) */
+.ed { font-family: "Inter", system-ui, sans-serif; font-size: .78em; color: var(--muted); background: var(--accent-soft); border-radius: 6px; padding: 1px 6px; }
+p.ed { display: block; padding: 6px 10px; }

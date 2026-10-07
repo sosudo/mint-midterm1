@@ -1,0 +1,276 @@
+<lecture num="5" title="Lebesgue Measurable Sets, the Cantor Set, and Measures" desc="Lebesgue outer measure is metric; Borel ⊊ Lebesgue ⊊ P(ℝᴺ); regularity and the equivalence of the definitions; the Cantor set and Cantor function; measures and their continuity properties.">
+
+<pg p="1"/>
+<details class="env rmk" open>
+<summary class="env-label">Notebook pages 29–30: the end of the proof of Prop 3.12, written out in full</summary>
+<template class="say">The lecture opens by finishing the proof of proposition three point twelve, cleanly written out. The layers E n are disjoint and, since C is closed, cover F minus C. Layers two apart are a positive distance from each other. Because mu star is a metric outer measure, induction gives that the outer measure of the union of the even layers is the sum of their outer measures, which is at most the outer measure of F. So the sums over even and odd layers converge, and so does the whole series. Finally, finitely many layers stay away from C, and the tail of the series goes to zero, proving the claim.</template>
+<p>The sets $E_n$ are disjoint, and since $C$ is closed
+$$F\setminus C = \{x\in F : \operatorname{dist}(x,C)\gt0\} = \bigcup_{n=0}^\infty E_n.\tag{3.4}$$</p>
+<p><u>claim 2</u> If $n\ge0$ then $\operatorname{dist}(E_{2n},E_{2n+2})\gt0$. Indeed, let $x\in E_{2n}$, $y\in E_{2n+2}$ and we have
+$$\underset{(x\in E_{2n})}{\frac1{2n+1}}\le\operatorname{dist}(x,C)\le d(x,y)+d(y,C)\lt d(x,y)+\underset{(y\in E_{2n+2})}{\frac1{2n+2}},$$
+and so $d(x,y)\ge\frac1{2n+1}-\frac1{2n+2} =: \eta_n\gt0$. This proves claim 2.</p>
+<p>As $\ms$ is a metric outer measure we obtain <span class="step">(by induction) $\forall k\in\N$
+$$\sum_{n=0}^k\ms(E_{2n}) = \ms\Big(\bigcup_{n=0}^k E_{2n}\Big)\le\ms(F)\lt+\infty$$<span class="why"><p>Induction on $k$: the set $\bigcup_{n\lt k}E_{2n}$ is at positive distance from $E_{2k}$ (each of the finitely many $E_{2n}$, $n\lt k$, is at distance $\ge\frac1{2n+1}-\frac1{2k}\gt0$, by the same estimate as claim 2), so the metric property splits off $\ms(E_{2k})$. The inequality is monotonicity, since every $E_{2n}\subseteq F$.</p></span></span>
+and similarly, $\displaystyle\sum_{n=1}^k\ms(E_{2n-1})\le\ms(F)\lt+\infty$.</p>
+<p>We deduce that the series $\sum_{n=0}^\infty\ms(E_{2n})$ and $\sum_{n=1}^\infty\ms(E_{2n-1})$ converge, and, in turn,
+$$\sum_{n=0}^\infty\ms(E_n)\ \text{converges.}\tag{3.5}$$</p>
+<p><u>claim 3</u> For every $k\in\N$, $\operatorname{dist}\big(F\cap C,\bigcup_{n=0}^k E_n\big)\gt0$.</p>
+<p>Indeed, if $x\in F\cap C$ and $y\in\bigcup_{n=0}^k E_n$, then $\frac1{k+1}\le d(y,C)\le d(x,y)$</p>
+<pg p="2"/>
+<p>Again using the fact that $\ms$ is a metric outer measure, we have
+$$\begin{aligned}\ms(F\cap C)+\ms(F\setminus C) &= \ms(F\cap C)+\ms\Big(\bigcup_{n=0}^\infty E_n\Big)\quad(\text{by }(3.4))\\
+&= \ms(F\cap C)+\ms\Big(\bigcup_{n=0}^k E_n\cup\bigcup_{n=k+1}^\infty E_n\Big)\\
+\text{(subadditivity)}\quad&\le\ms(F\cap C)+\ms\Big(\bigcup_{n=0}^k E_n\Big)+\ms\Big(\bigcup_{n=k+1}^\infty E_n\Big)\\
+\text{(subadditivity)}\quad&\le\ms(F\cap C)+\ms\Big(\bigcup_{n=0}^k E_n\Big)+\sum_{n=k+1}^\infty\ms(E_n)\\
+\text{(claim 3)}\quad&= \ms\Big(\underbrace{(F\cap C)\cup\bigcup_{n=0}^k E_n}_{\subseteq F}\Big)+\sum_{n=k+1}^\infty\ms(E_n)\\
+\text{(monotonicity)}\quad&\le\ms(F)+\sum_{n=k+1}^\infty\ms(E_n).\end{aligned}$$
+Letting $k\to+\infty$ and using (3.5) we conclude that
+$$\ms(F\cap C)+\ms(F\setminus C)\le\ms(F),$$
+and thus proves claim 1. <span class="qed">■</span></p>
+</details>
+
+<div class="env prop" data-label="Proposition 3.13">
+<template class="say">Proposition three point thirteen. Hausdorff outer measures and Lebesgue outer measure are metric outer measures. In particular, every Borel set in R N is Hausdorff measurable and Lebesgue measurable.</template>
+<p>The outer measure $\mathcal H^s_0$, $0\le s\lt+\infty$ (see 2.4), and the outer measure $(\mathcal L^N)^*$ (see (2.2)) are <u>metric outer measures</u>. (i.e., $\operatorname{dist}(E,F)\gt0\Rightarrow\ms(E\cup F) = \ms(E)+\ms(F)$)</p>
+<p>In particular, <mark>every Borel set of $\R^N$ is $\mathcal H^s_0$-measurable and $(\mathcal L^N)^*$-measurable.</mark></p>
+<p class="note">end lect #4</p>
+</div>
+
+<div class="env defn" data-label="Def 3.14">
+<template class="say">Definition three point fourteen. The class of all sets that are measurable for Lebesgue outer measure is called the sigma algebra of Lebesgue measurable sets. It will be shown in Carathéodory's theorem that it really is a sigma algebra.</template>
+<p>The class of all $(\mathcal L^N)^*$-measurable sets of $\R^N$ (see Def 3.1 and (3.3)) is called <mark>σ-algebra of Lebesgue measurable sets.</mark></p>
+<p class="note">It will be shown in Thm 4.9 (Carathéodory) that this is in fact a σ-algebra</p>
+</div>
+
+<pg p="3"/>
+<div class="env proof" data-label="Proof of Proposition 3.13">
+<template class="say">The proof, for Lebesgue outer measure. Take E and F at positive distance d. We need the outer measure of the union to be at least the sum. Take any cover of the union by rectangles. Chop each rectangle into smaller ones of diameter less than d over two; this doesn't change the total volume. Now no small rectangle can touch both E and F, because they're too far apart. So the cover splits into a cover of E and a cover of F, and its total cost is at least the outer measure of E plus that of F. Take the infimum over covers.</template>
+<p>We only prove it for $(\mathcal L^N)^*$. In view of Prop 3.12, if we show that $(\mathcal L^N)^*$ is a metric outer measure, then
+$$\B(\R^N)\subseteq\{\text{Lebesgue measurable sets}\}.$$</p>
+<p>Let $E,F\subseteq\R^N$ be such that $d := \operatorname{dist}(E,F)\gt0$.</p>
+<p><u>claim</u> $(\mathcal L^N)^*(E\cup F)\ge(\mathcal L^N)^*(E)+(\mathcal L^N)^*(F)$.</p>
+<p>Note that <span class="step">since $(\mathcal L^N)^*$ is subadditive, if the claim holds then $(\mathcal L^N)^*(E\cup F) = (\mathcal L^N)^*(E)+(\mathcal L^N)^*(F)$. (see Def 3.11)<span class="why"><p>Subadditivity always gives $\le$; the claim gives $\ge$.</p></span></span></p>
+<p>Consider a sequence $\{R_n\}_{n\in\N}$ of rectangles such that
+$$E\cup F\subseteq\bigcup_{n=1}^\infty R_n.$$</p>
+<p><span class="step">By partitioning each rectangle $R_n$ into smaller rectangles, if necessary, we can assume that $\operatorname{diam}R_n\lt\frac d2$ $\forall n\in\N$.<span class="why"><p>Cut each side of $R_n$ into $m$ equal pieces: $R_n$ becomes $m^N$ subrectangles of diameter $\operatorname{diam}(R_n)/m$, and their volumes add up exactly to $\ell(R_n)$ (grid additivity, as in Prop 2.11). Choose $m$ large. Replacing each $R_n$ by its pieces (still countably many rectangles in total) keeps the cover and its total cost.</p></span></span></p>
+<p>Hence, <span class="step">if $R_n\cap E\ne\emptyset\Rightarrow R_n\cap F = \emptyset$; $R_n\cap F\ne\emptyset\Rightarrow R_n\cap E = \emptyset$.<span class="why"><p>If $R_n$ met both, pick $x\in R_n\cap E$ and $y\in R_n\cap F$: then $d(x,y)\le\operatorname{diam}R_n\lt\frac d2\lt d = \operatorname{dist}(E,F)$, contradicting the definition of $\operatorname{dist}$ as an infimum over such pairs.</p></span></span>
+Therefore, we can divide the sequence $\{R_n\}$ into two sequences, one covering $E$, and the other covering $F$. It follows that</p>
+<div class="step">$$\sum_{n=1}^\infty\ell(R_n)\ge\sum_{R_n\cap E\ne\emptyset}\ell(R_n)+\sum_{R_n\cap F\ne\emptyset}\ell(R_n)\ge(\mathcal L^N)^*(E)+(\mathcal L^N)^*(F).$$<div class="why"><p><strong>First:</strong> by the previous step the two index sets are disjoint, so the two sums are parts of the full sum (rectangles meeting neither are just dropped).</p><p><strong>Second:</strong> the rectangles meeting $E$ cover $E$ (every point of $E$ is in some $R_n$, which then meets $E$), so their total volume is $\ge(\mathcal L^N)^*(E)$ by definition of the infimum; same for $F$.</p></div></div>
+<p>Taking the infimum over all sequences $\{R_n\}$ covering $E\cup F$ give
+$$(\mathcal L^N)^*(E\cup F)\ge(\mathcal L^N)^*(E)+(\mathcal L^N)^*(F),$$
+proving the claim. <span class="qed">■</span></p>
+</div>
+
+<pg p="4"/>
+<div>
+<template class="say">So we now have Borel sets inside Lebesgue measurable sets inside all subsets. We'll see both inclusions are strict.</template>
+<p>So we now have
+$$\B(\R^N)\subsetneq\{\text{Lebesgue measurable sets}\}\subsetneq\mathcal P(\R^N)$$
+We will see that <mark>both inclusions are strict.</mark></p>
+</div>
+
+<div class="env ex" data-label="Examples 3.15">
+<template class="say">Examples three point fifteen. a: not every set is Lebesgue measurable. Recall the Vitali set V, with positive finite outer measure. If V were measurable, so would all its rational translates, which are disjoint, and additivity on measurable sets would give six at least n times the outer measure of V, impossible for large n.</template>
+<p>a) <mark>$\{\text{Lebesgue measurable sets}\}\subsetneq\mathcal P(\R^N)$.</mark></p>
+<p>Recall the set $V\subset[-1,1]$, with $0\lt(\mathcal L^1)^*(V)\le(\mathcal L^1)^*([-1,1])$ (Rmk 2.13) + (Prop 2.11) $= 2$.</p>
+<p>If $V$ was Lebesgue measurable, <span class="step">because $(\mathcal L^1)^*$ is translation invariant (see Rmk 2.12) then $r_k+V$ is Lebesgue measurable for all $k\in\N$<span class="why"><p>Measurability is defined purely in terms of $\ms$ (Def 3.1). For a test set $F$: $\ms(F\cap(r+V)) = \ms((F-r)\cap V)$ and $\ms(F\setminus(r+V)) = \ms((F-r)\setminus V)$ by translation invariance, and these add up to $\ms(F-r) = \ms(F)$ because $V$ is measurable (tested on $F-r$).</p></span></span>, with these sets being mutually disjoint, so for every $n\in\N$
+<span class="step">$$6\ge(\mathcal L^1)^*\Big(\underbrace{\bigcup_{k=1}^n(r_k+V)}_{\subset[-3,3]}\Big) = \sum_{k=1}^n(\mathcal L^1)^*(r_k+V) = n(\mathcal L^1)^*(V),$$<span class="why"><p>The equality uses additivity on <em>measurable</em> sets (Cor 3.3, applied $n-1$ times: each $r_k+V$ is measurable and disjoint from the union of the others). This is exactly what failed in Rmk 2.13 — now it would hold, and that's the contradiction.</p></span></span>
+and this is not possible for $n\gg1$.</p>
+<p>b) <mark>The Cantor set: an uncountable Borel set in $[0,1]$ with $(\mathcal L^1)^* = 0$.</mark></p>
+<p>In view of Prop 2.11, $(\mathcal L^1)^*(\{a\}) = 0$ so <span class="step">if $E\subseteq\R$ is <u>countable</u>, by subadditivity $(\mathcal L^1)^*(E) = 0$.<span class="why"><p>$\{a\} = [a,a]$ is a degenerate closed interval of length $0$. If $E = \{a_1,a_2,\dots\}$, countable subadditivity gives $\ms(E)\le\sum_n\ms(\{a_n\}) = 0$.</p></span></span></p>
+<p>The Cantor set $\mathfrak C\subseteq[0,1]$ is <mark>compact, uncountable, and $(\mathcal L^1)^*(\mathfrak C) = 0$.</mark></p>
+</div>
+
+<pg p="5"/>
+<div class="env rmk" data-label="Remark 3.13*">
+<template class="say">Remark three point thirteen star ties up the definitions. In lecture one, definition zero point one called a subset A of I Lebesgue measurable if the outer measure of A plus that of its complement in I equals the measure of I. Definition three point one is Carathéodory's: A splits every test set additively. Homework one shows that for a regular outer measure the two agree. And the Lebesgue outer measure is regular: any set E is contained in a Borel set with the same outer measure. Take nearly optimal covers by intervals with error one over k, take the union for each k, and intersect over all k.</template>
+<p>(i) In Def 0.1 we introduced the concept of <u>Lebesgue measurability</u> as:
+$$\ms(A)+\ms(X\setminus A) = \ms(X)\quad(\text{with }\ms := (\mathcal L^1)^*,\ X = I)$$</p>
+<p>(ii) In Def 3.1 we introduced the <u>concept of measurability</u> as $A\subseteq X$ is $\ms$-measurable if $\forall F\subseteq X$
+$$\ms(F\cap A)+\ms(F\setminus A) = \ms(F).$$</p>
+<p>(iii) Hmw #1 (2): If $\ms$ is a <u>regular outer measure</u> then $\boxed{\text{(i)}\Leftrightarrow\text{(ii)}}$.</p>
+<p>(iv) The Lebesgue outer measure is regular, hence Def 0.1 = Def 3.1 for $(\mathcal L^1)^*$.</p>
+<p>Indeed, let $E\subseteq I$. ? $\exists F$ $(\mathcal L^1)^*$-measurable st. $E\subseteq F$ and $(\mathcal L^1)^*(E) = (\mathcal L^1)^*(F)$?</p>
+<p>If $(\mathcal L^1)^*(E) = +\infty$, choose $F := \R$ (measurable by (i) or (iii)).</p>
+<p>Suppose $(\mathcal L^1)^*(E)\lt+\infty$. <span class="step">$\forall k\in\N$ let $I_n^{(k)}$ be intervals st.
+$$E\subseteq\bigcup_{n=1}^\infty I_n^{(k)},\qquad\sum_{n=1}^\infty\underbrace{\ell(I_n^{(k)})}_{=(\mathcal L^1)^*(I_n^{(k)})\text{ by Prop 2.11}}\le(\mathcal L^1)^*(E)+1/k$$<span class="why"><p>Definition of $(\mathcal L^1)^*(E)$ as an infimum over interval covers, with error $1/k\gt0$. Prop 2.11 identifies each length with the outer measure of the interval.</p></span></span></p>
+<p><span class="step">Prop 3.12 $\Rightarrow\bigcup_{n=1}^\infty I_n^{(k)}$ is Borel $\Rightarrow(\mathcal L^1)^*$-measurable because (Prop 3.13) $(\mathcal L^1)^*$ is a <u>metric outer measure</u>.<span class="why"><p>Each interval is Borel (an open interval is open; a closed one is closed; a half-open one is an intersection of an open and a closed one), and a countable union of Borel sets is Borel. Then Prop 3.12 + 3.13: Borel $\subseteq$ measurable.</p></span></span></p>
+<p>In turn, <span class="step">$F := \bigcap_{k=1}^\infty\Big[\bigcup_{n=1}^\infty I_n^{(k)}\Big]\in\B(\R)$, hence still $(\mathcal L^1)^*$-meas.<span class="why"><p>A countable intersection of Borel sets is Borel (Prop 3.6 (iii)). Such a set — a countable intersection of countable unions of intervals — is called a $G_\delta$-type set; here it's the "measurable hull" of $E$.</p></span></span></p>
+<p>clearly <span class="step">$E\subseteq F$ and $\forall k$
+$$(\mathcal L^1)^*(F)\le(\mathcal L^1)^*\Big(\bigcup_{n=1}^\infty I_n^{(k)}\Big)\le(\mathcal L^1)^*(E)+1/k,$$<span class="why"><p>$E$ is inside each of the unions, hence inside their intersection $F$. First inequality: monotonicity ($F$ is inside each union). Second: subadditivity, then the choice of the cover.</p></span></span>
+hence <span class="step">$(\mathcal L^1)^*(F) = (\mathcal L^1)^*(E)$.<span class="why"><p>Let $k\to\infty$ to get $\le$; and $\ge$ is monotonicity from $E\subseteq F$.</p></span></span></p>
+
+<pg p="6"/>
+<p>(v) In Rmk 0.2 we claimed that $A\subset I$ (bounded interval) is <u>Lebesgue measurable</u> iff $\forall\eps\gt0$ $\exists A_\eps$ "elementary set" (finite union of disjoint intervals) st.
+$$(\mathcal L^1)^*(A\triangle A_\eps) = (\mathcal L^1)^*\big((A\setminus A_\eps)\cup(A_\eps\setminus A)\big)\lt\eps.$$</p>
+<p>Indeed, we show that (ii) $\Rightarrow$ (v) and (v) $\Rightarrow$ (i) with $\boxed{\text{(i)}\Leftrightarrow\text{(ii)}}$ by (iii) + (iv)</p>
+<ul>
+<li>(v) $\Rightarrow$ (i) let $\eps\gt0$ and find $A_\eps$ "elementary set" st. $(\mathcal L^1)^*(A\triangle A_\eps)\lt\eps$.
+<p><span class="step">$A\subseteq A_\eps\cup(A\triangle A_\eps)$, $I\setminus A\subseteq(I\setminus A_\eps)\cup(A_\eps\setminus A)\subseteq(I\setminus A_\eps)\cup(A_\eps\triangle A)$<span class="why"><p>A point of $A$ is either in $A_\eps$ or in $A\setminus A_\eps\subseteq A\triangle A_\eps$. A point of $I\setminus A$ is either outside $A_\eps$ or in $A_\eps\setminus A\subseteq A\triangle A_\eps$.</p></span></span></p>
+<div class="step">$$\text{so}\quad(\mathcal L^1)^*(A)+(\mathcal L^1)^*(I\setminus A)\le(\mathcal L^1)^*(A_\eps)+(\mathcal L^1)^*(I\setminus A_\eps)+2\eps\underset{(A_\eps\text{ measurable})}{=}(\mathcal L^1)^*(I)+2\eps.$$<div class="why"><p>Monotonicity + subadditivity on the two inclusions above, each symmetric-difference term costing $\lt\eps$. Then $A_\eps$, a finite union of intervals, is Borel hence measurable, and Def 3.1 with test set $F = I$ gives $\ms(I\cap A_\eps)+\ms(I\setminus A_\eps) = \ms(I)$ (note $A_\eps\subseteq I$ wlog).</p></div></div>
+<p>let $\eps\to0^+$ and get $(\mathcal L^1)^*(A)+(\mathcal L^1)^*(I\setminus A)\le(\mathcal L^1)^*(I)$. ($\ge$ always)</p></li>
+<li>(ii) $\Rightarrow$ (v). let $\eps\gt0$ and choose $E_n$ elementary sets (intervals) st.
+$$A\subseteq\bigcup_{n=1}^\infty E_n,\qquad\sum_{n=1}^\infty(\mathcal L^1)^*(E_n)\le(\mathcal L^1)^*(A)+\eps.$$
+<p>wlog write $\bigcup_{n=1}^k E_n =: A_\eps$ disjoint union of finitely many intervals, and <span class="step">because $(\mathcal L^1)^*(A)\lt\infty$ we can take $k\gg1$ so that $\sum_{n=k+1}^\infty(\mathcal L^1)^*(E_n)\lt\eps$.<span class="why"><p>The full series is bounded by $(\mathcal L^1)^*(A)+\eps\lt\infty$ (as $A\subseteq I$ is bounded), so it converges, and the tails of a convergent series go to $0$.</p></span></span> We have</p>
+<div class="step">$$(\mathcal L^1)^*(A\triangle A_\eps)\le(\mathcal L^1)^*(A\setminus A_\eps)+(\mathcal L^1)^*(A_\eps\setminus A)$$<div class="why"><p>Subadditivity on the union defining $A\triangle A_\eps$.</p></div></div>
+<div class="step">$$(\mathcal L^1)^*(A\setminus A_\eps)\le(\mathcal L^1)^*\Big(\bigcup_{n=k+1}^\infty E_n\Big)\le\sum_{n=k+1}^\infty(\mathcal L^1)^*(E_n)\lt\eps$$<div class="why"><p>Points of $A$ not in the first $k$ sets must be in one of the later ones: $A\setminus A_\eps\subseteq\bigcup_{n\gt k}E_n$. Then monotonicity and subadditivity.</p></div></div>
+<div class="step">$$(\mathcal L^1)^*(A_\eps\setminus A)\le(\mathcal L^1)^*\Big(\bigcup E_n\setminus A\Big)\underset{(A\text{ satisfies (ii)})}{=}(\mathcal L^1)^*\Big(\bigcup E_n\Big)-(\mathcal L^1)^*\Big(\bigcup E_n\cap A\Big) = (\mathcal L^1)^*\Big(\bigcup E_n\Big)-(\mathcal L^1)^*(A)$$<div class="why"><p>$A_\eps\subseteq\bigcup E_n$ gives the first inequality. Then apply measurability of $A$ (Def 3.1) with test set $F = \bigcup E_n$: $\ms(F) = \ms(F\cap A)+\ms(F\setminus A)$, and solve for $\ms(F\setminus A)$ (allowed since everything is finite). Finally $F\cap A = A$ because $A\subseteq F$.</p></div></div>
+<div class="step">$$\le\sum_{n=1}^\infty(\mathcal L^1)^*(E_n)-(\mathcal L^1)^*(A)\lt\eps.$$<div class="why"><p>Subadditivity, then the choice of the cover: $\sum\ms(E_n)\le\ms(A)+\eps$.</p></div></div>
+<p>So $(\mathcal L^1)^*(A\triangle A_\eps)\lt2\eps$. <span class="qed">■</span></p></li>
+</ul>
+</div>
+
+<pg p="7"/>
+<h2>The Cantor set</h2>
+<div>
+<template class="say">Now the construction of the Cantor set. Divide zero one into three equal parts and remove the open middle third, from one third to two thirds. Then from each of the two remaining closed intervals, remove the middle third again: from one ninth to two ninths, and from seven ninths to eight ninths. At step n, remove two to the n minus one middle thirds, each of length one over three to the n. What's left after all steps is the Cantor set. Play with the figure: notice how quickly the remaining length shrinks, and how the picture looks the same when you zoom in.</template>
+<p>Divide $[0,1]$ into three equal subintervals and remove the middle third $I_{11} := (\frac13,\frac23)$.</p>
+<p>Divide each of the two closed intervals $[0,\frac13]$, $[\frac23,1]$ into 3 equal subintervals and remove the middle ones
+$$I_{12} := \Big(\frac1{3^2},\frac2{3^2}\Big),\qquad I_{22} := \Big(\frac7{3^2},\frac8{3^2}\Big).$$</p>
+<p>Continue at each step $n$ removing $2^{n-1}$ middle third intervals $I_{1n},\dots,I_{2^{n-1}n}$ of length $\frac1{3^n}$.</p>
+<p>The Cantor set $\mathfrak C$ is defined as
+$$\mathfrak C := [0,1]\setminus\Big(\bigcup_{n=1}^\infty\bigcup_{k=1}^{2^{n-1}}I_{kn}\Big).$$</p>
+</div>
+
+<figure class="viz" data-viz="cantor" data-title="Building the Cantor set">
+<figcaption>Remove middle thirds level by level. The removed lengths $\sum 2^{n-1}/3^n$ add up to $1$, so the remaining set has measure $(2/3)^n\to0$; the zoom shows the self-similarity. The green staircase is the Cantor function at the same level.</figcaption>
+</figure>
+
+<div>
+<template class="say">The Cantor set is closed, because its complement is a union of open intervals, so it's Borel, hence measurable. Its measure is one minus the total length removed: one minus the sum over n of two to the n minus one over three to the n. That's one minus one half times the geometric series of two thirds to the n, which is one minus one half times two, which is zero. So the Cantor set has measure zero.</template>
+<p><span class="step">$\mathfrak C$ is closed, because its complement is a family of open intervals and because $[0,1]$ and $\mathfrak C$ are Borel sets, hence $(\mathcal L^1)^*$ measurable (see Prop 3.13)<span class="why"><p>$\R\setminus\mathfrak C = (-\infty,0)\cup(1,\infty)\cup\bigcup_{n,k}I_{kn}$ is a union of open intervals, hence open; so $\mathfrak C$ is closed, hence Borel, hence measurable by Prop 3.12/3.13.</p></span></span></p>
+<div class="step">$$1 = \ell([0,1]) \underset{\text{Prop 2.11}}{=} (\mathcal L^1)^*([0,1]) = (\mathcal L^1)^*\big(([0,1]\setminus\mathfrak C)\cup\mathfrak C\big) = (\mathcal L^1)^*([0,1]\setminus\mathfrak C)+(\mathcal L^1)^*(\mathfrak C),\ \text{so}$$<div class="why"><p>Additivity on disjoint sets one of which is measurable (Cor 3.3 with $B = \mathfrak C$).</p></div></div>
+<div class="step">$$(\mathcal L^1)^*(\mathfrak C) = 1-(\mathcal L^1)^*\Big(\underbrace{\bigcup_{n=1}^\infty\bigcup_{k=1}^{2^{n-1}}I_{kn}}_{\text{disjoint union of intervals, hence Lebesgue measurable}}\Big) =$$<div class="why"><p>Subtract (everything is finite). The removed intervals are pairwise disjoint: each is removed from a different surviving closed interval.</p></div></div>
+<pg p="8"/>
+<div class="step">$$= 1-\sum_{n=1}^\infty\sum_{k=1}^{2^{n-1}}\ell(I_{kn})$$<div class="why"><p>Countable additivity on disjoint measurable sets (Carathéodory, Thm 4.9) plus Prop 2.11 for each interval.</p></div></div>
+<div class="step">$$= 1-\sum_{n=1}^\infty\sum_{k=1}^{2^{n-1}}\frac1{3^n} = 1-\sum_{n=1}^\infty\frac{2^{n-1}}{3^n} = 1-\frac12\sum_{n=1}^\infty\Big(\frac23\Big)^n = 1-\frac12\cdot\frac{2/3}{1-2/3} = 1-\frac12\cdot2 = 0.$$<div class="why"><p>At level $n$ there are $2^{n-1}$ intervals, each of length $3^{-n}$. Write $\frac{2^{n-1}}{3^n} = \frac12\big(\frac23\big)^n$ and sum the geometric series $\sum_{n\ge1}r^n = \frac{r}{1-r}$ with $r = \frac23$: it equals $2$.</p></div></div>
+</div>
+
+<div>
+<template class="say">To prove that the Cantor set is uncountable, use ternary expansions. A number is in the Cantor set exactly when it can be written in base three using only the digits zero and two. Now replace each two by a one and read the result in base two. This map, f, sends the Cantor set onto the whole interval zero one, because every binary expansion is hit. A countable set can't map onto an uncountable one, so the Cantor set is uncountable. The map f is increasing, takes the same value at both ends of each removed interval, and so extends to a continuous function on zero one: the Cantor function, also called the devil's staircase. It's constant on every removed interval, so its derivative is zero except on the Cantor set, a set of measure zero, and yet it climbs from zero to one. The explainer shows this.</template>
+<p>To prove that $\mathfrak C$ is uncountable, it can be shown that $x\in\mathfrak C$ iff
+$$x = \sum_{n=1}^\infty\frac{c_n}{3^n},\quad c_n\in\{0,2\}.$$</p>
+<p>Let $f:\mathfrak C\to[0,1]$, $f(x) := \sum_{n=1}^\infty\frac{d_n}{2^n}$ with
+$$d_n := \begin{cases}1 & \text{if } c_n = 2,\\ 0 & \text{if } c_n = 0.\end{cases}$$</p>
+<p><mark>Cantor Function</mark> It can be shown that $f$ is increasing, and has the same values at the endpoints of each removed interval $I_{kn}$, thus $f$ can be extended to a continuous function on $[0,1]$. This function is called the <mark>Cantor function</mark> (3.6)</p>
+<p><span class="step">$\boxed{f(\mathfrak C) = [0,1], \text{ so } \mathfrak C \text{ has to be uncountable.}}$<span class="why"><p>Every $y\in[0,1]$ has a binary expansion $y = \sum d_n2^{-n}$; the point $x = \sum 2d_n3^{-n}$ is in $\mathfrak C$ and $f(x) = y$. So $f$ maps $\mathfrak C$ <em>onto</em> $[0,1]$. The image of a countable set under any function is countable, and $[0,1]$ is uncountable.</p></span></span></p>
+<p>Note that <span class="step">$f' = 0$ in $I_{kn}$ so $f' = 0$ except at most on $\mathfrak C$, a set of $(\mathcal L^1)^*$ measure zero.<span class="why"><p>The extension is constant on each removed open interval (equal to the common value at its endpoints), so its derivative there is $0$. Every point of $[0,1]$ not in $\mathfrak C$ lies in one of these intervals.</p><p>This is a warning sign for the Fundamental Theorem of Calculus: $f$ is continuous, $f'=0$ almost everywhere, yet $f(1)-f(0) = 1\ne\int_0^1 f' = 0$.</p></span></span></p>
+<p>(c) <mark>We will see later on that $\B(\R^N)\subsetneq\{\text{Lebesgue measurable sets}\}$.</mark> (See Example 4.12 (4.12))</p>
+</div>
+
+<div class="explainer" data-scene="cantor-staircase" data-title="Uncountable, yet measure zero: the Cantor set and the devil's staircase">
+<template class="say">Start with the unit interval, total length one.</template>
+<template class="say">Remove the open middle third. Then the middle third of each remaining piece. Then again, and again. At step n we remove two to the n minus one pieces, each of length one over three to the n.</template>
+<template class="say">Add up the removed lengths: one third, plus two ninths, plus four twenty sevenths, and so on. The sum is exactly one. All the length is gone. Whatever is left, the Cantor set, has measure zero.</template>
+<template class="say">And yet a lot is left. Each surviving point is described by an infinite sequence of choices, left or right, at every level. In base three, that means using only the digits zero and two. Infinite left right sequences are exactly binary expansions, so there are as many points in the Cantor set as in the whole interval.</template>
+<template class="say">Here's the map that proves it: turn each left into a zero and each right into a one, and read the result in binary. Plotting it gives a staircase. It's flat on every removed interval, at heights one half, then one quarter and three quarters, and so on.</template>
+<template class="say">In the limit, we get the Cantor function: continuous, increasing from zero to one, with derivative zero everywhere except on a set of measure zero. All its growth happens on the dust of the Cantor set. Keep this example in mind: it shows that measure zero sets can be large, and that the derivative can miss everything.</template>
+</div>
+
+<pg p="9"/>
+<h2>4. Measures</h2>
+<div class="env defn" data-label="Def 4.1">
+<template class="say">Chapter four: measures. Definition four point one. Given a measurable space X with sigma algebra M, a measure is a function mu from M to zero through infinity such that mu of the empty set is zero, and mu is countably additive: for every family of pairwise disjoint measurable sets, the measure of the union is the sum of the measures. The triple X, M, mu is a measure space.</template>
+<p>Let $(X,\M)$ be a measurable space. A <mark>measure</mark> on $(X,\M)$ is a function $\mu:\M\to[0,+\infty]$ such that</p>
+<ol type="i">
+<li>$\mu(\emptyset) = 0$,</li>
+<li>(<mark>countably additive</mark>) $\displaystyle\mu\Big(\bigcup_{n=1}^\infty E_n\Big) = \sum_{n=1}^\infty\mu(E_n)$ for every family $\{E_n\}\in\M$ of pairwise disjoint sets.</li>
+</ol>
+<p>$\boxed{(X,\M,\mu)}$ is called a <mark>measure space</mark>.</p>
+</div>
+
+<div class="env ex" data-label="Examples 4.2">
+<template class="say">Examples. a: counting measure, on all subsets: the number of elements if finite, infinity otherwise. b: the Dirac measure at a point a zero: one if the set contains a zero, zero if not. A unit mass sitting at one point. c: on the sigma algebra of countable or co-countable sets, the measure that is zero on countable sets and one on uncountable ones.</template>
+<p>a) <mark>Counting measure</mark> on a set $X$, with $\M = \mathcal P(X)$:
+$$\mu(E) = \begin{cases}\#E & \text{if } E \text{ is finite, (\# of elems. of } E)\\ +\infty & \text{—}.\end{cases}$$</p>
+<p>b) <mark>Dirac measure</mark>. Let $(X,\M)$ be a measurable space, and let $a_0\in X$.
+$$\delta_{a_0}(E) := \begin{cases}1 & \text{if } a_0\in E,\\ 0 & \text{if } a_0\notin E\end{cases},\quad E\in\M.$$</p>
+<p>c) Let $X\ne\emptyset$ and consider the σ-algebra $\M$ of all subsets of $X$ that are either countable or have a countable complement in $X$. Set
+$$\mu(E) := \begin{cases}0 & \text{if } E \text{ is countable},\\ 1 & \text{if } E \text{ is uncountable},\end{cases}\quad E\in\M.$$</p>
+</div>
+
+<pg p="10"/>
+<div class="env prop" data-label="Proposition 4.3">
+<template class="say">Proposition four point three. Measures are monotone, and the measure of a difference F minus E is mu of F minus mu of E, provided mu of E is finite, so that we never subtract infinity from infinity.</template>
+<p>Let $(X,\M,\mu)$ be a measure space and let $E,F\in\M$, $E\subseteq F$.</p>
+<ol type="i">
+<li>$\mu(E)\le\mu(F)$ [Monotonicity]</li>
+<li>$\mu(F\setminus E) = \mu(F)-\mu(E)$ provided that $\mu(E)\lt+\infty$.</li>
+</ol>
+</div>
+<div class="env proof" data-label="Proof">
+<p>Because <span class="step">$F = E\cup\underbrace{(F\setminus E)}_{\in\M}$, disjoint union of measurable sets<span class="why"><p>$E\subseteq F$ so $F$ is the union of $E$ and what's left; $F\setminus E\in\M$ by Prop 3.6 (ii).</p></span></span>, we have
+<span class="step">$$\mu(F) = \mu(E)+\mu(F\setminus E)\ge\mu(E),$$<span class="why"><p>Countable additivity with the sequence $E, F\setminus E,\emptyset,\emptyset,\dots$ and $\mu(\emptyset) = 0$; then drop the non-negative term.</p></span></span>
+proving (i). Furthermore, if $\mu(E)\lt+\infty$ then we get <span class="step">$\mu(F\setminus E) = \mu(F)-\mu(E)$.<span class="why"><p>Subtract the finite number $\mu(E)$ from both sides of $\mu(F) = \mu(E)+\mu(F\setminus E)$. (If $\mu(E) = \infty$, the right side would be $\infty-\infty$, undefined.)</p></span></span> <span class="qed">■</span></p>
+</div>
+
+<div class="env prop" data-label="Proposition 4.4">
+<template class="say">Proposition four point four, inclusion exclusion: the measure of E union F is mu E plus mu F minus mu of the intersection, when the intersection has finite measure. We added the overlap twice, so subtract it once.</template>
+<p>Let $(X,\M,\mu)$ be a measure space, let $E,F\in\M$ with $\mu(E\cap F)\lt+\infty$. Then
+$$\boxed{\mu(E\cup F) = \mu(E)+\mu(F)-\mu(E\cap F).}$$</p>
+</div>
+<div class="env proof" data-label="Proof">
+<p>Write
+$$E\cup F = E\setminus(E\cap F)\ \cup\ F\setminus(E\cap F)\ \cup\ (E\cap F),$$
+a union of three disjoint measurable sets. Then
+<span class="step">$$\mu(E\cup F) = \mu(E\setminus(E\cap F))+\mu(F\setminus(E\cap F))+\mu(E\cap F)$$<span class="why"><p>Finite additivity (countable additivity padded with empty sets).</p></span></span>
+<span class="step">$$\underset{\text{(Prop 4.3 (ii))}}{=}\mu(E)-\mu(E\cap F)+\mu(F)-\cancel{\mu(E\cap F)}+\cancel{\mu(E\cap F)} = \mu(E)+\mu(F)-\mu(E\cap F).$$<span class="why"><p>Prop 4.3 (ii) applies to $E\cap F\subseteq E$ and $E\cap F\subseteq F$ because $\mu(E\cap F)\lt\infty$. (If $\mu(E) = \infty$ both sides are $\infty$, fine.)</p></span></span> <span class="qed">■</span></p>
+</div>
+
+<pg p="11"/>
+<div class="env prop" data-label="Proposition 4.5" data-title="[Countable subadditivity]">
+<template class="say">Proposition four point five: measures are countably subadditive, by the same disjointification trick as before.</template>
+<p>Let $(X,\M,\mu)$ be a measure space, and let $\{E_n\}_{n\in\N}\subseteq\M$. Then
+$$\mu\Big(\bigcup_{n=1}^\infty E_n\Big)\le\sum_{n=1}^\infty\mu(E_n).$$</p>
+</div>
+<div class="env proof" data-label="Proof">
+<p>Write $E'_n := E_n\setminus\bigcup_{1\le k\lt n}E_k$, $n\ge2$, $E'_1 := E_1$.</p>
+<p>Then <span class="step">$E'_n\in\M$ and are mutually disjoint<span class="why"><p>$E'_n$ is obtained from measurable sets by a finite union and a difference (Prop 3.6). Disjoint: for $m\lt n$, $E'_n$ has had $E_m\supseteq E'_m$ removed.</p></span></span>, hence
+<span class="step">$$\mu\Big(\bigcup_{n=1}^\infty E_n\Big) = \mu\Big(\bigcup_{n=1}^\infty E'_n\Big) = \sum_{n=1}^\infty\mu(E'_n)\underset{\text{Prop 4.3 (i)}}{\le}\sum_{n=1}^\infty\mu(E_n).$$<span class="why"><p>Same union (each point goes into $E'_n$ for the first $n$ with $x\in E_n$), countable additivity on the disjoint $E'_n$, then monotonicity since $E'_n\subseteq E_n$.</p></span></span> <span class="qed">■</span></p>
+<p style="text-align:right"><em>end of lect #5</em></p>
+</div>
+
+<div class="env prop" data-label="Proposition 4.6" data-title="[Measure of an Increasing Union]">
+<template class="say">Proposition four point six, continuity from below. If the sets E n increase, the measure of their union is the limit of their measures. The proof slices the union into rings: E n minus E n minus one. These are disjoint, so countable additivity applies, and the partial sums telescope to mu of E k.</template>
+<p>Let $(X,\M,\mu)$ be a measure space, and let $E_n\in\M$ be such that $E_n\subseteq E_{n+1}$, $\forall n\in\N$. Then
+$$\mu\Big(\bigcup_{n=1}^\infty E_n\Big) = \lim_{n\to+\infty}\mu(E_n)$$
+(see also Prop 6.2, still valid for regular outer measures).</p>
+</div>
+<div class="env proof" data-label="Proof">
+<p>If <span class="step">$\mu(E_n) = +\infty$ for some $n\in\N$, then by monotonicity both sides are $= \infty$.<span class="why"><p>$E_n\subseteq\bigcup E_k$ gives the left side $= \infty$; and $\mu(E_m)\ge\mu(E_n) = \infty$ for all $m\ge n$, so the limit is $\infty$ too.</p></span></span></p>
+<p>Assume that $\mu(E_n)\lt+\infty$ for all $n\in\N$. Then
+<span class="step">$$\bigcup_{n=1}^\infty E_n = \bigcup_{n=1}^\infty(E_n\setminus E_{n-1})\quad\text{where } E_0 := \emptyset.$$<span class="why"><p>A point of the union lies in some first $E_n$; it is then in $E_n\setminus E_{n-1}$. The rings $E_n\setminus E_{n-1}$ are disjoint because the sets are nested.</p></span></span></p>
+<p>The right hand side is a disjoint union of measurable sets, so</p>
+<div class="step">$$\mu\Big(\bigcup_{n=1}^\infty E_n\Big) = \sum_{n=1}^\infty\mu(E_n\setminus E_{n-1}) = \lim_{k\to+\infty}\sum_{n=1}^k\mu(E_n\setminus E_{n-1})$$<div class="why"><p>Countable additivity; then the definition of a series as the limit of its partial sums.</p></div></div>
+<div class="step">$$\underset{\substack{\text{(Prop 4.3 (ii))}\\ \text{because }\mu(E_{n-1})\lt+\infty}}{=}\lim_{k\to+\infty}\sum_{n=1}^k\big[\mu(E_n)-\mu(E_{n-1})\big] = \lim_{k\to+\infty}\mu(E_k)\quad(\text{used }\mu(\emptyset) = 0).$$<div class="why"><p>$E_{n-1}\subseteq E_n$ with finite measure, so the ring has measure $\mu(E_n)-\mu(E_{n-1})$. The sum telescopes to $\mu(E_k)-\mu(E_0) = \mu(E_k)$.</p></div></div>
+<p><span class="qed">■</span></p>
+</div>
+
+<pg p="12"/>
+<div class="env prop" data-label="Proposition 4.7" data-title="[Measure of a Decreasing Intersection]">
+<template class="say">Proposition four point seven, continuity from above. If the sets E n decrease and E one has finite measure, the measure of the intersection is the limit of the measures. The finiteness assumption matters: the half lines from n to infinity decrease to the empty set, but each has infinite measure. The figure shows both.</template>
+<p>Let $(X,\M,\mu)$ be a measure space, and let $E_n\in\M$ be such that $E_n\supseteq E_{n+1}$, $\forall n\in\N$, and $\mu(E_1)\lt+\infty$. Then
+$$\mu\Big(\bigcap_{n=1}^\infty E_n\Big) = \lim_{n\to+\infty}\mu(E_n).$$</p>
+</div>
+<div class="env proof" data-label="Proof">
+<p>By De Morgan's law
+<span class="step">$$E_1\setminus\bigcap_{n=1}^\infty E_n = \bigcup_{n=1}^\infty(E_1\setminus E_n),\ \text{with}\ E_1\setminus E_1\subseteq E_1\setminus E_2\subseteq\dots\subseteq E_1\setminus E_n\subseteq\dots$$<span class="why"><p>A point of $E_1$ fails to be in all $E_n$ iff it is outside some $E_n$. The sets $E_1\setminus E_n$ grow because the $E_n$ shrink.</p></span></span></p>
+<p>By Prop 4.6.,
+$$\mu\Big(E_1\setminus\bigcap_{n=1}^\infty E_n\Big) = \lim_{n\to+\infty}\mu(E_1\setminus E_n),\tag{$*$}$$
+and <span class="step">by monotonicity and the fact that $\mu(E_1)\lt+\infty$, we have $\mu\big(\bigcap_{n=1}^\infty E_n\big),\ \mu(E_n)\lt+\infty$ for all $n\in\N$.<span class="why"><p>All these sets are subsets of $E_1$.</p></span></span></p>
+<p>Therefore, <span class="step">by Prop 4.3 (ii) $(*)$ can be written as
+$$\cancel{\mu(E_1)}-\mu\Big(\bigcap_{n=1}^\infty E_n\Big) = \lim_{n\to+\infty}\big[\cancel{\mu(E_1)}-\mu(E_n)\big],$$<span class="why"><p>Apply Prop 4.3 (ii) on both sides (the subtracted sets have finite measure), then cancel the finite number $\mu(E_1)$, which also passes through the limit.</p></span></span>
+and so
+$$\mu\Big(\bigcap_{n=1}^\infty E_n\Big) = \lim_{n\to+\infty}\mu(E_n).\ \blacksquare$$</p>
+</div>
+
+<figure class="viz" data-viz="continuity" data-title="Continuity of measure from below and above">
+<figcaption><b>Increasing</b>: $E_n = [-1+\frac1n,\,1-\frac1n]$ grows to $(-1,1)$ and $\mu(E_n)\uparrow 2$. <b>Decreasing</b>: $E_n = [0,\frac1n]$ shrinks to $\{0\}$ and $\mu(E_n)\downarrow0$. <b>Counterexample</b>: $E_n = [n,\infty)$ shrinks to $\emptyset$ but $\mu(E_n) = \infty$ for all $n$ — Prop 4.7 needs $\mu(E_1)\lt\infty$.</figcaption>
+</figure>
+
+<div class="env defn" data-label="Def 4.8">
+<template class="say">Definition four point eight. A measure is complete if every subset of a null set is measurable, and then automatically null. Equivalently, M is complete with respect to mu.</template>
+<p>Given a measure space $(X,\M,\mu)$, the measure $\mu$ is said to be <mark>complete</mark> if for every $E\in\M$ with $\mu(E) = 0$ it follows that every $F\subseteq E$ also belongs to $\M$. [equivalently, we say that <u>$\M$ is complete with respect to $\mu$</u>].</p>
+</div>
+
+</lecture>

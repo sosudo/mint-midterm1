@@ -55,7 +55,7 @@ $$\forall F\subseteq X\qquad \ms(F) = \ms(F\cap A)+\ms(F\setminus A).\tag{$*$}$$
 <p>(i) <span class="step">Subadditivity of $\ms$: $\ms(F)\le\ms(F\cap A)+\ms(F\setminus A)$ <u>Always!</u><span class="why"><p>$F = (F\cap A)\cup(F\setminus A)$; apply countable subadditivity (Def 2.6 (iii)) to the sequence $F\cap A, F\setminus A,\emptyset,\emptyset,\dots$, using $\ms(\emptyset) = 0$.</p></span></span></p>
 <p>If want to show $(*)$, need to prove $\boxed{\ge}$ i.e., $\forall F\subseteq X$
 $$\boxed{\ms(F)\ge\ms(F\cap A)+\ms(F\setminus A)\quad\text{if }\ms(F)\lt+\infty.}\tag{3.2}$$
-<span class="note">(if $\ms(F) = +\infty$, $\ge$ is automatic)</span></p>
+<span class="ed">(if $\ms(F) = +\infty$, $\ge$ is automatic)</span></p>
 <p>(ii) if <span class="step">$\ms(E) = 0\Rightarrow E$ is $\ms$-measurable<span class="why"><p>We verify (3.2) for every $F$, as written out next: the piece inside $E$ is controlled by $E$ (which is null), the piece outside by $F$.</p></span></span></p>
 <p>Let $F\subseteq X$</p>
 <div class="step">$$\underbrace{\ms(F\cap E)}_{\le\ms(E)}+\underbrace{\ms(F\setminus E)}_{\le\ms(F)}\le\underbrace{\ms(E)}_{=0}+\ms(F) = \ms(F).$$<div class="why"><p>Monotonicity twice: $F\cap E\subseteq E$ and $F\setminus E\subseteq F$. Then $\ms(E) = 0$. This is exactly (3.2).</p></div></div>
