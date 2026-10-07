@@ -227,7 +227,7 @@
       b.onclick = (e) => { e.stopPropagation(); R.start(i); };
       it.host.prepend(b);
     });
-    const bar = el("div", { class: "player" + (store.get("playerCollapsed", false) ? " collapsed" : "") });
+    const bar = el("div", { class: "player" + (store.get("playerCollapsed", true) ? " collapsed" : "") });
     bar.innerHTML = `
       <div class="row">
         <button class="prev" title="Previous (←)">⏮</button>

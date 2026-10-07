@@ -28,7 +28,7 @@
     const out = api.readout("");
     function draw() {
       g.clear(); g.view(0, 1, -3.2, 4.2, 50, 870, 20, 440);
-      for (let k = -n * Math.pow(2, n); k <= n * Math.pow(2, n) && n <= 4; k++) { const y = k / Math.pow(2, n); if (y >= -3.2 && y <= 4.2) g.wline(0, y, 1, y, "rgba(245,213,71,.12)", 1); }
+      for (let k = -n * Math.pow(2, n); k <= n * Math.pow(2, n) && n <= 3; k++) { const y = k / Math.pow(2, n); if (y >= -3.2 && y <= 4.2) g.wline(0, y, 1, y, "rgba(245,213,71,.12)", 1); }
       g.wline(0, n, 1, n, "rgba(252,98,85,.6)", 1.5, [6, 6]); g.wline(0, -n, 1, -n, "rgba(252,98,85,.6)", 1.5, [6, 6]);
       g.axes({ xt: [[0, 0], [1, 1]], yt: [[-2, -2], [-1, -1], [1, 1], [2, 2], [3, 3], [4, 4]] });
       g.plot(f, 0, 0.7799, C.blue, 3, 1, 900); g.plot(f, 0.7801, 1, C.blue, 3, 1, 400);
@@ -50,7 +50,7 @@
       if (s.seg >= 1) {
         const a = s.seg === 1 ? E.out(s.in(1, 0.1, 0.5)) : 1;
         g.alpha(a, () => {
-          for (let k = -n * Math.pow(2, n); k <= n * Math.pow(2, n); k++) g.wline(0, k / Math.pow(2, n), 1, k / Math.pow(2, n), "rgba(245,213,71,.18)", 1.5);
+          if (n <= 4) for (let k = -n * Math.pow(2, n); k <= n * Math.pow(2, n); k++) g.wline(0, k / Math.pow(2, n), 1, k / Math.pow(2, n), "rgba(245,213,71,.18)", 1.5);
           g.wline(0, n, 1, n, C.red, 2.5, [10, 8]); g.wline(0, -n, 1, -n, C.red, 2.5, [10, 8]);
           g.text(`+${n}`, g.X(1) + 12, g.Y(n), { size: 26, color: C.red }); g.text(`−${n}`, g.X(1) + 12, g.Y(-n), { size: 26, color: C.red });
         });

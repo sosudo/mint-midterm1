@@ -256,3 +256,8 @@ details.env:not([open]) { padding-bottom: 8px; }
 /* editorial remarks added in this edition (not in the handwritten notes) */
 .ed { font-family: "Inter", system-ui, sans-serif; font-size: .78em; color: var(--muted); background: var(--accent-soft); border-radius: 6px; padding: 1px 6px; }
 p.ed { display: block; padding: 6px 10px; }
+@media (max-width: 700px) {
+  /* keep equation numbers from overlapping the formula on narrow screens */
+  .katex-display > .katex > .katex-html { display: flex; align-items: center; justify-content: center; gap: .7em; }
+  .katex-display > .katex > .katex-html > .tag { position: static !important; flex: none; }
+}

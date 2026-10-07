@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lecture 12: Operations on Measurable Functions, Almost Everywhere, Simple Functions</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%E2%88%AB%3C/text%3E%3C/svg%3E">
 <meta name="description" content="Pairs, sums, products, sup/inf/lim of measurable functions; almost everywhere; complete measures and a.e. equality; simple functions; approximation of measurable functions by simple functions; completion and measurability.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;650&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
@@ -33,7 +34,7 @@ The small “original notes” links open the scanned page the text was transcri
 
 <span class="pg"><a href="scans/L12-03.jpg" target="_blank" rel="noopener">original notes · p. 3 ↗</a></span>
 <div class="env rmk" data-label="Remark 8.7 (ii), conclusion">
-<template class="say">Lecture twelve. First we finish remark eight point seven: set f tilde equal to g inverse, continuous hence Borel, and g tilde the characteristic function of F, Lebesgue measurable. The preimage of the point one under g tilde composed with f tilde is g of F, which is E, not Lebesgue measurable. So the composition isn't measurable.</template>
+<template class="say" data-audio="audio/a05d527f7a7a58.mp3" data-dur="22.04">Lecture twelve. First we finish remark eight point seven: set f tilde equal to g inverse, continuous hence Borel, and g tilde the characteristic function of F, Lebesgue measurable. The preimage of the point one under g tilde composed with f tilde is g of F, which is E, not Lebesgue measurable. So the composition isn't measurable.</template>
 <p>Set <span class="step">$\tilde f := g^{-1}$, continuous hence Borel measurable by Rmk 8.4 (iv), and set $\tilde g := \chi_F$, Lebesgue measurable in view of Example 8.5 (ii).<span class="why"><span class="wp">Continuity ⇒ Borel measurability is Rmk 8.4 (v). $\chi_F$ is measurable iff $F$ is (Example 8.5 (ii)), and $F$ is Lebesgue measurable (Example 4.12).</span></span></span></p>
 <p>then $\{1\}\in\B(\R)$ and
 <span class="step">$$(\tilde g\circ\tilde f)^{-1}(\{1\}) = \tilde f^{-1}\big(\tilde g^{-1}(\{1\})\big) = \tilde f^{-1}(F) = g(F) = E$$<span class="why"><span class="wp">$\chi_F^{-1}(\{1\}) = F$. And $\tilde f^{-1}(F) = \{y : g^{-1}(y)\in F\} = g(F)$, while $g(F) = g(g^{-1}(E)) = E$ since $g$ is a bijection.</span></span></span>
@@ -41,7 +42,7 @@ which is not Lebesgue measurable, so $\tilde g\circ\tilde f$ is not measurable.<
 </div>
 
 <div class="env prop" data-label="Proposition 8.8">
-<template class="say">Proposition eight point eight. Two extended real valued functions f and g are measurable if and only if the pair f comma g, a map into the extended plane, is measurable. Forward: the preimage of an open rectangle U cross V is the intersection of the preimages, and open rectangles generate the Borel sets of the plane. Backward: compose with the continuous projections.</template>
+<template class="say" data-audio="audio/3fce1e3900c987.mp3" data-dur="24.04">Proposition eight point eight. Two extended real valued functions f and g are measurable if and only if the pair f comma g, a map into the extended plane, is measurable. Forward: the preimage of an open rectangle U cross V is the intersection of the preimages, and open rectangles generate the Borel sets of the plane. Backward: compose with the continuous projections.</template>
 <p>Let $(X,\M)$ be a measurable space and let $f,g:X\to[-\infty,+\infty]$ be arbitrary. Then
 $$f,g\text{ are measurable }\boxed{\text{iff}}\ (f,g):X\to[-\infty,+\infty]^2\text{ is measurable.}$$</p>
 </div>
@@ -59,7 +60,7 @@ are measurable functions. <span class="qed">■</span></p>
 
 <span class="pg"><a href="scans/L12-04.jpg" target="_blank" rel="noopener">original notes · p. 4 ↗</a></span>
 <div class="env cor" data-label="Corollary 8.9">
-<template class="say">Corollary eight point nine. If f is measurable into R, so are f squared, absolute value of f, f plus, f minus, and alpha f. If f and g are measurable, so are f plus or minus g, f times g, the min and the max. Each is a continuous function applied to f, or to the pair f comma g.</template>
+<template class="say" data-audio="audio/7bb341efea36d7.mp3" data-dur="19.9">Corollary eight point nine. If f is measurable into R, so are f squared, absolute value of f, f plus, f minus, and alpha f. If f and g are measurable, so are f plus or minus g, f times g, the min and the max. Each is a continuous function applied to f, or to the pair f comma g.</template>
 <p>Let $(X,\M)$ be a measurable space, and let $f:X\to\R$ be measurable. Then so are $f^2$, $|f|$, $f^+$, $f^-$, $\alpha f$ ($\alpha\in\R$), with $f^+ := \max\{f,0\}$, $f^- := \max\{-f,0\}$.</p>
 <p>Furthermore, if $f,g:X\to\R$ are measurable then so are $f\pm g$, $f\cdot g$, $\min\{f,g\}$, $\max\{f,g\}$.</p>
 </div>
@@ -69,19 +70,19 @@ are measurable functions. <span class="qed">■</span></p>
 </div>
 
 <div class="env rmk" data-label="Remark 8.10">
-<template class="say">Remark eight point ten. There are versions for extended real valued functions, provided the operations are well defined. For f plus g we need to avoid infinity minus infinity. For products, the convention is zero times infinity equals zero.</template>
+<template class="say" data-audio="audio/66d22f50457d44.mp3" data-dur="17.15">Remark eight point ten. There are versions for extended real valued functions, provided the operations are well defined. For f plus g we need to avoid infinity minus infinity. For products, the convention is zero times infinity equals zero.</template>
 <p>There are versions of Corollary 8.9 applicable to functions having values in the extended real line $\bar\R := [-\infty,+\infty]$, provided <u>the operations are well defined</u>.</p>
 <p>For example, for $f+g$ need $(f(x),g(x))\notin\{\pm(\infty,-\infty)\}$ for all $x\in X$. Concerning $f\cdot g$, define $(f\cdot g)(x) = 0$ whenever $f(x)$ or $g(x)$ is zero.</p>
 </div>
 
 <div class="env prop" data-label="Proposition 8.11">
-<template class="say">Proposition eight point eleven. The supremum, infimum, lim sup and lim inf of a sequence of measurable functions are measurable. In particular, a pointwise limit of measurable functions is measurable. Compare with Riemann integrability, which we saw fails to survive pointwise limits. This is the first sign that the measurable world is closed under limits.</template>
+<template class="say" data-audio="audio/0a6a8a897b9623.mp3" data-dur="22.61">Proposition eight point eleven. The supremum, infimum, lim sup and lim inf of a sequence of measurable functions are measurable. In particular, a pointwise limit of measurable functions is measurable. Compare with Riemann integrability, which we saw fails to survive pointwise limits. This is the first sign that the measurable world is closed under limits.</template>
 <p>Let $(X,\M)$ be a measurable space, and let $f_n:X\to[-\infty,+\infty]$ be measurable functions. Then $\sup_n f_n$, $\inf_n f_n$, $\limsup_n f_n$, $\liminf_n f_n$ are measurable.</p>
 <p>In particular, if $f_n\to f$ pointwise, i.e. for every $x\in X$ $f(x) = \lim_{n\to+\infty}f_n(x)$, then $f$ is measurable.</p>
 </div>
 <span class="pg"><a href="scans/L12-05.jpg" target="_blank" rel="noopener">original notes · p. 5 ↗</a></span>
 <div class="env proof" data-label="Proof">
-<template class="say">The proof is short. The sup of f n exceeds a exactly when some f n exceeds a, so the preimage is a countable union of measurable sets. Similarly the inf is below a exactly when some f n is below a. Then lim sup is the inf over n of the sup over k at least n, and lim inf the sup of the infs.</template>
+<template class="say" data-audio="audio/77d1f32082b970.mp3" data-dur="20.76">The proof is short. The sup of f n exceeds a exactly when some f n exceeds a, so the preimage is a countable union of measurable sets. Similarly the inf is below a exactly when some f n is below a. Then lim sup is the inf over n of the sup over k at least n, and lim inf the sup of the infs.</template>
 <p>For every $a\in\R$,
 <span class="step">$$\Big(\sup_n f_n\Big)^{-1}((a,+\infty]) = \bigcup_{n=1}^\infty f_n^{-1}((a,+\infty])\in\M,$$<span class="why"><span class="wp">$\sup_n f_n(x)\gt a$ iff some $f_n(x)\gt a$ (if all $f_n(x)\le a$ then $a$ is an upper bound so the sup is $\le a$; conversely if some $f_n(x)\gt a$ the sup is too). Note this fails for $\ge$: the sup can equal $a$ without any term reaching it, which is why we use the open ray.</span></span></span>
 and by Corollary 8.3 and Rmk 8.4 (iv) it follows that $\sup_n f_n$ is measurable. (8.1)</p>
@@ -92,13 +93,13 @@ and again by Corollary 8.3, we have that $\inf_n f_n$ is measurable (8.2)</p>
 </div>
 
 <div class="env defn" data-label="Def 8.12">
-<template class="say">Definition eight point twelve. A property P holds almost everywhere on a set A if there is a measurable set E of measure zero such that P holds on A minus E. We say P holds a e if it holds a e on X.</template>
+<template class="say" data-audio="audio/2b220bb0c93f8b.mp3" data-dur="15.85">Definition eight point twelve. A property P holds almost everywhere on a set A if there is a measurable set E of measure zero such that P holds on A minus E. We say P holds a.e. if it holds a.e. on X.</template>
 <p>Let $(X,\M,\mu)$ be a measure space. We say that a <mark>property $P$ holds almost everywhere</mark> (a.e.) on a set $A\subseteq X$ if there is a set of measure zero, $E\in\M$, such that $P$ holds on $A\setminus E$. We say that $P$ holds a.e. if it holds a.e. on $X$.</p>
 </div>
 
 <span class="pg"><a href="scans/L12-06.jpg" target="_blank" rel="noopener">original notes · p. 6 ↗</a></span>
 <div class="env ex" data-label="Example 8.13">
-<template class="say">Examples. Almost every real number is irrational, since the rationals have measure zero. The absolute value function is differentiable almost everywhere: everywhere except zero. And Rademacher's theorem: every Lipschitz function on R is differentiable almost everywhere.</template>
+<template class="say" data-audio="audio/68ec102edb6bac.mp3" data-dur="17.43">Examples. Almost every real number is irrational, since the rationals have measure zero. The absolute value function is differentiable almost everywhere: everywhere except zero. And Rademacher's theorem: every Lipschitz function on R is differentiable almost everywhere.</template>
 <ol type="i">
 <li>Almost every real number is irrational.</li>
 <li>The function $f(x) := |x|$, $x\in\R$, is differentiable a.e.</li>
@@ -107,12 +108,12 @@ and again by Corollary 8.3, we have that $\inf_n f_n$ is measurable (8.2)</p>
 </div>
 
 <div class="env prop" data-label="Proposition 8.14">
-<template class="say">Proposition eight point fourteen. If mu is complete, and f is measurable, then any g equal to f almost everywhere is also measurable. Changing a function on a null set does not affect measurability, provided the measure is complete.</template>
+<template class="say" data-audio="audio/93fcc525eb3fe8.mp3" data-dur="15.1">Proposition eight point fourteen. If mu is complete, and f is measurable, then any g equal to f almost everywhere is also measurable. Changing a function on a null set does not affect measurability, provided the measure is complete.</template>
 <p>Let $(X,\M,\mu)$ be a measure space with <mark>$\mu$ a complete measure</mark>, and let $(Y,\mathcal N)$ be a measurable space.</p>
 <p>Let $f:X\to Y$ be a measurable function, and let $g:X\to Y$ be such that $\boxed{f = g\text{ a.e.}}$. Then $g$ is measurable.</p>
 </div>
 <div class="env proof" data-label="Proof">
-<template class="say">Let E zero be the set where f and g differ. It's inside a null set E, so by completeness it's measurable and null. The preimage of F under g splits into the part outside E zero, where g equals f, giving f inverse of F minus E zero, measurable; and the part inside E zero, which is a subset of a null set, measurable by completeness.</template>
+<template class="say" data-audio="audio/d9c5e859a3e788.mp3" data-dur="22.89">Let E zero be the set where f and g differ. It's inside a null set E, so by completeness it's measurable and null. The preimage of F under g splits into the part outside E zero, where g equals f, giving f inverse of F minus E zero, measurable; and the part inside E zero, which is a subset of a null set, measurable by completeness.</template>
 <p>Let $E_0 := \{x\in X : f(x)\ne g(x)\}$.</p>
 <p>By Def 8.12 $\exists E\in\M$ s.t. $\mu(E) = 0$ and $f(x) = g(x)$ if $x\in X\setminus E$.</p>
 <p>Then <span class="step">$X\setminus E\subseteq X\setminus E_0$, hence $E_0\subseteq E$<span class="why"><span class="wp">Points outside $E$ have $f = g$, so they are not in $E_0$. Taking complements reverses the inclusion.</span></span></span>
@@ -124,7 +125,7 @@ and <span class="step">$\mu$ is complete (see Def. 4.8), therefore $E_0\in\M$ an
 
 <span class="pg"><a href="scans/L12-07.jpg" target="_blank" rel="noopener">original notes · p. 7 ↗</a></span>
 <div class="env cor" data-label="Corollary 8.15">
-<template class="say">Corollary eight point fifteen. If mu is complete and f n are measurable, and the limit of f n of x exists for almost every x, then the limit, defined arbitrarily on the exceptional null set, is measurable.</template>
+<template class="say" data-audio="audio/368e72d37b0629.mp3" data-dur="13.85">Corollary eight point fifteen. If mu is complete and f n are measurable, and the limit of f n of x exists for almost every x, then the limit, defined arbitrarily on the exceptional null set, is measurable.</template>
 <p>Let $(X,\M,\mu)$ be a measure space, with <mark>$\mu$ a complete measure</mark>. Let $f_n:X\to[-\infty,+\infty]$ be measurable functions.</p>
 <p>If there exists $\lim_{n\to+\infty}f_n(x)$ for <mark>$\mu$ a.e. $x\in X$</mark>, then $\boxed{\lim_{n\to+\infty}f_n\text{ is measurable.}}$</p>
 </div>
@@ -136,7 +137,7 @@ $$g(x) := \begin{cases}\lim_{n\to+\infty}f_n(x) & \text{if } x\in X\setminus E\\
 </div>
 
 <div class="env defn" data-label="Def 8.16">
-<template class="say">Definition eight point sixteen. A simple function is a measurable function with finitely many values. It can be written as a sum of a i times the characteristic function of E i, where the a i are distinct and E i is the set where s equals a i. That's the standard representation.</template>
+<template class="say" data-audio="audio/e6ea2d6afe9eae.mp3" data-dur="18.86">Definition eight point sixteen. A simple function is a measurable function with finitely many values. It can be written as a sum of a i times the characteristic function of E i, where the a i are distinct and E i is the set where s equals a i. That's the standard representation.</template>
 <p>Let $(X,\M)$ be a measurable space. We say that $s:X\to\R$ is a <mark>simple function</mark> if it is measurable and has finite range, i.e.,
 $$s = \sum_{i=1}^n a_i\chi_{E_i},\quad n\in\N,\tag{$*$}$$
 $$a_i\ne a_j\text{ if }i\ne j,\quad E_i := s^{-1}(\{a_i\})\in\M.\tag{$**$}$$
@@ -145,7 +146,7 @@ $(*)+(**)$: <u>standard representation</u> <span class="note">↓ on $\R$ consid
 
 <span class="pg"><a href="scans/L12-08.jpg" target="_blank" rel="noopener">original notes · p. 8 ↗</a></span>
 <div class="env thm" data-label="Thm 8.17" data-title="[Approximation of Measurable Functions by Simple Functions]">
-<template class="say">Theorem eight point seventeen, the bridge to the Lebesgue integral. Every measurable function f is the pointwise limit of simple functions s n, which increase in absolute value and are bounded by the absolute value of f. If f is bounded, the convergence is uniform. And if f is non negative, so are the s n. The explainer animates the construction: chop the range into dyadic levels of size one over two to the n, up to height n, and round f down to the nearest level.</template>
+<template class="say" data-audio="audio/cf5b7b4a842d8e.mp3" data-dur="31.46">Theorem eight point seventeen, the bridge to the Lebesgue integral. Every measurable function f is the pointwise limit of simple functions s n, which increase in absolute value and are bounded by the absolute value of f. If f is bounded, the convergence is uniform. And if f is non negative, so are the s n. The explainer animates the construction: chop the range into dyadic levels of size one over two to the n, up to height n, and round f down to the nearest level.</template>
 <p>Let $(X,\M)$ be a measurable space and let $f:X\to[-\infty,+\infty]$ be a <u>measurable function</u>. Then there exist $s_n:X\to\R$, $n\in\N$, <u>simple functions</u> such that</p>
 <ol type="i">
 <li>$|s_n(x)|\le|s_{n+1}(x)|\le|f(x)|$ for all $n\in\N$, $x\in X$;</li>
@@ -156,15 +157,15 @@ $(*)+(**)$: <u>standard representation</u> <span class="note">↓ on $\R$ consid
 </div>
 
 <div class="explainer" data-scene="dyadic" data-title="Building f from simple functions: the dyadic staircase">
-<template class="say">Here's the construction in theorem eight point seventeen, which underlies the whole Lebesgue integral. Start with a measurable function f. It can be positive, negative, and even unbounded.</template>
-<template class="say">At stage n, cut the range from minus n to n into thin horizontal slabs of height one over two to the n. Above n, or below minus n, we just cap the function.</template>
-<template class="say">Now round f toward zero, to the nearest slab boundary. Where f is positive we round down; where it's negative we round up. The result s n takes finitely many values, and each value is taken on a preimage of an interval, which is measurable. So s n is a simple function.</template>
-<template class="say">Increase n. The slabs halve in height, and the cap moves out. Each staircase sits between the previous one and f. Wherever f is finite, once n passes f's size, the error is at most one over two to the n. And where f shoots up to infinity, s n climbs to infinity too.</template>
-<template class="say">Notice that we chopped the range, not the domain. The steps of s n live on sets that can be scattered anywhere in the domain, and to integrate s n we'll need their measures. That's Lebesgue's idea from the very first lecture, and now we have all the tools to make it precise.</template>
+<template class="say" data-audio="audio/2383526c4a5c2d.mp3" data-dur="11.9">Here's the construction in theorem eight point seventeen, which underlies the whole Lebesgue integral. Start with a measurable function f. It can be positive, negative, and even unbounded.</template>
+<template class="say" data-audio="audio/cf48a87d86b3bb.mp3" data-dur="11.09">At stage n, cut the range from minus n to n into thin horizontal slabs of height one over two to the n. Above n, or below minus n, we just cap the function.</template>
+<template class="say" data-audio="audio/d3f6604e798ddb.mp3" data-dur="18.01">Now round f toward zero, to the nearest slab boundary. Where f is positive we round down; where it's negative we round up. The result s n takes finitely many values, and each value is taken on a preimage of an interval, which is measurable. So s n is a simple function.</template>
+<template class="say" data-audio="audio/e46b758ee6d365.mp3" data-dur="17.94">Increase n. The slabs halve in height, and the cap moves out. Each staircase sits between the previous one and f. Wherever f is finite, once n passes f's size, the error is at most one over two to the n. And where f shoots up to infinity, s n climbs to infinity too.</template>
+<template class="say" data-audio="audio/2e5cf0f53cd4ab.mp3" data-dur="16.73">Notice that we chopped the range, not the domain. The steps of s n live on sets that can be scattered anywhere in the domain, and to integrate s n we'll need their measures. That's Lebesgue's idea from the very first lecture, and now we have all the tools to make it precise.</template>
 </div>
 
 <div class="env proof" data-label="Proof">
-<template class="say">The proof defines s n explicitly. Where f is in a dyadic interval from m over two to the n to m plus one over two to the n, with m non negative, s n is m over two to the n, the lower end. For negative m it's the upper end, m plus one over two to the n. Where f is at least n, s n equals n, and where f is less than minus n, it's minus n. Each piece is the characteristic function of a preimage of an interval, so s n is simple. If f is plus or minus infinity, s n goes to plus or minus infinity. If f of x is finite, once n exceeds its size the error is at most one over two to the n, uniformly when f is bounded.</template>
+<template class="say" data-audio="audio/0a361f02be6d38.mp3" data-dur="43.96">The proof defines s n explicitly. Where f is in a dyadic interval from m over two to the n to m plus one over two to the n, with m non negative, s n is m over two to the n, the lower end. For negative m it's the upper end, m plus one over two to the n. Where f is at least n, s n equals n, and where f is less than minus n, it's minus n. Each piece is the characteristic function of a preimage of an interval, so s n is simple. If f is plus or minus infinity, s n goes to plus or minus infinity. If f of x is finite, once n exceeds its size the error is at most one over two to the n, uniformly when f is bounded.</template>
 <p>Define for $n\in\N$
 $$s_n(x) := \begin{cases}\dfrac{m}{2^n} & \text{if } f(x)\in\Big[\dfrac m{2^n},\dfrac{m+1}{2^n}\Big),\ m = 0,\dots,n2^n-1,\\[8pt] \dfrac{m+1}{2^n} & \text{if } f(x)\in\Big[\dfrac m{2^n},\dfrac{m+1}{2^n}\Big),\ m = -1,\dots,-n2^n,\\[8pt] n & \text{if } f(x)\ge n,\\ -n & \text{if } f(x)\lt-n.\end{cases}$$</p>
 <p>Since <span class="step">$f(x)\in\Big[\dfrac m{2^n},\dfrac{m+1}{2^n}\Big)\Leftrightarrow x\in\underbrace{f^{-1}\Big(\Big[\dfrac m{2^n},\dfrac{m+1}{2^n}\Big)\Big)}_{=: A_{m,n}}\in\M$<span class="why"><span class="wp">$f$ is measurable and half-open intervals are Borel.</span></span></span> we see that
@@ -184,7 +185,7 @@ is a simple function.</p>
 </figure>
 
 <div class="env prop" data-label="Prop 8.18">
-<template class="say">Proposition eight point eighteen. A function is measurable for the completion if and only if it equals almost everywhere a function measurable for the original sigma algebra. Backward: the preimage of an open set under f splits into the part off the null set E, which comes from g and is in M, and the part inside E, which is null, hence in the completion. Forward: step one, characteristic functions of sets in the completion: the set is a set B of M plus a null piece inside H; use the characteristic function of B minus H. Step two, simple functions: combine finitely many null exceptional sets. Step three, general f: approximate by simple functions. The notes stop here.</template>
+<template class="say" data-audio="audio/273663491a2b0d.mp3" data-dur="44.03">Proposition eight point eighteen. A function is measurable for the completion if and only if it equals almost everywhere a function measurable for the original sigma algebra. Backward: the preimage of an open set under f splits into the part off the null set E, which comes from g and is in M, and the part inside E, which is null, hence in the completion. Forward: step one, characteristic functions of sets in the completion: the set is a set B of M plus a null piece inside H; use the characteristic function of B minus H. Step two, simple functions: combine finitely many null exceptional sets. Step three, general f: approximate by simple functions. The notes stop here.</template>
 <p>Let $(X,\M,\mu)$ be a measure space, and let $(X,\M_\mu,\bar\mu)$ be its completion.</p>
 <p>Then $f:X\to\R$ is $\M_\mu$-measurable iff there exists $g:X\to\R$ $\M$-measurable such that $f = g$ a.e. (wrt $\mu$).</p>
 </div>

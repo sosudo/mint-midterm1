@@ -33,12 +33,18 @@ PHONE_FIX = {
     "dˈɪɹɪtʃlɪt": "dˌiːɹɪʃlˈeɪ",
     "bˈɔːɹəl": "bɔːɹˈɛl",
     "vaɪtˈɑːli": "vɪtˈɑːli",
+    "stˈiːltdʒz": "stˈiːltʃəs",
+    "lˈɪpskɪts": "lˈɪpʃɪts",
+    "ɹˈeɪdmɑːkɚ": "ɹˈɑːdəmˌɑːkɚ",
+    "kˈæɹɐθiːədɚɹi": "kˌɑːɹəθiːˈɔːdəɹi",
+    "hˈaɪn ": "hˈaɪnə ",
 }
 # text-level substitutions applied before phonemisation
 TEXT_FIX = [
     (r"\bi\.e\.", "that is,"), (r"\be\.g\.", "for example,"), (r"\ba\.e\.", "almost everywhere"),
     (r"\bw\.r\.t\.", "with respect to"), (r"\bs\.t\.", "such that"), (r"\bresp\.", "respectively"),
     (r"\bThm\b", "Theorem"), (r"\bProp\b", "Proposition"), (r"\bDef\b", "Definition"), (r"\bRmk\b", "Remark"),
+    (r"\bCarathéodory", "Caratheodory"),
     (r"—", ", "), (r"–", " to "),
 ]
 
@@ -51,10 +57,34 @@ def say_text(raw):
     return re.sub(r"\s+", " ", t).strip()
 
 
+# the TTS reads a lone "A"/"a" as the article "uh"; spell it out when it is a variable
+VAR_NEXT = {"is", "and", "has", "minus", "intersect", "union", "tilde", "epsilon", "i", "k", "n", "zero", "naught",
+            "plus", "times", "over", "equals", "be", "contains", "sits", "lies", "of", "to", "in", "or", "are"}
+VAR_NEXT_LOWER = (VAR_NEXT - {"union"}) | {"root", "shrinks"}
+
+
+def spell_vars(t):
+    out = []
+    for sent in re.split(r"(?<=[.!?])\s+", t):
+        words = sent.split(" ")
+        for i, w in enumerate(words):
+            core = w.strip(",;:.!?")
+            if core not in ("A", "a"):
+                continue
+            nxt = words[i + 1].strip(",;:.!?").lower() if i + 1 < len(words) else ""
+            ends = core != w or not nxt  # punctuation right after it, or end of sentence
+            article = (core == "A" and i == 0 and nxt not in VAR_NEXT) or \
+                      (core == "a" and not ends and nxt not in VAR_NEXT_LOWER)
+            if not article:
+                words[i] = w.replace(core, "ay")
+        out.append(" ".join(words))
+    return " ".join(out)
+
+
 def tts_text(t):
     for a, b in TEXT_FIX:
         t = re.sub(a, b, t)
-    return t
+    return spell_vars(t)
 
 
 class TTS:
@@ -84,6 +114,7 @@ def page(title, body, extra_js="", desc=""):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(title)}</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%E2%88%AB%3C/text%3E%3C/svg%3E">
 <meta name="description" content="{html.escape(desc)}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;650&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">

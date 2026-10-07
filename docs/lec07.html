@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lecture 7: Hausdorff Measure, Dimension, and a Non-Borel Set</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%E2%88%AB%3C/text%3E%3C/svg%3E">
 <meta name="description" content="Properties of Hausdorff measure: H⁰ is counting measure, Hᴺ = Lᴺ via the isodiametric inequality and a covering theorem; Hausdorff dimension; a Lebesgue measurable set that is not Borel.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;650&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
@@ -31,7 +32,7 @@ The small “original notes” links open the scanned page the text was transcri
 
 <span class="pg"><a href="scans/L07-01.jpg" target="_blank" rel="noopener">original notes · p. 1 ↗</a></span>
 <div class="env ex" data-label="Example 4.10" data-title="Many of the following are addressed in Hmw #2">
-<template class="say">Lecture seven: properties of Hausdorff measure, many of which are in homework two. First, H zero is the counting measure: it counts the number of points, infinity if there are infinitely many. Second, and much deeper: in R N, the N dimensional Hausdorff measure equals Lebesgue outer measure. So they have the same measurable sets and the same values.</template>
+<template class="say" data-audio="audio/8babe68a369240.mp3" data-dur="21.16">Lecture seven: properties of Hausdorff measure, many of which are in homework two. First, H zero is the counting measure: it counts the number of points, infinity if there are infinitely many. Second, and much deeper: in R N, the N dimensional Hausdorff measure equals Lebesgue outer measure. So they have the same measurable sets and the same values.</template>
 <p>(1) $\mathcal H^0_0$ counting measure
 $$\mathcal H^0_0(A) := \begin{cases}\#A & \text{if } A \text{ finite},\\ +\infty & \text{—}\end{cases}$$
 $\#A$ … cardinality of $A$</p>
@@ -40,7 +41,7 @@ $\#A$ … cardinality of $A$</p>
 </div>
 
 <div>
-<template class="say">To prove the inequality Lebesgue at most Hausdorff, we use the isodiametric inequality: among all sets of a given diameter, the ball has the largest volume. Precisely, the outer measure of any set A is at most alpha N times its diameter over two, to the N. Then for any cover of A by small sets E n, subadditivity followed by the isodiametric inequality bounds the Lebesgue outer measure of A by the Hausdorff sum. Taking the infimum gives Lebesgue at most H N delta, for every delta.</template>
+<template class="say" data-audio="audio/46b67bc2b141a0.mp3" data-dur="33.32">To prove the inequality Lebesgue at most Hausdorff, we use the isodiametric inequality: among all sets of a given diameter, the ball has the largest volume. Precisely, the outer measure of any set A is at most alpha N times its diameter over two, to the N. Then for any cover of A by small sets E n, subadditivity followed by the isodiametric inequality bounds the Lebesgue outer measure of A by the Hausdorff sum. Taking the infimum gives Lebesgue at most H N delta, for every delta.</template>
 <p>Use <mark>Isodiametric Inequality</mark> (Evans &amp; Gariepy Thm 2.4)
 $$\forall A\subseteq\R^N\qquad(\mathcal L^N)^*(A)\le\alpha_N\Big(\frac{\operatorname{diam}A}{2}\Big)^N$$
 If $\operatorname{diam}A = 2$, then $\boxed{(\mathcal L^N)^*(A)\le\alpha_N = (\mathcal L^N)^*(B(0,1))}$.
@@ -53,7 +54,7 @@ so the unit ball has the largest "volume" among all sets with same diameter 2.</
 
 <span class="pg"><a href="scans/L07-02.jpg" target="_blank" rel="noopener">original notes · p. 2 ↗</a></span>
 <div>
-<template class="say">For the converse we first get a weaker bound. A cube of side a has diameter a root N. So covering by cubes, each cube's Hausdorff cost is a constant C N times its volume, where C N is alpha N times root N over two, to the N. Since any rectangle can be approximated by rectangles with rational sides, which can be cut into cubes, we get H N at most C N times Lebesgue outer measure. Box four point three triple star. The constant C N is bigger than one, so this isn't the end; the covering theorem will remove it.</template>
+<template class="say" data-audio="audio/d4676b6b556fde.mp3" data-dur="34.64">For the converse we first get a weaker bound. A cube of side a has diameter a root N. So covering by cubes, each cube's Hausdorff cost is a constant C N times its volume, where C N is alpha N times root N over two, to the N. Since any rectangle can be approximated by rectangles with rational sides, which can be cut into cubes, we get H N at most C N times Lebesgue outer measure. Box four point three triple star. The constant C N is bigger than one, so this isn't the end; the covering theorem will remove it.</template>
 <p><u>Conversely</u>: $C_N := \alpha_N\Big(\frac{\sqrt N}{2}\Big)^N$.</p>
 <p><span class="step">$Q\subseteq\R^N$ cube $\alpha_N\Big(\frac{\operatorname{diam}Q}{2}\Big)^N = C_N\mathcal L^N(Q)$.<span class="why"><span class="wp">A cube of side $a$ has diameter $a\sqrt N$ (the main diagonal, by Pythagoras in $N$ dimensions) and volume $a^N$. So $\alpha_N(a\sqrt N/2)^N = \alpha_N(\sqrt N/2)^N a^N = C_N\,\mathcal L^N(Q)$.</span></span></span></p>
 <p>If $\delta\gt0$ then
@@ -68,7 +69,7 @@ $$\boxed{\mathcal H^N_0(A)\le C_N(\mathcal L^N)^*(A)}\tag{4.3***}$$
 </div>
 
 <div class="env thm" data-label="Thm" data-title="[Covering Thm]">
-<template class="say">The covering theorem, a version of Vitali's covering theorem. Suppose F is a collection of closed balls, the set A tilde of their centres has finite outer measure, and around every centre there are balls in F of arbitrarily small radius. Then inside any open set U we can pick countably many disjoint balls from F, all inside U, that cover almost all of the centres in U: what's left over has outer measure zero. The figure shows a greedy packing filling a square with disjoint discs.</template>
+<template class="say" data-audio="audio/eec2fd35405bdb.mp3" data-dur="32.42">The covering theorem, a version of Vitali's covering theorem. Suppose F is a collection of closed balls, the set A tilde of their centres has finite outer measure, and around every centre there are balls in F of arbitrarily small radius. Then inside any open set U we can pick countably many disjoint balls from F, all inside U, that cover almost all of the centres in U: what's left over has outer measure zero. The figure shows a greedy packing filling a square with disjoint discs.</template>
 <p>Let $\mathcal F\subseteq\mathcal P(\R^N)$ be a collection of (nondegenerate) closed balls. Let $\tilde A$ denote the set of centers of the ball that belong to $\mathcal F$, and assume that $(\mathcal L^N)^*(\tilde A)\lt+\infty$ and
 $$\inf\{r\gt0 : B(a,r)\in\mathcal F\} = 0\quad\forall a\in\tilde A.$$
 If $U\subset\R^N$ is an open set, then there exists a <u>countable</u> collection $\mathcal G$ of <u>disjoint</u> ball in $\mathcal F$ s.t.
@@ -81,7 +82,7 @@ $$\bigcup_{B\in\mathcal G}B\subset U\quad\text{and}\quad(\mathcal L^N)^*\Big((\t
 
 <span class="pg"><a href="scans/L07-03.jpg" target="_blank" rel="noopener">original notes · p. 3 ↗</a></span>
 <div class="env proof" data-label="Proof of ① (Hᴺ ≤ Lᴺ)">
-<template class="say">Now we remove the constant. Take a nearly optimal cover of A by rectangles R i of small diameter. Fill the interior of each rectangle with disjoint closed balls using the covering theorem, so that what's left over has Lebesgue measure zero, and therefore, by the bound with C N, Hausdorff measure zero as well. A ball's Hausdorff cost is exactly its Lebesgue measure. So the Hausdorff cost of each rectangle is at most the total volume of its disjoint balls, which is at most the volume of the rectangle. Summing up, H N delta of A is at most the Lebesgue outer measure plus epsilon.</template>
+<template class="say" data-audio="audio/75ede52bf9fbeb.mp3" data-dur="38.22">Now we remove the constant. Take a nearly optimal cover of A by rectangles R i of small diameter. Fill the interior of each rectangle with disjoint closed balls using the covering theorem, so that what's left over has Lebesgue measure zero, and therefore, by the bound with C N, Hausdorff measure zero as well. A ball's Hausdorff cost is exactly its Lebesgue measure. So the Hausdorff cost of each rectangle is at most the total volume of its disjoint balls, which is at most the volume of the rectangle. Summing up, H N delta of A is at most the Lebesgue outer measure plus epsilon.</template>
 <p>Fix $\eps,\delta\gt0$ and let $R_i$ be rectangles s.t. for $A\subseteq\R^N$
 $$A\subseteq\bigcup_{i=1}^\infty R_i,\quad\operatorname{diam}R_i\lt\delta,\quad\sum_{i=1}^\infty\mathcal L^N(R_i)\le(\mathcal L^N)^*(A)+\eps.$$</p>
 <p>$\mathring R_i$ … interior of $R_i$</p>
@@ -99,7 +100,7 @@ $$(\mathcal L^N)^*\Big(R_i\setminus\Big(\bigcup_{k=1}^\infty B^i_k\Big)\Big) = (
 
 <span class="pg"><a href="scans/L07-04.jpg" target="_blank" rel="noopener">original notes · p. 4 ↗</a></span>
 <div class="env ex" data-label="Example 4.10 (cont.)">
-<template class="say">Three: if s is bigger than N, H s is identically zero in R N. Chop the unit cube into m to the N little cubes of diameter root N over m. The Hausdorff s cost is a constant times m to the N minus s, which goes to zero when s is bigger than N. And R N is a countable union of unit cubes. Four: Hausdorff measure is translation invariant and homogeneous of degree s: scaling a set by lambda multiplies H s by lambda to the s. Five: if H s of E is finite, then H t of E is zero for every larger t; if H t is positive, H s is infinite for every smaller s. And six: for s strictly between zero and N, H s is not sigma finite on R N.</template>
+<template class="say" data-audio="audio/39e900f1be0b5c.mp3" data-dur="46.59">Three: if s is bigger than N, H s is identically zero in R N. Chop the unit cube into m to the N little cubes of diameter root N over m. The Hausdorff s cost is a constant times m to the N minus s, which goes to zero when s is bigger than N. And R N is a countable union of unit cubes. Four: Hausdorff measure is translation invariant and homogeneous of degree s: scaling a set by lambda multiplies H s by lambda to the s. Five: if H s of E is finite, then H t of E is zero for every larger t; if H t is positive, H s is infinite for every smaller s. And six: for s strictly between zero and N, H s is not sigma finite on R N.</template>
 <p>(3) $\mathcal H^s_0\equiv0$ if $s\gt N$ in $\R^N$</p>
 <p>Subdivide the unit cube $Q := [-\frac12,\frac12]^N$ into $m^N$ subcubes of side length $\frac1m$ and diameter $\frac{\sqrt N}{m}$.</p>
 <p>Let $\delta = \frac{\sqrt N}{m}$. Then
@@ -123,7 +124,7 @@ $$\R^N = \bigcup_{n=1}^\infty A_n\quad\text{with}\quad\mathcal H^s_0(A_n)\lt+\in
 </div>
 
 <div class="env defn" data-label="Definition 4.11">
-<template class="say">Definition four point eleven. The Hausdorff dimension of a set E is the infimum of the s for which H s of E is zero. It's a number between zero and infinity, not necessarily an integer, and in R N it's at most N. If the dimension is t, then H s is zero for s bigger than t, and infinite for s between zero and t. Only at s equal to t can H s be anything in between. The figure computes this for some fractals.</template>
+<template class="say" data-audio="audio/14db5ac9e742e0.mp3" data-dur="26.47">Definition four point eleven. The Hausdorff dimension of a set E is the infimum of the s for which H s of E is zero. It's a number between zero and infinity, not necessarily an integer, and in R N it's at most N. If the dimension is t, then H s is zero for s bigger than t, and infinite for s between zero and t. Only at s equal to t can H s be anything in between. The figure computes this for some fractals.</template>
 <p>The <mark>Hausdorff dimension</mark> of a set $E\subseteq\R^N$ is defined as
 $$\dim_{\mathcal H}(E) := \inf\{0\le s\lt+\infty : \mathcal H^s_0(E) = 0\}.$$</p>
 <p><u>Note</u>:</p>
@@ -141,13 +142,13 @@ $$\dim_{\mathcal H}(E) := \inf\{0\le s\lt+\infty : \mathcal H^s_0(E) = 0\}.$$</p
 </div>
 
 <figure class="viz" data-viz="fractal-dim" data-title="Fractional dimensions">
-<template class="say">Self similar fractals have fractional dimension. The Cantor set is made of two copies of itself scaled by one third. At level n it is covered by two to the n pieces of size three to the minus n, so the Hausdorff sum is two to the n times three to the minus n s. That stays bounded exactly when s equals log two over log three, about zero point six three. The Koch curve: four copies scaled by a third, dimension log four over log three, about one point two six. The Sierpinski triangle: three copies scaled by one half, about one point five eight. In the log log plot, the number of pieces against the scale is a straight line whose slope is the dimension.</template>
+<template class="say" data-audio="audio/2982bfb70f8c35.mp3" data-dur="42.15">Self similar fractals have fractional dimension. The Cantor set is made of two copies of itself scaled by one third. At level n it is covered by two to the n pieces of size three to the minus n, so the Hausdorff sum is two to the n times three to the minus n s. That stays bounded exactly when s equals log two over log three, about zero point six three. The Koch curve: four copies scaled by a third, dimension log four over log three, about one point two six. The Sierpinski triangle: three copies scaled by one half, about one point five eight. In the log log plot, the number of pieces against the scale is a straight line whose slope is the dimension.</template>
 <figcaption>At level $n$, the fractal is covered by $N_n$ pieces of diameter $r^n$. $\sum(\text{diam})^s = N_n r^{ns}$ stays bounded iff $s = \log N_1/\log(1/r)$. Right: $\log N_n$ against $\log(1/r^n)$, slope $= \dim_{\mathcal H}$.</figcaption>
 </figure>
 
 <span class="pg"><a href="scans/L07-06.jpg" target="_blank" rel="noopener">original notes · p. 6 ↗</a></span>
 <div class="env ex" data-label="Example 4.12" data-title="[A Lebesgue Measurable Set that is not Borel]">
-<template class="say">Example four point twelve: a Lebesgue measurable set that is not Borel. The trick uses the Cantor set and Cantor function. Lebesgue measure is complete, so every subset of the Cantor set is Lebesgue measurable, with measure zero. We'll find one that isn't Borel. Consider g of x equals x plus the Cantor function. It's continuous and strictly increasing from zero one onto zero two, so it has a continuous inverse. On each removed interval, the Cantor function is constant, so g just shifts it: the images of the removed intervals have the same total length, one. The image of the whole interval has length two, so the image of the Cantor set must have measure at least one! A set of measure zero has been stretched to a set of positive measure. Now a set of positive measure contains a non measurable subset E. Pull it back by g: F equals g inverse of E is a subset of the Cantor set, so it's Lebesgue measurable. If F were Borel, its image under g, which is the preimage under the continuous map g inverse, would be Borel, hence measurable. But that's E, which is not measurable. So F is measurable but not Borel. Watch the explainer.</template>
+<template class="say" data-audio="audio/ba56c87a4fa142.mp3" data-dur="72.03">Example four point twelve: a Lebesgue measurable set that is not Borel. The trick uses the Cantor set and Cantor function. Lebesgue measure is complete, so every subset of the Cantor set is Lebesgue measurable, with measure zero. We'll find one that isn't Borel. Consider g of x equals x plus the Cantor function. It's continuous and strictly increasing from zero one onto zero two, so it has a continuous inverse. On each removed interval, the Cantor function is constant, so g just shifts it: the images of the removed intervals have the same total length, one. The image of the whole interval has length two, so the image of the Cantor set must have measure at least one! A set of measure zero has been stretched to a set of positive measure. Now a set of positive measure contains a non measurable subset E. Pull it back by g: F equals g inverse of E is a subset of the Cantor set, so it's Lebesgue measurable. If F were Borel, its image under g, which is the preimage under the continuous map g inverse, would be Borel, hence measurable. But that's E, which is not measurable. So F is measurable but not Borel. Watch the explainer.</template>
 <p>Consider the Cantor set $\mathfrak C$ [Example 3.15 (b)].</p>
 <p>$\mathfrak C\subset[0,1]$ is a Borel set and $\mathcal L^1(\mathfrak C) = 0$.</p>
 <p><u>claim</u> $\exists F\subset\mathfrak C$ s.t. $F$ is not Borel,</p>
@@ -184,10 +185,10 @@ $\exists E\subset\R$ Lebesgue meas. s.t. $E+E := \{x+y : x,y\in E\}$ <u>not</u> 
 </div>
 
 <div class="explainer" data-scene="cantor-stretch" data-title="Stretching a null set to measure one">
-<template class="say">Here's the Cantor set, in yellow, inside zero one. Its measure is zero: the removed gaps, in blue, have total length one.</template>
-<template class="say">Now apply g of x equals x plus the Cantor function. Watch where each piece goes. On each gap the Cantor function is constant, so g simply slides the gap to the right, without stretching it. The gaps keep their total length, one.</template>
-<template class="say">But the image is the whole interval from zero to two, of length two. The gaps only account for one. So the image of the Cantor set must fill the remaining length: at least one. A set of measure zero has been mapped, by a continuous increasing function, onto a set of measure one.</template>
-<template class="say">That's the lever. The fat image contains a non measurable set E. Pull E back by g: you get a subset F of the Cantor set. F has measure zero, so it's Lebesgue measurable. But F can't be Borel, because continuous maps pull back Borel sets to Borel sets, and the pullback of F under g inverse is E. So there are more Lebesgue measurable sets than Borel sets.</template>
+<template class="say" data-audio="audio/5b0f2ac1c27536.mp3" data-dur="8.13">Here's the Cantor set, in yellow, inside zero one. Its measure is zero: the removed gaps, in blue, have total length one.</template>
+<template class="say" data-audio="audio/12fcfc9768e11d.mp3" data-dur="14.93">Now apply g of x equals x plus the Cantor function. Watch where each piece goes. On each gap the Cantor function is constant, so g simply slides the gap to the right, without stretching it. The gaps keep their total length, one.</template>
+<template class="say" data-audio="audio/084e0b2851559e.mp3" data-dur="17.05">But the image is the whole interval from zero to two, of length two. The gaps only account for one. So the image of the Cantor set must fill the remaining length: at least one. A set of measure zero has been mapped, by a continuous increasing function, onto a set of measure one.</template>
+<template class="say" data-audio="audio/f6f3f5b9e94328.mp3" data-dur="22.81">That's the lever. The fat image contains a non measurable set E. Pull E back by g: you get a subset F of the Cantor set. F has measure zero, so it's Lebesgue measurable. But F can't be Borel, because continuous maps pull back Borel sets to Borel sets, and the pullback of F under g inverse is E. So there are more Lebesgue measurable sets than Borel sets.</template>
 </div>
 
 

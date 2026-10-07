@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lecture 6: Borel–Cantelli and Carathéodory&#x27;s Theorem</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%E2%88%AB%3C/text%3E%3C/svg%3E">
 <meta name="description" content="Escaping mass; continuity of measure (recap); complete measures; the Borel–Cantelli lemma; proof that the μ*-measurable sets form a σ-algebra on which μ* is a complete measure; Lebesgue, Lebesgue–Stieltjes and Hausdorff measures.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;650&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
@@ -31,7 +32,7 @@ The small “original notes” links open the scanned page the text was transcri
 
 <span class="pg"><a href="scans/L06-01.jpg" target="_blank" rel="noopener">original notes · p. 1 ↗</a></span>
 <div class="env ex" data-label="Hmwk #1 / 1 (ii)">
-<template class="say">Lecture six opens with a homework example. Find continuous functions f n converging pointwise to f on zero one, but whose integrals don't converge to the integral of f. Take f n to be a tall thin block: height n on the interval from zero to one over n, zero elsewhere. Each has area one, but for every fixed x, eventually one over n is less than x and f n of x is zero. So f n goes to zero pointwise, while the integrals stay at one. To make them continuous, replace the block by a steep trapezoid. The mass escapes into a spike at zero and disappears in the limit.</template>
+<template class="say" data-audio="audio/f6af5e34d2b96e.mp3" data-dur="38.63">Lecture six opens with a homework example. Find continuous functions f n converging pointwise to f on zero one, but whose integrals don't converge to the integral of f. Take f n to be a tall thin block: height n on the interval from zero to one over n, zero elsewhere. Each has area one, but for every fixed x, eventually one over n is less than x and f n of x is zero. So f n goes to zero pointwise, while the integrals stay at one. To make them continuous, replace the block by a steep trapezoid. The mass escapes into a spike at zero and disappears in the limit.</template>
 <p>$f_n, f:[0,1]\to\R$ continuous, $f_n\to f$ pointwise, $\int_0^1 f_n\not\to\int_0^1 f$</p>
 <p>$$f_n(x) := \begin{cases}n & \text{if } 0\lt x\lt 1/n\\ 0 & x = 0\\ 0 & 1/n\le x\le1\end{cases}\qquad\int_0^1 f_n = 1$$</p>
 <p><span class="step">$f_n\to f\equiv0$, $\int f_n = 1$, $\int f = 0$<span class="why"><span class="wp">At $x = 0$: $f_n(0) = 0$ for all $n$. At $x\gt0$: as soon as $n\ge1/x$, we have $x\ge1/n$, so $f_n(x) = 0$. So every point is eventually at $0$. Meanwhile the area is height $\times$ width $= n\cdot\frac1n = 1$ for every $n$.</span></span></span></p>
@@ -61,13 +62,13 @@ $$\mu\Big(\bigcup_{n=1}^\infty E_n\Big) = \mu\Big(\bigcup_{n=1}^\infty(E_n\setmi
 
 <span class="pg"><a href="scans/L06-03.jpg" target="_blank" rel="noopener">original notes · p. 3 ↗</a></span>
 <div class="env thm" data-label="Thm 4.8*" data-title="[Borel–Cantelli]">
-<template class="say">Theorem four point eight star, the Borel Cantelli lemma. If the measures of the sets E n have a finite sum, then almost every point belongs to only finitely many of the E n. The set of points that lie in infinitely many E n has measure zero. In probability: if the probabilities of events add up to something finite, then with probability one only finitely many of the events happen.</template>
+<template class="say" data-audio="audio/01e2dad68bfdb8.mp3" data-dur="24.47">Theorem four point eight star, the Borel Cantelli lemma. If the measures of the sets E n have a finite sum, then almost every point belongs to only finitely many of the E n. The set of points that lie in infinitely many E n has measure zero. In probability: if the probabilities of events add up to something finite, then with probability one only finitely many of the events happen.</template>
 <p>$(X,\M,\mu)$ measure space, $E_n\in\M$, $\sum_{n=1}^\infty\mu(E_n)\lt+\infty$.</p>
 <p>Then <u>almost every</u> $x\in X$ belongs to at most finitely many $E_n$'s, i.e.
 $$\mu\big(\{x\in X : x\in E_n \text{ for } \infty\text{'ly many } n\text{'s}\}\big) = 0.$$</p>
 </div>
 <div class="env proof" data-label="Proof">
-<template class="say">The proof. A point lies in infinitely many E n exactly when, for every n, it lies in some E k with k at least n. That's the intersection over n of the unions from n on, the lim sup of the sets. If it had positive measure alpha, then for every n, alpha is at most the measure of the union of E k for k at least n, which is at most the tail sum. But tails of a convergent series go to zero, so eventually the tail is below alpha over two. Contradiction.</template>
+<template class="say" data-audio="audio/1aca1ee47c4f1b.mp3" data-dur="31.14">The proof. A point lies in infinitely many E n exactly when, for every n, it lies in some E k with k at least n. That's the intersection over n of the unions from n on, the lim sup of the sets. If it had positive measure alpha, then for every n, alpha is at most the measure of the union of E k for k at least n, which is at most the tail sum. But tails of a convergent series go to zero, so eventually the tail is below alpha over two. Contradiction.</template>
 <p><span class="step">$$\{x\in X : x\in E_n \text{ for } \infty\text{'ly many } n\text{'s}\} = \bigcap_{n=1}^\infty\bigcup_{k=n}^\infty E_k =: \boxed{\limsup_{n\to+\infty}E_n} =: E$$<span class="why"><span class="wp">$x\in\bigcap_n\bigcup_{k\ge n}E_k$ means: for every $n$ there is some $k\ge n$ with $x\in E_k$. That says the indices $k$ with $x\in E_k$ are unbounded, i.e. infinitely many. Conversely, infinitely many indices means arbitrarily large ones. Also $E\in\M$: countable unions and intersections of measurable sets.</span></span></span></p>
 <p>Suppose that $\mu(E) = \alpha\gt0$.</p>
 <p>So <span class="step">$$0\lt\alpha = \mu(E) = \mu\Big(\bigcap_{n=1}^\infty\bigcup_{k=n}^\infty E_k\Big)\underset{\text{(monotonicity)}}{\le}\mu\Big(\bigcup_{k=n}^\infty E_k\Big)\quad\forall n\in\N$$<span class="why"><span class="wp">An intersection is contained in each of the sets it intersects; here, in $\bigcup_{k\ge n}E_k$ for each fixed $n$. Then monotonicity (Prop 4.3 (i)).</span></span></span>
@@ -77,14 +78,14 @@ $$\mu\big(\{x\in X : x\in E_n \text{ for } \infty\text{'ly many } n\text{'s}\}\b
 </div>
 
 <div class="explainer" data-scene="borel-cantelli" data-title="Borel–Cantelli: summable sizes, finitely many hits">
-<template class="say">Let's watch Borel Cantelli happen. Each row is one set E n, an interval somewhere in zero one. Here the lengths are one over n squared, which have a finite sum: pi squared over six.</template>
-<template class="say">For each point x, count how many of the sets contain it. The curve on the bottom shows this count. As more and more sets arrive, the count grows only in a few places, and the newcomers are so short that they barely touch anything.</template>
-<template class="say">Why? The total length of all sets from n on is the tail of a convergent series. It goes to zero. And every point that's hit infinitely often is hit by some set from n on, for every n. So those points fit inside a set of tiny measure, for every n. Their measure is zero.</template>
-<template class="say">Now compare lengths one over n, whose sum diverges. Arrange the intervals to sweep across zero one again and again, like a typewriter. Each sweep covers everything, and there are infinitely many sweeps, since the harmonic series diverges. Now every single point is hit infinitely often. Summability was the whole story.</template>
+<template class="say" data-audio="audio/56acc869e9a17b.mp3" data-dur="12.35">Let's watch Borel Cantelli happen. Each row is one set E n, an interval somewhere in zero one. Here the lengths are one over n squared, which have a finite sum: pi squared over six.</template>
+<template class="say" data-audio="audio/13909b6f683f36.mp3" data-dur="14.27">For each point x, count how many of the sets contain it. The curve on the bottom shows this count. As more and more sets arrive, the count grows only in a few places, and the newcomers are so short that they barely touch anything.</template>
+<template class="say" data-audio="audio/53bbc31f5a998a.mp3" data-dur="17.62">Why? The total length of all sets from n on is the tail of a convergent series. It goes to zero. And every point that's hit infinitely often is hit by some set from n on, for every n. So those points fit inside a set of tiny measure, for every n. Their measure is zero.</template>
+<template class="say" data-audio="audio/1555a48c0ca41d.mp3" data-dur="20.1">Now compare lengths one over n, whose sum diverges. Arrange the intervals to sweep across zero one again and again, like a typewriter. Each sweep covers everything, and there are infinitely many sweeps, since the harmonic series diverges. Now every single point is hit infinitely often. Summability was the whole story.</template>
 </div>
 
 <div class="env thm" data-label="Theorem 4.9" data-title="[Carathéodory]">
-<template class="say">Theorem four point nine, Carathéodory's theorem. Let mu star be an outer measure on X and let M star be the collection of mu star measurable sets. Then M star is a sigma algebra, and mu star restricted to M star is a complete measure. This is the machine that turns every outer measure into a measure.</template>
+<template class="say" data-audio="audio/2469d21725d4f1.mp3" data-dur="20.18">Theorem four point nine, Carathéodory's theorem. Let mu star be an outer measure on X and let M star be the collection of mu star measurable sets. Then M star is a sigma algebra, and mu star restricted to M star is a complete measure. This is the machine that turns every outer measure into a measure.</template>
 <p>$X\ne\emptyset$ set, $\ms:\mathcal P(X)\to[0,+\infty]$ outer measure. Define (see (3.3))
 $$\M^* := \{E\subseteq X : E\ \ms\text{-measurable}\}$$
 Then $\M^*$ is a σ-algebra, $\ms|_{\M^*}:\M^*\to[0,+\infty]$ is a complete measure. (recall 3.2 (ii)).</p>
@@ -92,7 +93,7 @@ Then $\M^*$ is a σ-algebra, $\ms|_{\M^*}:\M^*\to[0,+\infty]$ is a complete meas
 
 <span class="pg"><a href="scans/L06-04.jpg" target="_blank" rel="noopener">original notes · p. 4 ↗</a></span>
 <div class="env proof" data-label="Proof">
-<template class="say">The proof has five steps. Step one: M star contains the empty set, is closed under complements, because the definition is symmetric in A and its complement, and is closed under unions of two sets. For two sets, split any test set F into three pieces with E one and E two, and use subadditivity to glue the pieces back. Step two: mu star is finitely additive on M star, and more precisely it splits every test set F along finitely many disjoint measurable sets, formula four point one. Step three: for countably many disjoint measurable sets, pass to the limit to get both measurability of the union and countable additivity. Step four: disjointify to handle arbitrary countable unions. Step five: completeness, because null sets are always measurable. Use the Venn diagram figure to follow step one.</template>
+<template class="say" data-audio="audio/199c1d1eb918bf.mp3" data-dur="54.24">The proof has five steps. Step one: M star contains the empty set, is closed under complements, because the definition is symmetric in A and its complement, and is closed under unions of two sets. For two sets, split any test set F into three pieces with E one and E two, and use subadditivity to glue the pieces back. Step two: mu star is finitely additive on M star, and more precisely it splits every test set F along finitely many disjoint measurable sets, formula four point one. Step three: for countably many disjoint measurable sets, pass to the limit to get both measurability of the union and countable additivity. Step four: disjointify to handle arbitrary countable unions. Step five: completeness, because null sets are always measurable. Use the Venn diagram figure to follow step one.</template>
 <p><u>Step 1</u> WTS that $\M^*$ is a σ-algebra (Def 3.4, (i)–(iii))</p>
 <p>(i) $\emptyset\in\M^*$<br>
 let $F\subseteq X$ <span class="step">$\ms(F) = \underbrace{\ms(F\cap\emptyset)}_{\ms(\emptyset) = 0}+\underbrace{\ms(F\setminus\emptyset)}_{=\ms(F)}$ ok!<span class="why"><span class="wp">$F\cap\emptyset = \emptyset$ has outer measure $0$ (Def 2.6 (i)), and $F\setminus\emptyset = F$. So the measurability identity reads $\ms(F) = 0 + \ms(F)$.</span></span></span></p>
@@ -145,13 +146,13 @@ $$\ms\Big(F\cap\bigcup_{k=1}^n E_k\Big) = \sum_{k=1}^n\ms(F\cap E_k)\quad\forall
 </div>
 
 <figure class="viz" data-viz="venn-proof" data-title="Following Step 1 (iii)′ on a Venn diagram">
-<template class="say">This Venn diagram follows step one. The test set F is the big rounded rectangle; E one and E two are the circles. First F is split by E one. Then the part outside E one is split again by E two, giving three pieces in total. Subadditivity glues the first two pieces back together into F intersect the union, and the third piece is F minus the union. Step through the lines with the buttons.</template>
+<template class="say" data-audio="audio/e13aea9b91419d.mp3" data-dur="24.96">This Venn diagram follows step one. The test set F is the big rounded rectangle; E one and E two are the circles. First F is split by E one. Then the part outside E one is split again by E two, giving three pieces in total. Subadditivity glues the first two pieces back together into F intersect the union, and the third piece is F minus the union. Step through the lines with the buttons.</template>
 <figcaption>Click through the lines of the proof of Step 1 (iii)′. Each term $\ms(\cdot)$ in the current line is highlighted in its own colour.</figcaption>
 </figure>
 
 <span class="pg"><a href="scans/L06-07.jpg" target="_blank" rel="noopener">original notes · p. 7 ↗</a></span>
 <div class="env ex" data-label="Example 4.10">
-<template class="say">Example four point ten collects the three measures we get from Carathéodory. One: Lebesgue measure. The Lebesgue measurable sets form a sigma algebra, and the restriction of Lebesgue outer measure is a complete measure, the N dimensional Lebesgue measure. All Borel sets are measurable, in particular balls, and by scaling and translation invariance, the ball of radius r has measure r to the N times the measure of the unit ball, which is alpha N. Two: Lebesgue Stieltjes measure generated by an increasing function f. Three: the s dimensional Hausdorff measure.</template>
+<template class="say" data-audio="audio/35d569549280ed.mp3" data-dur="36.28">Example four point ten collects the three measures we get from Carathéodory. One: Lebesgue measure. The Lebesgue measurable sets form a sigma algebra, and the restriction of Lebesgue outer measure is a complete measure, the N dimensional Lebesgue measure. All Borel sets are measurable, in particular balls, and by scaling and translation invariance, the ball of radius r has measure r to the N times the measure of the unit ball, which is alpha N. Two: Lebesgue Stieltjes measure generated by an increasing function f. Three: the s dimensional Hausdorff measure.</template>
 <p>(i) Def 3.14 … the class of all $(\mathcal L^N)^*$-measurable sets is the σ-algebra of Lebesgue measurable sets, $\mathcal L(\R^N)$.</p>
 <p>Carathéodory Thm $\Rightarrow(\mathcal L^N)^*|_{\mathcal L(\R^N)}$ is a complete measure, called the <mark>$N$-dimensional Lebesgue measure</mark>, denoted by $\mathcal L^N$.</p>
 <p>Prop 3.13 all Borel sets of $\R^N$ are Lebesgue measurable. In particular, balls are Lebesgue measurable.</p>
@@ -163,7 +164,7 @@ $$\ms\Big(F\cap\bigcup_{k=1}^n E_k\Big) = \sum_{k=1}^n\ms(F\cap E_k)\quad\forall
 </div>
 
 <figure class="viz" data-viz="ball-volume" data-title="Volume of the unit ball in N dimensions">
-<template class="say">A fun consequence of the formula for alpha N. The volume of the unit ball grows from dimension one to five, peaks at dimension five, where it's about five point two six, and then decays to zero. In high dimensions the unit ball is tiny compared to the unit cube around it.</template>
+<template class="say" data-audio="audio/c5cf2824a57bca.mp3" data-dur="16.98">A fun consequence of the formula for alpha N. The volume of the unit ball grows from dimension one to five, peaks at dimension five, where it's about five point two six, and then decays to zero. In high dimensions the unit ball is tiny compared to the unit cube around it.</template>
 <figcaption>$\alpha_N = \mathcal L^N(B(0,1))$: $\alpha_1 = 2$ (the interval $[-1,1]$), $\alpha_2 = \pi$, $\alpha_3 = \frac43\pi$, peaking near $N = 5$ and then tending to $0$. The dashed curve interpolates non-integer $s$, as used in Hausdorff measure. Hover a bar.</figcaption>
 </figure>
 

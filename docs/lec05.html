@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lecture 5: Lebesgue Measurable Sets, the Cantor Set, and Measures</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%E2%88%AB%3C/text%3E%3C/svg%3E">
 <meta name="description" content="Lebesgue outer measure is metric; Borel ⊊ Lebesgue ⊊ P(ℝᴺ); regularity and the equivalence of the definitions; the Cantor set and Cantor function; measures and their continuity properties.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;650&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
@@ -32,7 +33,7 @@ The small “original notes” links open the scanned page the text was transcri
 <span class="pg"><a href="scans/L05-01.jpg" target="_blank" rel="noopener">original notes · p. 1 ↗</a></span>
 <details class="env rmk" open>
 <summary class="env-label">Notebook pages 29–30: the end of the proof of Prop 3.12, written out in full</summary>
-<template class="say">The lecture opens by finishing the proof of proposition three point twelve, cleanly written out. The layers E n are disjoint and, since C is closed, cover F minus C. Layers two apart are a positive distance from each other. Because mu star is a metric outer measure, induction gives that the outer measure of the union of the even layers is the sum of their outer measures, which is at most the outer measure of F. So the sums over even and odd layers converge, and so does the whole series. Finally, finitely many layers stay away from C, and the tail of the series goes to zero, proving the claim.</template>
+<template class="say" data-audio="audio/0a8c60b09146c1.mp3" data-dur="37.8">The lecture opens by finishing the proof of proposition three point twelve, cleanly written out. The layers E n are disjoint and, since C is closed, cover F minus C. Layers two apart are a positive distance from each other. Because mu star is a metric outer measure, induction gives that the outer measure of the union of the even layers is the sum of their outer measures, which is at most the outer measure of F. So the sums over even and odd layers converge, and so does the whole series. Finally, finitely many layers stay away from C, and the tail of the series goes to zero, proving the claim.</template>
 <p>The sets $E_n$ are disjoint, and since $C$ is closed
 $$F\setminus C = \{x\in F : \operatorname{dist}(x,C)\gt0\} = \bigcup_{n=0}^\infty E_n.\tag{3.4}$$</p>
 <p><u>claim 2</u> If $n\ge0$ then $\operatorname{dist}(E_{2n},E_{2n+2})\gt0$. Indeed, let $x\in E_{2n}$, $y\in E_{2n+2}$ and we have
@@ -59,21 +60,21 @@ and thus proves claim 1. <span class="qed">■</span></p>
 </details>
 
 <div class="env prop" data-label="Proposition 3.13">
-<template class="say">Proposition three point thirteen. Hausdorff outer measures and Lebesgue outer measure are metric outer measures. In particular, every Borel set in R N is Hausdorff measurable and Lebesgue measurable.</template>
+<template class="say" data-audio="audio/215df24cfa2ab5.mp3" data-dur="12.74">Proposition three point thirteen. Hausdorff outer measures and Lebesgue outer measure are metric outer measures. In particular, every Borel set in R N is Hausdorff measurable and Lebesgue measurable.</template>
 <p>The outer measure $\mathcal H^s_0$, $0\le s\lt+\infty$ (see 2.4), and the outer measure $(\mathcal L^N)^*$ (see (2.2)) are <u>metric outer measures</u>. (i.e., $\operatorname{dist}(E,F)\gt0\Rightarrow\ms(E\cup F) = \ms(E)+\ms(F)$)</p>
 <p>In particular, <mark>every Borel set of $\R^N$ is $\mathcal H^s_0$-measurable and $(\mathcal L^N)^*$-measurable.</mark></p>
 <p class="note">end lect #4</p>
 </div>
 
 <div class="env defn" data-label="Def 3.14">
-<template class="say">Definition three point fourteen. The class of all sets that are measurable for Lebesgue outer measure is called the sigma algebra of Lebesgue measurable sets. It will be shown in Carathéodory's theorem that it really is a sigma algebra.</template>
+<template class="say" data-audio="audio/2b666976f2422f.mp3" data-dur="15.06">Definition three point fourteen. The class of all sets that are measurable for Lebesgue outer measure is called the sigma algebra of Lebesgue measurable sets. It will be shown in Carathéodory's theorem that it really is a sigma algebra.</template>
 <p>The class of all $(\mathcal L^N)^*$-measurable sets of $\R^N$ (see Def 3.1 and (3.3)) is called <mark>σ-algebra of Lebesgue measurable sets.</mark></p>
 <p class="note">It will be shown in Thm 4.9 (Carathéodory) that this is in fact a σ-algebra</p>
 </div>
 
 <span class="pg"><a href="scans/L05-03.jpg" target="_blank" rel="noopener">original notes · p. 3 ↗</a></span>
 <div class="env proof" data-label="Proof of Proposition 3.13">
-<template class="say">The proof, for Lebesgue outer measure. Take E and F at positive distance d. We need the outer measure of the union to be at least the sum. Take any cover of the union by rectangles. Chop each rectangle into smaller ones of diameter less than d over two; this doesn't change the total volume. Now no small rectangle can touch both E and F, because they're too far apart. So the cover splits into a cover of E and a cover of F, and its total cost is at least the outer measure of E plus that of F. Take the infimum over covers.</template>
+<template class="say" data-audio="audio/77aa678fb309a5.mp3" data-dur="34.53">The proof, for Lebesgue outer measure. Take E and F at positive distance d. We need the outer measure of the union to be at least the sum. Take any cover of the union by rectangles. Chop each rectangle into smaller ones of diameter less than d over two; this doesn't change the total volume. Now no small rectangle can touch both E and F, because they're too far apart. So the cover splits into a cover of E and a cover of F, and its total cost is at least the outer measure of E plus that of F. Take the infimum over covers.</template>
 <p>We only prove it for $(\mathcal L^N)^*$. In view of Prop 3.12, if we show that $(\mathcal L^N)^*$ is a metric outer measure, then
 $$\B(\R^N)\subseteq\{\text{Lebesgue measurable sets}\}.$$</p>
 <p>Let $E,F\subseteq\R^N$ be such that $d := \operatorname{dist}(E,F)\gt0$.</p>
@@ -92,14 +93,14 @@ proving the claim. <span class="qed">■</span></p>
 
 <span class="pg"><a href="scans/L05-04.jpg" target="_blank" rel="noopener">original notes · p. 4 ↗</a></span>
 <div>
-<template class="say">So we now have Borel sets inside Lebesgue measurable sets inside all subsets. We'll see both inclusions are strict.</template>
+<template class="say" data-audio="audio/41156e82fd7898.mp3" data-dur="7.13">So we now have Borel sets inside Lebesgue measurable sets inside all subsets. We'll see both inclusions are strict.</template>
 <p>So we now have
 $$\B(\R^N)\subsetneq\{\text{Lebesgue measurable sets}\}\subsetneq\mathcal P(\R^N)$$
 We will see that <mark>both inclusions are strict.</mark></p>
 </div>
 
 <div class="env ex" data-label="Examples 3.15">
-<template class="say">Examples three point fifteen. a: not every set is Lebesgue measurable. Recall the Vitali set V, with positive finite outer measure. If V were measurable, so would all its rational translates, which are disjoint, and additivity on measurable sets would give six at least n times the outer measure of V, impossible for large n.</template>
+<template class="say" data-audio="audio/1facc5144a8193.mp3" data-dur="21.33">Examples three point fifteen. a: not every set is Lebesgue measurable. Recall the Vitali set V, with positive finite outer measure. If V were measurable, so would all its rational translates, which are disjoint, and additivity on measurable sets would give six at least n times the outer measure of V, impossible for large n.</template>
 <p>a) <mark>$\{\text{Lebesgue measurable sets}\}\subsetneq\mathcal P(\R^N)$.</mark></p>
 <p>Recall the set $V\subset[-1,1]$, with $0\lt(\mathcal L^1)^*(V)\le(\mathcal L^1)^*([-1,1])$ (Rmk 2.13) + (Prop 2.11) $= 2$.</p>
 <p>If $V$ was Lebesgue measurable, <span class="step">because $(\mathcal L^1)^*$ is translation invariant (see Rmk 2.12) then $r_k+V$ is Lebesgue measurable for all $k\in\N$<span class="why"><span class="wp">Measurability is defined purely in terms of $\ms$ (Def 3.1). For a test set $F$: $\ms(F\cap(r+V)) = \ms((F-r)\cap V)$ and $\ms(F\setminus(r+V)) = \ms((F-r)\setminus V)$ by translation invariance, and these add up to $\ms(F-r) = \ms(F)$ because $V$ is measurable (tested on $F-r$).</span></span></span>, with these sets being mutually disjoint, so for every $n\in\N$
@@ -112,7 +113,7 @@ and this is not possible for $n\gg1$.</p>
 
 <span class="pg"><a href="scans/L05-05.jpg" target="_blank" rel="noopener">original notes · p. 5 ↗</a></span>
 <div class="env rmk" data-label="Remark 3.13*">
-<template class="say">Remark three point thirteen star ties up the definitions. In lecture one, definition zero point one called a subset A of I Lebesgue measurable if the outer measure of A plus that of its complement in I equals the measure of I. Definition three point one is Carathéodory's: A splits every test set additively. Homework one shows that for a regular outer measure the two agree. And the Lebesgue outer measure is regular: any set E is contained in a Borel set with the same outer measure. Take nearly optimal covers by intervals with error one over k, take the union for each k, and intersect over all k.</template>
+<template class="say" data-audio="audio/fdbc9b38e4dbbb.mp3" data-dur="39.97">Remark three point thirteen star ties up the definitions. In lecture one, definition zero point one called a subset A of I Lebesgue measurable if the outer measure of A plus that of its complement in I equals the measure of I. Definition three point one is Carathéodory's: A splits every test set additively. Homework one shows that for a regular outer measure the two agree. And the Lebesgue outer measure is regular: any set E is contained in a Borel set with the same outer measure. Take nearly optimal covers by intervals with error one over k, take the union for each k, and intersect over all k.</template>
 <p>(i) In Def 0.1 we introduced the concept of <u>Lebesgue measurability</u> as:
 $$\ms(A)+\ms(X\setminus A) = \ms(X)\quad(\text{with }\ms := (\mathcal L^1)^*,\ X = I)$$</p>
 <p>(ii) In Def 3.1 we introduced the <u>concept of measurability</u> as $A\subseteq X$ is $\ms$-measurable if $\forall F\subseteq X$
@@ -152,7 +153,7 @@ $$A\subseteq\bigcup_{n=1}^\infty E_n,\qquad\sum_{n=1}^\infty(\mathcal L^1)^*(E_n
 <span class="pg"><a href="scans/L05-07.jpg" target="_blank" rel="noopener">original notes · p. 7 ↗</a></span>
 <h2>The Cantor set</h2>
 <div>
-<template class="say">Now the construction of the Cantor set. Divide zero one into three equal parts and remove the open middle third, from one third to two thirds. Then from each of the two remaining closed intervals, remove the middle third again: from one ninth to two ninths, and from seven ninths to eight ninths. At step n, remove two to the n minus one middle thirds, each of length one over three to the n. What's left after all steps is the Cantor set. Play with the figure: notice how quickly the remaining length shrinks, and how the picture looks the same when you zoom in.</template>
+<template class="say" data-audio="audio/f522357b67d097.mp3" data-dur="34.55">Now the construction of the Cantor set. Divide zero one into three equal parts and remove the open middle third, from one third to two thirds. Then from each of the two remaining closed intervals, remove the middle third again: from one ninth to two ninths, and from seven ninths to eight ninths. At step n, remove two to the n minus one middle thirds, each of length one over three to the n. What's left after all steps is the Cantor set. Play with the figure: notice how quickly the remaining length shrinks, and how the picture looks the same when you zoom in.</template>
 <p>Divide $[0,1]$ into three equal subintervals and remove the middle third $I_{11} := (\frac13,\frac23)$.</p>
 <p>Divide each of the two closed intervals $[0,\frac13]$, $[\frac23,1]$ into 3 equal subintervals and remove the middle ones
 $$I_{12} := \Big(\frac1{3^2},\frac2{3^2}\Big),\qquad I_{22} := \Big(\frac7{3^2},\frac8{3^2}\Big).$$</p>
@@ -166,7 +167,7 @@ $$\mathfrak C := [0,1]\setminus\Big(\bigcup_{n=1}^\infty\bigcup_{k=1}^{2^{n-1}}I
 </figure>
 
 <div>
-<template class="say">The Cantor set is closed, because its complement is a union of open intervals, so it's Borel, hence measurable. Its measure is one minus the total length removed: one minus the sum over n of two to the n minus one over three to the n. That's one minus one half times the geometric series of two thirds to the n, which is one minus one half times two, which is zero. So the Cantor set has measure zero.</template>
+<template class="say" data-audio="audio/f8146379208d98.mp3" data-dur="25.56">The Cantor set is closed, because its complement is a union of open intervals, so it's Borel, hence measurable. Its measure is one minus the total length removed: one minus the sum over n of two to the n minus one over three to the n. That's one minus one half times the geometric series of two thirds to the n, which is one minus one half times two, which is zero. So the Cantor set has measure zero.</template>
 <p><span class="step">$\mathfrak C$ is closed, because its complement is a family of open intervals and because $[0,1]$ and $\mathfrak C$ are Borel sets, hence $(\mathcal L^1)^*$ measurable (see Prop 3.13)<span class="why"><span class="wp">$\R\setminus\mathfrak C = (-\infty,0)\cup(1,\infty)\cup\bigcup_{n,k}I_{kn}$ is a union of open intervals, hence open; so $\mathfrak C$ is closed, hence Borel, hence measurable by Prop 3.12/3.13.</span></span></span></p>
 <div class="step">$$1 = \ell([0,1]) \underset{\text{Prop 2.11}}{=} (\mathcal L^1)^*([0,1]) = (\mathcal L^1)^*\big(([0,1]\setminus\mathfrak C)\cup\mathfrak C\big) = (\mathcal L^1)^*([0,1]\setminus\mathfrak C)+(\mathcal L^1)^*(\mathfrak C),\ \text{so}$$<div class="why"><p>Additivity on disjoint sets one of which is measurable (Cor 3.3 with $B = \mathfrak C$).</p></div></div>
 <div class="step">$$(\mathcal L^1)^*(\mathfrak C) = 1-(\mathcal L^1)^*\Big(\underbrace{\bigcup_{n=1}^\infty\bigcup_{k=1}^{2^{n-1}}I_{kn}}_{\text{disjoint union of intervals, hence Lebesgue measurable}}\Big) =$$<div class="why"><p>Subtract (everything is finite). The removed intervals are pairwise disjoint: each is removed from a different surviving closed interval.</p></div></div>
@@ -176,7 +177,7 @@ $$\mathfrak C := [0,1]\setminus\Big(\bigcup_{n=1}^\infty\bigcup_{k=1}^{2^{n-1}}I
 </div>
 
 <div>
-<template class="say">To prove that the Cantor set is uncountable, use ternary expansions. A number is in the Cantor set exactly when it can be written in base three using only the digits zero and two. Now replace each two by a one and read the result in base two. This map, f, sends the Cantor set onto the whole interval zero one, because every binary expansion is hit. A countable set can't map onto an uncountable one, so the Cantor set is uncountable. The map f is increasing, takes the same value at both ends of each removed interval, and so extends to a continuous function on zero one: the Cantor function, also called the devil's staircase. It's constant on every removed interval, so its derivative is zero except on the Cantor set, a set of measure zero, and yet it climbs from zero to one. The explainer shows this.</template>
+<template class="say" data-audio="audio/cef0addb6dfac1.mp3" data-dur="50.26">To prove that the Cantor set is uncountable, use ternary expansions. A number is in the Cantor set exactly when it can be written in base three using only the digits zero and two. Now replace each two by a one and read the result in base two. This map, f, sends the Cantor set onto the whole interval zero one, because every binary expansion is hit. A countable set can't map onto an uncountable one, so the Cantor set is uncountable. The map f is increasing, takes the same value at both ends of each removed interval, and so extends to a continuous function on zero one: the Cantor function, also called the devil's staircase. It's constant on every removed interval, so its derivative is zero except on the Cantor set, a set of measure zero, and yet it climbs from zero to one. The explainer shows this.</template>
 <p>To prove that $\mathfrak C$ is uncountable, it can be shown that $x\in\mathfrak C$ iff
 $$x = \sum_{n=1}^\infty\frac{c_n}{3^n},\quad c_n\in\{0,2\}.$$</p>
 <p>Let $f:\mathfrak C\to[0,1]$, $f(x) := \sum_{n=1}^\infty\frac{d_n}{2^n}$ with
@@ -188,18 +189,18 @@ $$d_n := \begin{cases}1 & \text{if } c_n = 2,\\ 0 & \text{if } c_n = 0.\end{case
 </div>
 
 <div class="explainer" data-scene="cantor-staircase" data-title="Uncountable, yet measure zero: the Cantor set and the devil's staircase">
-<template class="say">Start with the unit interval, total length one.</template>
-<template class="say">Remove the open middle third. Then the middle third of each remaining piece. Then again, and again. At step n we remove two to the n minus one pieces, each of length one over three to the n.</template>
-<template class="say">Add up the removed lengths: one third, plus two ninths, plus four twenty sevenths, and so on. The sum is exactly one. All the length is gone. Whatever is left, the Cantor set, has measure zero.</template>
-<template class="say">And yet a lot is left. Each surviving point is described by an infinite sequence of choices, left or right, at every level. In base three, that means using only the digits zero and two. Infinite left right sequences are exactly binary expansions, so there are as many points in the Cantor set as in the whole interval.</template>
-<template class="say">Here's the map that proves it: turn each left into a zero and each right into a one, and read the result in binary. Plotting it gives a staircase. It's flat on every removed interval, at heights one half, then one quarter and three quarters, and so on.</template>
-<template class="say">In the limit, we get the Cantor function: continuous, increasing from zero to one, with derivative zero everywhere except on a set of measure zero. All its growth happens on the dust of the Cantor set. Keep this example in mind: it shows that measure zero sets can be large, and that the derivative can miss everything.</template>
+<template class="say" data-audio="audio/9e1de0e8a0451c.mp3" data-dur="2.6">Start with the unit interval, total length one.</template>
+<template class="say" data-audio="audio/10b85f6885b2bc.mp3" data-dur="12.54">Remove the open middle third. Then the middle third of each remaining piece. Then again, and again. At step n we remove two to the n minus one pieces, each of length one over three to the n.</template>
+<template class="say" data-audio="audio/0d43d1cb833cb6.mp3" data-dur="12.33">Add up the removed lengths: one third, plus two ninths, plus four twenty sevenths, and so on. The sum is exactly one. All the length is gone. Whatever is left, the Cantor set, has measure zero.</template>
+<template class="say" data-audio="audio/6ee1217d589991.mp3" data-dur="20.93">And yet a lot is left. Each surviving point is described by an infinite sequence of choices, left or right, at every level. In base three, that means using only the digits zero and two. Infinite left right sequences are exactly binary expansions, so there are as many points in the Cantor set as in the whole interval.</template>
+<template class="say" data-audio="audio/3b94c5e46718d2.mp3" data-dur="16.13">Here's the map that proves it: turn each left into the digit zero and each right into the digit one, and read the result in binary. Plotting it gives a staircase. It's flat on every removed interval, at heights one half, then one quarter and three quarters, and so on.</template>
+<template class="say" data-audio="audio/bd5c2765f6ffb3.mp3" data-dur="19.88">In the limit, we get the Cantor function: continuous, increasing from zero to one, with derivative zero everywhere except on a set of measure zero. All its growth happens on the dust of the Cantor set. Keep this example in mind: it shows that measure zero sets can be large, and that the derivative can miss everything.</template>
 </div>
 
 <span class="pg"><a href="scans/L05-09.jpg" target="_blank" rel="noopener">original notes · p. 9 ↗</a></span>
 <h2>4. Measures</h2>
 <div class="env defn" data-label="Def 4.1">
-<template class="say">Chapter four: measures. Definition four point one. Given a measurable space X with sigma algebra M, a measure is a function mu from M to zero through infinity such that mu of the empty set is zero, and mu is countably additive: for every family of pairwise disjoint measurable sets, the measure of the union is the sum of the measures. The triple X, M, mu is a measure space.</template>
+<template class="say" data-audio="audio/6459ce795549cc.mp3" data-dur="24.45">Chapter four: measures. Definition four point one. Given a measurable space X with sigma algebra M, a measure is a function mu from M to zero through infinity such that mu of the empty set is zero, and mu is countably additive: for every family of pairwise disjoint measurable sets, the measure of the union is the sum of the measures. The triple X, M, mu is a measure space.</template>
 <p>Let $(X,\M)$ be a measurable space. A <mark>measure</mark> on $(X,\M)$ is a function $\mu:\M\to[0,+\infty]$ such that</p>
 <ol type="i">
 <li>$\mu(\emptyset) = 0$,</li>
@@ -209,7 +210,7 @@ $$d_n := \begin{cases}1 & \text{if } c_n = 2,\\ 0 & \text{if } c_n = 0.\end{case
 </div>
 
 <div class="env ex" data-label="Examples 4.2">
-<template class="say">Examples. a: counting measure, on all subsets: the number of elements if finite, infinity otherwise. b: the Dirac measure at a point a zero: one if the set contains a zero, zero if not. A unit mass sitting at one point. c: on the sigma algebra of countable or co-countable sets, the measure that is zero on countable sets and one on uncountable ones.</template>
+<template class="say" data-audio="audio/a6fc138cfba2d3.mp3" data-dur="23.83">Examples. a: counting measure, on all subsets: the number of elements if finite, infinity otherwise. b: the Dirac measure at a point a zero: one if the set contains a zero, zero if not. A unit mass sitting at one point. c: on the sigma algebra of countable or co-countable sets, the measure that is zero on countable sets and one on uncountable ones.</template>
 <p>a) <mark>Counting measure</mark> on a set $X$, with $\M = \mathcal P(X)$:
 $$\mu(E) = \begin{cases}\#E & \text{if } E \text{ is finite, (\# of elems. of } E)\\ +\infty & \text{—}.\end{cases}$$</p>
 <p>b) <mark>Dirac measure</mark>. Let $(X,\M)$ be a measurable space, and let $a_0\in X$.
@@ -220,7 +221,7 @@ $$\mu(E) := \begin{cases}0 & \text{if } E \text{ is countable},\\ 1 & \text{if }
 
 <span class="pg"><a href="scans/L05-10.jpg" target="_blank" rel="noopener">original notes · p. 10 ↗</a></span>
 <div class="env prop" data-label="Proposition 4.3">
-<template class="say">Proposition four point three. Measures are monotone, and the measure of a difference F minus E is mu of F minus mu of E, provided mu of E is finite, so that we never subtract infinity from infinity.</template>
+<template class="say" data-audio="audio/e82dd6adfd5418.mp3" data-dur="13.63">Proposition four point three. Measures are monotone, and the measure of a difference F minus E is mu of F minus mu of E, provided mu of E is finite, so that we never subtract infinity from infinity.</template>
 <p>Let $(X,\M,\mu)$ be a measure space and let $E,F\in\M$, $E\subseteq F$.</p>
 <ol type="i">
 <li>$\mu(E)\le\mu(F)$ [Monotonicity]</li>
@@ -234,7 +235,7 @@ proving (i). Furthermore, if $\mu(E)\lt+\infty$ then we get <span class="step">$
 </div>
 
 <div class="env prop" data-label="Proposition 4.4">
-<template class="say">Proposition four point four, inclusion exclusion: the measure of E union F is mu E plus mu F minus mu of the intersection, when the intersection has finite measure. We added the overlap twice, so subtract it once.</template>
+<template class="say" data-audio="audio/f2fb314be21a38.mp3" data-dur="14.76">Proposition four point four, inclusion exclusion: the measure of E union F is mu E plus mu F minus mu of the intersection, when the intersection has finite measure. We added the overlap twice, so subtract it once.</template>
 <p>Let $(X,\M,\mu)$ be a measure space, let $E,F\in\M$ with $\mu(E\cap F)\lt+\infty$. Then
 $$\boxed{\mu(E\cup F) = \mu(E)+\mu(F)-\mu(E\cap F).}$$</p>
 </div>
@@ -248,7 +249,7 @@ a union of three disjoint measurable sets. Then
 
 <span class="pg"><a href="scans/L05-11.jpg" target="_blank" rel="noopener">original notes · p. 11 ↗</a></span>
 <div class="env prop" data-label="Proposition 4.5" data-title="[Countable subadditivity]">
-<template class="say">Proposition four point five: measures are countably subadditive, by the same disjointification trick as before.</template>
+<template class="say" data-audio="audio/5c18910ba0e3e7.mp3" data-dur="7.34">Proposition four point five: measures are countably subadditive, by the same disjointification trick as before.</template>
 <p>Let $(X,\M,\mu)$ be a measure space, and let $\{E_n\}_{n\in\N}\subseteq\M$. Then
 $$\mu\Big(\bigcup_{n=1}^\infty E_n\Big)\le\sum_{n=1}^\infty\mu(E_n).$$</p>
 </div>
@@ -260,7 +261,7 @@ $$\mu\Big(\bigcup_{n=1}^\infty E_n\Big)\le\sum_{n=1}^\infty\mu(E_n).$$</p>
 </div>
 
 <div class="env prop" data-label="Proposition 4.6" data-title="[Measure of an Increasing Union]">
-<template class="say">Proposition four point six, continuity from below. If the sets E n increase, the measure of their union is the limit of their measures. The proof slices the union into rings: E n minus E n minus one. These are disjoint, so countable additivity applies, and the partial sums telescope to mu of E k.</template>
+<template class="say" data-audio="audio/8bb588c1929fc0.mp3" data-dur="20.35">Proposition four point six, continuity from below. If the sets E n increase, the measure of their union is the limit of their measures. The proof slices the union into rings: E n minus E n minus one. These are disjoint, so countable additivity applies, and the partial sums telescope to mu of E k.</template>
 <p>Let $(X,\M,\mu)$ be a measure space, and let $E_n\in\M$ be such that $E_n\subseteq E_{n+1}$, $\forall n\in\N$. Then
 $$\mu\Big(\bigcup_{n=1}^\infty E_n\Big) = \lim_{n\to+\infty}\mu(E_n)$$
 (see also Prop 6.2, still valid for regular outer measures).</p>
@@ -277,7 +278,7 @@ $$\mu\Big(\bigcup_{n=1}^\infty E_n\Big) = \lim_{n\to+\infty}\mu(E_n)$$
 
 <span class="pg"><a href="scans/L05-12.jpg" target="_blank" rel="noopener">original notes · p. 12 ↗</a></span>
 <div class="env prop" data-label="Proposition 4.7" data-title="[Measure of a Decreasing Intersection]">
-<template class="say">Proposition four point seven, continuity from above. If the sets E n decrease and E one has finite measure, the measure of the intersection is the limit of the measures. The finiteness assumption matters: the half lines from n to infinity decrease to the empty set, but each has infinite measure. The figure shows both.</template>
+<template class="say" data-audio="audio/c8b4d99d496576.mp3" data-dur="20.48">Proposition four point seven, continuity from above. If the sets E n decrease and E one has finite measure, the measure of the intersection is the limit of the measures. The finiteness assumption matters: the half lines from n to infinity decrease to the empty set, but each has infinite measure. The figure shows both.</template>
 <p>Let $(X,\M,\mu)$ be a measure space, and let $E_n\in\M$ be such that $E_n\supseteq E_{n+1}$, $\forall n\in\N$, and $\mu(E_1)\lt+\infty$. Then
 $$\mu\Big(\bigcap_{n=1}^\infty E_n\Big) = \lim_{n\to+\infty}\mu(E_n).$$</p>
 </div>
@@ -298,7 +299,7 @@ $$\mu\Big(\bigcap_{n=1}^\infty E_n\Big) = \lim_{n\to+\infty}\mu(E_n).\ \blacksqu
 </figure>
 
 <div class="env defn" data-label="Def 4.8">
-<template class="say">Definition four point eight. A measure is complete if every subset of a null set is measurable, and then automatically null. Equivalently, M is complete with respect to mu.</template>
+<template class="say" data-audio="audio/4f5df9f61dac24.mp3" data-dur="11.18">Definition four point eight. A measure is complete if every subset of a null set is measurable, and then automatically null. Equivalently, M is complete with respect to mu.</template>
 <p>Given a measure space $(X,\M,\mu)$, the measure $\mu$ is said to be <mark>complete</mark> if for every $E\in\M$ with $\mu(E) = 0$ it follows that every $F\subseteq E$ also belongs to $\M$. [equivalently, we say that <u>$\M$ is complete with respect to $\mu$</u>].</p>
 </div>
 

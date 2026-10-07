@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lecture 11: Characterising Lebesgue Measurable Sets; Completion; Measurable Functions</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%E2%88%AB%3C/text%3E%3C/svg%3E">
 <meta name="description" content="Inner regularity of Lebesgue measure; approximation by open/closed, G-delta/F-sigma and Borel sets; Hausdorff measure regularity; finite Borel measures on metric spaces; completion of a σ-algebra; measurable functions.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;650&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
@@ -31,7 +32,7 @@ The small “original notes” links open the scanned page the text was transcri
 
 <span class="pg"><a href="scans/L11-01.jpg" target="_blank" rel="noopener">original notes · p. 1 ↗</a></span>
 <div class="env proof" data-label="Proof of Thm 6.13, Step 2 (inner regularity)">
-<template class="say">Lecture eleven finishes theorem six point thirteen with step two, inner regularity. Let E be Lebesgue measurable. First suppose E is bounded, inside a compact set F. By step one, outer regularity, the set F minus E is contained in an open set U with only epsilon to spare. Then K equals F minus U is compact and lies inside E, and its measure is within epsilon of E's. If E is unbounded, cut it with balls of radius k: E k equals E intersect the ball. If E has infinite measure, compact subsets of the E k have measure going to infinity. If E has finite measure, choose k with E k within epsilon over two, and a compact subset of E k within another epsilon over two.</template>
+<template class="say" data-audio="audio/b62ddfc1137b95.mp3" data-dur="45.69">Lecture eleven finishes theorem six point thirteen with step two, inner regularity. Let E be Lebesgue measurable. First suppose E is bounded, inside a compact set F. By step one, outer regularity, the set F minus E is contained in an open set U with only epsilon to spare. Then K equals F minus U is compact and lies inside E, and its measure is within epsilon of E's. If E is unbounded, cut it with balls of radius k: E k equals E intersect the ball. If E has infinite measure, compact subsets of the E k have measure going to infinity. If E has finite measure, choose k with E k within epsilon over two, and a compact subset of E k within another epsilon over two.</template>
 <p><u>step 2</u> Assume that $E\in\mathcal L(\R^N)$ i.e., is Lebesgue measurable. By monotonicity,
 $$\sup\{\mathcal L^N(K) : K\subset E,\ K\text{ compact}\}\le\mathcal L^N(E).$$
 We prove that
@@ -54,19 +55,19 @@ $$\mathcal L^N(E) = \lim_{k\to+\infty}\mathcal L^N(E_k).$$</p>
 </div>
 
 <div>
-<template class="say">Next we see that a set is Lebesgue measurable if and only if it can be approximated from outside by open sets in the following strong sense.</template>
+<template class="say" data-audio="audio/226e98d0c84231.mp3" data-dur="8.7">Next we see that a set is Lebesgue measurable if and only if it can be approximated from outside by open sets in the following strong sense.</template>
 <p>Next, we will see that a set is Lebesgue measurable iff it can be approximated by the outside by open sets in the following sense:</p>
 </div>
 
 <div class="env thm" data-label="Thm 6.14">
-<template class="say">Theorem six point fourteen. E is Lebesgue measurable if and only if for every epsilon there's an open set U containing E such that the outer measure of U minus E is less than epsilon. Note the difference from outer regularity, which only says the outer measure of U is within epsilon of that of E; for a non measurable set, U minus E can still be large.</template>
+<template class="say" data-audio="audio/0b9456185f490d.mp3" data-dur="23.04">Theorem six point fourteen. E is Lebesgue measurable if and only if for every epsilon there's an open set U containing E such that the outer measure of U minus E is less than epsilon. Note the difference from outer regularity, which only says the outer measure of U is within epsilon of that of E; for a non measurable set, U minus E can still be large.</template>
 <p>A set $E\subset\R^N$ is Lebesgue measurable <mark>if and only if</mark> for every $\eps\gt0$ there exists an open set $U\supset E$ such that
 $$\boxed{(\mathcal L^N)^*(U\setminus E)\lt\eps.}\tag{6.12}$$
 [$\Rightarrow(\mathcal L^N)^*(U)\le(\mathcal L^N)^*(E)+\eps$; see Def 6.5]</p>
 </div>
 
 <div class="env cor" data-label="Corollary 6.13*" data-title="[Borel regularity of (ℒᴺ)*]">
-<template class="say">Corollary six point thirteen star: Lebesgue outer measure is Borel regular. Every set E sits in a Borel set B with the same outer measure: intersect open sets U n containing E with measure within one over n.</template>
+<template class="say" data-audio="audio/8cd44f3e5f0178.mp3" data-dur="14.44">Corollary six point thirteen star: Lebesgue outer measure is Borel regular. Every set E sits in a Borel set B with the same outer measure: intersect open sets U n containing E with measure within one over n.</template>
 <p>If $E\subseteq\R^N$ then $\exists B\in\B(\R^N)$ s.t. $E\subseteq B$, $(\mathcal L^N)^*(E) = \mathcal L^N(B)$.</p>
 <p><u>Proof</u> (or see Rmk 6.8) By Thm 6.13 $\forall n\in\N$ $\exists U_n$ open, $E\subseteq U_n$, $\mathcal L^N(U_n)\le(\mathcal L^N)^*(E)+1/n$. Set $B := \bigcap_{n=1}^\infty U_n\in\B(\R^N)$. Then $E\subseteq B$, $\mathcal L^N(B)\le\mathcal L^N(U_n)\le(\mathcal L^N)^*(E)+1/n$ for all $n\in\N$, thus $\mathcal L^N(B)\le(\mathcal L^N)^*(E)$. <span class="qed">■</span></p>
 <p class="note">Radon outer meas. is Borel regular</p>
@@ -74,7 +75,7 @@ $$\boxed{(\mathcal L^N)^*(U\setminus E)\lt\eps.}\tag{6.12}$$
 
 <span class="pg"><a href="scans/L11-03.jpg" target="_blank" rel="noopener">original notes · p. 3 ↗</a></span>
 <div class="env proof" data-label="Proof of Thm 6.14" data-title="[READ THE PROOF]">
-<template class="say">Proof of theorem six point fourteen. Forward: if E is measurable with finite measure, outer regularity gives U with measure less than E's plus epsilon, and measurability lets us subtract: the measure of U minus E is less than epsilon. If E has infinite measure, cut it into bounded pieces E k, give each an open U k with excess epsilon over two to the k, and take the union. Backward: given the condition, test measurability on any set A. Split A minus E into A minus U and the part of A inside U minus E, which costs less than epsilon. Since U is open, hence measurable, the pieces A intersect U and A minus U add up to A.</template>
+<template class="say" data-audio="audio/369807d6a28c01.mp3" data-dur="42.51">Proof of theorem six point fourteen. Forward: if E is measurable with finite measure, outer regularity gives U with measure less than E's plus epsilon, and measurability lets us subtract: the measure of U minus E is less than epsilon. If E has infinite measure, cut it into bounded pieces E k, give each an open U k with excess epsilon over two to the k, and take the union. Backward: given the condition, test measurability on any set A. Split A minus E into A minus U and the part of A inside U minus E, which costs less than epsilon. Since U is open, hence measurable, the pieces A intersect U and A minus U add up to A.</template>
 <p>[$\Rightarrow$] Assume that $E$ is Lebesgue measurable.</p>
 <p>If $\mathcal L^N(E)\lt+\infty$, fix $\eps\gt0$. By Thm 6.13 (6.7) there exists $U$ open, $E\subset U$, and $\mathcal L^N(U)\lt\mathcal L^N(E)+\eps$.</p>
 <p><span class="step">Since $E$ is measurable, $\mathcal L^N(U) = \mathcal L^N(U\cap E)+\mathcal L^N(U\setminus E) = \mathcal L^N(E)+\mathcal L^N(U\setminus E)$
@@ -94,18 +95,18 @@ $$(\mathcal L^N)^*(A)\ge(\mathcal L^N)^*(A\cap E)+(\mathcal L^N)^*(A\setminus E)
 
 <span class="pg"><a href="scans/L11-04.jpg" target="_blank" rel="noopener">original notes · p. 4 ↗</a></span>
 <div>
-<template class="say">The following theorem characterises Lebesgue measurable sets as those that can be squeezed between open and closed sets.</template>
+<template class="say" data-audio="audio/58f4ba44120470.mp3" data-dur="7.27">The following theorem characterises Lebesgue measurable sets as those that can be squeezed between open and closed sets.</template>
 <p>The following theorem gives another characterization of Lebesgue measurable sets as those that can be "squeezed" between open and closed sets.</p>
 </div>
 
 <div class="env thm" data-label="Thm 6.15">
-<template class="say">Theorem six point fifteen. E is Lebesgue measurable if and only if for every epsilon there exist an open U and a closed F with F inside E inside U and the measure of U minus F less than epsilon. If E has finite measure, F can be taken compact.</template>
+<template class="say" data-audio="audio/8abe17c081b9de.mp3" data-dur="17.22">Theorem six point fifteen. E is Lebesgue measurable if and only if for every epsilon there exist an open U and a closed F with F inside E inside U and the measure of U minus F less than epsilon. If E has finite measure, F can be taken compact.</template>
 <p>A set $E\subseteq\R^N$ is Lebesgue measurable <mark>if and only if</mark> for every $\eps\gt0$ there exist an open set $U$ and a closed set $F$ such that
 $$\boxed{F\subset E\subset U\quad\text{and}\quad\mathcal L^N(U\setminus F)\lt\eps.}\tag{6.13}$$
 If, in addition, $\mathcal L^N(E)\lt+\infty$ then $F$ may be chosen to be <mark>compact</mark>.</p>
 </div>
 <div class="env proof" data-label="Proof" data-title="[READ THE PROOF!]">
-<template class="say">Proof. If E is measurable, so is its complement. Apply theorem six point fourteen to both: open U around E and open H around the complement, each with excess less than epsilon over two. Then F equals the complement of H is closed, inside E, and U minus F splits into U minus E and E minus F, which is H minus the complement of E. Conversely, if E can be squeezed, then U minus E is inside U minus F, so theorem six point fourteen applies. For finite measure, use inner regularity to get a compact K instead.</template>
+<template class="say" data-audio="audio/6ea5cf6a1498eb.mp3" data-dur="35.86">Proof. If E is measurable, so is its complement. Apply theorem six point fourteen to both: open U around E and open H around the complement, each with excess less than epsilon over two. Then F equals the complement of H is closed, inside E, and U minus F splits into U minus E and E minus F, which is H minus the complement of E. Conversely, if E can be squeezed, then U minus E is inside U minus F, so theorem six point fourteen applies. For finite measure, use inner regularity to get a compact K instead.</template>
 <p>[$\Rightarrow$] Assume that $E$ is Lebesgue measurable. Then $E^c$ is Lebesgue measurable, and by Thm 6.14 there exist open sets $U\supset E$ and $H\supset(\R^N\setminus E)$ s.t.
 $$\mathcal L^N(U\setminus E)\lt\frac\eps2,\quad\mathcal L^N(H\setminus E^c)\lt\frac\eps2.$$</p>
 <p>Setting $F := \R^N\setminus H$, then $F$ is closed, $F\subset E\subset U$, and
@@ -123,13 +124,13 @@ $$\mathcal L^N(U\setminus K) = \mathcal L^N(U\setminus E)+\mathcal L^N(E\setminu
 </div>
 
 <div class="env defn" data-label="Def 6.16">
-<template class="say">Definition six point sixteen. A G delta set is a countable intersection of open sets; an F sigma set is a countable union of closed sets. Both are Borel.</template>
+<template class="say" data-audio="audio/9c2b4679d57246.mp3" data-dur="11.54">Definition six point sixteen. A G delta set is a countable intersection of open sets; an F sigma set is a countable union of closed sets. Both are Borel.</template>
 <p>A <mark>G-delta</mark> in $\R^N$ is a countable intersection of open sets, and a <mark>F-sigma</mark> is a countable union of closed sets.</p>
 <p>Note that <mark>G-delta and F-sigma set are Borel sets.</mark></p>
 </div>
 
 <div class="env thm" data-label="Thm 6.17">
-<template class="say">Theorem six point seventeen. E is Lebesgue measurable if and only if it's squeezed between an F sigma set F and a G delta set G with G minus F of measure zero. Proof: apply six point fifteen with epsilon one over k, then take the union of the closed sets and the intersection of the open sets. Conversely, E minus F is a subset of a Borel null set, hence measurable by completeness, and E is F union E minus F.</template>
+<template class="say" data-audio="audio/a254dd7e2647a0.mp3" data-dur="26.65">Theorem six point seventeen. E is Lebesgue measurable if and only if it's squeezed between an F sigma set F and a G delta set G with G minus F of measure zero. Proof: apply six point fifteen with epsilon one over k, then take the union of the closed sets and the intersection of the open sets. Conversely, E minus F is a subset of a Borel null set, hence measurable by completeness, and E is F union E minus F.</template>
 <p>A set $E\subset\R^N$ is Lebesgue measurable if and only if there exist a G-delta $G$ and a F-sigma $F$ such that
 $$F\subset E\subset G\quad\text{and}\quad\mathcal L^N(G\setminus F) = 0.$$</p>
 </div>
@@ -142,7 +143,7 @@ $$F\subset E\subset G\quad\text{and}\quad\mathcal L^N(G\setminus F) = 0.$$</p>
 </div>
 
 <div class="env thm" data-label="Theorem 6.18">
-<template class="say">Theorem six point eighteen. E is Lebesgue measurable if and only if E is a Borel set B union a null set A, where A is contained in a Borel null set H. So Lebesgue measurable sets are Borel sets up to null sets.</template>
+<template class="say" data-audio="audio/2bbb3273f0bdca.mp3" data-dur="14.7">Theorem six point eighteen. E is Lebesgue measurable if and only if E is a Borel set B union a null set A, where A is contained in a Borel null set H. So Lebesgue measurable sets are Borel sets up to null sets.</template>
 <p>$E\subseteq\R^N$ is Lebesgue measurable iff there exist $B\in\B(\R^N)$ and $A\in\mathcal L(\R^N)$ (Lebesgue measurable) with
 $$\boxed{E = B\cup A}\quad\text{and}\quad\mathcal L^N(A) = 0,\ \text{with } A\subseteq H\in\B(\R^N) \text{ with } \mathcal L^N(H) = 0.$$</p>
 </div>
@@ -156,21 +157,21 @@ $$\boxed{E = B\cup A}\quad\text{and}\quad\mathcal L^N(A) = 0,\ \text{with } A\su
 </div>
 
 <div class="explainer" data-scene="borel-plus-null" data-title="Every Lebesgue set is Borel up to a null set">
-<template class="say">Let's picture theorems six point fifteen to six point eighteen. Here's a Lebesgue measurable set E, drawn as a shape with a ragged, dusty boundary.</template>
-<template class="say">Theorem six point fifteen squeezes it between a closed set F k inside and an open set U k outside, with the gap between them of measure less than one over k.</template>
-<template class="say">Do this for every k. The union of the closed sets is an F sigma set F inside E; the intersection of the open sets is a G delta set G containing E. The gap G minus F is inside every gap, so it has measure zero.</template>
-<template class="say">So E equals the Borel set F, plus the leftover E minus F, a dust that lives inside the Borel null set G minus F. That's theorem six point eighteen: Lebesgue measurable means Borel, plus a piece of a Borel null set. In the language of chapter seven: the Lebesgue sigma algebra is the completion of the Borel sigma algebra.</template>
+<template class="say" data-audio="audio/6a1aad862bad7e.mp3" data-dur="9.34">Let's picture theorems six point fifteen to six point eighteen. Here's a Lebesgue measurable set E, drawn as a shape with a ragged, dusty boundary.</template>
+<template class="say" data-audio="audio/0eb1919a93355c.mp3" data-dur="10.75">Theorem six point fifteen squeezes it between a closed set F k inside and an open set U k outside, with the gap between them of measure less than one over k.</template>
+<template class="say" data-audio="audio/153a52d477e86f.mp3" data-dur="15.45">Do this for every k. The union of the closed sets is an F sigma set F inside E; the intersection of the open sets is a G delta set G containing E. The gap G minus F is inside every gap, so it has measure zero.</template>
+<template class="say" data-audio="audio/867e0498057e1c.mp3" data-dur="21.76">So E equals the Borel set F, plus the leftover E minus F, a dust that lives inside the Borel null set G minus F. That's theorem six point eighteen: Lebesgue measurable means Borel, plus a piece of a Borel null set. In the language of chapter seven: the Lebesgue sigma algebra is the completion of the Borel sigma algebra.</template>
 </div>
 
 <div class="env thm" data-label="Thm 6.19">
-<template class="say">Theorem six point nineteen: Lebesgue outer measure is a Radon outer measure.</template>
+<template class="say" data-audio="audio/542378611999b4.mp3" data-dur="4.52">Theorem six point nineteen: Lebesgue outer measure is a Radon outer measure.</template>
 <p>The Lebesgue outer measure $(\mathcal L^N)^*$ is <mark>Radon</mark>.</p>
 <p><u>Proof</u> It follows from Def 6.7, Prop 3.13, and Thm 6.13. <span class="qed">■</span></p>
 </div>
 
 <span class="pg"><a href="scans/L11-07.jpg" target="_blank" rel="noopener">original notes · p. 7 ↗</a></span>
 <div class="env thm" data-label="Theorem 6.20">
-<template class="say">Theorem six point twenty, for Hausdorff measures. H s is a Borel measure on R N; it's Borel regular; and Borel sets of finite H s measure are inner regular. Note, from example four point ten, for s less than N, every open set has infinite H s measure, so outer regularity by open sets would be useless there. The proof is an exercise.</template>
+<template class="say" data-audio="audio/5526f5ed69da04.mp3" data-dur="22.95">Theorem six point twenty, for Hausdorff measures. H s is a Borel measure on R N; it's Borel regular; and Borel sets of finite H s measure are inner regular. Note, from example four point ten, for s less than N, every open set has infinite H s measure, so outer regularity by open sets would be useless there. The proof is an exercise.</template>
 <p>Let $0\le s\lt+\infty$.</p>
 <ol type="i">
 <li>$\mathcal H^s_0$ is a Borel measure on $\R^N$;</li>
@@ -182,7 +183,7 @@ $$\boxed{E = B\cup A}\quad\text{and}\quad\mathcal L^N(A) = 0,\ \text{with } A\su
 </div>
 
 <div class="env thm" data-label="Thm 6.21">
-<template class="say">An extension of theorem six point fifteen to metric spaces, theorem six point twenty one. For a finite Borel measure on a metric space, every Borel set A can be squeezed between a closed set C and an open set U with the measure of U minus C less than epsilon. The proof is a beautiful application of Dynkin's pi lambda theorem: the good sets, those that can be squeezed, form a lambda system containing the open sets, which are a pi system generating the Borel sets.</template>
+<template class="say" data-audio="audio/ed4170a412fdcb.mp3" data-dur="30.97">An extension of theorem six point fifteen to metric spaces, theorem six point twenty one. For a finite Borel measure on a metric space, every Borel set A can be squeezed between a closed set C and an open set U with the measure of U minus C less than epsilon. The proof is a beautiful application of Dynkin's pi lambda theorem: the good sets, those that can be squeezed, form a lambda system containing the open sets, which are a pi system generating the Borel sets.</template>
 <p>Let $(X,d)$ be a metric space, and let $\mu$ be a finite Borel measure on $X$. Then for all $A\in\B(X)$ and every $\eps\gt0$ there exist a closed set $C$ and an open set $U$ such that $C\subseteq A\subseteq U$ and $\mu(U\setminus C)\lt\eps$.</p>
 </div>
 <div class="env proof" data-label="Proof" data-title="[READ THE PROOF]">
@@ -224,7 +225,7 @@ Then <span class="step">$C_2\setminus U_1\subseteq B\setminus A\subseteq U_2\set
 <span class="pg"><a href="scans/L11-11.jpg" target="_blank" rel="noopener">original notes · p. 11 ↗</a></span>
 <h2>7. Completion of a σ-algebra w.r.t. a measure</h2>
 <div>
-<template class="say">Chapter seven: completion. Given a measure space, let N be the collection of mu null sets: subsets of measurable sets of measure zero. Recall M is complete if N is inside M. Carathéodory's construction always gives a complete sigma algebra. The completion of M is the collection of all B union A with B in M and A null. Proposition seven point two: the Lebesgue sigma algebra is the completion of the Borel sigma algebra with respect to Lebesgue measure. That's the essence of theorem six point eighteen.</template>
+<template class="say" data-audio="audio/276b76e2b9f72d.mp3" data-dur="35.09">Chapter seven: completion. Given a measure space, let N be the collection of mu null sets: subsets of measurable sets of measure zero. Recall M is complete if N is inside M. Carathéodory's construction always gives a complete sigma algebra. The completion of M is the collection of all B union A with B in M and A null. Proposition seven point two: the Lebesgue sigma algebra is the completion of the Borel sigma algebra with respect to Lebesgue measure. That's the essence of theorem six point eighteen.</template>
 <p>Let $(X,\M,\mu)$ be a measure space, and let
 $$\mathcal N := \{A\subseteq X : \exists H\in\M\text{ with }A\subseteq H\text{ and }\mu(H) = 0\}.$$
 … the set of all $\mu$-null subsets of $X$.</p>
@@ -240,7 +241,7 @@ $$\M_\mu := \{B\cup A : B\in\M,\ A\in\mathcal N\}.$$</p>
 <p><u>Proof</u> This is the essence of Thm 6.18. <span class="qed">■</span></p>
 </div>
 <div class="env lemma" data-label="Lemma 7.3">
-<template class="say">Lemma seven point three. E is in the completion if and only if it's sandwiched between two sets F and G of M whose difference is null. Compare with theorem six point seventeen.</template>
+<template class="say" data-audio="audio/626130e778dc64.mp3" data-dur="11.48">Lemma seven point three. E is in the completion if and only if it's sandwiched between two sets F and G of M whose difference is null. Compare with theorem six point seventeen.</template>
 <p>$E\in\M_\mu$ if and only if there exist $F,G\in\M$ such that $F\subseteq E\subseteq G$ and $\mu(G\setminus F) = 0$</p>
 <p><u>Note</u>: Compare with Thm 6.17.</p>
 </div>
@@ -253,7 +254,7 @@ $$\M_\mu := \{B\cup A : B\in\M,\ A\in\mathcal N\}.$$</p>
 </div>
 
 <div class="env thm" data-label="Thm 7.4">
-<template class="say">Theorem seven point four. The completion is a sigma algebra; the measure extends to it by mu bar of B union A equals mu of B, which is well defined, does not depend on the decomposition; and the completion is complete with respect to mu bar.</template>
+<template class="say" data-audio="audio/851acb65bb7a10.mp3" data-dur="16.7">Theorem seven point four. The completion is a sigma algebra; the measure extends to it by mu bar of B union A equals mu of B, which is well defined, does not depend on the decomposition; and the completion is complete with respect to mu bar.</template>
 <p>Let $(X,\M,\mu)$ be a measure space, and let $(X,\M_\mu,\bar\mu)$ be its completion, where $\bar\mu(E) := \mu(B)$ if $E\in\M_\mu$ and $E = B\cup A$, $B\in\M$, $A\in\mathcal N$. (we'll see later that $\bar\mu$ is well defined, it <u>does not</u> depend on the decomposition $B/A$)</p>
 <p>Then</p>
 <ol type="i">
@@ -263,7 +264,7 @@ $$\M_\mu := \{B\cup A : B\in\M,\ A\in\mathcal N\}.$$</p>
 </ol>
 </div>
 <div class="env proof" data-label="Proof" data-title="[READ THE PROOF]">
-<template class="say">The proof. Complements: by the lemma, sandwich E between F and G; then the complement of E is sandwiched between the complements of G and F, with the same null gap. Countable unions: unions of the B parts and of the null parts. Well defined: two decompositions differ by null sets, so the measures of the B parts agree. Countable additivity follows from that of mu. Completeness: a subset of a null set of the completion is sandwiched between the empty set and a null set of M.</template>
+<template class="say" data-audio="audio/3fd76a9b78b971.mp3" data-dur="31.44">The proof. Complements: by the lemma, sandwich E between F and G; then the complement of E is sandwiched between the complements of G and F, with the same null gap. Countable unions: unions of the B parts and of the null parts. Well defined: two decompositions differ by null sets, so the measures of the B parts agree. Countable additivity follows from that of mu. Completeness: a subset of a null set of the completion is sandwiched between the empty set and a null set of M.</template>
 <p>(i) clearly $\emptyset\in\M_\mu$.</p>
 <p><u>claim</u> $E\in\M_\mu\Rightarrow X\setminus E\in\M_\mu$</p>
 <p>By lemma 7.3 let $F,G\in\M$ with $F\subseteq E\subseteq G$, $\mu(G\setminus F) = 0$.</p>
@@ -288,19 +289,19 @@ $$\M_\mu := \{B\cup A : B\in\M,\ A\in\mathcal N\}.$$</p>
 </div>
 
 <div class="env rmk" data-label="Remark 7.5">
-<template class="say">Remark seven point five. Completing does not mean adding all sets of measure zero. Take Lebesgue measure but the trivial sigma algebra, just the empty set and R N. There are no non empty null sets in it, so the completion adds nothing.</template>
+<template class="say" data-audio="audio/458012d7119203.mp3" data-dur="14.89">Remark seven point five. Completing does not mean adding all sets of measure zero. Take Lebesgue measure but the trivial sigma algebra, just the empty set and R N. There are no non empty null sets in it, so the completion adds nothing.</template>
 <p>Note that taking the completion does <u>not</u> amount to including all sets of measure zero. Consider $\mu := \mathcal L^N$, $X := \R^N$, $\M := \{\emptyset,\R^N\}$. Then $\M_\mu = \M$.</p>
 </div>
 
 <span class="pg"><a href="scans/L11-15.jpg" target="_blank" rel="noopener">original notes · p. 15 ↗</a></span>
 <h2>8. Measurable Functions</h2>
 <div class="env defn" data-label="Def 8.1">
-<template class="say">Chapter eight: measurable functions. Definition eight point one. A function between measurable spaces is measurable if the preimage of every measurable set is measurable. Same pattern as continuity: preimages of open sets are open.</template>
+<template class="say" data-audio="audio/1bd7094a25abc3.mp3" data-dur="15.25">Chapter eight: measurable functions. Definition eight point one. A function between measurable spaces is measurable if the preimage of every measurable set is measurable. Same pattern as continuity: preimages of open sets are open.</template>
 <p>Let $(X,\M)$ and $(Y,\mathcal N)$ be measurable spaces. A function $f:X\to Y$ is said to be <mark>measurable</mark> if $f^{-1}(F)\in\M$ for every set $F\in\mathcal N$.</p>
 </div>
 
 <div class="env lemma" data-label="Lemma 8.2">
-<template class="say">Lemma eight point two. For any function f from a measurable space into a set Y, the sets whose preimage is measurable form a sigma algebra on Y. Because preimages commute with complements and unions.</template>
+<template class="say" data-audio="audio/aa5b744f46d420.mp3" data-dur="13.21">Lemma eight point two. For any function f from a measurable space into a set Y, the sets whose preimage is measurable form a sigma algebra on Y. Because preimages commute with complements and unions.</template>
 <p>Let $(X,\M)$ be a measurable space, and let $Y$ be a nonempty set. Let $f:X\to Y$. Then $\mathcal N' := \{F\subseteq Y : f^{-1}(F)\in\M\}$ is a σ-algebra.</p>
 </div>
 <div class="env proof" data-label="Proof" data-title="(see Def. 3.4)">
@@ -310,7 +311,7 @@ $$\M_\mu := \{B\cup A : B\in\M,\ A\in\mathcal N\}.$$</p>
 </div>
 
 <div class="env cor" data-label="Corollary 8.3">
-<template class="say">Corollary eight point three. If the target sigma algebra is generated by a family E, it's enough to check preimages of the generators. It's enough to test measurability on generators.</template>
+<template class="say" data-audio="audio/11488531322061.mp3" data-dur="11.78">Corollary eight point three. If the target sigma algebra is generated by a family E, it's enough to check preimages of the generators. It's enough to test measurability on generators.</template>
 <p>Let $(X,\M)$ and $(Y,\mathcal N)$ be measurable spaces, and let $\mathcal N = \sigma(\mathcal E)$, $\mathcal E\subset\mathcal P(Y)$ (i.e., $\sigma(\mathcal E)$ is the smallest σ-algebra that contains $\mathcal E$, see Def 3.8).</p>
 <p>Then $f:X\to Y$ is <u>measurable if and only if</u> $f^{-1}(F)\in\M$ for all $F\in\mathcal E$. [It is enough to test measurability on generators of $\mathcal N$]</p>
 </div>
@@ -321,7 +322,7 @@ $$\M_\mu := \{B\cup A : B\in\M,\ A\in\mathcal N\}.$$</p>
 
 <span class="pg"><a href="scans/L11-16.jpg" target="_blank" rel="noopener">original notes · p. 16 ↗</a></span>
 <div class="env rmk" data-label="Remark 8.4">
-<template class="say">Remark eight point four. One: when the target is a topological space, we use its Borel sigma algebra unless said otherwise; then f is measurable iff preimages of open sets are measurable. Two: between topological spaces with Borel sigma algebras, a measurable function is called a Borel function. Three: with the Lebesgue sets on the domain, Lebesgue measurable. Four: a function into the extended reals is measurable iff the sets where f is less than a, or greater than a, or at least a, are measurable for every real a. Five: continuous functions are Borel measurable.</template>
+<template class="say" data-audio="audio/2a78bf88b70eb9.mp3" data-dur="38.99">Remark eight point four. One: when the target is a topological space, we use its Borel sigma algebra unless said otherwise; then f is measurable iff preimages of open sets are measurable. Two: between topological spaces with Borel sigma algebras, a measurable function is called a Borel function. Three: with the Lebesgue sets on the domain, Lebesgue measurable. Four: a function into the extended reals is measurable iff the sets where f is less than a, or greater than a, or at least a, are measurable for every real a. Five: continuous functions are Borel measurable.</template>
 <p>(i) If $(X,\M)$ is a measurable space and $Y$ is a topological space, unless stated otherwise <u>it is understood that the σ-algebra on $Y$ is $\B(Y)$</u> (σ-algebra of Borel sets).</p>
 <p>By Corollary 8.3, $f:X\to Y$ is measurable if and only if $f^{-1}(U)\in\M$ for all $U\subset Y$ open.</p>
 <p>(ii) If $X$ and $Y$ are topological spaces and we consider $(X,\B(X))$, $(Y,\B(Y))$, then a measurable function $f:X\to Y$ is called a <mark>Borel function</mark>.</p>
@@ -334,7 +335,7 @@ $$\M_\mu := \{B\cup A : B\in\M,\ A\in\mathcal N\}.$$</p>
 </div>
 
 <figure class="viz" data-viz="superlevel" data-title="Measurability via superlevel sets">
-<template class="say">Remark eight point four, part four, in pictures. Drag the threshold a up and down. The highlighted set on the x axis is the preimage of a to infinity: all x where f is above a. A function is measurable exactly when all these sets are measurable. For an increasing function the superlevel set is always a half line, which is why increasing functions are Borel measurable, example eight point five. For a characteristic function, the preimage is one of four sets: E, its complement, everything, or nothing.</template>
+<template class="say" data-audio="audio/6285582e36dec6.mp3" data-dur="33.4">Remark eight point four, part four, in pictures. Drag the threshold a up and down. The highlighted set on the x axis is the preimage of a to infinity: all x where f is above a. A function is measurable exactly when all these sets are measurable. For an increasing function the superlevel set is always a half line, which is why increasing functions are Borel measurable, example eight point five. For a characteristic function, the preimage is one of four sets: E, its complement, everything, or nothing.</template>
 <figcaption>The superlevel set $f^{-1}((a,+\infty])$ is shown in yellow under the axis. For the <b>increasing</b> function it is always an interval $(b,+\infty)$ or $[b,+\infty)$ (Example 8.5 (i)); for $\chi_E$ it is $\emptyset$, $E$ or $X$ (Example 8.5 (ii)).</figcaption>
 </figure>
 
@@ -346,7 +347,7 @@ $$\M_\mu := \{B\cup A : B\in\M,\ A\in\mathcal N\}.$$</p>
 </div>
 
 <div class="env ex" data-label="Examples 8.5">
-<template class="say">Examples eight point five. One: increasing functions on R are Borel measurable. The preimage of a to infinity is a half line, open or closed at b, where b is the infimum of that preimage. Two: the characteristic function of E, one on E and zero off E, is measurable if and only if E is measurable, since the preimage of any set B is E, its complement, X or empty, depending on whether B contains one, zero, both or neither.</template>
+<template class="say" data-audio="audio/ed3d7795a47703.mp3" data-dur="27.05">Examples eight point five. One: increasing functions on R are Borel measurable. The preimage of a to infinity is a half line, open or closed at b, where b is the infimum of that preimage. Two: the characteristic function of E, one on E and zero off E, is measurable if and only if E is measurable, since the preimage of any set B is E, its complement, X or empty, depending on whether B contains one, zero, both or neither.</template>
 <p>(i) Let $f:\R\to\R$ be an increasing function. We claim that $f$ is Borel measurable (see Rmk 8.4 (ii)).</p>
 <p>In view of Corollary 8.3, it suffices to show that for all $a\in\R$, $f^{-1}((a,+\infty))\in\B(\R)$.</p>
 <p><span class="step">Since $f$ is increasing, if $b := \inf f^{-1}((a,+\infty))$ then either $f^{-1}((a,+\infty)) = (b,+\infty)\in\B(\R)$ or $f^{-1}((a,+\infty)) = [b,+\infty)\in\B(\R)$.<span class="why"><span class="wp">If $f(x)\gt a$ and $y\gt x$ then $f(y)\ge f(x)\gt a$: the preimage is "upward closed", so it's a ray from its infimum $b$, and whether $b$ itself is included depends on whether $f(b)\gt a$. (If the preimage is empty or all of $\R$, also Borel.)</span></span></span></p>
@@ -359,13 +360,13 @@ Thus <mark>$\chi_E$ is measurable iff $E\in\M$.</mark></p>
 
 <span class="pg"><a href="scans/L11-18.jpg" target="_blank" rel="noopener">original notes · p. 18 ↗</a></span>
 <div class="env prop" data-label="Proposition 8.6">
-<template class="say">Proposition eight point six. A composition of measurable functions is measurable, because preimages compose.</template>
+<template class="say" data-audio="audio/55925e382f11c7.mp3" data-dur="7.08">Proposition eight point six. A composition of measurable functions is measurable, because preimages compose.</template>
 <p>Let $(X,\M)$, $(Y,\mathcal N)$, $(Z,\mathcal D)$ be measurable spaces, let $f:X\to Y$ and $g:Y\to Z$ measurable functions. Then $g\circ f:X\to Z$ is measurable.</p>
 <p><u>Proof</u> If $F\in\mathcal D$ then $g^{-1}(F)\in\mathcal N$ and so $(g\circ f)^{-1}(F) = f^{-1}(g^{-1}(F))\in\M$. <span class="qed">■</span></p>
 </div>
 
 <div class="env rmk" data-label="Remark 8.7">
-<template class="say">Remark eight point seven, read carefully. One: if f is measurable into R d and g from R d to R d is Borel measurable, then g of f is measurable. Two: but if g is only Lebesgue measurable and f is Borel, g of f can fail to be measurable. The mismatch is in the middle: g pulls Borel sets back only to Lebesgue sets, and f only knows how to pull back Borel sets. Example four point twelve provides the counterexample, through the Lebesgue measurable non Borel set F equals g inverse of E.</template>
+<template class="say" data-audio="audio/49f706f86c9939.mp3" data-dur="34.55">Remark eight point seven, read carefully. One: if f is measurable into R d and g from R d to R d is Borel measurable, then g of f is measurable. Two: but if g is only Lebesgue measurable and f is Borel, g of f can fail to be measurable. The mismatch is in the middle: g pulls Borel sets back only to Lebesgue sets, and f only knows how to pull back Borel sets. Example four point twelve provides the counterexample, through the Lebesgue measurable non Borel set F equals g inverse of E.</template>
 <p class="note">Read</p>
 <p>(i) If $(X,\M)$ is a measurable space, $f:X\to\R^d$ is measurable and $g:\R^d\to\R^d$ is <u>Borel measurable</u>, then $g\circ f$ is measurable.</p>
 <p>This follows from Example 8.4 (i), per which for $f:X\to\R^d$ we consider the target as $(\R^d,\B(\R^d))$. Also, with $g:\R^d\to\R^d$ we take its target as $(\R^d,\B(\R^d))$. Therefore, if $B\in\B(\R^d)$ then $g^{-1}(B)\in\B(\R^d)$ ($g$ is Borel meas.) $\Rightarrow f^{-1}(g^{-1}(B))\in\M$, i.e., $(g\circ f)^{-1}(B)\in\M$.</p>

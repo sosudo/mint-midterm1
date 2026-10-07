@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lecture 3: Outer Measure of Rectangles and a Non-Measurable Set</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%E2%88%AB%3C/text%3E%3C/svg%3E">
 <meta name="description" content="Recap of the outer-measure recipe; proof that the outer measure of a rectangle is its volume; translation invariance; the Vitali set and failure of additivity.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;650&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
@@ -32,7 +33,7 @@ The small “original notes” links open the scanned page the text was transcri
 <span class="pg"><a href="scans/L03-01.jpg" target="_blank" rel="noopener">original notes · p. 1 ↗</a></span>
 <h2>Recap</h2>
 <div>
-<template class="say">Lecture three. Let's recap. We have a set X, a family of elementary sets containing the empty set whose countable unions cover X, and an elementary size rho with rho of the empty set zero. From these, mu star of any subset A is the infimum of the total rho over countable covers of A by elementary sets.</template>
+<template class="say" data-audio="audio/71f83120ed402d.mp3" data-dur="21.16">Lecture three. Let's recap. We have a set X, a family of elementary sets containing the empty set whose countable unions cover X, and an elementary size rho with rho of the empty set zero. From these, mu star of any subset A is the infimum of the total rho over countable covers of A by elementary sets.</template>
 <p>$X$, $\mathcal E\subset\mathcal P(X)$: $\emptyset\in\mathcal E$, $X = \bigcup_{n=1}^\infty X_n$, $X_n\in\mathcal E$</p>
 <p>$\rho:\mathcal E\to[0,+\infty]$, $\rho(\emptyset) = 0$</p>
 <p>$\ms:\mathcal P(X)\to[0,+\infty]$,
@@ -40,7 +41,7 @@ $$A\subseteq X,\quad \ms(A) := \inf\Big\{\sum_{n=1}^\infty\rho(E_n) : A\subseteq
 </div>
 
 <div>
-<template class="say">Proposition two point seven: mu star is an outer measure, and it's at most rho on elementary sets. Corollary two point eight: Lebesgue, Lebesgue Stieltjes and Hausdorff outer measures are outer measures. And the question: when is rho of E equal to mu star of E for elementary E? Proposition two point nine: exactly when rho is countably subadditive.</template>
+<template class="say" data-audio="audio/13296695f24724.mp3" data-dur="22.19">Proposition two point seven: mu star is an outer measure, and it's at most rho on elementary sets. Corollary two point eight: Lebesgue, Lebesgue Stieltjes and Hausdorff outer measures are outer measures. And the question: when is rho of E equal to mu star of E for elementary E? Proposition two point nine: exactly when rho is countably subadditive.</template>
 <p><mark>Prop 2.7</mark>: $\ms$ outer measure; $\ms(E)\le\rho(E)$, $E\in\mathcal E$</p>
 <p><mark>Corollary 2.8</mark>: $(\mathcal L^N)^*$, $\mu^*_f$, $\mathcal H^s_0$ (defined in 2.2, 2.3, 2.4) are outer measures</p>
 <p><u>Question</u>: ? $\rho(E) = \ms(E)$ if $E\in\mathcal E$?</p>
@@ -64,12 +65,12 @@ countably subadditive. <span class="qed">■</span></p>
 
 <h2>The outer measure of a rectangle</h2>
 <div class="env prop" data-label="Prop 2.11">
-<template class="say">Now the full proof of proposition two point eleven: the Lebesgue outer measure of any rectangle equals its volume.</template>
+<template class="say" data-audio="audio/bbbb2d2b4e75d2.mp3" data-dur="7.17">Now the full proof of proposition two point eleven: the Lebesgue outer measure of any rectangle equals its volume.</template>
 <p>$(\mathcal L^N)^*(R) = \ell(R)$ $\forall R$ rectangle</p>
 </div>
 
 <div class="env proof" data-label="Proof">
-<template class="say">The easy direction always holds, by proposition two point seven. The hard direction says no countable cover can be cheaper than the rectangle itself. The proof has three steps. Step one: we may use open rectangles in covers. Dilate each rectangle of a nearly optimal cover slightly, to an open one, adding at most epsilon over two to the n to its volume. Step two: if R is closed, it's compact, so a cover by open rectangles has a finite subcover. Extend all the faces of the finitely many rectangles into hyperplanes; this chops R into a grid of little sub rectangles, each sitting inside some cover rectangle. Then the volume of R is the sum of the little volumes, which is at most the sum of the cover volumes. Step three: for an arbitrary rectangle, approximate it from inside by a closed rectangle and use monotonicity.</template>
+<template class="say" data-audio="audio/71f4b14a498310.mp3" data-dur="51.56">The easy direction always holds, by proposition two point seven. The hard direction says no countable cover can be cheaper than the rectangle itself. The proof has three steps. Step one: we may use open rectangles in covers. Dilate each rectangle of a nearly optimal cover slightly, to an open one, adding at most epsilon over two to the n to its volume. Step two: if R is closed, it's compact, so a cover by open rectangles has a finite subcover. Extend all the faces of the finitely many rectangles into hyperplanes; this chops R into a grid of little sub rectangles, each sitting inside some cover rectangle. Then the volume of R is the sum of the little volumes, which is at most the sum of the cover volumes. Step three: for an arbitrary rectangle, approximate it from inside by a closed rectangle and use monotonicity.</template>
 <p>Always (Prop 2.7) $(\mathcal L^N)^*(R)\le\rho(R)$.</p>
 <p><u>step 1</u> claim that
 $$(\mathcal L^N)^*(R) = \inf\Big\{\sum_{n=1}^\infty\ell(R_n) : R\subseteq\bigcup_{n=1}^\infty R_n,\ R_n \text{ open}\Big\} = \alpha(R)$$</p>
@@ -97,12 +98,12 @@ $$(\mathcal L^N)^*(R) = \inf\Big\{\sum_{n=1}^\infty\ell(R_n) : R\subseteq\bigcup
 </div>
 
 <figure class="viz" data-viz="grid-cover" data-title="Compactness + extending faces (Step 2)">
-<template class="say">Here is step two in pictures. The blue rectangle R is covered by finitely many open rectangles. Extending every face into a full line chops R into a grid of cells, each lying inside one of the covering rectangles. So the area of R, which is the total area of the cells, can't exceed the total area of the cover. Press shuffle to try other covers.</template>
+<template class="say" data-audio="audio/d84b2a1682a0cc.mp3" data-dur="22.57">Here is step two in pictures. The blue rectangle R is covered by finitely many open rectangles. Extending every face into a full line chops R into a grid of cells, each lying inside one of the covering rectangles. So the area of R, which is the total area of the cells, can't exceed the total area of the cover. Press shuffle to try other covers.</template>
 <figcaption>Finitely many open rectangles cover $R$ (blue). Extending all faces (dashed) cuts $R$ into cells $J_k$; each cell is coloured by one cover rectangle containing it. Hence $\ell(R) = \sum\ell(J_k)\le\sum\ell(R_i)$.</figcaption>
 </figure>
 
 <div class="env rmk" data-label="Rmk 2.12">
-<template class="say">Remark two point twelve. Lebesgue outer measure is translation invariant, because translating an interval doesn't change its length, so translating a rectangle doesn't change its volume, and translating a cover gives a cover of the translated set with the same cost.</template>
+<template class="say" data-audio="audio/d8de7f0e347306.mp3" data-dur="16.49">Remark two point twelve. Lebesgue outer measure is translation invariant, because translating an interval doesn't change its length, so translating a rectangle doesn't change its volume, and translating a cover gives a cover of the translated set with the same cost.</template>
 <p><span class="step">$(\mathcal L^N)^*$ is translation invariant<span class="why"><span class="wp">If $\{R_n\}$ covers $E$ then $\{x_0+R_n\}$ covers $x_0+E$ at the same cost, since $\ell(x_0+R_n) = \ell(R_n)$. So $(\mathcal L^N)^*(x_0+E)\le(\mathcal L^N)^*(E)$. Applying this with $-x_0$ to the set $x_0+E$ gives the reverse inequality.</span></span></span></p>
 <p>$\ell(a+I) = \ell(I)$ $a\in\R$, $I$ interval.<br>
 $\ell(R) = \ell(x_0+R)$, $x_0\in\R^N$, $R\subset\R^N$</p>
@@ -111,7 +112,7 @@ $\ell(R) = \ell(x_0+R)$, $x_0\in\R^N$, $R\subset\R^N$</p>
 <span class="pg"><a href="scans/L03-04.jpg" target="_blank" rel="noopener">original notes · p. 4 ↗</a></span>
 <h2>Additivity fails for the outer measure</h2>
 <div>
-<template class="say">We would like additivity: if A and B are disjoint, the outer measure of the union is the sum. This is false in general! The problem is that the outer measure is defined for any subset of R N, and some subsets are so badly behaved that they cannot be assigned a measure. Remark two point thirteen constructs disjoint sets A and B where the outer measure of the union is strictly less than the sum.</template>
+<template class="say" data-audio="audio/301a34ca1e8f36.mp3" data-dur="23.87">We would like additivity: if A and B are disjoint, the outer measure of the union is the sum. This is false in general! The problem is that the outer measure is defined for any subset of R N, and some subsets are so badly behaved that they cannot be assigned a measure. Remark two point thirteen constructs disjoint sets A and B where the outer measure of the union is strictly less than the sum.</template>
 <p>Would like: <u>additivity</u> $A\cap B = \emptyset\overset{?}{\Rightarrow}(\mathcal L^N)^*(A\cup B) = (\mathcal L^N)^*(A)+(\mathcal L^N)^*(B)$</p>
 <p><u>False</u> (in general)!</p>
 <p><mark>Problem</mark>: $(\mathcal L^N)^*(A)$ is defined for <u>any</u> $A\subseteq\R^N$</p>
@@ -119,7 +120,7 @@ $\ell(R) = \ell(x_0+R)$, $x_0\in\R^N$, $R\subset\R^N$</p>
 </div>
 
 <div class="env rmk" data-label="Rmk 2.13">
-<template class="say">The construction is due to Vitali. On the interval from minus one to one, call two numbers equivalent if their difference is rational. Each equivalence class is a copy of the rationals shifted by a, intersected with the interval: a countable dense set. The interval splits into uncountably many such classes. The axiom of choice lets us pick exactly one representative from each class; collect them into a set V. The explainer animation below walks through why V cannot be measured.</template>
+<template class="say" data-audio="audio/faeb6d9b7e8f5e.mp3" data-dur="30.97">The construction is due to Vitali. On the interval from minus one to one, call two numbers equivalent if their difference is rational. Each equivalence class is a copy of the rationals shifted by a, intersected with the interval: a countable dense set. The interval splits into uncountably many such classes. The axiom of choice lets us pick exactly one representative from each class; collect them into a set V. The explainer animation below walks through why V cannot be measured.</template>
 <p>We construct $A, B\subseteq\R$ such that
 $$A\cap B = \emptyset\quad\text{and}\quad(\mathcal L^1)^*(A\cup B)\ \boxed{\lt}\ (\mathcal L^1)^*(A)+(\mathcal L^1)^*(B)$$</p>
 <p>$[-1,1]$ consider the equivalence relation:
@@ -159,16 +160,16 @@ $$\sum_{k=1}^n(\mathcal L^1)^*(r_k+V) = \sum_{k=1}^n(\mathcal L^1)^*(V) = n\unde
 </div>
 
 <div class="explainer" data-scene="vitali" data-title="The Vitali set: a set with no length">
-<template class="say">Let's build a set that has no sensible length. Start with the interval from minus one to one. Pick a point a.</template>
-<template class="say">Its equivalence class is everything you can reach from a by adding a rational number and staying inside the interval. That's a countable, dense dust of points. Pick another point, and you get a different dust, interleaved with the first. The interval splits into uncountably many of these dusts.</template>
-<template class="say">Now, using the axiom of choice, grab exactly one point from every dust. That's the Vitali set V. Nobody can write it down explicitly; we only know it exists.</template>
-<template class="say">Now shift V by each rational r k between minus two and two. These translated copies are pairwise disjoint: if two copies shared a point, two elements of V would differ by a rational, so they'd be in the same class, so they'd be equal. And together the copies cover the whole interval from minus one to one, because every point is a rational shift of its representative.</template>
-<template class="say">Now count lengths. All copies have the same outer measure as V. If that were zero, countably many copies would have total zero, but they cover an interval of length two. So the outer measure of V is positive.</template>
-<template class="say">But all the copies live inside the interval from minus three to three, of length six. If length were additive, n copies would have total length n times the outer measure of V, which exceeds six once n is large. Contradiction. So outer measure is not additive on all sets, and some sets, like V, must be excluded. In the next lecture we'll find exactly which sets to keep: the measurable ones.</template>
+<template class="say" data-audio="audio/69e46cc11e8894.mp3" data-dur="6.4">Let's build a set that has no sensible length. Start with the interval from minus one to one. Pick a point a.</template>
+<template class="say" data-audio="audio/6d75ac13ac37f9.mp3" data-dur="17.17">Its equivalence class is everything you can reach from a by adding a rational number and staying inside the interval. That's a countable, dense dust of points. Pick another point, and you get a different dust, interleaved with the first. The interval splits into uncountably many of these dusts.</template>
+<template class="say" data-audio="audio/15a920c20e4258.mp3" data-dur="10.58">Now, using the axiom of choice, grab exactly one point from every dust. That's the Vitali set V. Nobody can write it down explicitly; we only know it exists.</template>
+<template class="say" data-audio="audio/f689631fbaa253.mp3" data-dur="22.78">Now shift V by each rational r k between minus two and two. These translated copies are pairwise disjoint: if two copies shared a point, two elements of V would differ by a rational, so they'd be in the same class, so they'd be equal. And together the copies cover the whole interval from minus one to one, because every point is a rational shift of its representative.</template>
+<template class="say" data-audio="audio/27663cab70ba1d.mp3" data-dur="13.31">Now count lengths. All copies have the same outer measure as V. If that were zero, countably many copies would have total zero, but they cover an interval of length two. So the outer measure of V is positive.</template>
+<template class="say" data-audio="audio/8541dfd0dc3ea5.mp3" data-dur="23.32">But all the copies live inside the interval from minus three to three, of length six. If length were additive, n copies would have total length n times the outer measure of V, which exceeds six once n is large. Contradiction. So outer measure is not additive on all sets, and some sets, like V, must be excluded. In the next lecture we'll find exactly which sets to keep: the measurable ones.</template>
 </div>
 
 <div>
-<template class="say">In fact one can prove more, proposition two point fourteen: there is no function mu on all subsets of the real line that simultaneously gives intervals their length, is countably additive on disjoint sets, and is translation invariant. Something has to give, and what gives is the domain: we will only measure measurable sets.</template>
+<template class="say" data-audio="audio/a1ba927574e075.mp3" data-dur="20.5">In fact one can prove more, proposition two point fourteen: there is no function mu on all subsets of the real line that simultaneously gives intervals their length, is countably additive on disjoint sets, and is translation invariant. Something has to give, and what gives is the domain: we will only measure measurable sets.</template>
 <p>Can prove:</p>
 </div>
 <div class="env prop" data-label="Prop 2.14">
