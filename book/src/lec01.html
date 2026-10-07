@@ -1,0 +1,332 @@
+<lecture num="1" title="History, Jordan vs. Lebesgue, and the Riemann Integral" desc="Why measure theory exists; elementary sets, Jordan and Lebesgue measurability; Riemann sums and the limits of the Riemann integral.">
+
+<pg p="1"/>
+<h2>A Little Bit of History</h2>
+
+<div>
+<template class="say">Welcome to the course. Before any definitions, let's tell the story of how we got here, because measure theory was invented to answer a very concrete question. Around the eighteen fifties, Riemann asked: what does the integral from a to b of f of x d x actually mean? People had been computing integrals for two thousand years, but nobody had pinned down which functions you are allowed to integrate, or what the symbol means.</template>
+<p>It all started in the 1850's when Riemann questioned the meaning of
+$$\int_a^b f(x)\,dx.$$
+This concept of integration goes back to the classic antiquity to calculate certain areas, volumes, centers of mass, etc, i.e., the theory of integration.</p>
+</div>
+
+<div>
+<template class="say">The modern form of integration dates to the seventeenth century: Newton and Leibniz, and before them Fermat and Barrow. Their big discovery is the fundamental theorem of calculus, which says integration and differentiation undo each other. If you define F of x as the integral of f from a up to x, then F prime equals f. And conversely, if F prime equals f, the integral of f from a to b is just F of b minus F of a.</template>
+<p>The modern theory of integration took the form by which it is known today since the 17<sup>th</sup> century, with the works of Newton and Leibniz, and before them Fermat and Barrow.</p>
+
+<p>This determines the birth of infinitesimal calculus: the dichotomy between integration and differentiation, basically as "inverse operations of each other", and we call the Fundamental Thm. of Calculus:</p>
+<ul>
+<li>$\displaystyle F(x) = \int_a^x f(t)\,dt \;\Rightarrow\; F'(x) = f(x)$</li>
+<li>$\displaystyle F'(x) = f(x) \;\Rightarrow\; \int_a^b f(t)\,dt = F(b) - F(a).$</li>
+</ul>
+</div>
+
+<div>
+<template class="say">In the early nineteenth century Cauchy started making calculus rigorous: precise definitions of limit, derivative, integral and continuity. He gave the first satisfactory definition of the integral, but only for continuous functions.</template>
+<p>In the beginning of the 19<sup>th</sup> century, Cauchy initiated the study of rigorous ideas central to Calculus, such as:</p>
+<pg p="2"/>
+<ul style="list-style:none">
+<li>limit</li>
+<li>derivative</li>
+<li>integral</li>
+<li>continuity, etc.</li>
+</ul>
+<p>and introduced the first satisfactory notion of integral, albeit restricted to continuous functions.</p>
+</div>
+
+<div>
+<template class="say">Then, in the middle of the century, Fourier's work on heat and waves forced the issue. Which functions can be written as a Fourier series? How do we solve the partial differential equations of physics? And, surprisingly deep: what do we even mean by a function? Riemann realised that integration had to be extended beyond continuous functions, and he built his theory of integration, which is the one you learned in calculus.</template>
+<p>In the middle of the 19<sup>th</sup> century, and motivated by questions posed by Fourier, <mark>Riemann</mark> developed the <mark>Theory of Integration</mark>:</p>
+<ul>
+<li>which functions can be represented by a Fourier series?</li>
+<li>how can one solve partial differential equations issuing from mathematical physics?</li>
+<li>what do we mean by "function"?</li>
+<li>and he noted that the notion of integration should be extended to some non-continuous functions…</li>
+</ul>
+</div>
+
+<div>
+<template class="say">This in turn motivated the Lebesgue integral. Here is the analogy to keep in mind for the whole course. The rational numbers have holes: a sequence of rationals can converge to something that is not rational. The real numbers fill in those holes. In the same way, there are reasonable limits of Riemann integrable functions that are not Riemann integrable, and the Lebesgue integrable functions fill in those holes. Lebesgue is to Riemann what the reals are to the rationals.</template>
+<p>This motivated the <mark>notion of Lebesgue integral</mark>: just as the real numbers "complement" the rational numbers, we'll see that functions Lebesgue integrable "complement" those functions integrable in the sense of Riemann.</p>
+</div>
+
+<pg p="3"/>
+<div>
+<template class="say">Today, Lebesgue integration is everywhere: functional analysis, calculus of variations, differential equations, and above all probability theory, where a probability is literally a measure of total mass one. It is also used constantly in engineering, economics and biology.</template>
+<p>Today, the Theory of (Lebesgue) Integration central to Mathematics, is intrinsically relevant to</p>
+<ul style="list-style:none">
+<li>Functional Analysis</li>
+<li>Calculus of Variations</li>
+<li>Differential Equations</li>
+<li>Probability Theory,</li>
+<li>Etc.</li>
+</ul>
+<p>and is ubiquitous in Engineering, Economics, Biology, etc.</p>
+</div>
+
+<div>
+<template class="say">Lebesgue's guiding idea is geometric. The integral of a non-negative function f is the measure of the region under its graph. That sounds innocent, but it immediately raises the real question of the course: what is a measure? Which sets can we assign a size to? Those are called the measurable sets.</template>
+<p>According to Lebesgue, the "<mark>geometric definition of integral</mark>" is:</p>
+<p style="text-align:center">the integral of a non-negative function $f$ = measure of the region under the graph</p>
+<p>Now, this leads to the question of what is a <mark>measure</mark>, which sets can be attributed a measure (i.e., are <mark>measurable sets</mark>).</p>
+</div>
+
+<h3>Elementary sets</h3>
+<div>
+<template class="say">Let's start small, with length on the unit interval I from zero to one. For an interval, the length is obvious: the length of an interval from a to b is b minus a, whether or not the endpoints are included. For a finite union of disjoint intervals we simply add up the lengths.</template>
+<p>Consider the problem of measurement of length of subsets of $\R$, e.g., we aim at defining the length $\mu$ of subsets of $I := [0,1]$.</p>
+<p>If $J \subset I$ is an interval of the form
+$$(a,b),\quad [a,b),\quad (a,b],\ \text{or}\ [a,b],$$
+we set $\mu(J) := |b-a|$.</p>
+<p>For a finite union of disjoint intervals $J_1,\dots,J_n$, set
+$$\mu\Big(\bigcup_{i=1}^n J_i\Big) := \sum_{i=1}^n \mu(J_i).$$</p>
+</div>
+
+<pg p="4"/>
+<div>
+<template class="say">These finite unions of intervals are called elementary sets. The question now is how to extend the length to sets that are not elementary. The ancient idea, going back to Archimedes, is to approximate a complicated set by simple ones. But approximate in what sense?</template>
+<p>This collection of sets is called the collection of <mark>elementary sets</mark>. <span class="note">(later on, we will restrict the notion of elem. sets to intervals)</span></p>
+<p><mark>How can we extend the measure to non-elementary sets?</mark> Going back to antiquity, a natural idea is to <mark>approximate non-elementary sets by elementary sets.</mark></p>
+<p>But using what notion of <mark>approximation</mark>?</p>
+</div>
+
+<h3>Jordan measure</h3>
+<div class="env defn" data-label="Jordan measurability">
+<template class="say">The first answer is Jordan's, also called Peano Jordan measure. Squeeze the set A between two elementary sets: an inner one, A epsilon, sitting inside A, and an outer one, B epsilon, containing A, so that the gap between them has length less than epsilon. If you can do that for every epsilon, A is Jordan measurable, and as epsilon goes to zero the measures of the inner and outer sets close in on a common value, which we call the measure of A. The interactive figure below does exactly this for a disc in the plane.</template>
+<p>The construction that leads to the so called <mark>Jordan measure</mark> (or Peano-Jordan measure) is this: a set $A \subset I$ is Jordan measurable if $\forall \eps > 0$ $\exists$ elementary sets $A_\eps, B_\eps$ s.t.
+$$A_\eps \subset A \subset B_\eps \quad\text{and}\quad \mu(B_\eps \setminus A_\eps) \lt \eps$$
+(N.B. <span class="step">$A_\eps, B_\eps$ elementary sets $\Rightarrow B_\eps \setminus A_\eps$ elementary set<span class="why"><p>An elementary set is a finite disjoint union of intervals. Removing one interval from another leaves at most two intervals (e.g. $[0,1]\setminus(0.3,0.5] = [0,0.3]\cup(0.5,1]$), and removing a finite union just repeats this finitely many times. So $B_\eps\setminus A_\eps$ is again a finite union of intervals, which we can rearrange to be disjoint.</p></span></span>
+&amp; <span class="step">$\mu(B_\eps\setminus A_\eps) = \mu(B_\eps) - \mu(A_\eps)$<span class="why"><p>Since $A_\eps \subset B_\eps$, we can split $B_\eps$ as the disjoint union $B_\eps = A_\eps \cup (B_\eps\setminus A_\eps)$ of two elementary sets. Additivity of $\mu$ on disjoint elementary sets gives $\mu(B_\eps) = \mu(A_\eps) + \mu(B_\eps\setminus A_\eps)$; now subtract $\mu(A_\eps)$, which is finite.</p></span></span>).</p>
+<p>When $\eps \to 0$, <span class="step">$\mu(B_\eps)$ and $\mu(A_\eps)$ will have a common limit<span class="why"><p>Every inner set has $\mu(A_\eps) \le \mu(B_\delta)$ for every outer set (since $A_\eps \subset A \subset B_\delta$). So $s := \sup_\eps \mu(A_\eps) \le \inf_\delta \mu(B_\delta) =: S$. But $S - s \le \mu(B_\eps) - \mu(A_\eps) \lt \eps$ for every $\eps$, so $s = S$, and both $\mu(A_\eps)$ and $\mu(B_\eps)$ are squeezed to this number: $s - \eps \lt \mu(A_\eps) \le s \le \mu(B_\eps) \lt s+\eps$.</p></span></span>, which we'll define as <mark>$\mu(A)$</mark>.</p>
+</div>
+
+<figure class="viz" data-viz="jordan-disc" data-title="Inner and outer elementary approximations of a disc">
+<template class="say">Here is the Jordan squeeze in two dimensions. The blue squares lie entirely inside the disc, that is the inner elementary set. The blue together with the orange squares cover the disc, that is the outer elementary set. As you shrink the grid, the gap, which is just the orange squares along the boundary, goes to zero, and both areas converge to pi r squared. So a disc is Jordan measurable.</template>
+<figcaption>Squares inside the disc form $A_\eps$; squares meeting the disc form $B_\eps$. The orange boundary layer is $B_\eps\setminus A_\eps$. Shrink the grid and watch $\mu(B_\eps)-\mu(A_\eps)\to 0$.</figcaption>
+</figure>
+
+<div>
+<template class="say">The trouble is that many sets are not Jordan measurable. Take the rationals in the unit interval. Any interval contains irrationals, so no interval of positive length fits inside the rationals: the best inner approximation has measure zero. But the rationals are dense, so any finite union of intervals that contains them must cover all of zero one, up to finitely many points: every outer approximation has measure one. The gap never closes. Countable sets, the simplest sets imaginable, already break Jordan's theory.</template>
+<p>With this procedure <mark>many sets are not Jordan measurable.</mark> Indeed, <span class="step">$\Q\cap I$ contains no elementary set of positive measure<span class="why"><p>An elementary set of positive measure contains a non-degenerate interval $(c,d)$, $c \lt d$. But every such interval contains irrational numbers (e.g. $c + (d-c)/\sqrt2$), so it is not contained in $\Q\cap I$. Hence every inner approximation $A_\eps \subset \Q\cap I$ is a finite set of points, of measure $0$.</p></span></span>, but <span class="step">any elementary set containing $\Q\cap I$ has $\mu$-measure $1$<span class="why"><p>Let $B = J_1\cup\dots\cup J_n \supset \Q\cap I$. The closure of $B$ is $\overline{J_1}\cup\dots\cup\overline{J_n}$ (finite union of closed intervals), a closed set containing $\Q\cap I$, which is dense in $I$. So $\overline B \supset I$. Adding endpoints doesn't change lengths, so $\mu(B) = \mu(\overline B) \ge \mu(I) = 1$; and $B\subset I$ gives $\le 1$.</p><p>So inner measure $0$, outer measure $1$: the gap $\mu(B_\eps\setminus A_\eps)$ is always $1$.</p></span></span>.</p>
+</div>
+
+<div>
+<template class="say">Still, the Jordan measure has the properties you would want from a notion of length. It is additive: if A and B are disjoint Jordan measurable sets, the measure of the union is the sum of the measures. And it is translation invariant: sliding a set along the line does not change its length. Keep these two properties in mind; a good measure should keep them, and we will want additivity even for countably many sets.</template>
+<p>Still, $\mu$ has nice properties such as</p>
+<ul>
+<li><mark>additivity</mark>: $\mu(A\cup B) = \mu(A) + \mu(B)$, if $A\cap B = \emptyset$ and $A, B$ are Jordan measurable <span class="note">[can be extended to countably many]</span></li>
+<li><mark>translation invariance</mark>: $\mu(a + A) = \mu(A)$</li>
+</ul>
+</div>
+
+<pg p="5"/>
+<h3>Lebesgue's idea: outer measure</h3>
+<div>
+<template class="say">Lebesgue's fix is subtle but decisive. Instead of squeezing between finitely many intervals, cover A by countably many elementary sets, add up their lengths, and take the infimum over all such covers. That number is the outer measure, mu star of A. It is defined for every subset of I. Allowing countably many pieces is exactly what kills the problem with the rationals: you can cover each rational by its own tiny interval, the n-th of length epsilon over two to the n, for total length at most epsilon.</template>
+<p>So a <mark>more inclusive extension of $\mu$ was proposed by Lebesgue</mark>, <mark>changing the way of approximating by elementary sets</mark>:</p>
+<ul>
+<li>introduce the <mark>outer measure</mark> $\ms(A)$ for every set $A \subset I$:
+$$\ms(A) := \inf\Big\{\sum_{n=1}^\infty \mu(A_n) : A_n \text{ elementary sets},\ A \subseteq \bigcup_{n=1}^\infty A_n\Big\}.$$
+<span class="note">We'll see (Prop 2.9) $A$ elem. set $\Rightarrow \ms(A) = \mu(A)$</span></li>
+</ul>
+</div>
+
+<div class="env defn" data-label="Def 0.1">
+<template class="say">Definition zero point one. A set A is Lebesgue measurable if the outer measure of A plus the outer measure of its complement in I adds up to exactly the measure of I. In other words, A and its complement split I cleanly, without overlapping in outer measure.</template>
+<p>A set $A$ is said to be <mark>Lebesgue measurable</mark> if
+$$\ms(A) + \ms(I\setminus A) = \mu(I)$$
+<span class="note">(cf. Def 3.1 and Hmw #1, (2) See Rmk 3.13*)</span></p>
+</div>
+
+<div class="env rmk" data-label="Rmk 0.2">
+<template class="say">Remark zero point two. Elementary sets are Lebesgue measurable. And there's an equivalent formulation that looks just like Jordan's: A is Lebesgue measurable if and only if, for every epsilon, there is an elementary set A epsilon whose symmetric difference with A has outer measure less than epsilon. The symmetric difference is the set of points in exactly one of the two sets. Notice what disappeared: we no longer ask that A epsilon sit inside A, or contain A. We only ask that A epsilon and A disagree on a set of small outer measure.</template>
+<p><mark>Elementary sets are Lebesgue measurable.</mark> Equivalently, $A$ is Lebesgue measurable iff $\forall\eps\gt 0$ $\exists A_\eps$ elementary set s.t.
+$$\ms(A\,\triangle\,A_\eps) \lt \eps,$$
+where $A\triangle B := (A\setminus B)\cup(B\setminus A)$ (symmetric difference).</p>
+<p><u>N.B.</u> unlike the Jordan measure, <mark>no inclusion of elementary sets is required.</mark></p>
+</div>
+
+<div>
+<template class="say">This little nuance enlarges the class of measurable sets enormously. In fact it is so large that constructing a set that is not Lebesgue measurable requires the axiom of choice: you cannot write one down explicitly. And the class behaves beautifully: countable unions and intersections of measurable sets are measurable, complements are measurable, and countable additivity holds.</template>
+<p>This "nuance" leads to a substantial enlargement of the class of measurable sets, to the extent that <mark>the existence of non-Lebesgue measurable sets is anchored on deep set-theoretic axioms.</mark> (e.g. axiom of choice)</p>
+<p>It is then a fact that countable unions and intersections of Lebesgue measurable sets are still Lebesgue measurable, complements of measurable sets are measurable, countable additivity still holds, etc.</p>
+</div>
+
+<div>
+<template class="say">Why insist on countable additivity rather than just finite? Think of computing the area of a disc with rectangles. No finite union of rectangles is a disc. But a disc is a countable union of non-overlapping rectangles, and we want its area to be the sum of all of them. Without countable additivity, even the area of a circle is out of reach.</template>
+<p><u>N.B.</u> Countable additivity is a necessity: think about approximating a disc by unions of rectangles…</p>
+</div>
+
+<pg p="6"/>
+<p><mark>Lebesgue Measure of a set</mark>: in $\R$ ~ length; in $\R^2$ ~ area; in $\R^3$ ~ volume.</p>
+
+<div class="explainer" data-scene="riemann-vs-lebesgue" data-title="Slicing the domain vs. slicing the range">
+<template class="say">Let's see visually why Lebesgue's idea forces us to measure complicated sets. Here is the graph of a function f on an interval.</template>
+<template class="say">Riemann's approach: chop the x axis into small pieces, and over each piece build a rectangle whose height is the value of f there. Add up the areas. This is like counting coins by walking along a row and adding each coin's value as you meet it.</template>
+<template class="say">Lebesgue's approach turns this sideways. Chop the y axis, the range, into thin horizontal bands. For each band, ask: for which x does f of x land in this band? Then multiply the height of that level by the size of that set of x.</template>
+<template class="say">Look at the highlighted set on the x axis for one band. Even for this smooth function it's a union of several intervals. For a wild function it can be an extremely complicated set: a scattered dust of points. So to use Lebesgue's idea, we must be able to measure the size of complicated subsets of the line. That is exactly what a measure is for.</template>
+<template class="say">Now take the extreme case: the function which is one on the rationals and zero on the irrationals. Riemann's rectangles fail: every piece of the x axis contains both rationals and irrationals, so the lower sum is always zero and the upper sum always one. But Lebesgue only needs two numbers: the size of the set where f equals one, which is the rationals, and the size of the set where f equals zero. Once we know that the rationals have measure zero, the integral is simply zero.</template>
+<template class="say">That's the program of the next few lectures: build a theory of measure strong enough to measure sets like these, and then define the integral by slicing the range.</template>
+</div>
+
+<h2>1. A Brief Overview of the Riemann Integral</h2>
+
+<div class="env defn" data-label="Def 1.1">
+<template class="say">Now let's review the Riemann integral properly. Definition one point one: a partition of a closed interval from a to b is a finite list of points, starting at a, strictly increasing, and ending at b.</template>
+<p>Let $a, b\in\R$, $a \lt b$. A <mark>partition</mark> of $[a,b]$ is a set $\{x_0,\dots,x_n\}$, $n\in\N$, with $x_i \neq x_j$ if $i\ne j$, and
+$$x_0 = a \lt x_1 \lt \dots \lt x_n = b.$$</p>
+</div>
+
+<div class="env defn" data-label="Def 1.2">
+<template class="say">Definition one point two. Given a bounded function f and a partition P, the lower Riemann sum adds up, over each subinterval, its length times the infimum of f on that subinterval. Those are rectangles sitting under the graph. The upper Riemann sum uses the supremum instead, so the rectangles poke out above the graph. Clearly the lower sum is at most the upper sum. Play with the figure: as the partition gets finer, the two sums squeeze together.</template>
+<p>Let $f:[a,b]\to\R$ be a bounded function, and let $P = \{x_0,\dots,x_n\}$ be a partition of $[a,b]$. The <mark>lower Riemann sum</mark> is
+$$L(f,P,[a,b]) := \sum_{i=1}^n (x_i - x_{i-1}) \inf_{[x_{i-1},x_i]} f$$</p>
+<p>The <mark>upper Riemann sum</mark> is
+$$U(f,P,[a,b]) := \sum_{i=1}^n (x_i - x_{i-1}) \sup_{[x_{i-1},x_i]} f$$</p>
+</div>
+
+<figure class="viz" data-viz="riemann-sums" data-title="Lower and upper Riemann sums">
+<figcaption>Orange: rectangles of height $\inf f$ (the lower sum). Green: rectangles of height $\sup f$ (the upper sum). Drag the slider to refine the partition; tick <b>refine</b> to add the midpoints of the current partition (Prop 1.5).</figcaption>
+</figure>
+
+<div class="env nb" data-label="N.B. 1.3">
+<p>Clearly <span class="step">$L(f,P,[a,b]) \le U(f,P,[a,b])$<span class="why"><p>Term by term: on each $[x_{i-1},x_i]$ we have $\inf f \le \sup f$ (the interval is non-empty), and the weight $x_i - x_{i-1}$ is positive. Multiplying an inequality by a positive number keeps it, and adding $n$ such inequalities gives the claim.</p></span></span></p>
+</div>
+
+<pg p="7"/>
+<div class="env defn" data-label="Def 1.4">
+<template class="say">Definition one point four. A partition P prime is finer than P if it contains all the points of P, and possibly more.</template>
+<p>Let $P$ and $P'$ be partitions of $[a,b]$. $P'$ is said to be <mark>finer</mark> than $P$ if $P\subseteq P'$. ($P'$ has more points).</p>
+</div>
+
+<div class="env prop" data-label="Prop 1.5">
+<template class="say">Proposition one point five. Refining a partition can only raise the lower sum and lower the upper sum. So the chain is: lower sum for P, at most lower sum for P prime, at most upper sum for P prime, at most upper sum for P. And a consequence that's not obvious at first: any lower sum is at most any upper sum, even for two completely unrelated partitions.</template>
+<p>Let $f:[a,b]\to\R$ be a bounded function, and let $P$ and $P'$ be partitions of $[a,b]$, with $P'$ finer than $P$. Then
+$$L(f,P,[a,b]) \le L(f,P',[a,b]) \le U(f,P',[a,b]) \le U(f,P,[a,b])$$
+In particular, if $P$ and $P'$ are arbitrary partitions of $[a,b]$, then
+$$L(f,P,[a,b]) \le U(f,P',[a,b]). \tag{*}$$</p>
+</div>
+
+<div class="env proof" data-label="Proof">
+<template class="say">The proof. The key is to look at one subinterval of the coarse partition at a time. The fine partition chops it into smaller pieces. On the big piece, the coarse lower sum uses a single height: the infimum over the whole big piece. On each small piece, the fine sum uses the infimum over that small piece, which can only be larger, because an infimum over a smaller set is bigger. Summing up gives L of P at most L of P prime. Upper sums work the same way with suprema reversed. For two arbitrary partitions, use their common refinement, the union of their points, as a bridge.</template>
+<p>Let $P = \{x_0,\dots,x_n\}$ and $P' = \{x'_0,\dots,x'_N\}$, $N \gt n$.
+<span class="step">$\forall j = 1,\dots,n$, let $k\in\{0,\dots,N-1\}$ s.t.
+$$x_{j-1} = x'_k \lt x'_{k+1} \lt \dots \lt x'_{k+m} = x_j$$
+for some $m\ge1$ s.t. $k+m\le N$.<span class="why"><p>Because $P\subseteq P'$, both endpoints $x_{j-1}$ and $x_j$ are points of $P'$; call their positions in $P'$ $k$ and $k+m$. The points of $P'$ strictly between them (there are $m-1\ge 0$ of them) cut $[x_{j-1},x_j]$ into $m$ consecutive pieces. So each coarse interval is exactly a union of consecutive fine intervals.</p></span></span></p>
+<p>Then</p>
+<div class="step">$$(x_j - x_{j-1})\inf_{[x_{j-1},x_j]} f = \sum_{i=1}^m (x'_{k+i} - x'_{k+i-1}) \inf_{[x_{j-1},x_j]} f$$<div class="why"><p>(telescoping sum) The lengths of the fine pieces add up to the length of the coarse interval:
+$$\sum_{i=1}^m (x'_{k+i}-x'_{k+i-1}) = x'_{k+m} - x'_k = x_j - x_{j-1},$$
+since all the intermediate points cancel. Then multiply by the constant $\inf_{[x_{j-1},x_j]} f$ and distribute it over the sum.</p></div></div>
+<div class="step">$$\le \sum_{i=1}^m (x'_{k+i} - x'_{k+i-1}) \inf_{[x'_{k+i-1},\,x'_{k+i}]} f$$<div class="why"><p>Each fine piece $[x'_{k+i-1},x'_{k+i}]$ is a <em>subset</em> of $[x_{j-1},x_j]$, and the infimum over a smaller set is at least as large: every value of $f$ on the small piece is $\ge \inf_{[x_{j-1},x_j]} f$, so that number is a lower bound there, hence $\le$ the greatest lower bound $\inf_{[x'_{k+i-1},x'_{k+i}]}f$. Multiply by the positive length and add.</p><p>Picture: one wide rectangle at the lowest height of the whole interval sits under several narrow rectangles, each of which can rise to the lowest point of its own piece.</p></div></div>
+<p>and thus <span class="step">$L(f,P,[a,b]) \le L(f,P',[a,b])$.<span class="why"><p>Sum the previous inequality over $j=1,\dots,n$. On the left we get exactly $L(f,P,[a,b])$. On the right, as $j$ runs over all coarse intervals, the fine pieces run over every interval of $P'$ exactly once (the coarse intervals are disjoint except at endpoints and cover $[a,b]$), so we get $L(f,P',[a,b])$.</p></span></span>
+Similarly, <span class="step">$U(f,P',[a,b]) \le U(f,P,[a,b])$<span class="why"><p>Same argument with $\sup$ in place of $\inf$: the supremum over a smaller set is at most the supremum over the larger set, so the inequality flips. Fine upper rectangles can only come down.</p></span></span>, and <span class="step">use 1.3.<span class="why"><p>N.B. 1.3 gives the middle inequality $L(f,P',[a,b]) \le U(f,P',[a,b])$ (it holds for any single partition, in particular for $P'$). Chaining the three gives the displayed line.</p></span></span></p>
+<p>Let now $P$ and $P'$ be arbitrary partitions of $[a,b]$ and set $P'' := $ "$P\cup P'$", the partition that contains all points of $P$ and all points of $P'$. Then <span class="step">$P''$ is finer than $P$ and $P'$<span class="why"><p>$P\subseteq P\cup P'$ and $P'\subseteq P\cup P'$ by definition of union, and $P\cup P'$ is a genuine partition: it is finite, contains $a$ and $b$, and listing its points in increasing order gives $x_0 = a \lt \dots \lt b$.</p></span></span>, so</p>
+<pg p="8"/>
+<div class="step">$$L(f,P,[a,b]) \le L(f,P'',[a,b]) \le U(f,P'',[a,b]) \le U(f,P',[a,b]).\ \blacksquare$$<div class="why"><p>Apply the first part twice. With $P''$ finer than $P$: $L(f,P) \le L(f,P'')$. With $P''$ finer than $P'$: $U(f,P'') \le U(f,P')$. The middle inequality is N.B. 1.3 for $P''$. Note the trick: we compare two unrelated partitions by going through a common refinement.</p></div></div>
+</div>
+
+<div class="env defn" data-label="Def 1.6">
+<template class="say">Definition one point six. The lower Riemann integral is the supremum of all lower sums: the best possible estimate from below. The upper Riemann integral is the infimum of all upper sums: the best estimate from above.</template>
+<p>Let $f:[a,b]\to\R$ be a bounded function. The <mark>lower Riemann integral</mark> of $f$ is
+$$L(f,[a,b]) := \sup_{P \text{ partition}} L(f,P,[a,b]).$$
+The <mark>upper Riemann integral</mark> of $f$ is
+$$U(f,[a,b]) := \inf_{P\text{ partition}} U(f,P,[a,b])$$</p>
+</div>
+
+<div class="env rmk" data-label="Rmk 1.7">
+<template class="say">Remark one point seven. Because every lower sum is below every upper sum, the lower integral is at most the upper integral.</template>
+<p>By Prop 1.5 $(*)$
+<span class="step">$$L(f,[a,b]) \le U(f,[a,b]).$$<span class="why"><p>Fix any partition $P'$. By $(*)$, $U(f,P',[a,b])$ is an upper bound for all lower sums $L(f,P,[a,b])$, so it is $\ge$ their least upper bound: $L(f,[a,b]) \le U(f,P',[a,b])$. Now $L(f,[a,b])$ is a lower bound for all upper sums, so it is $\le$ their greatest lower bound $U(f,[a,b])$.</p></span></span></p>
+</div>
+
+<div class="env defn" data-label="Def 1.8">
+<template class="say">Definition one point eight. A bounded function is Riemann integrable if the lower and upper integrals agree, and then that common value is the integral.</template>
+<p>Let $f:[a,b]\to\R$ be a bounded function. $f$ is said to be <mark>Riemann integrable</mark> if
+$$\boxed{L(f,[a,b]) = U(f,[a,b])},$$
+in which case we define
+$$\int_a^b f := L(f,[a,b]) = U(f,[a,b]).$$
+(or $\int_a^b f(x)\,dx$)</p>
+</div>
+
+<div class="env rmk" data-label="Rmk 1.9">
+<template class="say">Remark one point nine. The integral is trapped between the length times the infimum of f and the length times the supremum.</template>
+<p><span class="step">$$(b-a)\inf_{[a,b]} f \le \int_a^b f \le (b-a)\sup_{[a,b]} f.$$<span class="why"><p>Use the trivial partition $P_0 = \{a,b\}$ with a single interval. Then $L(f,P_0,[a,b]) = (b-a)\inf_{[a,b]} f$ and $U(f,P_0,[a,b]) = (b-a)\sup_{[a,b]}f$. Since the lower integral is the sup of lower sums, $\int_a^b f = L(f,[a,b]) \ge L(f,P_0,[a,b])$; since the upper integral is the inf of upper sums, $\int_a^b f = U(f,[a,b]) \le U(f,P_0,[a,b])$.</p></span></span></p>
+<p>It can be easily proved that</p>
+</div>
+
+<div class="env prop" data-label="Proposition 1.10" data-title="(linearity)">
+<template class="say">Proposition one point ten: linearity. Linear combinations of Riemann integrable functions are Riemann integrable, and the integral of alpha f plus beta g is alpha times the integral of f plus beta times the integral of g.</template>
+<p>Let $f,g:[a,b]\to\R$ be bounded Riemann integrable functions. Then $\alpha f + \beta g$ is Riemann integrable for all $\alpha,\beta\in\R$ and
+$$\int_a^b(\alpha f + \beta g) = \alpha\int_a^b f + \beta\int_a^b g.$$</p>
+</div>
+
+<pg p="9"/>
+<div class="env thm" data-label="Thm 1.11">
+<template class="say">Theorem one point eleven. Every continuous function on a closed bounded interval is Riemann integrable.</template>
+<p>If $f:[a,b]\to\R$ is continuous then $f$ is Riemann integrable.</p>
+</div>
+
+<div class="env proof" data-label="Proof">
+<template class="say">The proof uses uniform continuity. On a closed bounded interval, continuity is automatically uniform: one single delta works everywhere. So if every subinterval of the partition is shorter than delta, then on each piece the supremum and infimum of f differ by at most epsilon. The gap between the upper and lower sums is then at most the total length times epsilon. Since epsilon is arbitrary, the upper integral can't exceed the lower integral, and we already know the reverse inequality. The figure shows this: the green and orange rectangles differ only in thin slivers, each of height at most epsilon.</template>
+<p>Since <span class="step">$f$ is continuous on a closed, bounded interval, then $f$ is bounded and uniformly continuous.<span class="why"><p>Two classical theorems for continuous functions on a compact interval $[a,b]$: the <em>extreme value theorem</em> ($f$ attains a max and a min, so it is bounded) and the <em>Heine–Cantor theorem</em> (continuity on a compact set is uniform). Both use compactness of $[a,b]$ (Bolzano–Weierstrass); both fail on, e.g., $(0,1]$, where $1/x$ is continuous but unbounded.</p></span></span></p>
+<p>Let $\eps\gt 0$ and choose <span class="step">$\delta\gt 0$ such that
+$$s,t\in[a,b],\ |s-t|\lt\delta \;\Rightarrow\; |f(s)-f(t)|\lt\eps. \tag{*}$$<span class="why"><p>This is literally the definition of uniform continuity: for each $\eps$ there is one $\delta$ that works for all pairs $s,t$ at once, regardless of where they are in $[a,b]$. (Plain continuity would only give a $\delta$ depending on the point.)</p></span></span></p>
+<p>Let $n\in\N$ be such that <span class="step">$\frac{b-a}{n} \lt \delta$<span class="why"><p>Archimedean property: $n \gt (b-a)/\delta$ exists since $\N$ is unbounded in $\R$.</p></span></span>, and choose an equally spaced partition $P = \{x_0 = a,\dots,x_n = b\}$ with
+$$x_j - x_{j-1} = \frac{b-a}{n},\quad j = 1,\dots,n.$$
+Then</p>
+<div class="step">$$U(f,[a,b]) - L(f,[a,b]) \le U(f,P,[a,b]) - L(f,P,[a,b])$$<div class="why"><p>$U(f,[a,b])$ is the infimum of all upper sums, so $U(f,[a,b]) \le U(f,P,[a,b])$; $L(f,[a,b])$ is the supremum of all lower sums, so $L(f,[a,b]) \ge L(f,P,[a,b])$, i.e. $-L(f,[a,b]) \le -L(f,P,[a,b])$. Add.</p></div></div>
+<div class="step">$$= \frac{b-a}{n}\sum_{i=1}^n\Big(\sup_{[x_{j-1},x_j]} f - \inf_{[x_{j-1},x_j]} f\Big)$$<div class="why"><p>Subtract the two sums term by term; every interval has the same length $\frac{b-a}{n}$, which factors out of the sum.</p></div></div>
+<div class="step">$$\underset{(*)}{\le} \frac{b-a}{n}\, n\, \eps = (b-a)\cdot\eps.$$<div class="why"><p>Any two points $s,t$ in the same interval $[x_{j-1},x_j]$ satisfy $|s-t| \le \frac{b-a}{n} \lt \delta$, so by $(*)$: $f(s) \lt f(t) + \eps$. Taking sup over $s$ and inf over $t$: $\sup f - \inf f \le \eps$ on each interval. (Sup and inf exist since $f$ is bounded; in fact they're attained.) There are $n$ terms, each $\le\eps$.</p></div></div>
+<p>Letting $\eps\to0^+$ we conclude that <span class="step">$U(f,[a,b]) \le L(f,[a,b])$, hence $=$.<span class="why"><p>The left side $U(f,[a,b]) - L(f,[a,b])$ is a fixed number (it doesn't depend on $\eps$), and it is $\le (b-a)\eps$ for every $\eps\gt0$, so it is $\le 0$. Combined with Rmk 1.7 ($L \le U$) we get equality, i.e. $f$ is Riemann integrable (Def 1.8).</p></span></span> <span class="qed">■</span></p>
+</div>
+
+<h3>Why the Riemann integral is not good enough…</h3>
+<div>
+<template class="say">So why isn't the Riemann integral good enough? Three reasons. It can't handle functions with too many discontinuities. It can't handle unbounded functions, at least not without ad hoc improper integrals. And worst of all, it doesn't behave well with limits: if f n converges to f, we would love to say the integral of f n converges to the integral of f, but with Riemann the limit function may not even be integrable. The next examples illustrate each problem.</template>
+<ul>
+<li>Riemann integration does not handle functions with many discontinuities</li>
+<li>Riemann integration does not handle unbounded functions</li>
+<li>Riemann integration does not work well with limits:
+$$f_n\to f \text{ (in some sense)} \overset{?}{\Rightarrow} \int_a^b f_n \to \int_a^b f$$</li>
+</ul>
+<p style="text-align:right"><em>end lect #1</em></p>
+</div>
+
+<pg p="10"/>
+<div class="env ex" data-label="Example 1.12" data-title="[Discontinuous function]">
+<template class="say">Example one point twelve: the Dirichlet function, one on the rationals and zero on the irrationals. Every interval contains both kinds of numbers, so on every piece of every partition the infimum is zero and the supremum is one. Every lower sum is zero and every upper sum is one. The lower integral is zero, the upper integral is one, so f is not Riemann integrable. We'll see later that it is Lebesgue integrable, with integral zero.</template>
+<p>$$f:[0,1]\to\R,\quad f(x) := \begin{cases}1 & x\in\Q,\\ 0 & x\in[0,1]\setminus\Q.\end{cases}$$</p>
+<p>If $[a,b]\subset[0,1]$, $a\lt b$, then <span class="step">$\inf_{[a,b]} f = 0$, $\sup_{[a,b]} f = 1$<span class="why"><p>$f$ only takes the values $0$ and $1$, so $0\le\inf\le\sup\le1$. Both values are actually taken on $[a,b]$: $\Q$ is dense in $\R$, so there is a rational in $(a,b)$ (value $1$); and the irrationals are dense too (e.g. $q + \sqrt2/k$ for large $k$), so there is an irrational in $(a,b)$ (value $0$).</p></span></span></p>
+<p>Thus <span class="step">$L(f,P,[0,1]) = 0$, $U(f,P,[0,1]) = 1$ $\forall P$ partition<span class="why"><p>By the previous step every term of the lower sum is $(x_i - x_{i-1})\cdot 0 = 0$, and every term of the upper sum is $(x_i - x_{i-1})\cdot 1$; the lengths telescope to $1 - 0 = 1$.</p></span></span>, hence <span class="step">$L(f,[0,1]) = 0 \lt U(f,[0,1]) = 1$.<span class="why"><p>The sup of the constant family $\{0\}$ is $0$ and the inf of the constant family $\{1\}$ is $1$ (Def 1.6).</p></span></span>
+We conclude that $f$ is not Riemann integrable (see Example 9.3* … it is Lebesgue integrable)</p>
+</div>
+
+<div class="env ex" data-label="Example 1.13" data-title="[Unbounded functions]">
+<template class="say">Example one point thirteen: one over the square root of x on zero one, set to zero at zero. On the first piece of any partition, the function is unbounded, so the supremum is infinite and every upper sum is infinite. Riemann's definition simply breaks. And yet the area under the graph should clearly be two, not infinity: integrate from a to one and you get two minus two root a, which tends to two as a shrinks to zero. The slider in the next figure lets you watch this.</template>
+<p>$$f:[0,1]\to\R,\quad f(x) := \begin{cases}\dfrac{1}{\sqrt x} & \text{if } 0\lt x\le1,\\[4pt] 0 & \text{if } x = 0.\end{cases}$$</p>
+<p>Let $P$ be a partition of $[0,1]$. Then <span class="step">$\sup_{[x_0,x_1]} f = +\infty$ ($x_0 = 0$)<span class="why"><p>For any $M \gt 0$, the point $x = \min(x_1, 1/(M+1)^2) \in (0,x_1]$ has $f(x) = 1/\sqrt x \ge M+1 \gt M$. So $f$ is not bounded above on $[0,x_1]$, however small $x_1$ is.</p></span></span>
+$\Rightarrow U(f,P,[0,1]) = +\infty$.</p>
+<p>However, we should consider the area under the graph of $f$ to be $2$ and not $\infty$, because
+<span class="step">$$\lim_{a\downarrow0^+}\int_a^1 f = \lim_{a\downarrow0^+} 2\sqrt x\,\Big]_a^1 = \lim_{a\downarrow0^+}(2 - 2\sqrt a) = 2.$$<span class="why"><p>On $[a,1]$ with $a\gt0$, $f$ is continuous, so it is Riemann integrable (Thm 1.11) and the Fundamental Theorem of Calculus applies with antiderivative $F(x) = 2\sqrt x$ (check: $F'(x) = 2\cdot\frac{1}{2\sqrt x} = \frac1{\sqrt x}$). Then $\int_a^1 f = F(1)-F(a) = 2 - 2\sqrt a \to 2$ since $\sqrt a\to0$.</p></span></span></p>
+</div>
+
+<figure class="viz" data-viz="improper" data-title="Finite area under an unbounded graph">
+<figcaption>The area $\int_a^1 x^{-1/2}\,dx = 2-2\sqrt a$ approaches $2$ as $a\downarrow 0$, even though no upper Riemann sum on $[0,1]$ is finite.</figcaption>
+</figure>
+
+<div class="env defn" data-label="Def 1.14">
+<template class="say">Definition one point fourteen: two kinds of convergence. f n converges to f pointwise if, at every single point x, the numbers f n of x converge to f of x. The N needed may depend on the point. f n converges uniformly if one single N works for all points at once: from N on, the whole graph of f n lies inside an epsilon band around f. Recall that a uniform limit of continuous functions is continuous; the example in the margin shows that a pointwise limit need not be. Try the figure: the spike gets thinner but never shorter, so the functions converge at each point, but never fit inside the band.</template>
+<p>Let $X$ be a set, and let $f_n, f: X\to\R$.</p>
+<p>$f_n\to f$ <mark>pointwise</mark> if $\forall x\in X$ $\lim_n f_n(x) = f(x)$, i.e.
+$$\forall x\in X\ \forall\eps\gt0\ \exists n_0 = n_0(\eps,x)\ \forall n\ge n_0\ |f_n(x) - f(x)|\lt\eps.$$</p>
+<p>$f_n\to f$ <mark>uniformly</mark> if $\forall\eps\gt0\ \exists n_0 = n_0(\eps)\ \forall n\ge n_0\ \forall x\in X$
+$$|f_n(x) - f(x)|\lt\eps.$$</p>
+<p><u>Recall</u>: the uniform limit of continuous functions is also continuous</p>
+<p class="note">Margin example: $f_n$ continuous, equal to $1$ outside $(-\tfrac1n,\tfrac1n)$, with a spike up to $2$ at $0$. Then $f_n\to f$ pointwise, not uniformly, where $f(x) = \begin{cases}1 & x\ne0\\ 2 & x = 0\end{cases}$.</p>
+</div>
+
+<figure class="viz" data-viz="spike" data-title="Pointwise but not uniform convergence">
+<figcaption>The tent $f_n$ (blue) and the $\eps$-band around the limit $f$ (yellow). At any fixed $x\ne0$, $f_n(x) = 1$ once $\tfrac1n \lt |x|$; at $x=0$, $f_n(0) = 2 = f(0)$. But $\sup_x|f_n(x)-f(x)|$ stays near $1$: the graph never fits in the band, and the continuous $f_n$ converge to a discontinuous $f$.</figcaption>
+</figure>
+
+</lecture>

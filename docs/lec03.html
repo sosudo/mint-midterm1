@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture 3: Outer Measure of Rectangles and a Non-Measurable Set</title>
+<meta name="description" content="Recap of the outer-measure recipe; proof that the outer measure of a rectangle is its volume; translation invariance; the Vitali set and failure of additivity.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;650&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="assets/book.css">
+<script>try{var t=localStorage.getItem("mintbook.theme");if(t)document.documentElement.setAttribute("data-theme",JSON.parse(t))}catch(e){}</script>
+<script defer src="assets/book.js"></script>
+<script defer src="assets/lec03.js"></script>
+</head>
+<body>
+<header class="topbar"><div class="inner">
+  <a class="brand" href="index.html">∫ Measure &amp; Integration</a>
+  <span class="spacer"></span>
+  <button id="stepsBtn" title="Toggle the 'why?' hints on proof steps">Proof hints: on</button>
+  <button id="themeBtn" title="Light / dark">◐</button>
+</div></header>
+<main>
+<div class="lecture-head"><div class="kicker">Lecture 3</div><h1>Outer Measure of Rectangles and a Non-Measurable Set</h1></div>
+<div class="howto">Every <b>underlined proof step</b> is selectable — hover or tap it for a detailed explanation of why it holds.
+Press <b>▶</b> in the bar at the bottom to have the lecture <b>read and explained aloud</b>; hover a paragraph and click its ▶ to start there.
+<b>Explainer</b> panels are narrated animations; <b>Interactive</b> panels respond to sliders and dragging.
+The small “original notes” links open the scanned page the text was transcribed from.</div>
+
+<span class="pg"><a href="scans/L03-01.jpg" target="_blank" rel="noopener">original notes · p. 1 ↗</a></span>
+<h2>Recap</h2>
+<div>
+<template class="say">Lecture three. Let's recap. We have a set X, a family of elementary sets containing the empty set whose countable unions cover X, and an elementary size rho with rho of the empty set zero. From these, mu star of any subset A is the infimum of the total rho over countable covers of A by elementary sets.</template>
+<p>$X$, $\mathcal E\subset\mathcal P(X)$: $\emptyset\in\mathcal E$, $X = \bigcup_{n=1}^\infty X_n$, $X_n\in\mathcal E$</p>
+<p>$\rho:\mathcal E\to[0,+\infty]$, $\rho(\emptyset) = 0$</p>
+<p>$\ms:\mathcal P(X)\to[0,+\infty]$,
+$$A\subseteq X,\quad \ms(A) := \inf\Big\{\sum_{n=1}^\infty\rho(E_n) : A\subseteq\bigcup_{n=1}^\infty E_n,\ E_n\in\mathcal E\Big\}$$</p>
+</div>
+
+<div>
+<template class="say">Proposition two point seven: mu star is an outer measure, and it's at most rho on elementary sets. Corollary two point eight: Lebesgue, Lebesgue Stieltjes and Hausdorff outer measures are outer measures. And the question: when is rho of E equal to mu star of E for elementary E? Proposition two point nine: exactly when rho is countably subadditive.</template>
+<p><mark>Prop 2.7</mark>: $\ms$ outer measure; $\ms(E)\le\rho(E)$, $E\in\mathcal E$</p>
+<p><mark>Corollary 2.8</mark>: $(\mathcal L^N)^*$, $\mu^*_f$, $\mathcal H^s_0$ (defined in 2.2, 2.3, 2.4) are outer measures</p>
+<p><u>Question</u>: ? $\rho(E) = \ms(E)$ if $E\in\mathcal E$?</p>
+<p><mark>Proposition 2.9</mark> $\ms(E) = \rho(E)$ $\forall E\in\mathcal E$ iff $\rho$ is <u>countably subadditive</u> i.e. $\rho(E)\le\sum_{n=1}^\infty\rho(E_n)$ whenever $E, E_n\in\mathcal E$ and $E\subseteq\bigcup_{n=1}^\infty E_n$.</p>
+</div>
+
+<div class="env proof" data-label="Proof">
+<p>[$\Leftarrow$] Assume that $\rho$ is countably subadditive. If $E\subseteq\bigcup_{n=1}^\infty E_n$, $n\in\N$ then
+$$\rho(E)\le\sum_{n=1}^\infty\rho(E_n).$$
+<span class="step">Inf on RHS over all such coverings, get $\rho(E)\le\ms(E)$.<span class="why"><span class="wp">$\rho(E)$ is a lower bound for the cost of every admissible covering, hence $\le$ the greatest lower bound, $\ms(E)$.</span></span></span> Thus + Prop 2.7 $\Rightarrow\rho(E) = \ms(E)$.</p>
+<p>[$\Rightarrow$] $E, E_n\in\mathcal E$, $E\subseteq\bigcup_{n=1}^\infty E_n$.
+<span class="step">$$\underbrace{\rho(E) = \ms(E)}_{\text{hyp}}\ \underbrace{\le\sum_{n=1}^\infty\rho(E_n)}_{\text{def of }\ms}$$<span class="why"><span class="wp">The equality is the hypothesis applied to $E\in\mathcal E$. The inequality holds because $\{E_n\}$ is one admissible covering of $E$ and $\ms(E)$ is the infimum over all of them. Reading the two ends together: $\rho(E)\le\sum\rho(E_n)$, which is countable subadditivity.</span></span></span>
+countably subadditive. <span class="qed">■</span></p>
+</div>
+
+<span class="pg"><a href="scans/L03-02.jpg" target="_blank" rel="noopener">original notes · p. 2 ↗</a></span>
+<div class="env rmk" data-label="Rmk 2.10">
+<p>$(\mathcal L^N)^*$ … $R$ … $R = \prod_{i=1}^N I_i$ <span class="note">not nec. open/closed.</span></p>
+<p>$\ell([a,b]) = \ell((a,b)) = \ell((a,b]) = \ell([a,b))$</p>
+</div>
+
+<h2>The outer measure of a rectangle</h2>
+<div class="env prop" data-label="Prop 2.11">
+<template class="say">Now the full proof of proposition two point eleven: the Lebesgue outer measure of any rectangle equals its volume.</template>
+<p>$(\mathcal L^N)^*(R) = \ell(R)$ $\forall R$ rectangle</p>
+</div>
+
+<div class="env proof" data-label="Proof">
+<template class="say">The easy direction always holds, by proposition two point seven. The hard direction says no countable cover can be cheaper than the rectangle itself. The proof has three steps. Step one: we may use open rectangles in covers. Dilate each rectangle of a nearly optimal cover slightly, to an open one, adding at most epsilon over two to the n to its volume. Step two: if R is closed, it's compact, so a cover by open rectangles has a finite subcover. Extend all the faces of the finitely many rectangles into hyperplanes; this chops R into a grid of little sub rectangles, each sitting inside some cover rectangle. Then the volume of R is the sum of the little volumes, which is at most the sum of the cover volumes. Step three: for an arbitrary rectangle, approximate it from inside by a closed rectangle and use monotonicity.</template>
+<p>Always (Prop 2.7) $(\mathcal L^N)^*(R)\le\rho(R)$.</p>
+<p><u>step 1</u> claim that
+$$(\mathcal L^N)^*(R) = \inf\Big\{\sum_{n=1}^\infty\ell(R_n) : R\subseteq\bigcup_{n=1}^\infty R_n,\ R_n \text{ open}\Big\} = \alpha(R)$$</p>
+<p><span class="step">$(\mathcal L^N)^*(R)\le\alpha(R)$ clearly because we are restricting the admissible sets on RHS<span class="why"><span class="wp">Every cover by open rectangles is a cover by rectangles, so the infimum defining $\alpha(R)$ runs over a subset of the covers allowed for $(\mathcal L^N)^*(R)$; an infimum over fewer things is larger.</span></span></span></p>
+<p>Fix $\eps\gt0$, let $R_n$ rectangle (not nec. open)
+<span class="step">$$\sum_{n=1}^\infty\ell(R_n)\le(\mathcal L^N)^*(R) + \eps,\qquad R\subseteq\bigcup_{n=1}^\infty R_n$$<span class="why"><span class="wp">Definition of infimum: if $(\mathcal L^N)^*(R)\lt\infty$, the number $(\mathcal L^N)^*(R)+\eps$ is not a lower bound for the costs of covers, so some cover costs at most that. (If $(\mathcal L^N)^*(R) = \infty$ — impossible here since it's $\le\ell(R)\lt\infty$ — there would be nothing to prove.)</span></span></span></p>
+<p>$\forall n\in\N$ <span class="step">Dilate slightly each $R_n$: $J_n\supset R_n$, $J_n$ open, $\ell(J_n)\le\ell(R_n) + \dfrac{\eps}{2^n}$<span class="why"><span class="wp">Say $R_n = \prod_{i=1}^N I_i$ with $I_i$ having endpoints $a_i\le b_i$. Let $J_n = \prod_{i=1}^N(a_i - t, b_i + t)$, an open rectangle containing $R_n$. Its volume $\prod_i(b_i - a_i + 2t)$ is a polynomial in $t$, hence continuous, and equals $\ell(R_n)$ at $t = 0$. So for $t\gt0$ small enough, $\ell(J_n)\le\ell(R_n)+\eps/2^n$. (Works even if $R_n$ is degenerate, e.g. a point.)</span></span></span></p>
+<figure><svg viewBox="0 0 300 120" width="300" style="max-width:100%;display:block;margin:auto" aria-label="R_n inside a slightly larger open rectangle J_n"><rect x="80" y="20" width="140" height="80" fill="none" stroke="#d33" stroke-width="2"/><rect x="92" y="30" width="116" height="60" fill="none" stroke="#2d5fa8" stroke-width="2"/><text x="140" y="66" font-size="18" fill="#2d5fa8" font-style="italic">Rₙ</text><text x="226" y="108" font-size="16" fill="#d33" font-style="italic">Jₙ (open)</text></svg></figure>
+<p>Then $R\subseteq\bigcup_{n=1}^\infty J_n$</p>
+<div class="step">$$(\mathcal L^N)^*(R)\le\sum_{n=1}^\infty\ell(J_n)\le\sum_{n=1}^\infty\ell(R_n) + \eps\le(\mathcal L^N)^*(R) + 2\eps$$<div class="why"><p>What this line really bounds is $\alpha(R)$ (that's the inequality we still need): $\{J_n\}$ is a cover of $R$ by <em>open</em> rectangles ($R\subseteq\bigcup R_n\subseteq\bigcup J_n$), so $\alpha(R)\le\sum\ell(J_n)$. Then $\sum\ell(J_n)\le\sum(\ell(R_n)+\eps/2^n) = \sum\ell(R_n)+\eps$, and finally use the choice of $\{R_n\}$. So $\alpha(R)\le(\mathcal L^N)^*(R)+2\eps$.</p></div></div>
+<p><span class="step">Let $\eps\to0^+$.<span class="why"><span class="wp">$\alpha(R)\le(\mathcal L^N)^*(R)+2\eps$ for all $\eps\gt0$ gives $\alpha(R)\le(\mathcal L^N)^*(R)$; with the first inequality, equality.</span></span></span></p>
+
+<p><u>Step 2</u> $R$ is a closed rectangle. <u>claim</u> $\ell(R)\le(\mathcal L^N)^*(R)$</p>
+<p>Fix $\eps\gt0$. <span class="step"><u>Step 1</u>: $\exists R_n$ open, $R\subseteq\bigcup_{n=1}^\infty R_n$, $\displaystyle\sum_{n=1}^\infty\ell(R_n)\le(\mathcal L^N)^*(R)+\eps$.<span class="why"><span class="wp">By step 1, $(\mathcal L^N)^*(R)$ is also the infimum over covers by <em>open</em> rectangles, so we can pick an open cover whose cost is within $\eps$ of it.</span></span></span></p>
+<span class="pg"><a href="scans/L03-03.jpg" target="_blank" rel="noopener">original notes · p. 3 ↗</a></span>
+<p><span class="step">$R$ compact $\Rightarrow\exists n\in\N$: $R\subseteq\bigcup_{i=1}^n R_i$.<span class="why"><span class="wp">A closed rectangle is closed and bounded in $\R^N$, hence compact (Heine–Borel). The $R_n$ form an open cover, so finitely many suffice; after relabelling, $R_1,\dots,R_n$. This is the crucial step where countable becomes finite — and why we needed open rectangles in step 1.</span></span></span></p>
+<p><span class="step">Extend the faces of each $R_n$ to hyperplanes, in order to get a finite partition of $R$ … subrectangles $J_k$<span class="why"><span class="wp">Each $R_i$ has, in each coordinate direction, two endpoint values. Collect all these values (and those of $R$) in coordinate $j$ and sort them: they cut the $j$-th side of $R$ into intervals. Products of these intervals cut $R$ into finitely many non-overlapping subrectangles $J_1,\dots,J_k$ (a grid). Each $J_m$ lies entirely inside every $R_i$ it meets (no face of $R_i$ crosses it), and since the $R_i$ cover $R$, each $J_m$ lies inside at least one $R_i$. See the interactive figure below.</span></span></span></p>
+<div class="step">$$\ell(R) = \sum_{k=1}^k\ell(J_k)\le\sum_{i=1}^n\ell(R_i)\le\sum_{i=1}^\infty\ell(R_i)\le(\mathcal L^N)^*(R)+\eps$$<div class="why"><p><strong>Equality:</strong> volume is additive over a grid partition: $R = \prod[a_j,b_j]$ with each side cut into pieces; $\prod_j(b_j-a_j) = \prod_j\sum_{\text{pieces}}(\text{piece length}) = \sum_{\text{grid cells}}\prod_j(\text{lengths})$ by expanding the product. (The $J$'s overlap only on faces, which have zero length in some direction.)</p><p><strong>First $\le$:</strong> group the $J$'s by an $R_i$ containing them. The grid cells inside a given $R_i$ are part of the analogous grid of $R_i$, so their volumes add up to at most $\ell(R_i)$ (by the same expansion). Every $J$ is counted in at least one group.</p><p><strong>Second $\le$:</strong> adding more non-negative terms. <strong>Third:</strong> choice of the cover.</p></div></div>
+<p>let $\eps\to0^+$ get $\ell(R)\le(\mathcal L^N)^*(R)$</p>
+
+<p><u>Step 3</u> $R$ arbitrary</p>
+<p>Fix $\eps\gt0$, <span class="step">find $J\subseteq R$ closed rectangle, $\ell(R)\le\ell(J)+\eps$.<span class="why"><span class="wp">If $R = \prod I_i$ with endpoints $a_i\lt b_i$, take $J = \prod[a_i+t, b_i-t]$ for small $t\gt0$: it's closed, inside $R$, and its volume $\prod(b_i-a_i-2t)\to\ell(R)$ as $t\to0$. (If some side of $R$ is degenerate, $\ell(R) = 0$ and there's nothing to prove.)</span></span></span></p>
+<div class="step">$$\ell(R)\le\ell(J)+\eps\underset{\text{(Step 2)}}{\le}(\mathcal L^N)^*(J)+\eps\underset{\text{(monotonicity)}}{\le}(\mathcal L^N)^*(R)+\eps.$$<div class="why"><p>Step 2 applies to $J$ because $J$ is <em>closed</em>. Monotonicity of the outer measure (Def 2.6 (ii)) applies because $J\subseteq R$.</p></div></div>
+<p>let $\eps\to0^+$: $\ell(R)\le(\mathcal L^N)^*(R)$. ($\ge$ always) <span class="qed">■</span></p>
+</div>
+
+<figure class="viz" data-viz="grid-cover" data-title="Compactness + extending faces (Step 2)">
+<template class="say">Here is step two in pictures. The blue rectangle R is covered by finitely many open rectangles. Extending every face into a full line chops R into a grid of cells, each lying inside one of the covering rectangles. So the area of R, which is the total area of the cells, can't exceed the total area of the cover. Press shuffle to try other covers.</template>
+<figcaption>Finitely many open rectangles cover $R$ (blue). Extending all faces (dashed) cuts $R$ into cells $J_k$; each cell is coloured by one cover rectangle containing it. Hence $\ell(R) = \sum\ell(J_k)\le\sum\ell(R_i)$.</figcaption>
+</figure>
+
+<div class="env rmk" data-label="Rmk 2.12">
+<template class="say">Remark two point twelve. Lebesgue outer measure is translation invariant, because translating an interval doesn't change its length, so translating a rectangle doesn't change its volume, and translating a cover gives a cover of the translated set with the same cost.</template>
+<p><span class="step">$(\mathcal L^N)^*$ is translation invariant<span class="why"><span class="wp">If $\{R_n\}$ covers $E$ then $\{x_0+R_n\}$ covers $x_0+E$ at the same cost, since $\ell(x_0+R_n) = \ell(R_n)$. So $(\mathcal L^N)^*(x_0+E)\le(\mathcal L^N)^*(E)$. Applying this with $-x_0$ to the set $x_0+E$ gives the reverse inequality.</span></span></span></p>
+<p>$\ell(a+I) = \ell(I)$ $a\in\R$, $I$ interval.<br>
+$\ell(R) = \ell(x_0+R)$, $x_0\in\R^N$, $R\subset\R^N$</p>
+</div>
+
+<span class="pg"><a href="scans/L03-04.jpg" target="_blank" rel="noopener">original notes · p. 4 ↗</a></span>
+<h2>Additivity fails for the outer measure</h2>
+<div>
+<template class="say">We would like additivity: if A and B are disjoint, the outer measure of the union is the sum. This is false in general! The problem is that the outer measure is defined for any subset of R N, and some subsets are so badly behaved that they cannot be assigned a measure. Remark two point thirteen constructs disjoint sets A and B where the outer measure of the union is strictly less than the sum.</template>
+<p>Would like: <u>additivity</u> $A\cap B = \emptyset\overset{?}{\Rightarrow}(\mathcal L^N)^*(A\cup B) = (\mathcal L^N)^*(A)+(\mathcal L^N)^*(B)$</p>
+<p><u>False</u> (in general)!</p>
+<p><mark>Problem</mark>: $(\mathcal L^N)^*(A)$ is defined for <u>any</u> $A\subseteq\R^N$</p>
+<p>will remove some subsets of $\R^N$ ("bad") no <u>measure</u>!</p>
+</div>
+
+<div class="env rmk" data-label="Rmk 2.13">
+<template class="say">The construction is due to Vitali. On the interval from minus one to one, call two numbers equivalent if their difference is rational. Each equivalence class is a copy of the rationals shifted by a, intersected with the interval: a countable dense set. The interval splits into uncountably many such classes. The axiom of choice lets us pick exactly one representative from each class; collect them into a set V. The explainer animation below walks through why V cannot be measured.</template>
+<p>We construct $A, B\subseteq\R$ such that
+$$A\cap B = \emptyset\quad\text{and}\quad(\mathcal L^1)^*(A\cup B)\ \boxed{\lt}\ (\mathcal L^1)^*(A)+(\mathcal L^1)^*(B)$$</p>
+<p>$[-1,1]$ consider the equivalence relation:
+$$a\sim b\quad\text{iff}\quad a-b\in\Q$$</p>
+<p>$\forall a\in[-1,1]$, $a\in[a] := \{b\in[-1,1] : a\sim b\}$
+$$[-1,1] = \bigcup_{a\in[-1,1]}[a]$$</p>
+<p><mark>Axiom of Choice</mark>: If $F$ is a set whose elements are disjoint, nonempty subsets of $X$, then there exists $V\subset X$ that contains exactly one element of each element of $F$.</p>
+<p>Take $F := \{[a] : a\in[-1,1]\}$<br>
+↓<br>
+$V\subseteq\R$, $V$ contains exactly one element of each equivalence class: $V\cap[a]$ has only one element.</p>
+<p>$[-2,2]\cap\Q = \{r_1,r_2,r_3,\dots,r_n,\dots\}$ distinct rational numbers.</p>
+<p><u>claim</u> $\displaystyle[-1,1]\subset\bigcup_{k=1}^\infty(r_k+V)$</p>
+<p>why: <span class="step">$a\in[-1,1]$ let $V\cap[a] = \{\tilde a\}$<span class="why"><span class="wp">The class $[a]$ is one of the elements of $F$, so by construction $V$ contains exactly one of its points; call it $\tilde a$. Since $\tilde a\in[a]$, $\tilde a\sim a$.</span></span></span></p>
+<span class="pg"><a href="scans/L03-05.jpg" target="_blank" rel="noopener">original notes · p. 5 ↗</a></span>
+<p><span class="step">$a-\tilde a\in\Q\Rightarrow a = \tilde a + r_k$, $k\in\N$ (note $a-\tilde a\in[-2,2]$)<span class="why"><span class="wp">$a\sim\tilde a$ means $a - \tilde a\in\Q$. Both $a,\tilde a\in[-1,1]$, so $a-\tilde a\in[-2,2]$. Thus $a-\tilde a$ is a rational in $[-2,2]$, i.e. it is one of the $r_k$. Then $a = r_k+\tilde a\in r_k+V$.</span></span></span></p>
+<p>Subadditivity of the outer measure + Prop 2.11:</p>
+<div class="step">$$2 = \ell([-1,1]) \underset{\text{Prop 2.11}}{=} (\mathcal L^1)^*([-1,1])\le\sum_{k=1}^\infty(\mathcal L^1)^*(r_k+V) \underset{\text{(transl. invariant)}}{=} \sum_{k=1}^\infty(\mathcal L^1)^*(V)$$<div class="why"><p>The inequality is monotonicity ($[-1,1]\subseteq\bigcup_k(r_k+V)$ by the claim) followed by countable subadditivity (Def 2.6 (ii), (iii)). The last equality is Rmk 2.12: each translate has the same outer measure as $V$.</p></div></div>
+<p><span class="step">$\Rightarrow(\mathcal L^1)^*(V)\gt0$<span class="why"><span class="wp">If $(\mathcal L^1)^*(V) = 0$, the right side would be $\sum_k 0 = 0$, giving $2\le0$.</span></span></span></p>
+
+<p><u>claim</u> $(r_j+V)\cap(r_i+V) = \emptyset$ if $i\ne j$ ①</p>
+<p>why: Suppose $\exists i,j$, $i\ne j$, $t\in(r_i+V)\cap(r_j+V)$, some $t\in\R$</p>
+<p>$t = r_j+v_j = r_i+v_i$, some $v_i,v_j\in V$</p>
+<p><span class="step">$\Rightarrow v_i - v_j = \underbrace{r_j - r_i}_{\in\Q}\Rightarrow[v_i] = [v_j]$<span class="why"><span class="wp">Rearrange $r_j+v_j = r_i+v_i$. A difference of two rationals is rational, so $v_i\sim v_j$: they lie in the same equivalence class.</span></span></span></p>
+<p><span class="step">$\Rightarrow v_i = v_j\Rightarrow r_i = r_j\Rightarrow i = j.$<span class="why"><span class="wp">$V$ contains <em>exactly one</em> element of each class, and $v_i,v_j$ are elements of $V$ in the same class, so they are equal. Then $r_i = t - v_i = t-v_j = r_j$, and the $r_k$ are distinct, so $i=j$ — contradicting $i\ne j$.</span></span></span></p>
+
+<p>Now $V\subseteq[-1,1]$, $r_k\in[-2,2]$ $\forall k$
+$$\bigcup_{k=1}^n(r_k+V)\subseteq[-3,3]$$</p>
+<p>Monotonicity of $(\mathcal L^1)^*$:
+$$(\mathcal L^1)^*\Big(\bigcup_{k=1}^n(r_k+V)\Big)\le(\mathcal L^1)^*([-3,3]) = \ell([-3,3]) = 6\quad\text{(2)}$$</p>
+<p>Translation invariance:
+$$\sum_{k=1}^n(\mathcal L^1)^*(r_k+V) = \sum_{k=1}^n(\mathcal L^1)^*(V) = n\underbrace{(\mathcal L^1)^*(V)}_{\gt0}$$</p>
+<p><span class="step">choose $n\gg1$ s.t. $n(\mathcal L^1)^*(V)\gt6$ ③<span class="why"><span class="wp">Archimedean property: $(\mathcal L^1)^*(V)$ is a fixed positive number, so its multiples are unbounded. (It's also finite: $V\subseteq[-1,1]$ gives $(\mathcal L^1)^*(V)\le2$.)</span></span></span></p>
+<span class="pg"><a href="scans/L03-06.jpg" target="_blank" rel="noopener">original notes · p. 6 ↗</a></span>
+<p><strong>If</strong> $(\mathcal L^1)^*$ was <u>finite additive</u>,
+<span class="step">$$\boxed{6}\underset{\text{(2)}}{\ge}(\mathcal L^1)^*\Big(\bigcup_{k=1}^n(r_k+V)\Big)\underset{\text{(1)}}{=}\sum_{k=1}^n\underbrace{(\mathcal L^1)^*(r_k+V)}_{(\mathcal L^1)^*(V)} \underset{\text{(trans inv)}}{=} n(\mathcal L^1)^*(V)\ \underset{\text{(3)}}{\boxed{\gt6}}$$<span class="why"><span class="wp">Equality ① is where finite additivity would be used: the sets $r_k+V$ are pairwise disjoint (claim ①), so additivity applied $n-1$ times would split the outer measure of the union into the sum. The chain then gives $6\gt6$, a contradiction. So $(\mathcal L^1)^*$ is <em>not</em> finitely additive.</span><span class="wp">Concretely: if additivity held for every disjoint pair, then by induction it would hold for $n$ disjoint sets. So for some $m$ it fails for the pair $A = r_m+V$, $B = \bigcup_{k=m+1}^n(r_k+V)$; the notes take $m=1$ for illustration.</span></span></span></p>
+<p>$A_1 := r_1+V$, $B := \bigcup_{k=2}^n(r_k+V)$.</p>
+</div>
+
+<div class="explainer" data-scene="vitali" data-title="The Vitali set: a set with no length">
+<template class="say">Let's build a set that has no sensible length. Start with the interval from minus one to one. Pick a point a.</template>
+<template class="say">Its equivalence class is everything you can reach from a by adding a rational number and staying inside the interval. That's a countable, dense dust of points. Pick another point, and you get a different dust, interleaved with the first. The interval splits into uncountably many of these dusts.</template>
+<template class="say">Now, using the axiom of choice, grab exactly one point from every dust. That's the Vitali set V. Nobody can write it down explicitly; we only know it exists.</template>
+<template class="say">Now shift V by each rational r k between minus two and two. These translated copies are pairwise disjoint: if two copies shared a point, two elements of V would differ by a rational, so they'd be in the same class, so they'd be equal. And together the copies cover the whole interval from minus one to one, because every point is a rational shift of its representative.</template>
+<template class="say">Now count lengths. All copies have the same outer measure as V. If that were zero, countably many copies would have total zero, but they cover an interval of length two. So the outer measure of V is positive.</template>
+<template class="say">But all the copies live inside the interval from minus three to three, of length six. If length were additive, n copies would have total length n times the outer measure of V, which exceeds six once n is large. Contradiction. So outer measure is not additive on all sets, and some sets, like V, must be excluded. In the next lecture we'll find exactly which sets to keep: the measurable ones.</template>
+</div>
+
+<div>
+<template class="say">In fact one can prove more, proposition two point fourteen: there is no function mu on all subsets of the real line that simultaneously gives intervals their length, is countably additive on disjoint sets, and is translation invariant. Something has to give, and what gives is the domain: we will only measure measurable sets.</template>
+<p>Can prove:</p>
+</div>
+<div class="env prop" data-label="Prop 2.14">
+<p>$\nexists\ \mu:\mathcal P(\R)\to[0,+\infty]$ s.t.</p>
+<ol type="i">
+<li>$\mu(I) = \ell(I)$ $\forall I$ interval in $\R$</li>
+<li>$\displaystyle\mu\Big(\bigcup_{n=1}^\infty A_n\Big) = \sum_{n=1}^\infty\mu(A_n)$ whenever $\{A_n\}$ mutually disjoint</li>
+<li>$\mu(t+A) = \mu(A)$ $\forall t\in\R$</li>
+</ol>
+</div>
+
+
+<nav class="pager"><a href="lec02.html">← Lecture 2</a><a href="lec04.html">Lecture 4 →</a></nav>
+</main>
+</body>
+</html>

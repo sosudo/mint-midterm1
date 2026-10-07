@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture 2: Limits of Riemann Integrals and Outer Measures</title>
+<meta name="description" content="Limits of Riemann integrable functions; the goal of the Lebesgue integral; outer measures: Lebesgue, Lebesgue–Stieltjes, Hausdorff; Props 2.7–2.11.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;650&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="assets/book.css">
+<script>try{var t=localStorage.getItem("mintbook.theme");if(t)document.documentElement.setAttribute("data-theme",JSON.parse(t))}catch(e){}</script>
+<script defer src="assets/book.js"></script>
+<script defer src="assets/lec02.js"></script>
+</head>
+<body>
+<header class="topbar"><div class="inner">
+  <a class="brand" href="index.html">∫ Measure &amp; Integration</a>
+  <span class="spacer"></span>
+  <button id="stepsBtn" title="Toggle the 'why?' hints on proof steps">Proof hints: on</button>
+  <button id="themeBtn" title="Light / dark">◐</button>
+</div></header>
+<main>
+<div class="lecture-head"><div class="kicker">Lecture 2</div><h1>Limits of Riemann Integrals and Outer Measures</h1></div>
+<div class="howto">Every <b>underlined proof step</b> is selectable — hover or tap it for a detailed explanation of why it holds.
+Press <b>▶</b> in the bar at the bottom to have the lecture <b>read and explained aloud</b>; hover a paragraph and click its ▶ to start there.
+<b>Explainer</b> panels are narrated animations; <b>Interactive</b> panels respond to sliders and dragging.
+The small “original notes” links open the scanned page the text was transcribed from.</div>
+
+<p class="note">The first two scanned pages of this lecture repeat notebook pages 9–10 (Thm 1.11 through Def 1.14), which are in <a href="lec01.html">Lecture 1</a>. The new material starts at notebook page 11.</p>
+
+<span class="pg"><a href="scans/L02-03.jpg" target="_blank" rel="noopener">original notes · p. 3 ↗</a></span>
+<div class="env ex" data-label="Example 1.15" data-title="[Limits of Riemann Integrable functions]">
+<template class="say">Example one point fifteen shows how badly Riemann integration behaves with limits. List the rationals in zero one as r one, r two, r three, and so on. Let f k be one at the first k rationals and zero everywhere else. Each f k is zero except at finitely many points, so it's Riemann integrable with integral zero. But as k grows, f k increases pointwise to the Dirichlet function, which is not Riemann integrable. So a monotone, bounded sequence of nice functions has a limit outside the theory.</template>
+<p>Let $\Q\cap[0,1] = \{r_1, r_2,\dots,r_n,\dots\}$. Let
+$$f_k(x) := \begin{cases}1 & x\in\{r_1,\dots,r_k\},\\ 0 & \text{—}.\end{cases}$$</p>
+<p>Then <span class="step">$f_k$ is Riemann integrable, with $\int_0^1 f_k = 0$.<span class="why"><span class="wp">Lower sums: every interval of a partition contains points other than $r_1,\dots,r_k$, where $f_k = 0$, so $\inf f_k = 0$ on every interval and $L(f_k,P) = 0$ for all $P$.</span><span class="wp">Upper sums: given $\eps$, choose a partition in which each of the $k$ points $r_i$ lies in intervals of total length $\lt \eps$ (each $r_i$ touches at most two intervals, so make those intervals shorter than $\eps/(2k)$). Only those intervals have $\sup f_k = 1$, so $U(f_k,P) \lt \eps$. Hence $0 \le U(f_k,[0,1]) \lt \eps$ for all $\eps$, and lower $=$ upper $= 0$.</span></span></span>
+However, <span class="step">$f_k\to f$ pointwise, $f(x) = \begin{cases}1 & x\in\Q\cap[0,1],\\ 0 & \text{—},\end{cases}$<span class="why"><span class="wp">If $x$ is irrational, $f_k(x) = 0$ for every $k$, which equals $f(x) = 0$. If $x$ is rational, then $x = r_m$ for some $m$ (the list enumerates all of $\Q\cap[0,1]$), so $f_k(x) = 1 = f(x)$ for all $k\ge m$. Either way the sequence is eventually equal to $f(x)$.</span></span></span>
+and thus function is not Riemann integrable (see Example 1.12).</p>
+</div>
+
+<figure class="viz" data-viz="fk-rationals" data-title="Riemann integrable functions converging to Dirichlet's function">
+<template class="say">In this figure, slide k up. Each new rational lights up as a single spike. Every f k has integral zero, because finitely many spikes have no area. But the pointwise limit is one on every rational, which is the Dirichlet function, and its upper sums are always one.</template>
+<figcaption>$f_k$ is $1$ only at the first $k$ rationals (ordered by denominator). Each $f_k$ has $\int_0^1 f_k = 0$, yet the limit is Dirichlet's function of Example 1.12. Notice how the minimum upper sum for $f_k$ stays tiny, while for the limit it jumps to $1$.</figcaption>
+</figure>
+
+<div>
+<template class="say">But there is a positive result.</template>
+<p>But the following is a positive result:</p>
+</div>
+
+<div class="env prop" data-label="Proposition 1.16">
+<template class="say">Proposition one point sixteen. Suppose the f n are Riemann integrable and uniformly bounded by a constant M, and they converge pointwise to f. If f happens to be Riemann integrable, then the integral of f is the limit of the integrals of f n. In other words, we may interchange the integral and the limit.</template>
+<p>Let $f_n:[a,b]\to\R$ be Riemann integrable functions with $|f_n(x)|\le M$ $\forall n\in\N$, $x\in[a,b]$. Let $f:[a,b]\to\R$ be the pointwise limit,
+$$f_n(x)\underset{n\to+\infty}{\longrightarrow} f(x)\quad\forall x\in[a,b].$$
+<strong>(If)</strong> $f$ is Riemann integrable then
+$$\int_a^b f = \lim_{n\to+\infty}\int_a^b f_n \quad\text{(interchange } \textstyle\int \text{ with } \lim\text{)}.$$</p>
+</div>
+
+<div class="env rmk" data-label="Rmk 1.17">
+<template class="say">Remark one point seventeen. Notice the if! Riemann's theory cannot guarantee that the limit is integrable; you have to assume it. We'll prove this later using measure theory, where the corresponding theorem, dominated convergence, will not need the if at all. If the convergence is uniform, the result holds without assuming anything, and the uniform bound on the f n is important.</template>
+<p>Note the <strong>(If)</strong>!</p>
+<p>We'll give a proof later on using measure theory.</p>
+<p>Further, Prop 1.16 also <u>ok</u> if $f_n\to f$ uniformly. (don't need the <strong>(If)</strong>) (see Rmk 10.11)</p>
+<p>The boundedness of $\{f_n\}$ is important.</p>
+</div>
+
+<span class="pg"><a href="scans/L02-04.jpg" target="_blank" rel="noopener">original notes · p. 4 ↗</a></span>
+<h2>Riemann vs. Lebesgue: the plan</h2>
+<div>
+<template class="say">Let's summarise the two philosophies. Riemann partitions the domain, then draws rectangles to approximate the area under the curve: it counts sequentially, left to right. Lebesgue partitions the range: look at all the points where f has about the same value and aggregate them, a stack and sort approach. Imagine counting a pile of coins: Riemann adds them in the order they come out of your pocket; Lebesgue first sorts them into piles of pennies, nickels and dimes, counts each pile, and multiplies by the value.</template>
+<p><mark>Riemann integral</mark>: partition the domain (count sequentially) <span class="note">then draw rectangles to approximate area under the curve.</span></p>
+<p><mark>Lebesgue integral</mark>: partition the range — look @ points with "same value" of $f$ and aggregate them (stack and sort)</p>
+</div>
+
+<div>
+<template class="say">Here's the goal. First, simple functions: a function s that takes finitely many values a i, each on a nice set A i, the set where s equals a i. Its integral should obviously be the sum of a i times the measure of A i. And here's the catch: to write that formula, we need the concept of measure. Second, for a non-negative function f, define its integral as the supremum of the integrals of simple functions below f. So everything hinges on measuring the sets A i. That's what we build now.</template>
+<p><u>Goal</u>:</p>
+<ul>
+<li>$s: X\to\R$ (simple function) $\displaystyle s = \sum_{i=1}^N a_i\chi_{A_i}$, $A_i$ "nice" sets, $A_i = s^{-1}(\{a_i\})$
+$$\int_X s\,d\mu := \sum_{i=1}^N a_i\,\mu(A_i)$$
+<span class="note">↑ need the concept of measure</span></li>
+<li>$f\ge0$, define $\displaystyle\int_X f\,d\mu := \sup_{s\le f}\int_X s\,d\mu$</li>
+</ul>
+</div>
+
+<figure class="viz" data-viz="simple-below" data-title="Simple functions below f">
+<template class="say">Here is that definition in action. The staircase is a simple function below f, built by slicing the range into levels: wherever f is at least a given level, the staircase climbs to that level. Each step is a value a i on a set A i. Add more levels and the simple function creeps up to f, and its integral, the sum of a i times the measure of A i, increases to the area under f.</template>
+<figcaption>A simple function $s\le f$ built from range levels $a_i = i/2^k$; the set $A_i = s^{-1}(\{a_i\})$ is shown under the axis in the colour of its level. $\int s\,d\mu = \sum a_i\mu(A_i)$ increases to $\int f$ as the levels get finer.</figcaption>
+</figure>
+
+<span class="pg"><a href="scans/L02-05.jpg" target="_blank" rel="noopener">original notes · p. 5 ↗</a></span>
+<h2>2. Outer Measures</h2>
+<div>
+<template class="say">Chapter two: outer measures. Take a set X, for instance R N, or an interval. The goal is to measure an arbitrary set E inside X. The idea: approximate E by unions of nice sets that we already know how to measure, our building blocks. In R N those are cubes, rectangles, balls; on the line, intervals.</template>
+<p>Consider a set $X$ (e.g., $X = \R^N$, $X = I$ with $I = [a,b]\subseteq\R$).</p>
+<p><u>Goal</u>: to "<mark>measure</mark>" an arbitrary set $E\subseteq X$.</p>
+<p><u>Idea</u>: approximate $E$ with unions of "nice" sets (elementary sets) to which we know how to assign a measure.</p>
+<p>E.g., in $\R^N$ use cubes, rectangles, balls; in $\R$ use intervals $(a,b), [a,b), (a,b], [a,b]$ ("building blocks").</p>
+</div>
+
+<div class="env defn" data-label="2.1">
+<template class="say">Section two point one, the general recipe. Take a family script E of elementary sets. It must contain the empty set, and countably many of its members must cover X. Give each elementary set a size rho, any number from zero to infinity, with rho of the empty set equal to zero. Rho is called an elementary measure. Then define mu star of E as the infimum, over all countable covers of E by elementary sets, of the sum of their rho values. This is formula two point one, and we'll use it over and over.</template>
+<p>Let $\mathcal E\subset\mathcal P(X)$ be a family of <mark>elementary sets</mark>, with $\emptyset\in\mathcal E$ and $X = \bigcup_{n=1}^\infty X_n$ for some $X_n\in\mathcal E$.</p>
+<p>Let $\rho:\mathcal E\to[0,+\infty]$ s.t. $\rho(\emptyset) = 0$. (<mark>elementary measure</mark>)</p>
+<p>Define $\ms:\mathcal P(X)\to[0,+\infty]$ by
+$$\ms(E) := \inf\Big\{\sum_{n=1}^\infty \rho(E_n) : E_n\in\mathcal E\ \forall n\in\N,\ E\subseteq\bigcup_{n=1}^\infty E_n\Big\}. \tag{2.1}$$</p>
+</div>
+
+<div class="env defn" data-label="2.2" data-title="Lebesgue Outer Measure">
+<template class="say">Two point two, Lebesgue outer measure. For an interval define its length l as sup minus inf; so open, closed and half open intervals all have the same length. A rectangle in R N is a product of N intervals, and its size, also written l, is the product of the side lengths. Note the empty set is a product of empty intervals, so it has size zero. And size is translation invariant. Now plug rectangles into the recipe: the N dimensional Lebesgue outer measure of E is the infimum of the total volume of countable rectangle covers of E.</template>
+<p>If $I\subseteq\R$ is an interval, define $\ell(I) := \sup I - \inf I$ $\big(= \rho(I)\big)$ (so that $\ell(I) = \ell(\mathring I) = \ell(\overline I)$).</p>
+<p>A rectangle in $\R^N$ is a set of the form
+$$R := I_1\times\dots\times I_N,\quad I_i\subset\R \text{ intervals, with } \ell(R) := \prod_{i=1}^N \ell(I_i).$$</p>
+<p><u>N.B.</u> $\emptyset = \prod_{i=1}^N (a,a)$ so $\ell(\emptyset) = 0$</p>
+<p>$\forall a\in\R^N$ $\ell(R) = \ell(a+R)$ for all rectangle $R\subseteq\R^N$ (translation invariance)</p>
+<span class="pg"><a href="scans/L02-06.jpg" target="_blank" rel="noopener">original notes · p. 6 ↗</a></span>
+<p><strong>Lebesgue Outer Measure</strong>: Let $\mathcal E$ be the family of rectangles (elementary sets), with $\emptyset\in\mathcal E$. Let $E\subseteq\R^N$. Define
+$$(\mathcal L^N)^*(E) := \inf\Big\{\sum_{n=1}^\infty \ell(R_n) : E\subseteq\bigcup_{n=1}^\infty R_n,\ R_n \text{ rectangle}\Big\}.$$
+… <mark>$N$-dimensional Lebesgue outer measure.</mark></p>
+</div>
+
+<div class="explainer" data-scene="eps-over-2n" data-title="Covering the rationals: the ε/2ⁿ trick">
+<template class="say">Here's the single most useful trick in this course, and the reason countable covers are so powerful. Let's compute the Lebesgue outer measure of the rationals in zero one.</template>
+<template class="say">List the rationals: r one, r two, r three, and so on. Countably many, so we can enumerate them, even though they're dense.</template>
+<template class="say">Now fix a small epsilon. Cover r one with an interval of length epsilon over two. Cover r two with an interval of length epsilon over four. Cover r three with one of length epsilon over eight. In general, the n th rational gets an interval of length epsilon over two to the n.</template>
+<template class="say">Every rational is covered. And the total length? It's epsilon times one half plus one quarter plus one eighth and so on, a geometric series that sums to exactly epsilon. Watch the running total on the right: it never passes epsilon.</template>
+<template class="say">So the outer measure of the rationals is at most epsilon, for every epsilon. Hence it's zero. Compare with Jordan, where the outer approximation was stuck at one. The difference is just this: Jordan allows finitely many intervals, Lebesgue allows countably many, and with countably many the intervals can shrink geometrically.</template>
+<template class="say">Remember the shape of this argument: split an error budget epsilon into pieces epsilon over two to the n. We are about to use exactly the same trick to prove that every outer measure is countably subadditive.</template>
+</div>
+
+<div class="env defn" data-label="2.3" data-title="Lebesgue–Stieltjes Outer Measure">
+<template class="say">Two point three, the Lebesgue Stieltjes outer measure. Take an increasing function f on an open interval. Use half open intervals a b as elementary sets, but measure them not by their length, but by how much f increases: rho of a b equals f of b minus f of a. Where f is steep, intervals count a lot; where f is flat, they count nothing; and if f jumps at a point, that single point carries weight equal to the jump. In probability, f is a cumulative distribution function, and this is how it defines a probability measure. Try the figure.</template>
+<p>Let $I\subseteq\R$ be an open interval and let $f:I\to\R$ be an increasing function.</p>
+<p>Let $\mathcal E$ be the family of all intervals $(a,b]$, $a,b\in I$, $a\le b$. Set $\rho:\mathcal E\to[0,+\infty)$ to be
+$$\rho\big((a,b]\big) := f(b) - f(a)\quad(\ge0).$$</p>
+<p>Given $E\subseteq I$, the <mark>Lebesgue–Stieltjes outer measure</mark> of $E$ generated by $f$ is
+$$\mu_f^*(E) := \inf\Big\{\sum_{n=1}^\infty \underbrace{\big(f(b_n) - f(a_n)\big)}_{\rho((a_n,b_n])} : a_n,b_n\in I,\ a_n\le b_n,\ E\subseteq\bigcup_{n=1}^\infty (a_n,b_n]\Big\}.$$</p>
+</div>
+
+<figure class="viz" data-viz="stieltjes" data-title="Measuring intervals by the growth of f">
+<figcaption>Drag the endpoints of $(a,b]$ along the axis. Its Lebesgue–Stieltjes size is the rise $f(b)-f(a)$ (vertical yellow bar), not its length. Flat parts of $f$ have no mass; the jump at $x=1$ gives the single point $\{1\}$ positive outer measure.</figcaption>
+</figure>
+
+<div class="env defn" data-label="2.4" data-title="Hausdorff Outer Measure">
+<template class="say">Two point four, the Hausdorff outer measure, which measures sets of any dimension s, even fractional. Fix s at least zero and a scale delta. The elementary sets are all sets of diameter less than delta, and a set F of diameter d gets size alpha s times d over two to the power s. That's the volume of an s dimensional ball of diameter d. H s delta of E is the cheapest way to cover E by such small sets. As delta shrinks, fewer covers are allowed, so the infimum can only grow. The limit, which is also the supremum, is the s dimensional Hausdorff outer measure.</template>
+<p>Let $0\le s\lt+\infty$. For $0\lt\delta\le+\infty$ consider the family
+$$\mathcal E_\delta := \{F\subseteq\R^N : \operatorname{diam} F\lt\delta\}.$$
+Here, $\operatorname{diam} F := \sup\{\|x-y\| : x,y\in F\}$, $\|\cdot\|$ Euclidean norm.</p>
+<p>Consider the elementary measure
+$$\rho_s(F) := \alpha_s\Big(\frac{\operatorname{diam} F}{2}\Big)^s,\quad F\in\mathcal E_\delta$$
+where $\alpha_s\gt0$ is a constant.</p>
+<span class="pg"><a href="scans/L02-07.jpg" target="_blank" rel="noopener">original notes · p. 7 ↗</a></span>
+<p>If $E\subseteq\R^N$ define
+$$\mathcal H^s_\delta(E) := \inf\Big\{\sum_{n=1}^\infty \alpha_s\Big(\frac{\operatorname{diam}E_n}{2}\Big)^s : E_n\in\mathcal E_\delta,\ E\subseteq\bigcup_{n=1}^\infty E_n\Big\}.$$</p>
+<p>If $s = 0$ then sum only over those $E_n\ne\emptyset$, with $\big(\frac{\operatorname{diam}E_n}{2}\big)^0 := 1$ even if $\operatorname{diam}E_n = 0$.</p>
+<p>Recognizing that <span class="step">$\delta\mapsto\mathcal H^s_\delta(E)$ is decreasing (because $\delta'\lt\delta \Rightarrow \mathcal E_{\delta'}\subseteq\mathcal E_\delta \Rightarrow \inf_\delta \le \inf_{\delta'}$)<span class="why"><span class="wp">A set of diameter $\lt\delta'$ certainly has diameter $\lt\delta$, so every cover admissible at scale $\delta'$ is admissible at scale $\delta$. An infimum over a <em>bigger</em> collection of covers is <em>smaller or equal</em>: $\mathcal H^s_\delta(E)\le\mathcal H^s_{\delta'}(E)$. So shrinking $\delta$ can only increase $\mathcal H^s_\delta(E)$ — finer covers are forced to follow the shape of $E$ more closely.</span></span></span> we set
+$$\boxed{\mathcal H^s(E) := \lim_{\delta\to0^+}\mathcal H^s_\delta(E) = \sup_{\delta\gt0}\mathcal H^s_\delta(E)}$$
+… <mark>$s$-dimensional Hausdorff outer measure of $E$.</mark></p>
+</div>
+
+<figure class="viz" data-viz="hausdorff" data-title="Hausdorff measure picks out the dimension">
+<template class="say">This figure covers a set with tiny pieces of diameter delta and adds up the diameters to the power s. For a line segment, try s equal to one: the sum stays at the length, however small delta gets. With s less than one, the sum blows up as delta shrinks; with s greater than one, it collapses to zero. The only interesting value is the true dimension. Switch to the square and the jump moves to s equals two. That jump is the Hausdorff dimension.</template>
+<figcaption>Cover the set by pieces of diameter $\delta$ and compute $\sum\alpha_s(\operatorname{diam}/2)^s$. The graph on the right plots this against $s$: as $\delta\to0$ it tends to $+\infty$ below the dimension and to $0$ above it. (For these simple sets the grid cover is close to optimal.)</figcaption>
+</figure>
+
+<div class="env rmk" data-label="Rmk 2.5">
+<template class="say">Remark two point five. Often alpha s is taken to be one. Here we take alpha s equal to pi to the s over two, divided by gamma of s over two plus one, where gamma is Euler's gamma function. The reason: with this choice, alpha N is exactly the volume of the unit ball in R N, so for whole numbers the Hausdorff measure agrees with ordinary volume. For example alpha one is two, the length of the interval from minus one to one, and alpha two is pi, the area of the unit disc.</template>
+<p>Often $\alpha_s$ is taken to be $1$. Here, we take
+$$\alpha_s := \frac{\pi^{s/2}}{\Gamma\big(\frac s2 + 1\big)}$$
+where $\Gamma$ is the Euler-Gamma function
+$$\Gamma(t) := \int_0^\infty e^{-x}x^{t-1}\,dx,\quad 0\lt t\lt\infty.$$
+Then $\Gamma(n) = (n-1)!$ $\forall n\in\N$ and
+$$\rho_N(B(0,1)) = \alpha_N = (\mathcal L^N)^*(B(0,1))\quad\big(= \mathcal L^N(B(0,1)) \text{ when we'll define the } N\text{-dim. Lebesgue meas.}\big)$$
+(see Example 4.10(i))</p>
+</div>
+
+<div class="env defn" data-label="Def 2.6" data-title="[Outer Measure]">
+<template class="say">Definition two point six, the abstract definition. An outer measure on a non-empty set X is a function mu star from all subsets of X to zero through infinity such that: one, the empty set has measure zero. Two, monotonicity: a smaller set has smaller outer measure. Three, countable subadditivity: the outer measure of a countable union is at most the sum of the outer measures. Note: subadditive, not additive. The pieces might overlap, and even for disjoint sets we will only get equality for measurable sets.</template>
+<p>Let $X$ be a nonempty set. A map $\ms:\mathcal P(X)\to[0,+\infty]$ is an <mark>outer measure</mark> if</p>
+<ol type="i">
+<li>$\ms(\emptyset) = 0$;</li>
+<li>[Monotonicity] $E\subseteq F\subseteq X \Rightarrow \ms(E)\le\ms(F)$</li>
+<li>[Countable Subadditive] $\displaystyle\ms\Big(\bigcup_{n=1}^\infty E_n\Big)\le\sum_{n=1}^\infty\ms(E_n)$ for all $\{E_n\}\subseteq\mathcal P(X)$.</li>
+</ol>
+</div>
+
+<span class="pg"><a href="scans/L02-08.jpg" target="_blank" rel="noopener">original notes · p. 8 ↗</a></span>
+<div>
+<template class="say">We now prove that the recipe two point one always produces an outer measure.</template>
+<p>We prove that the function $\ms$ defined in (2.1) is an outer measure.</p>
+</div>
+
+<div class="env prop" data-label="Prop. 2.7">
+<template class="say">Proposition two point seven. Under the assumptions of the recipe, mu star is an outer measure, and the outer measure of an elementary set is at most its elementary size rho. That inequality is labelled two point two.</template>
+<p>Let $X$ be a nonempty set, let $\mathcal E\subset\mathcal P(X)$ s.t. $\emptyset\in\mathcal E$ and there exist $X_n\in\mathcal E$, $n\in\N$, such that $X = \bigcup_{n=1}^\infty X_n$. Let $\rho:\mathcal E\to[0,+\infty]$ be such that $\rho(\emptyset) = 0$. Then $\ms$ defined in (2.1) is an <mark>outer measure</mark>, and
+$$\boxed{\ms(E)\le\rho(E)}\quad\text{for all } E\in\mathcal E. \tag{2.2}$$</p>
+</div>
+
+<div class="env proof" data-label="Proof">
+<template class="say">The proof. Property one: cover the empty set by the empty set, at cost zero. Property two: any cover of the bigger set F is also a cover of the smaller set E, so E's infimum is over more covers and can only be smaller. Property three is the real content, and it's the epsilon over two to the n trick. For each E n, choose a nearly optimal cover, wasting at most epsilon over two to the n. Put all those covers together: it's a countable family, a countable union of countable families, and it covers the union. Its total cost is at most the sum of the outer measures plus epsilon. Let epsilon go to zero. Finally, an elementary set E covers itself, so mu star of E is at most rho of E.</template>
+<p>(i) <u>claim</u> $\ms(\emptyset) = 0$.<br>
+<span class="step">This is clear since $\emptyset\in\mathcal E$ and $\rho(\emptyset) = 0$.<span class="why"><span class="wp">The sequence $E_n = \emptyset$ for all $n$ is an admissible cover of $\emptyset$ (all $E_n\in\mathcal E$, and $\emptyset\subseteq\bigcup E_n$), with cost $\sum\rho(\emptyset) = 0$. So the infimum is $\le 0$; and it's $\ge0$ since $\rho\ge0$.</span></span></span></p>
+<p>(ii) Let $E\subseteq F\subseteq X$. <u>claim</u> $\ms(E)\le\ms(F)$.<br>
+Let $F\subseteq\bigcup_{n=1}^\infty F_n$, $F_n\in\mathcal E$. <span class="step">Then $E\subseteq\bigcup_{n=1}^\infty F_n$, so
+$$\ms(E)\le\sum_{n=1}^\infty\rho(F_n).$$<span class="why"><span class="wp">$E\subseteq F\subseteq\bigcup F_n$, so $\{F_n\}$ is one of the admissible covers in the definition of $\ms(E)$. An infimum is $\le$ each element of the set, in particular $\le$ the cost $\sum\rho(F_n)$ of this cover.</span></span></span></p>
+<p><span class="step">Taking the infimum over the family $\{F_n\}$, we conclude that
+$$\ms(E)\le\ms(F).$$<span class="why"><span class="wp">$\ms(E)$ is a lower bound for the costs of <em>all</em> covers of $F$ (that's what the previous line showed, since $\{F_n\}$ was arbitrary). The greatest lower bound of those costs is $\ms(F)$, so $\ms(E)\le\ms(F)$.</span></span></span></p>
+<p>(iii) Let $E_n\subseteq X$, $n\in\N$. <u>claim</u> $\displaystyle\ms\Big(\bigcup_{n=1}^\infty E_n\Big)\le\sum_{n=1}^\infty\ms(E_n)$.</p>
+<p><span class="step">Fix $\eps\gt0$, and for all $n\in\N$ find $\{E_{n,k}\}_{k\in\N}\subseteq\mathcal E$ s.t.
+$$\sum_{k=1}^\infty\rho(E_{n,k})\le\ms(E_n) + \frac{\eps}{2^n},\qquad E_n\subseteq\bigcup_{k=1}^\infty E_{n,k}.$$<span class="why"><span class="wp">We may assume $\ms(E_n)\lt\infty$ for every $n$ (otherwise the right side of the claim is $+\infty$ and there is nothing to prove). Then $\ms(E_n)+\eps/2^n$ is strictly bigger than the infimum $\ms(E_n)$, so it is <em>not</em> a lower bound for the costs of covers of $E_n$: some cover $\{E_{n,k}\}_k$ costs less. (Here we use the hypothesis that covers exist at all: $X = \bigcup X_n$ covers everything.)</span><span class="wp">The budget $\eps/2^n$ is chosen so that the errors over all $n$ add up to at most $\eps$.</span></span></span></p>
+<p><span class="step">Then $\displaystyle\bigcup_{n=1}^\infty E_n\subseteq\bigcup_{n=1}^\infty\bigcup_{k=1}^\infty E_{n,k}$<span class="why"><span class="wp">Each $E_n$ is inside its own cover $\bigcup_k E_{n,k}$; take the union over $n$. The double family $\{E_{n,k}\}_{n,k\in\N}$ is countable ($\N\times\N$ is countable), so after enumerating it as a single sequence it is an admissible cover in (2.1).</span></span></span>, hence</p>
+<span class="pg"><a href="scans/L02-09.jpg" target="_blank" rel="noopener">original notes · p. 9 ↗</a></span>
+<div class="step">$$\ms\Big(\bigcup_{n=1}^\infty E_n\Big)\le\sum_{n=1}^\infty\sum_{k=1}^\infty\rho(E_{n,k})$$<div class="why"><p>$\ms$ of the union is the infimum over all covers; this particular double-indexed cover has cost $\sum_{n,k}\rho(E_{n,k})$. Since all terms are $\ge0$, the sum of a non-negative double series doesn't depend on the order of summation, so we may sum first over $k$, then over $n$.</p></div></div>
+<div class="step">$$\le\sum_{n=1}^\infty\Big[\ms(E_n) + \frac{\eps}{2^n}\Big] = \sum_{n=1}^\infty\ms(E_n) + \eps.$$<div class="why"><p>Apply the choice of the covers: the inner sum $\sum_k\rho(E_{n,k})$ is $\le\ms(E_n)+\eps/2^n$. Then split the sum and use the geometric series $\sum_{n\ge1}2^{-n} = 1$.</p></div></div>
+<p><span class="step">Let $\eps\to0^+$.<span class="why"><span class="wp">The left side doesn't depend on $\eps$ and is $\le\sum\ms(E_n)+\eps$ for every $\eps\gt0$, hence $\le\sum\ms(E_n)$.</span></span></span></p>
+<p>Finally, let $E\in\mathcal E$. <u>claim</u> $\ms(E)\le\rho(E)$.<br>
+<span class="step">This follows trivially from the fact that $\{E\}$ is a covering of $E$<span class="why"><span class="wp">Take $E_1 = E$ and $E_n = \emptyset$ for $n\ge2$: all in $\mathcal E$, covering $E$, with cost $\rho(E)+0+0+\dots = \rho(E)$. The infimum is at most this.</span></span></span>. <span class="qed">■</span></p>
+</div>
+
+<div class="env cor" data-label="Corollary 2.8">
+<template class="say">Corollary two point eight. All three examples, Lebesgue, Lebesgue Stieltjes and Hausdorff, are outer measures. For Hausdorff, note that each H s delta is an outer measure by the proposition, and a supremum of outer measures, increasing in delta, is again one. That's the end of lecture two.</template>
+<p>$(\mathcal L^N)^*$, $\mu^*_f$, and $\mathcal H^s_0$ (defined in 2.2, 2.3, 2.4) <mark>are outer measures.</mark></p>
+<p style="text-align:right"><em>end lect #2</em></p>
+</div>
+
+<div>
+<template class="say">A natural question. Inequality two point two says mu star of an elementary set is at most rho of it. When is it equal? For example, we would certainly like the Lebesgue outer measure of a rectangle to be its volume. That's not automatic: if rho is badly chosen, a clever cover by many cheap pieces might cost less than rho of the set itself.</template>
+<p><u>Question</u>: When do we have equality in (2.2)?</p>
+<p>E.g., would like to have $(\mathcal L^N)^*(R) = \ell(R)$, $R\subset\R^N$ rectangle.</p>
+</div>
+
+<div class="env prop" data-label="Proposition 2.9">
+<template class="say">Proposition two point nine answers this completely. Mu star agrees with rho on every elementary set if and only if rho is countably subadditive on elementary sets: whenever an elementary set E is covered by countably many elementary sets E n, rho of E is at most the sum of rho of E n.</template>
+<p>Let $X$ be a nonempty set, let $\mathcal E\subseteq\mathcal P(X)$ s.t. $\emptyset\in\mathcal E$ and there exist $X_n\in\mathcal E$, $n\in\N$, s.t. $X = \bigcup_{n=1}^\infty X_n$. Let $\rho:\mathcal E\to[0,+\infty]$ s.t. $\rho(\emptyset) = 0$; and let $\ms:\mathcal P(X)\to[0,+\infty]$ be defined as in (2.1).</p>
+<p>Then $\ms(E) = \rho(E)$ for every $E\in\mathcal E$ <mark>iff</mark> $\rho$ is countable subadditive, i.e.,
+$$\rho(E)\le\sum_{n=1}^\infty\rho(E_n)$$
+whenever $E, E_n\in\mathcal E$, $n\in\N$, and $E\subseteq\bigcup_{n=1}^\infty E_n$.</p>
+</div>
+
+<div class="env proof" data-label="Proof">
+<template class="say">Proof. If rho is countably subadditive, then every cover of E costs at least rho of E, so the infimum mu star of E is at least rho of E, and two point two gives the other inequality. Conversely, if mu star equals rho on elementary sets, then for any cover, rho of E equals mu star of E, which by definition is at most the cost of the cover.</template>
+<p>[$\Leftarrow$] Assume that $\rho$ is countable subadditive. Let $E, E_n\in\mathcal E$. Let $E\subseteq\bigcup_{n=1}^\infty E_n$, $n\in\N$. Then
+$$\rho(E)\le\sum_{n=1}^\infty\rho(E_n)$$
+and <span class="step">taking the infimum over all such $\{E_n\}\subseteq\mathcal E$, we get $\rho(E)\le\ms(E)$.<span class="why"><span class="wp">$\rho(E)$ is a lower bound for the cost of every admissible cover of $E$, so it is $\le$ the greatest lower bound, which is $\ms(E)$ by (2.1).</span></span></span></p>
+<p>By (2.2) we have always $\ms(E)\le\rho(E)$, hence $\ms(E) = \rho(E)$.</p>
+<span class="pg"><a href="scans/L02-10.jpg" target="_blank" rel="noopener">original notes · p. 10 ↗</a></span>
+<p>[$\Rightarrow$] Assume that $\ms(E) = \rho(E)$ for all $E\in\mathcal E$. $\quad(*)$<br>
+<u>claim</u> $\rho$ is countably subadditive.<br>
+Let $E, E_n\in\mathcal E$, $n\in\N$, $E\subseteq\bigcup_{n=1}^\infty E_n$. Then
+<span class="step">$$\rho(E) = \ms(E)\le\sum_{n=1}^\infty\rho(E_n)\quad\text{(by def. of } \ms\text{)}.$$<span class="why"><span class="wp">The equality is the assumption $(*)$. The inequality: $\{E_n\}$ is an admissible cover of $E$ in (2.1), and the infimum is $\le$ the cost of any admissible cover.</span></span></span> <span class="qed">■</span></p>
+</div>
+
+<div class="env rmk" data-label="Remark 2.10">
+<template class="say">Remark two point ten. When we defined Lebesgue outer measure, rectangles were products of intervals that could be open, closed or half open. Since all four kinds of intervals with the same endpoints have the same length, the outer measure can't tell the difference. If we only allowed open intervals, or only closed, we'd get the same outer measure. We'll use that freedom in the next proof.</template>
+<p>When we introduced the Lebesgue outer measure in $\R^N$, we took as elementary sets rectangles $=$ products of intervals, and intervals could be open, closed, semi-open.</p>
+<p>Since $\ell\big((a,b)\big) = \ell\big([a,b]\big) = \ell\big([a,b)\big) = \ell\big((a,b]\big)$, the outer-measure does not see the difference if we restrict the intervals to be only open, only closed, etc. Hence, the same applies to rectangles in $\R^N$.</p>
+</div>
+
+<div class="env prop" data-label="Proposition 2.11">
+<template class="say">Proposition two point eleven. The Lebesgue outer measure of a rectangle is its volume. This is less obvious than it looks: we must rule out covering a rectangle by countably many rectangles of smaller total volume. The proof will use compactness, which turns countable covers into finite ones.</template>
+<p>Let $R$ be a rectangle in $\R^N$ (an elementary set, not nec. open or closed). Then
+$$\boxed{(\mathcal L^N)^*(R) = \ell(R).}$$</p>
+</div>
+
+<div class="env proof" data-label="Proof">
+<template class="say">The proof starts here and continues in the next lecture. We already know the inequality mu star of R at most l of R, from two point two. Step one: show that we may restrict to covers by open rectangles without changing the infimum. Restricting the allowed covers can only increase the infimum, so one direction is clear.</template>
+<p>We already know that <span class="step">$(\mathcal L^N)^*(R)\le\ell(R)$ (see 2.2)<span class="why"><span class="wp">Prop 2.7, inequality (2.2), applied with $\mathcal E$ = rectangles and $\rho = \ell$: the rectangle $R$ covers itself.</span></span></span></p>
+<p><u>step 1</u> We claim that
+$$(\mathcal L^N)^*(R) = \inf\Big\{\sum_{n=1}^\infty\ell(R_n) : R\subseteq\bigcup_{n=1}^\infty R_n,\ R_n \textbf{ open} \text{ rectangles}\Big\} =: \mu^*(R).$$</p>
+<p>Clearly <span class="step">$(\mathcal L^N)^*(R)\le\mu^*(R)$. (because we are <u>restricting</u> the admissible $R$'s on $(\mathcal L^N)^*$ to obtain $\mu^*$).<span class="why"><span class="wp">Every cover by open rectangles is in particular a cover by rectangles. So the set of costs defining $\mu^*(R)$ is a subset of the set of costs defining $(\mathcal L^N)^*(R)$, and the infimum over a smaller set is larger or equal.</span></span></span></p>
+<p class="note">(The proof continues in <a href="lec03.html">Lecture 3</a>.)</p>
+</div>
+
+
+<nav class="pager"><a href="lec01.html">← Lecture 1</a><a href="lec03.html">Lecture 3 →</a></nav>
+</main>
+</body>
+</html>

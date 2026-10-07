@@ -1,0 +1,231 @@
+<lecture num="4" title="Carathéodory Measurability, σ-Algebras and Borel Sets" desc="No translation-invariant countably additive length on all subsets; Carathéodory's criterion; σ-algebras, generated σ-algebras, Borel sets; metric outer measures make Borel sets measurable.">
+
+<pg p="1"/>
+<div class="env prop" data-label="Prop 2.14">
+<template class="say">Lecture four. Let's finish proposition two point fourteen: there is no way to assign a size to every subset of the real line that gives intervals their length, is countably additive on disjoint families, and is translation invariant.</template>
+<p>$\nexists\ \mu:\mathcal P(\R)\to[0,+\infty]$ s.t.</p>
+<ol type="i">
+<li>$\mu(I) = \ell(I)$ $\forall I$ interval of $\R$</li>
+<li>$\displaystyle\mu\Big(\bigcup_{n=1}^\infty A_n\Big) = \sum_{n=1}^\infty\mu(A_n)$ for every disjoint family $\{A_n\}\subset\mathcal P(\R)$</li>
+<li>$\mu(t+A) = \mu(A)$ $\forall A\subseteq\R$, $t\in\R$.</li>
+</ol>
+</div>
+
+<div class="env proof" data-label="Proof">
+<template class="say">The proof: the Vitali argument of remark two point thirteen used exactly three properties of the outer measure: intervals get their length, monotonicity and subadditivity, and translation invariance. Then it contradicted additivity. So we only need to check that any mu with properties one to three is also monotone and countably subadditive. Monotone: write B as A, plus B minus A, plus empty sets, and use countable additivity. Subadditive: disjointify the sequence, by removing from each A n all the earlier ones, then use additivity and monotonicity.</template>
+<p>(i)–(iii) are all the properties that we used for $(\mathcal L^1)^*$ in Rmk 2.13, contradicting (ii) (additivity).</p>
+<ul>
+<li><u>monotonicity</u><br>
+<span class="step">(i) $\Rightarrow\mu(\emptyset) = \ell(\emptyset) = 0$<span class="why"><p>$\emptyset = (a,a)$ is an (empty) interval, whose length is $a - a = 0$.</p></span></span>
+<br>$A\subseteq B\subseteq\R$, $B = A\,\dot\cup\,(B\setminus A)\,\dot\cup\,\emptyset\,\dot\cup\,\emptyset\dots$
+<div class="step">$$\text{(ii)}\quad \mu(B) = \mu(A) + \underbrace{\mu(B\setminus A)}_{\ge0} + \underbrace{\mu(\emptyset)+\dots}_{=0}\ \ge\mu(A)$$<div class="why"><p>The sequence $A, B\setminus A, \emptyset,\emptyset,\dots$ is pairwise disjoint with union $B$, so (ii) applies. All values of $\mu$ are in $[0,+\infty]$, so dropping the non-negative term $\mu(B\setminus A)$ can only decrease the right side.</p></div></div></li>
+<li><u>Subadditivity</u> $A_n\subseteq\R$
+$$\bigcup_{n=1}^\infty A_n = \bigcup_{n=1}^\infty A'_n,\qquad A'_n := A_n\setminus\Big(\bigcup_{j\lt n}A_j\Big)\ \text{pairwise disjoint}$$
+<div class="step">$$\text{(ii)}\Rightarrow\mu\Big(\bigcup_{n=1}^\infty A_n\Big) = \mu\Big(\bigcup_{n=1}^\infty A'_n\Big)\underset{\text{(ii)}}{=}\sum_{n=1}^\infty\mu(A'_n)\le\sum_{n=1}^\infty\mu(A_n)$$<div class="why"><p><strong>Same union:</strong> $A'_n\subseteq A_n$ gives $\subseteq$; conversely, a point $x$ of $\bigcup A_n$ lies in some first $A_n$ (smallest $n$), and then $x\in A'_n$.</p><p><strong>Disjoint:</strong> if $m\lt n$, $A'_n$ has removed $A_m\supseteq A'_m$.</p><p><strong>Last $\le$:</strong> $A'_n\subseteq A_n$ and monotonicity, just proved.</p><p>This "disjointification" trick will be used constantly.</p></div></div>
+(monotonicity, just proved) <span class="qed">■</span></li>
+</ul>
+</div>
+
+<h2>3. σ-Algebras / Measurable Sets</h2>
+<div>
+<template class="say">Chapter three: sigma algebras and measurable sets. We just saw that for an outer measure such as Lebesgue's, it may happen that A and B are disjoint but the outer measure of the union is strictly smaller than the sum. Carathéodory's idea: restrict mu star to a smaller class of sets, the sets B such that, for every A disjoint from B, the outer measure of the union is the sum. That's formula three point one.</template>
+<p>Just saw that for $\ms$ outer measure (e.g., $(\mathcal L^1)^*$) it may happen
+$$A\cap B = \emptyset\Rightarrow\mu(A\cup B)\lt\mu(A)+\mu(B).$$</p>
+<p><mark>Carathéodory</mark>: restrict $\ms:\mathcal P(X)\to[0,+\infty]$ to a smaller class, which are the sets $B\subset\mathcal P(X)$ s.t. $\forall A$ s.t. $A\cap B = \emptyset$
+$$\ms(A\cup B) = \ms(A)+\ms(B).\tag{3.1}$$</p>
+</div>
+
+<pg p="2"/>
+<div class="env defn" data-label="Def 3.1">
+<template class="say">Definition three point one, the central definition. A set A is mu star measurable if, for every test set F, the outer measure of F equals the outer measure of the part of F inside A plus the part of F outside A. Think of A as a knife: it is measurable if it cuts every set F cleanly, with no outer measure created or lost at the cut.</template>
+<p>Let $X\ne\emptyset$, $\ms:\mathcal P(X)\to[0,+\infty]$ outer measure. A set $A\subseteq X$ is said to be <mark>$\ms$-measurable</mark> if
+$$\forall F\subseteq X\qquad \ms(F) = \ms(F\cap A)+\ms(F\setminus A).\tag{$*$}$$</p>
+</div>
+
+<div class="explainer" data-scene="caratheodory" data-title="Carathéodory: a set is measurable if it cuts every set cleanly">
+<template class="say">Let's get a feel for Carathéodory's definition. Take a test set F, here a blob, and a candidate set A, the region on the left of this curve.</template>
+<template class="say">A splits F into two pieces: F intersect A, and F minus A. Subadditivity always gives that the outer measure of F is at most the sum of the outer measures of the two pieces. Covering the pieces separately can never be cheaper than covering F as a whole.</template>
+<template class="say">A is measurable when this is always an equality, for every test set F. For a nice set, like a half plane or a disc, a good cover of F can be split along the boundary of A into a cover of each piece, losing nothing. So the cut is clean.</template>
+<template class="say">Now imagine A is a Vitali type set: a dust that is dense everywhere and fills the space in a non measurable way. Both pieces, F intersect A and F minus A, are dense in F, so any cover of either piece must essentially cover all of F. Each piece has outer measure as big as F itself, and the sum is twice too large. The knife crumbles the cake.</template>
+<template class="say">So measurable sets are exactly the good knives: they cut every set additively. The miracle, Carathéodory's theorem, is that the good knives form a sigma algebra, closed under complements and countable unions, and on them mu star is countably additive.</template>
+</div>
+
+<div class="env rmk" data-label="Rmk 3.2">
+<template class="say">Remark three point two. One: by subadditivity, the outer measure of F is always at most the sum of the two pieces. So to prove measurability we only need the reverse inequality, three point two, and only for test sets F of finite outer measure, since otherwise it's trivial. Two: sets of outer measure zero are always measurable. Indeed, the part of F inside a null set E has outer measure at most that of E, which is zero, and the part outside has outer measure at most that of F.</template>
+<p>(i) <span class="step">Subadditivity of $\ms$: $\ms(F)\le\ms(F\cap A)+\ms(F\setminus A)$ <u>Always!</u><span class="why"><p>$F = (F\cap A)\cup(F\setminus A)$; apply countable subadditivity (Def 2.6 (iii)) to the sequence $F\cap A, F\setminus A,\emptyset,\emptyset,\dots$, using $\ms(\emptyset) = 0$.</p></span></span></p>
+<p>If want to show $(*)$, need to prove $\boxed{\ge}$ i.e., $\forall F\subseteq X$
+$$\boxed{\ms(F)\ge\ms(F\cap A)+\ms(F\setminus A)\quad\text{if }\ms(F)\lt+\infty.}\tag{3.2}$$
+<span class="note">(if $\ms(F) = +\infty$, $\ge$ is automatic)</span></p>
+<p>(ii) if <span class="step">$\ms(E) = 0\Rightarrow E$ is $\ms$-measurable<span class="why"><p>We verify (3.2) for every $F$, as written out next: the piece inside $E$ is controlled by $E$ (which is null), the piece outside by $F$.</p></span></span></p>
+<p>Let $F\subseteq X$</p>
+<div class="step">$$\underbrace{\ms(F\cap E)}_{\le\ms(E)}+\underbrace{\ms(F\setminus E)}_{\le\ms(F)}\le\underbrace{\ms(E)}_{=0}+\ms(F) = \ms(F).$$<div class="why"><p>Monotonicity twice: $F\cap E\subseteq E$ and $F\setminus E\subseteq F$. Then $\ms(E) = 0$. This is exactly (3.2).</p></div></div>
+<p>monotonicity</p>
+</div>
+
+<div class="env cor" data-label="Corollary 3.3">
+<template class="say">Corollary three point three. If B is measurable, then for every A disjoint from B, the outer measure of the union is the sum. Just use F equal to A union B as the test set.</template>
+<p>$\ms:\mathcal P(X)\to[0,+\infty]$ outer measure. If $B\subseteq X$ is $\ms$-measurable. Then $\forall A\subseteq X$, $A\cap B = \emptyset$
+$$\ms(A\cup B) = \ms(A)+\ms(B).$$</p>
+</div>
+<div class="env proof" data-label="Proof">
+<p>$B$ $\ms$ meas.
+<span class="step">$$\ms(A\cup B) = \ms\big((A\cup B)\cap B\big)+\ms\big((A\cup B)\setminus B\big)$$<span class="why"><p>Definition 3.1 of measurability of $B$, applied with the test set $F = A\cup B$.</p></span></span>
+<span class="step">$$= \ms(B)+\ms(A)\ \text{because } A\cap B = \emptyset.$$<span class="why"><p>$(A\cup B)\cap B = B$ always; $(A\cup B)\setminus B = A\setminus B = A$ since $A$ and $B$ are disjoint.</p></span></span> <span class="qed">■</span></p>
+</div>
+
+<pg p="3"/>
+<div>
+<template class="say">Carathéodory's theorem, which we'll prove as theorem four point nine, says: restrict mu star to the collection M star of mu star measurable sets, labelled three point three. Then mu star is countably additive there, and in particular three point one holds. Moreover, M star is what we call a sigma algebra.</template>
+<p><mark>Carathéodory Thm</mark> (Thm 4.9): the restriction of
+$$\ms:\M^*\to[0,+\infty]$$
+$$\M^* := \{E\subseteq X,\ E\ \ms\text{-measurable}\}\tag{3.3}$$
+then $\ms$ is countably additive (hence (3.1) holds).</p>
+<p>Also, $\M^*$ has important properties, and is what we call a <mark>σ-algebra</mark> (sigma algebra).</p>
+</div>
+
+<div class="env defn" data-label="Def 3.4">
+<template class="say">Definition three point four. A collection M of subsets of X is a sigma algebra if it contains the empty set, it's closed under complements, and it's closed under countable unions. The pair X, M is called a measurable space.</template>
+<p>Let $X\ne\emptyset$, $\M\subseteq\mathcal P(X)$ is a <mark>σ-algebra</mark> if:</p>
+<ol type="i">
+<li>$\emptyset\in\M$</li>
+<li>$E\in\M\Rightarrow X\setminus E\in\M$</li>
+<li>$E_n\in\M$, $n\in\N$, then $\bigcup_{n=1}^\infty E_n\in\M$</li>
+</ol>
+<p>$(X,\M)$ is called a <mark>measurable space</mark>.</p>
+</div>
+
+<div class="env defn" data-label="Def 3.5">
+<template class="say">Definition three point five. An outer measure is regular if every set E sits inside a measurable set F of the same outer measure. A measurable hull, if you like.</template>
+<p>Let $X\ne\emptyset$, $\ms:\mathcal P(X)\to[0,+\infty]$ outer measure. $\ms$ is said to be <mark>regular</mark> if:
+$$\forall E\subseteq X\ \exists F\in\M^*\ \text{s.t.}\ E\subseteq F\ \text{and}\ \ms(E) = \ms(F).$$</p>
+</div>
+
+<div class="env prop" data-label="Proposition 3.6">
+<template class="say">Proposition three point six lists the basic closure properties of a sigma algebra: it contains X, it's closed under finite unions, intersections and differences, and under countable intersections. They all follow from complements and De Morgan's laws.</template>
+<p>$(X,\M)$ measurable space. Then</p>
+<ol type="i">
+<li>$X\in\M$</li>
+<li>$E,F\in\M\Rightarrow E\cup F,\ E\cap F,\ E\setminus F\in\M$</li>
+<li>$E_n\in\M$, $n\in\N\Rightarrow\bigcap_{n=1}^\infty E_n\in\M$.</li>
+</ol>
+</div>
+
+<pg p="4"/>
+<div class="env proof" data-label="Proof">
+<p>(i) <span class="step">$\emptyset\in\M$ + (ii) of def of $\M\Rightarrow X = X\setminus\emptyset\in\M$.<span class="why"><p>Complement of the empty set is everything. Def 3.4 (i) puts $\emptyset$ in $\M$ and (ii) puts its complement in.</p></span></span></p>
+<p>(ii) $E,F\in\M$ <span class="step">$E\cup F = E\cup F\cup\emptyset\cup\dots\cup\emptyset\in\M$<span class="why"><p>A finite union is a countable union padded with empty sets ($\emptyset\in\M$), so Def 3.4 (iii) applies.</p></span></span></p>
+<p>$E\in\M\Rightarrow X\setminus E\in\M$, $F\in\M\Rightarrow X\setminus F\in\M$ $\Big\}\Rightarrow(X\setminus E)\cup(X\setminus F)\in\M$</p>
+<p><span class="step">De Morgan's law $\Rightarrow X\setminus(E\cap F) = (X\setminus E)\cup(X\setminus F)$<span class="why"><p>$x\notin E\cap F$ iff $x$ fails to be in at least one of them, iff $x\in X\setminus E$ or $x\in X\setminus F$.</p></span></span> $\in\M$</p>
+<p>$E\cap F = \big(X\setminus(E\cap F)\big)^c\Rightarrow E\cap F\in\M.$</p>
+<p><span class="step">$E\setminus F = \underbrace{E\cap\underbrace{(X\setminus F)}_{\in\M}}_{\in\M}$<span class="why"><p>Removing $F$ is the same as intersecting with its complement. The complement is in $\M$ by (ii) of Def 3.4, and intersections of two members of $\M$ are in $\M$ by what we just proved.</p></span></span></p>
+<p>(iii) $E_n\in\M$
+<span class="step">$$X\setminus\Big(\bigcap_{n=1}^\infty E_n\Big) = \bigcup_{n=1}^\infty\underbrace{(X\setminus E_n)}_{\in\M}$$<span class="why"><p>Countable De Morgan: $x$ is not in every $E_n$ iff it is outside some $E_n$. The right side is a countable union of members of $\M$, so it's in $\M$ (Def 3.4 (iii)).</p></span></span>
+its complement is meas. $\Leftrightarrow\bigcap_{n=1}^\infty E_n\in\M$. <span class="qed">■</span></p>
+</div>
+
+<div class="env ex" data-label="Example 3.7*">
+<template class="say">Examples of sigma algebras on a set X. The smallest one: just the empty set and X. The largest one: all subsets. And an interesting one: the sets that are countable or have countable complement.</template>
+<p>$X\ne\emptyset$</p>
+<p>$\M := \{\emptyset, X\}$, $\quad\M := \mathcal P(X)$</p>
+<p>$\M := \{E\subseteq X : E \text{ is countable or } X\setminus E \text{ countable}\}$</p>
+</div>
+
+<div class="env prop" data-label="Prop 3.7">
+<template class="say">Proposition three point seven. Any intersection of sigma algebras, even uncountably many, is again a sigma algebra. The proof is an exercise: each axiom holds in every one of them, so it holds in the intersection.</template>
+<p>$\M_\alpha\subseteq\mathcal P(X)$ σ-algebras, $\alpha\in\Lambda$
+$$\bigcap_\alpha\M_\alpha := \{E\subseteq X : E\in\M_\alpha,\ \forall\alpha\in\Lambda\}$$
+is also a σ-algebra.</p>
+</div>
+<pg p="5"/>
+<div class="env proof" data-label="Proof"><p>Exercise.</p></div>
+
+<div class="env defn" data-label="Def 3.8">
+<template class="say">Definition three point eight. The sigma algebra generated by a family F is the smallest sigma algebra containing F. It exists by the previous proposition: intersect all sigma algebras that contain F; there's at least one, the power set. For example on zero one, generated by zero to one half and three quarters to one. The figure shows what you get.</template>
+<p>Let $X\ne\emptyset$, $\mathcal F\subseteq\mathcal P(X)$.</p>
+<p>The <mark>σ-algebra generated by $\mathcal F$</mark>, $\sigma(\mathcal F)$, is defined as the smallest (wrt to $\subseteq$) σ-algebra that contains $\mathcal F$.</p>
+<p>$X = [0,1]$, $\mathcal F = \{[0,1/2], [3/4,1]\}$</p>
+</div>
+
+<figure class="viz" data-viz="sigma-gen" data-title="The σ-algebra generated by a few sets">
+<template class="say">When finitely many sets generate a sigma algebra, the space breaks into atoms: the smallest pieces you can carve out using complements and intersections. Every member of the generated sigma algebra is a union of atoms. With the two generating intervals from the notes there are three atoms, so eight sets. Add a third generator and watch the atoms split.</template>
+<figcaption>The generators cut $[0,1]$ into <b>atoms</b> (coloured); $\sigma(\mathcal F)$ consists of all unions of atoms, so it has $2^{\#\text{atoms}}$ elements. Toggle a third generator to see the atoms refine.</figcaption>
+</figure>
+
+<div class="env defn" data-label="Def 3.9">
+<template class="say">Definition three point nine. In R N, the sigma algebra generated by all open sets is the Borel sigma algebra, written B of R N. Same definition in any topological space.</template>
+<p>$X = \R^N$ the σ-algebra generated by all open sets of $\R^N$ is called the <mark>Borel σ-algebra of $\R^N$.</mark> Denoted $\B(\R^N)$. Similarly, $(X,\tau)$ topological space then $\B(X)$ … σ-algebra generated by all open subsets of $X$.</p>
+</div>
+
+<div class="env rmk" data-label="Rmk 3.10">
+<template class="say">Remark three point ten. Closed sets are complements of open sets, so they're Borel too, and the Borel sigma algebra is also the smallest sigma algebra containing all closed sets. Countable sets are Borel: each point is closed, and a countable set is a countable union of points.</template>
+<p>$F$ closed $\Leftrightarrow\R^N\setminus F$ open</p>
+<p><span class="step">$U\in\B(\R^N)\Rightarrow F = \R^N\setminus U\in\B(\R^N)$.<span class="why"><p>Here $U$ is open (so in $\B(\R^N)$ by definition) and $F$ is its complement; σ-algebras are closed under complements.</p></span></span></p>
+<p><span class="step">$\B(\R^N)$ = smallest σ-algebra that contains all <u>closed</u> subsets of $\R^N$.<span class="why"><p>Let $\mathcal C = \sigma(\text{closed sets})$. $\B(\R^N)$ contains all closed sets (previous line), so $\mathcal C\subseteq\B(\R^N)$. Conversely $\mathcal C$ contains every open set (the complement of a closed set), so it is a σ-algebra containing the open sets, hence contains the smallest one: $\B(\R^N)\subseteq\mathcal C$.</p></span></span></p>
+<p>Note that countable sets in $\R^N$ are Borel sets
+$$E = \{x_1,x_2,\dots,x_n,\dots\} = \bigcup_{n=1}^\infty\underbrace{\{x_n\}}_{\text{closed}\,\in\B(\R^N)}\in\B(\R^N).$$</p>
+</div>
+
+<div class="env defn" data-label="Def 3.11">
+<template class="say">Definition three point eleven. In a metric space, an outer measure is a metric outer measure if it is additive on sets that are a positive distance apart. Sets that don't touch, and don't even come arbitrarily close, can't interfere with each other.</template>
+<p>Let $(X,d)$ be a metric space. Let $\ms:\mathcal P(X)\to[0,+\infty]$ outer measure. $\ms$ is said to be a <mark>metric outer measure</mark> if</p>
+<pg p="6"/>
+<p>$E,F\subseteq X$ if $d(E,F)\gt0$ then
+$$\ms(E\cup F) = \ms(E)+\ms(F),$$
+where $d(E,F) := \inf\{d(x,y) : x\in E, y\in F\}$.</p>
+</div>
+
+<div class="env prop" data-label="Prop 3.12">
+<template class="say">Proposition three point twelve: if mu star is a metric outer measure, then every Borel set is measurable.</template>
+<p>If $(X,d)$ is a metric space, $\ms:\mathcal P(X)\to[0,+\infty]$ metric outer measure. Then every Borel set is $\ms$-measurable, i.e.,
+$$\B(X)\subseteq\M^*\quad[\text{see }(3.3)].$$</p>
+</div>
+
+<div class="env prop" data-label="Prop 3.13">
+<template class="say">Proposition three point thirteen: Lebesgue outer measure and all the Hausdorff outer measures are metric outer measures. So every Borel set is Lebesgue measurable and Hausdorff measurable.</template>
+<p>$(\mathcal L^N)^*$ (2.2), $\mathcal H^s_0$, $0\le s\lt+\infty$ [see (2.4)] are metric outer measures $\Rightarrow$ every Borel set of $\R^N$ is $\mathcal H^s_0$-measurable and $(\mathcal L^N)^*$ measurable.</p>
+</div>
+
+<div class="env proof" data-label="Proof of Prop 3.12">
+<template class="say">Now the proof of three point twelve, which is a beautiful argument. Since closed sets generate the Borel sets, and we'll see that M star is a sigma algebra, it's enough to show that every closed set C is measurable. By remark three point two, it suffices to check the inequality for test sets F of finite outer measure. The idea: the part of F outside C is split into layers E n, according to the distance to C: between one over n plus one and one over n. Layers two apart are a positive distance from each other, so the metric property makes the outer measure add up over every other layer; that shows the sum of all the layers converges. Then, finitely many layers stay a positive distance away from C, so the metric property applies to F intersect C together with those layers, and the remaining tail of the series is arbitrarily small.</template>
+<p>Know [Rmk 3.10]
+$$\B(X) = \sigma(\{\text{open sets}\}) = \sigma(\{\text{closed sets}\})$$</p>
+<p>So <span class="step">if $\{\text{closed sets}\}\subset\M^*$ ⇓ $\B(X) = \sigma(\{\text{closed sets}\})\subset\M^*$.<span class="why"><p>$\M^*$ is a σ-algebra (stay tuned! Thm 4.9). If it contains all closed sets, it is one of the σ-algebras containing them, and $\sigma(\text{closed sets})$ is the smallest such, i.e. the intersection of all of them.</p></span></span> <span class="note">↓ σ-algebra (stay tuned! (4.9))</span></p>
+<p>Take $C\subseteq X$ <mark>closed</mark> ? $C\in\M^*$?</p>
+<p>Rmk 3.2: Suffices: $F\subseteq X$, $\ms(F)\lt\infty$ then (see (3.2))</p>
+<p><u>claim 1</u> $\ms(F\cap C)+\ms(F\setminus C)\le\ms(F)$ ?</p>
+<p>For $n\in\N$ define
+$$E_0 := \{x\in F\setminus C : \operatorname{dist}(x,C)\ge1\}$$</p>
+<pg p="7"/>
+<p>$$E_n := \Big\{x\in F\setminus C : \frac1{n+1}\le\operatorname{dist}(x,C)\lt\frac1n\Big\}$$</p>
+<p><span class="step">$E_n$ are disjoint, $\displaystyle F\setminus C = \bigcup_{n=0}^\infty E_n$ ($C$ is <mark>closed</mark>) (3.4)<span class="why"><p>The distance bands $[1,\infty)$, $[\frac12,1)$, $[\frac13,\frac12)$, … are disjoint and cover $(0,\infty)$. The point is that every $x\in F\setminus C$ has $\operatorname{dist}(x,C)\gt0$: since $C$ is closed, $X\setminus C$ is open, so some ball $B(x,r)$ misses $C$, giving $\operatorname{dist}(x,C)\ge r\gt0$. (For a non-closed $C$, points of $\overline C\setminus C$ have distance $0$ and would be missed.)</p></span></span></p>
+
+<p><u>claim 2</u> $n\ge0$ $\operatorname{dist}(E_{2n},E_{2n+2})\gt0$</p>
+<p>$x\in E_{2n}$, $y\in E_{2n+2}$</p>
+<div class="step">$$\underset{x\in E_{2n}}{\frac1{2n+1}\le\operatorname{dist}(x,C)}\le d(x,y)+\operatorname{dist}(y,C)\le d(x,y)+\underset{y\in E_{2n+2}}{\frac1{2n+2}}$$<div class="why"><p>First: definition of $E_{2n}$. Middle: the function $\operatorname{dist}(\cdot,C)$ is 1-Lipschitz — for any $c\in C$, $d(x,c)\le d(x,y)+d(y,c)$; take inf over $c$. Last: $y\in E_{2n+2}$ means $\operatorname{dist}(y,C)\lt\frac1{2n+2}$.</p></div></div>
+<p>$\Rightarrow d(x,y)\ge\frac1{2n+1}-\frac1{2n+2}\gt0$</p>
+<p>$\ms$ is a metric outer meas.</p>
+<div class="step">$$+\infty\gt\ms(F)\ge\ms\Big(\bigcup_{n=0}^k E_{2n}\Big) = \sum_{n=0}^k\ms(E_{2n})\quad\forall k$$<div class="why"><p><strong>$\ge$:</strong> monotonicity, since all $E_{2n}\subseteq F$.</p><p><strong>$=$:</strong> induction on $k$ using the metric property: $\bigcup_{n\lt k}E_{2n}$ and $E_{2k}$ are a positive distance apart. Indeed, the same estimate as claim 2 shows $\operatorname{dist}(E_{2n},E_{2k})\ge\frac{1}{2n+1}-\frac1{2k}\gt0$ for all $n\lt k$, and there are finitely many $n$, so the minimum is positive.</p></div></div>
+<p>⇓ $\displaystyle\sum_{n=0}^k\ms(E_{2n})\le\ms(F)$</p>
+<p><span class="step">$\displaystyle\Rightarrow\sum_{n=0}^\infty\ms(E_{2n})\le\ms(F)$<span class="why"><p>The partial sums of a series of non-negative terms are increasing and bounded by $\ms(F)\lt\infty$, so the series converges and its sum (the sup of the partial sums) is $\le\ms(F)$.</p></span></span></p>
+<p>Similarly, $\displaystyle\sum_{n=1}^\infty\ms(E_{2n-1})$ conv.
+$$\Rightarrow\boxed{\sum_{n=0}^\infty\ms(E_n)}\ \text{converges.}\tag{3.5}$$</p>
+
+<p><u>claim 3</u> $\forall k\in\N$, $\operatorname{dist}\Big(F\cap C,\ \bigcup_{n=0}^k E_n\Big)\gt0$</p>
+<p>$x\in F\cap C$, $y\in\bigcup_{n=0}^k E_n$
+<span class="step">$$\frac1{k+1}\le\operatorname{dist}(y,C)\le d(x,y)$$<span class="why"><p>$y\in E_n$ with $n\le k$, so $\operatorname{dist}(y,C)\ge\frac1{n+1}\ge\frac1{k+1}$. And $x\in C$, so the distance from $y$ to $C$ is at most $d(y,x)$. So every such pair is at least $\frac1{k+1}$ apart.</p></span></span></p>
+<pg p="8"/>
+<p>$\ms$ metric outer measure:</p>
+<div class="step">$$\ms(F\cap C)+\ms(F\setminus C) = \ms(F\cap C)+\ms\Big(\bigcup_{n=0}^\infty E_n\Big) \underset{(3.4)}{=} \ms(F\cap C)+\ms\Big(\bigcup_{n=0}^k E_n\cup\bigcup_{n=k+1}^\infty E_n\Big)$$<div class="why"><p>(3.4) says $F\setminus C$ is the union of all layers; we just split the union at index $k$.</p></div></div>
+<div class="step">$$\underset{\text{subad.}}{\le}\ms(F\cap C)+\ms\Big(\bigcup_{n=0}^k E_n\Big)+\underbrace{\ms\Big(\bigcup_{n=k+1}^\infty E_n\Big)}_{\le\sum_{n=k+1}^\infty\ms(E_n)}$$<div class="why"><p>Subadditivity of $\ms$, used twice: once to split the union in two, and once (countably) on the tail.</p></div></div>
+<div class="step">$$\underset{\text{(claim 3)}}{=}\ms\Big(\underbrace{(F\cap C)\cup\bigcup_{n=0}^k E_n}_{\subseteq F}\Big)+\sum_{n\ge k+1}\ms(E_n)$$<div class="why"><p>By claim 3 the two sets $F\cap C$ and $\bigcup_{n\le k}E_n$ are a positive distance apart, so the metric property merges their outer measures into the outer measure of the union. This is the heart of the proof: <em>near</em> $C$ we can't separate, but we've pushed everything near $C$ into the tail.</p></div></div>
+<div class="step">$$\underset{\text{mon.}}{\le}\ms(F)+\underbrace{\sum_{n=k+1}^\infty\ms(E_n)}_{\to0\text{ as }k\to+\infty}\qquad\forall k$$<div class="why"><p>Monotonicity: the union is a subset of $F$. The tail of a convergent series (3.5) tends to $0$.</p></div></div>
+<p>let $k\to+\infty$ and get
+$$\ms(F\cap C)+\ms(F\setminus C)\le\ms(F).\ \blacksquare$$</p>
+</div>
+
+<figure class="viz" data-viz="layers" data-title="Distance layers Eₙ around a closed set C">
+<template class="say">Here are the layers from the proof. The closed set C is in white. The rest of F is sliced by distance to C: the outermost layer E zero is at distance at least one, then E one between one half and one, and so on, getting thinner and thinner as they approach C. Toggle even layers only: neighbouring even layers have gaps between them, which is why the metric property applies. And the slider k shows the finitely many layers that stay at least one over k plus one away from C.</template>
+<figcaption>$C$ (white) is a closed set; $F$ is the whole square. Layer $E_n$ = points of $F\setminus C$ with $\frac1{n+1}\le\operatorname{dist}(x,C)\lt\frac1n$ (scaled for display). With <b>even layers only</b>, consecutive shown layers are separated by a gap. The slider highlights $\bigcup_{n\le k}E_n$, which keeps distance $\ge\frac1{k+1}$ from $C$ (claim 3).</figcaption>
+</figure>
+
+</lecture>
