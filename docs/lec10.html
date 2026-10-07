@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture 10: Borel Sets are Regular; Radon Measures; Lebesgue Measure is Radon</title>
+<meta name="description" content="Finishing Prop 6.10; inner regularity of σ-finite measurable sets for Radon measures (Prop 6.11); Lebesgue outer measure on ℝᴺ; Thm 6.13: outer and inner regularity of Lebesgue measure.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;650&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="assets/book.css">
+<script>try{var t=localStorage.getItem("mintbook.theme");if(t)document.documentElement.setAttribute("data-theme",JSON.parse(t))}catch(e){}</script>
+<script defer src="assets/book.js"></script>
+<script defer src="assets/lec10.js"></script>
+</head>
+<body>
+<header class="topbar"><div class="inner">
+  <a class="brand" href="index.html">∫ Measure &amp; Integration</a>
+  <span class="spacer"></span>
+  <button id="stepsBtn" title="Toggle the 'why?' hints on proof steps">Proof hints: on</button>
+  <button id="themeBtn" title="Light / dark">◐</button>
+</div></header>
+<main>
+<div class="lecture-head"><div class="kicker">Lecture 10</div><h1>Borel Sets are Regular; Radon Measures; Lebesgue Measure is Radon</h1></div>
+<div class="howto">Every <b>underlined proof step</b> is selectable — hover or tap it for a detailed explanation of why it holds.
+Press <b>▶</b> in the bar at the bottom to have the lecture <b>read and explained aloud</b>; hover a paragraph and click its ▶ to start there.
+<b>Explainer</b> panels are narrated animations; <b>Interactive</b> panels respond to sliders and dragging.
+The small “original notes” links open the scanned page the text was transcribed from.</div>
+
+<span class="pg"><a href="scans/L10-01.jpg" target="_blank" rel="noopener">original notes · p. 1 ↗</a></span>
+<div class="env proof" data-label="Proof of Prop 6.10, continued (closure under countable unions)">
+<template class="say">Lecture ten continues the proof of proposition six point ten. We're inside a fixed U n, of finite measure, and M is the family of sets that are both inner and outer regular. Claim: M is closed under countable unions. Take E i in M and epsilon. For each i, squeeze E i between a compact C i and an open V i, wasting at most epsilon over two to the i plus one. Then the union of the V i is open and contains the union of the E i, with excess at most epsilon over two. For the inside, the finite unions of the C j are compact, and by continuity from above, finitely many of them already capture all but epsilon of the union.</template>
+<p>Let $E_i\in\M$, $i\in\N$, and let $\eps\gt0$. <span class="step">For every $i\in\N$ there exist $C_i\subset E_i\subset V_i\subset U_n$, $C_i$ compact, $V_i$ open, and since $\ms\llcorner\B(X)$ is a measure (Carathéodory Thm 4.9),
+$$\ms(V_i)-\ms(C_i) = \ms(V_i\setminus C_i)\le\frac{\eps}{2^{i+1}}.$$<span class="why"><span class="wp">$E_i\in\M$ is inner and outer regular for the finite outer measure $\ms\llcorner U_n$: pick $C_i$ compact with $\ms(C_i)\gt\ms(E_i)-\eps/2^{i+2}$ and $V_i$ open with $\ms(V_i)\lt\ms(E_i)+\eps/2^{i+2}$ (we may take $V_i\subseteq U_n$ by intersecting with $U_n$). Both are Borel, hence measurable, so Prop 4.3 (ii) gives $\ms(V_i\setminus C_i) = \ms(V_i)-\ms(C_i)$.</span></span></span></p>
+<p>(N.B. We used the fact that $\ms(C_i)\lt+\infty$). <span class="step">By Thm 4.7
+$$\lim_{m\to\infty}\ms\Big(\bigcup_{i=1}^\infty V_i\setminus\Big(\bigcup_{j=1}^m C_j\Big)\Big) = \ms\Big(\bigcup_{i=1}^\infty V_i\setminus\Big(\bigcup_{j=1}^\infty C_j\Big)\Big)$$<span class="why"><span class="wp">The sets $\bigcup_i V_i\setminus\bigcup_{j\le m}C_j$ <em>decrease</em> in $m$ (we remove more), with intersection $\bigcup_i V_i\setminus\bigcup_j C_j$. They are Borel and the first has finite measure, so continuity from above (Prop 4.7) applies.</span></span></span>
+<span class="note">($\downarrow$ decreasing) and $\ms\llcorner\B(X)$ is a measure</span>
+(using the fact that $\bigcup_{j=1}^\infty V_j\subset U_n$, so $\ms\big(\bigcup_{j=1}^\infty V_j\big)\lt+\infty$)</p>
+<div class="step">$$\le\ms\Big(\bigcup_{i=1}^\infty(V_i\setminus C_i)\Big)\le\sum_{i=1}^\infty\ms(V_i\setminus C_i)\le\frac\eps2.\tag{$*$}$$<div class="why"><p>A point of $\bigcup V_i$ not in any $C_j$: it's in some $V_i$ and not in that $C_i$. So the set is inside $\bigcup_i(V_i\setminus C_i)$. Then subadditivity and $\sum_i\eps/2^{i+1} = \eps/2$.</p></div></div>
+<p>Find $m\gg1$ so that
+<span class="step">$$\ms\Big(\bigcup_{i=1}^\infty E_i\setminus\underbrace{\Big(\bigcup_{j=1}^m C_j\Big)}_{\text{compact}}\Big)\le\ms\Big(\bigcup_{i=1}^\infty V_i\setminus\Big(\bigcup_{j=1}^m C_j\Big)\Big)\le\eps.$$<span class="why"><span class="wp">Monotonicity ($E_i\subseteq V_i$), then the limit just computed is $\le\eps/2\lt\eps$, so the terms are eventually $\le\eps$. A finite union of compact sets is compact.</span></span></span></p>
+<p>Hence <span class="step">$\bigcup_{i=1}^\infty E_i$ is inner regular<span class="why"><span class="wp">The compact set $K = \bigcup_{j\le m}C_j\subseteq\bigcup E_i$ has $\ms(K)\ge\ms(\bigcup E_i)-\eps$ (all sets involved are measurable and of finite measure, so we can subtract).</span></span></span>, and outer regularity follows from
+<span class="step">$$\ms\Big(\bigcup_{i=1}^\infty V_i\setminus\Big(\bigcup_{j=1}^\infty E_j\Big)\Big)\le\ms\Big(\bigcup_{i=1}^\infty V_i\setminus\bigcup_{j=1}^\infty C_j\Big)\underset{(*)}{\le}\frac\eps2,\tag{$**$}$$<span class="why"><span class="wp">$C_j\subseteq E_j$, so removing the $E$'s removes more than removing the $C$'s.</span></span></span></p>
+<p>because then
+<span class="step">$$\ms\Big(\underbrace{\bigcup_{i=1}^\infty V_i}_{\text{open}}\Big) = \ms\Big(\Big(\bigcup_{i=1}^\infty V_i\Big)\setminus\Big(\bigcup_{j=1}^\infty E_j\Big)\cup\bigcup_{j=1}^\infty E_j\Big)\le\ms\Big(\Big(\bigcup V_i\Big)\setminus\Big(\bigcup E_j\Big)\Big)+\ms\Big(\bigcup_{j=1}^\infty E_j\Big)\underset{(**)}{\le}\ms\Big(\bigcup_{j=1}^\infty E_j\Big)+\frac\eps2.$$<span class="why"><span class="wp">Split the open set into the part outside $\bigcup E_j$ and $\bigcup E_j$ itself (since $\bigcup E_j\subseteq\bigcup V_i$), then subadditivity and $(**)$. So the open set $\bigcup V_i\supseteq\bigcup E_j$ has measure within $\eps/2$: outer regularity.</span></span></span></p>
+</div>
+
+<span class="pg"><a href="scans/L10-02.jpg" target="_blank" rel="noopener">original notes · p. 2 ↗</a></span>
+<div class="env proof" data-label="… complements">
+<template class="say">Next claim: if E is in M, so is U n minus E. Squeeze E between compact C and open V within epsilon. Then U n minus C is open and contains U n minus E, with excess at most epsilon: outer regular. For inner regularity, use that U n is sigma compact to find a compact K inside U n with measure within epsilon of U n. Then K minus V is compact, sits inside U n minus E, and captures all but two epsilon of it.</template>
+<p><u>claim</u> If $E\in\M$ then $U_n\setminus E\in\M$.</p>
+<p>Fix $\eps\gt0$ and find $C$ compact, $V$ open, with
+$$C\subset E\subset V\subset U_n,\qquad\ms(V\setminus C)\le\eps.\tag{6.1}$$</p>
+<p>Then <span class="step">$U_n\setminus C$ is open, $U_n\setminus E\subset U_n\setminus C$<span class="why"><span class="wp">$C$ is compact in a Hausdorff space, hence closed, so $U_n\setminus C = U_n\cap(X\setminus C)$ is open. And $C\subseteq E$ means removing $C$ removes less.</span></span></span>, and</p>
+<div class="step">$$\ms(U_n\setminus C) = \ms(U_n)-\ms(C)\ [\text{because }\ms\llcorner\B(X)\text{ is a measure and }\ms(C)\lt+\infty]\le\ms(U_n)-\ms(V)+\eps = \ms(U_n\setminus V)+\eps\le\ms(U_n\setminus E)+\eps.$$<div class="why"><p>Prop 4.3 (ii) for $C\subseteq U_n$. Then (6.1): $\ms(C)\ge\ms(V)-\eps$. Then Prop 4.3 (ii) backwards for $V\subseteq U_n$. Finally $U_n\setminus V\subseteq U_n\setminus E$ (monotonicity).</p></div></div>
+<p>Thus, $U_n\setminus E$ is outer regular.</p>
+<p>On the other hand, <span class="step">since $U_n$ is σ-compact there exists a compact set $K\subset U_n$ st.
+$$\ms(U_n)\le\ms(K)+\eps.\tag{6.2}$$<span class="why"><span class="wp">As written next: $U_n$ is an increasing union of compacts $K_j$, so by continuity from below $\ms(K_j)\to\ms(U_n)\lt\infty$; take $K = K_j$ for $j$ large.</span></span></span></p>
+<p>Indeed, write $U_n = \bigcup_{j=1}^\infty K_j$, $K_j\subseteq K_{j+1}$ compact sets, and since $\ms\llcorner\B(X)$ is a measure, by Thm 4.6 $\ms(U_n) = \lim_{j\to+\infty}\ms(K_j)$. Set $K := K_j$ for $j\gg1$.</p>
+<p>Then <span class="step">$K\setminus V$ is compact, $K\setminus V\subset U_n\setminus E$<span class="why"><span class="wp">$K\setminus V = K\cap(X\setminus V)$ is a closed subset of a compact set, hence compact. A point of $K\setminus V$ is in $U_n$ (as $K\subseteq U_n$) and not in $V\supseteq E$.</span></span></span>, and by (6.1)</p>
+<div class="step">$$\ms(U_n\setminus E)\le\ms\big((U_n\setminus V)\cup(V\setminus E)\big)\le\ms\big((U_n\setminus V)\cup(V\setminus C)\big)\underset{(6.1)}{\le}\ms(U_n\setminus V)+\eps = \ms\big((K\setminus V)\cup(U_n\setminus K)\big)+\eps\underset{(6.2)}{\le}\ms(K\setminus V)+2\eps.$$<div class="why"><p>$U_n\setminus E$ = (outside $V$) ∪ (inside $V$ but not $E$). Then $V\setminus E\subseteq V\setminus C$, subadditivity and (6.1). Then $U_n\setminus V$ splits into the part in $K$ and the part outside $K$; the latter has measure $\ms(U_n)-\ms(K)\le\eps$ by (6.2).</p></div></div>
+<p>Thus shows that $U_n\setminus E$ is inner regular.</p>
+</div>
+
+<span class="pg"><a href="scans/L10-03.jpg" target="_blank" rel="noopener">original notes · p. 3 ↗</a></span>
+<div class="env proof" data-label="Steps 2–4">
+<template class="say">Step two: every Borel set B is outer regular in the whole space. Build increasing open sets V n covering B intersect U n, adding a budget of epsilon over two to the n at each stage, and take their union. Step three: every Borel set is inner regular, by finding a compact subset of B intersect U n for large n. Step four: if moreover mu star is Borel regular, it's Radon: any set E has a Borel hull B with the same outer measure, and B is outer regular, so E is too.</template>
+<p><u>Step 2</u> Let $B\in\B(X)$. We claim that $B$ is outer regular.</p>
+<p>Fix $\eps\gt0$. By step 1 there exists an open set $V_1\subset U_1$ such that $B\cap U_1\subset V_1$ and $\ms(V_1)\le\ms(B\cap U_1)+\frac\eps2$.</p>
+<p>Inductively, assume that for $k = 1,\dots,n$, there exist open sets $V_k\subseteq U_k$ such that $B\cap U_k\subset V_k$, $V_1\subset V_2\subset\dots\subset V_n$ and $\ms(V_k)\le\ms(B\cap U_k)+\sum_{i=1}^k\frac\eps{2^i}$.</p>
+<p>To construct $V_{n+1}$, by step 1 find an open set $V'_{n+1}\subset U_{n+1}$ such that
+$$(B\setminus U_n)\cap U_{n+1}\subset V'_{n+1}\quad\text{and}\quad\ms(V'_{n+1})\le\ms\big((B\setminus U_n)\cap U_{n+1}\big)+\frac\eps{2^{n+1}}.$$</p>
+<p>Set $V_{n+1} := V_n\cup V'_{n+1}$. Then
+$$B\cap U_{n+1} = (B\cap U_n)\cup\big[(B\setminus U_n)\cap U_{n+1}\big]\subset V_n\cup V'_{n+1} = V_{n+1},$$
+and</p>
+<div class="step">$$\ms(V_{n+1})\le\ms(V_n)+\ms(V'_{n+1})\le\ms(B\cap U_n)+\ms\big((B\setminus U_n)\cap U_{n+1}\big)+\sum_{i=1}^n\frac\eps{2^i}+\frac\eps{2^{n+1}} = \ms(B\cap U_{n+1})+\sum_{i=1}^{n+1}\frac\eps{2^i},$$<div class="why"><p>Subadditivity, the inductive hypothesis and the choice of $V'_{n+1}$. For the last equality: $B\cap U_n$ and $(B\setminus U_n)\cap U_{n+1}$ are disjoint Borel sets whose union is $B\cap U_{n+1}$ (since $U_n\subseteq U_{n+1}$), so additivity of the measure $\ms\llcorner\B(X)$ combines them.</p></div></div>
+<p>where we used the additivity of the measure $\ms\llcorner\B(X)$ [Carathéodory Thm 4.9].</p>
+<p>Observe that $B\subseteq\bigcup_{n=1}^\infty V_n$, an open set, and</p>
+<div class="step">$$\ms\Big(\bigcup_{n=1}^\infty V_n\Big) = \lim_{n\to+\infty}\ms(V_n)\ (\text{Thm 4.6})\le\lim_{n\to\infty}\ms(B\cap U_n)+\eps\le\ms(B)+\eps.$$<div class="why"><p>$B = \bigcup_n(B\cap U_n)\subseteq\bigcup V_n$ because the $U_n\supseteq K_n$ exhaust $X$. The $V_n$ are open (Borel) and increasing: continuity from below. Then the bound with $\sum\eps/2^i\le\eps$, and monotonicity $\ms(B\cap U_n)\le\ms(B)$.</p></div></div>
+</div>
+
+<span class="pg"><a href="scans/L10-04.jpg" target="_blank" rel="noopener">original notes · p. 4 ↗</a></span>
+<div class="env proof" data-label="Steps 3–4 (cont.)">
+<p><u>Step 3</u> Let $B\in\B(X)$. We claim that $B$ is inner regular. <span class="step">Let $t\lt\ms(B)$ and choose $n\gg1$ so that $\ms(B\cap U_n)\gt t$.<span class="why"><span class="wp">$B\cap U_n$ increases to $B$ (Borel sets), so $\ms(B\cap U_n)\to\ms(B)$ by continuity from below; eventually it exceeds $t$. "Here we used the fact that $\ms$ is a Borel o.m."</span></span></span></p>
+<p>By Step 1 we can find a compact set $C\subset B\cap U_n$ such that $\ms(C)\gt t$. This shows that $\ms(B)$ can be approximated by the outer measure of compact subset of $B$. Here we used the fact that $\ms$ is a Borel o.m., hence $\ms(B) = \lim_{n\to+\infty}\ms(B\cap U_n)$.</p>
+<p><u>Step 4</u> Assume that $\ms$ is Borel regular, i.e., it is a Borel outer measure ($\B(X)\subset\M^*$), and for all $E\subset X$ $\exists B\in\B(X)$ such that $E\subset B$, $\ms(E) = \ms(B)$.</p>
+<p>We claim that $\ms$ is a Radon measure, i.e.,</p>
+<ol type="i">
+<li>it is a Borel outer measure;</li>
+<li>$\ms(K)\lt+\infty$ for every compact set $K\subset X$, which holds by assumption;</li>
+<li>every open set is inner regular, which holds by step 3;</li>
+<li>every set $E\subset X$ is outer regular.</li>
+</ol>
+<p>Indeed, let $B\in\B(X)$ be such that $E\subset B$, $\ms(E) = \ms(B)$. By Step 2 $B$ is outer regular, so given $\eps\gt0$ there exists an open set $V\subset X$, $B\subset V$ and $\ms(V)\le\ms(B)+\eps$.</p>
+<p>Hence <span class="step">$E\subset V$, and $\ms(V)\le\ms(B)+\eps = \ms(E)+\eps$.<span class="why"><span class="wp">$E\subseteq B\subseteq V$, and the Borel hull has the same outer measure as $E$. So outer regularity passes from the Borel hull to the arbitrary set $E$.</span></span></span> <span class="qed">■</span></p>
+</div>
+
+<span class="pg"><a href="scans/L10-05.jpg" target="_blank" rel="noopener">original notes · p. 5 ↗</a></span>
+<div>
+<template class="say">By definition, for a Radon outer measure every set is outer regular. In general, not every set is inner regular, but the following holds.</template>
+<p>By Def 6.7, if $\ms:\mathcal P(X)\to[0,+\infty]$ is a Radon outer measure, then every set $E\subset X$ is outer regular. In general, we don't have that every set is inner regular, but the following holds:</p>
+</div>
+
+<div class="env prop" data-label="Proposition 6.11">
+<template class="say">Proposition six point eleven. For a Radon measure, every sigma finite measurable set is inner regular.</template>
+<p>Let $X$ be a topological space, and let $\ms:\mathcal P(X)\to[0,+\infty]$ be a Radon measure. Then every σ-finite $\ms$-measurable set is inner regular.</p>
+</div>
+<div class="env proof" data-label="Proof">
+<template class="say">The proof is very visual, and the explainer below animates it. Step one: E of finite measure. Wrap E in an open V with only epsilon to spare, and find a compact K inside V capturing all but epsilon of V. K may stick out of E. But the part of V outside E has measure less than epsilon, so cover it with an open set U of measure less than epsilon. Then K minus U is compact, lies inside E, and has measure at least that of E minus two epsilon. Step two: if E has infinite measure, exhaust it by pieces of finite measure and apply step one.</template>
+<p>Let $E\subset X$ be a $\ms$-measurable set, σ-finite.</p>
+<p><u>Step 1</u> Assume first that $\ms(E)\lt+\infty$.</p>
+<p>Since $E$ is outer regular, for $\eps\gt0$ there exists an open set $V\supset E$ such that $\ms(V)\lt\ms(E)+\eps$.</p>
+<p>By the inner regularity of open sets, there exists a compact set $K\subset V$ such that $\ms(V)\lt\ms(K)+\eps$.</p>
+<p>Since $E$ is $\ms$-measurable, we have
+<span class="step">$$\underbrace{\ms(E\cap V)}_{\ms(E)}+\ms(V\setminus E) = \ms(V)\lt\ms(E)+\eps,$$<span class="why"><span class="wp">Measurability of $E$ (Def 3.1) tested on $V$; $E\cap V = E$ because $E\subseteq V$.</span></span></span>
+and so <span class="step">$\ms(V\setminus E)\lt\eps$. (used $\ms(E)\lt+\infty$)<span class="why"><span class="wp">Subtract the finite number $\ms(E)$ from both sides.</span></span></span></p>
+<p>By outer regularity, there exists an open set $U\supset V\setminus E$ st. $\ms(U)\lt\eps$. $(*)$</p>
+<p>The compact set <span class="step">$C := K\setminus U$ is contained in $E$<span class="why"><span class="wp">$C$ is a closed subset ($K\cap(X\setminus U)$) of the compact $K$, hence compact. A point of $K$ is in $V$; if it's not in $U\supseteq V\setminus E$, it can't be in $V\setminus E$, so it's in $E$.</span></span></span>, and since $U$ is $\ms$-measurable,</p>
+<div class="step">$$\ms(C) = \ms(K\setminus U) = \ms(K)-\ms(K\cap U)\gt\ms(V)-\eps-\ms(K\cap U)\ge\ms(V)-\eps-\ms(U)\underset{(*)}{\gt}\ms(V)-2\eps\underset{(E\subset V)}{\ge}\ms(E)-2\eps.$$<div class="why"><p>$U$ open hence measurable (Radon ⇒ Borel outer measure); test $U$ on $K$: $\ms(K) = \ms(K\cap U)+\ms(K\setminus U)$, all finite. Then the choice of $K$, monotonicity $K\cap U\subseteq U$, $(*)$, and $\ms(E)\le\ms(V)$.</p></div></div>
+<p>Hence $E$ is inner regular.</p>
+<span class="pg"><a href="scans/L10-06.jpg" target="_blank" rel="noopener">original notes · p. 6 ↗</a></span>
+<p><u>Step 2</u> If $\ms(E) = +\infty$, since $E$ is a σ-finite $\ms$-measurable set, we can find $E_n\subset E_{n+1}$, $n\in\N$, and
+$$E = \bigcup_{n=1}^\infty E_n,\quad\ms(E_n)\lt+\infty$$
+Note that we don't know that $E_n$ are $\ms$-measurable. <span class="step">By Remark 6.8, $\ms$ is Borel regular, so $\forall n\in\N$ $\exists F_n\in\B(X)$ such that $E_n\subset F_n$, $\ms(E_n) = \ms(F_n)$.<span class="why"><span class="wp">Rmk 6.8: Radon outer measures are Borel regular.</span></span></span></p>
+<p>Then <span class="step">$F_n\cap E$ are $\ms$-measurable, with $\ms(F_n\cap E)\le\ms(F_n) = \ms(E_n)\lt+\infty$,<span class="why"><span class="wp">Intersection of a Borel (measurable) set with the measurable $E$; monotonicity.</span></span></span> and $E = \bigcup_{n=1}^\infty(F_n\cap E)$.</p>
+<p>We can modify $F_n\cap E$ to make them increasing. ($F'_n\cap E$, $F'_n := \bigcup_{j=1}^n F_j$)</p>
+<p>Hence, by Thm 4.6
+$$\infty = \ms(E) = \lim_{n\to+\infty}\ms(F_n\cap E).$$</p>
+<p>Let $M\gt0$, choose $n\gg1$ such that $\ms(F_n\cap E)\gt M$.</p>
+<p>Applying step 1 to $F_n\cap E$, we find a compact set $K\subset F_n\cap E$ such that $\ms(K)\gt M$. Thus
+$$\infty = \ms(E) = \sup\{\ms(K) : K\subset E,\ K\text{ compact}\},$$
+hence inner regularity. <span class="qed">■</span></p>
+</div>
+
+<div class="explainer" data-scene="inner-from-outer" data-title="Prop 6.11: a compact set inside E from outer regularity">
+<template class="say">Here's the proof of proposition six point eleven as a picture. The yellow region is E, a measurable set of finite measure. We want a compact set inside E that captures almost all of its measure.</template>
+<template class="say">Step one: outer regularity gives an open set V around E, in blue, with only epsilon of extra measure.</template>
+<template class="say">Step two: open sets are inner regular, so there's a compact K inside V, in green, missing only epsilon of V. But K is a compact subset of V, not of E: it can poke outside E.</template>
+<template class="say">Step three: the part of V outside E has measure less than epsilon. Cover it with an open set U, in red, of measure less than epsilon.</template>
+<template class="say">Finally, cut U out of K. What's left, C equals K minus U, is still compact, because we removed an open set from a compact set. It lies entirely inside E, and it lost at most two epsilon. So E is inner regular.</template>
+</div>
+
+<span class="pg"><a href="scans/L10-07.jpg" target="_blank" rel="noopener">original notes · p. 7 ↗</a></span>
+<div class="env rmk" data-label="Remark 6.12">
+<template class="say">Remark six point twelve. Let's apply this to R N with Lebesgue outer measure. R N is locally compact Hausdorff, and every open set A is sigma compact: the sets A n of points at distance at least one over n from the complement are closed, so intersected with the cubes from minus n to n they're compact, and they exhaust A. The figure shows this. Compact sets have finite Lebesgue measure, and Lebesgue outer measure is a Borel outer measure. So proposition six point ten gives: every Borel set is inner and outer regular, six point three. If we knew Lebesgue outer measure is Borel regular, six point four, then it would be a Radon measure, and every Lebesgue measurable set, being sigma finite, would be inner regular.</template>
+<p>In Proposition 6.10, consider $X = \R^N$ with the Euclidean metric, $\ms := (\mathcal L^N)^*$.</p>
+<p>Then $\R^N$ is a locally compact Hausdorff space, and every open set $A\subseteq\R^N$ is σ-compact. Indeed, set $A_n := \{x\in\R^N : \operatorname{dist}(x,\R^N\setminus A)\ge1/n\}$. Then <span class="step">$A_n$ is closed, so $A_n\cap[-n,n]^N$ is compact and
+$$A = \bigcup_{n=1}^\infty A_n\cap[-n,n]^N.$$<span class="why"><span class="wp">$x\mapsto\operatorname{dist}(x,\R^N\setminus A)$ is continuous (1-Lipschitz), so $A_n$, a superlevel set, is closed; intersecting with a closed cube gives a closed bounded set, compact by Heine–Borel. Every $x\in A$ has a ball $B(x,r)\subseteq A$ ($A$ open), so $\operatorname{dist}(x,\R^N\setminus A)\ge r\ge1/n$ and $|x|_\infty\le n$ for large $n$. Conversely $A_n\subseteq A$ since points of distance $\gt0$ from the complement are not in it.</span></span></span></p>
+<p>clearly, <span class="step">$(\mathcal L^N)^*(K)\lt+\infty$ for every $K$ compact<span class="why"><span class="wp">Compact ⇒ bounded ⇒ $K\subseteq B(0,R)$ for some $R$; monotonicity and Example 4.10 (i).</span></span></span>, because with $K\subset B(0,R)$, $R\gg1$, then
+$$(\mathcal L^N)^*(K)\le(\mathcal L^N)^*(B(0,R))\ (\text{Example 4.10 (i)}) = \alpha_N R^N.$$</p>
+<p>By Prop 3.13 $(\mathcal L^N)^*$ is a Borel outer measure, since $\B(\R^N)\subset\mathcal L(\R^N)$ (σ-algebra of Lebesgue measurable sets).</p>
+<p>By Prop 6.10 we have that:
+$$\text{Every Borel set is inner regular and outer regular.}\tag{6.3}$$</p>
+<p><span class="note">(See Cor 6.15)</span> <strong>(If)</strong> we knew that $(\mathcal L^N)^*$ is <u>Borel regular</u>, i.e., for all $E\subseteq\R^N$ $\exists B\in\B(\R^N)$ st. $E\subset B$,
+$$(\mathcal L^N)^*(E) = (\mathcal L^N)^*(B)\tag{6.4}$$
+then Prop 6.10 $\Rightarrow(\mathcal L^N)^*$ is a <u>Radon outer measure</u>, so every set is outer regular. (6.5)</p>
+<p>Then, by Prop 6.11 and because if $E\in\mathcal L(\R^N)$ then $E$ is σ-finite ($E = \bigcup_{n=1}^\infty E\cap[-n,n]^N$, $\mathcal L^N(E\cap[-n,n]^N)\lt+\infty$), and we would have that
+$$\text{every Lebesgue measurable set is inner regular.}\tag{6.6}$$</p>
+</div>
+
+<figure class="viz" data-viz="sigma-compact" data-title="An open set is a countable union of compact sets">
+<figcaption>$A$ is an open annulus-shaped region minus a slit (so it isn't simply a ball). The compact set $A_n\cap[-n,n]^2$ (points at distance $\ge\frac1n$ from the complement) is shaded; as $n$ grows these compacts increase and exhaust $A$. (Coordinates scaled so the region fits.)</figcaption>
+</figure>
+
+<span class="pg"><a href="scans/L10-08.jpg" target="_blank" rel="noopener">original notes · p. 8 ↗</a></span>
+<div>
+<template class="say">We'll see that six point three holds for every Lebesgue measurable set, and every set is outer regular.</template>
+<p>We will see that (6.3) holds <u>for every Lebesgue measurable set $E$</u>, and every set is outer regular, i.e., (6.5).</p>
+</div>
+
+<div class="env thm" data-label="Thm 6.13">
+<template class="say">Theorem six point thirteen. For any subset E of R N, its Lebesgue outer measure is the infimum of the measures of open sets containing it: outer regularity. And if E is Lebesgue measurable, its measure is the supremum of the measures of compact subsets: inner regularity. In particular Lebesgue outer measure is a Radon measure.</template>
+<p>If $E\subseteq\R^N$ then
+$$(\mathcal L^N)^*(E) = \inf\{\mathcal L^N(U) : E\subset U,\ U\text{ open}\}\ (\text{outer-regularity}),$$
+and if $E$ is Lebesgue measurable, then
+$$\mathcal L^N(E) = \sup\{\mathcal L^N(K) : K\subset E,\ K\text{ compact}\}\ (\text{inner-regularity})$$
+(i.e., (6.6)). In particular, $(\mathcal L^N)^*$ is a Radon measure.</p>
+</div>
+<div class="env proof" data-label="Proof">
+<template class="say">Step one is easy and uses the dilation trick from lecture three. Take a nearly optimal cover of E by rectangles R i, then slightly larger rectangles S i whose interiors contain R i, at extra cost epsilon over two to the i plus one. The union of the open interiors is an open set U containing E, with measure at most the outer measure of E plus epsilon. That's the end of lecture ten.</template>
+<p><u>Step 1</u> Let $E\subseteq\R^N$. We prove that
+$$(\mathcal L^N)^*(E) = \inf\{\mathcal L^N(U) : E\subset U,\ U\text{ open}\}.$$</p>
+<p>If $(\mathcal L^N)^*(E) = +\infty$ then this is clearly true, take $U := \R^N$.</p>
+<p>Suppose that $(\mathcal L^N)^*(E)\lt+\infty$. <span class="step">By monotonicity, $(\mathcal L^N)^*(E)\le\inf\{\mathcal L^N(U) : E\subset U,\ U\text{ open}\}$<span class="why"><span class="wp">Each admissible $U$ contains $E$, so $(\mathcal L^N)^*(E)\le\mathcal L^N(U)$; take the inf.</span></span></span>, so we show the reverse inequality,
+$$(\mathcal L^N)^*(E)\ge\inf\{\mathcal L^N(U) : E\subset U,\ U\text{ open}\}.\tag{6.7}$$</p>
+<p>Let $\eps\gt0$, and find a covering of $E$, $\{R_i : i\in\N\}$, by rectangles such that
+$$\sum_{i=1}^\infty\mathcal L^N(R_i)\le(\mathcal L^N)^*(E)+\frac\eps2.$$</p>
+<p>Let $S_i$ be a rectangle whose interior $\mathring S_i$ contains $R_i$, and
+$$\mathcal L^N(S_i)\le\mathcal L^N(R_i)+\frac\eps{2^{i+1}}.$$</p>
+<p>Then the collection of open rectangles $\{\mathring S_i : i\in\N\}$ covers $E$ and with $U := \bigcup_{i=1}^\infty\mathring S_i$, we have
+<span class="step">$$\mathcal L^N(U)\le\sum_{i=1}^\infty\mathcal L^N(S_i)\le\sum_{i=1}^\infty\mathcal L^N(R_i)+\frac\eps2\le(\mathcal L^N)^*(E)+\eps,$$<span class="why"><span class="wp">Subadditivity and monotonicity ($\mathring S_i\subseteq S_i$), then the dilation bound with $\sum\eps/2^{i+1} = \eps/2$, then the choice of cover. $U$ is a union of open sets, hence open, and contains $E$.</span></span></span>
+and this proves (6.7).</p>
+<p style="text-align:right"><em>end lect #10</em></p>
+</div>
+
+
+<nav class="pager"><a href="lec09.html">← Lecture 9</a><a href="lec11.html">Lecture 11 →</a></nav>
+</main>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<lecture num="8" title="Images of Measurable Sets, Uniqueness, and Dynkin's π–λ Theorem" desc="Finishing the non-Borel Lebesgue set; continuous images and preimages of Borel sets; uniqueness of Lebesgue measure; π-systems, λ-systems, Dynkin's theorem.">
+
+<pg p="1"/>
+<div class="env rmk" data-label="Facts (notebook p. 43-G)">
+<template class="say">Lecture eight finishes the construction of a Lebesgue measurable set that isn't Borel. Fact one: any set of positive measure contains a non measurable subset; its proof uses inner and outer regularity, which we'll see later. So let E inside g of the Cantor set be non measurable. Fact two: in general, continuous images of Borel sets need not be Borel, and continuous images of measurable sets need not be measurable. For example there is a measurable set E such that E plus E is not measurable. However, the continuous image of a Borel set in an interval, or more generally in a complete separable metric space, is always Lebesgue measurable, though not necessarily Borel.</template>
+<p><mark>Fact #1</mark> If $A\subseteq\R$ is Lebesgue measurable and $(\mathcal L^1)^*(A)\gt0$ then $\exists E\subset A$ s.t. $E$ is <u>not</u> measurable. The proof of this uses inner/outer regularity of $\mathcal L^N$… later!</p>
+<p>So let <mark>$E\subseteq g(\mathfrak C)$</mark> be a <u>non-measurable set</u>.</p>
+<p><mark>Fact #2</mark> In general, the image of a Borel set under a continuous function is <u>not</u> a Borel set, and the image of a Lebesgue set under a continuous function <u>may not</u> be measurable</p>
+<p>E.g., there exists $E\subseteq\R$ Lebesgue measurable s.t. $E+E$ is <u>not</u> Lebesgue measurable.</p>
+<p><mark>However</mark>, if $f:I\to\R$ is continuous, $I\subseteq\R$ interval, $E\subset I$ Borel $\Rightarrow f(E)$ is Lebesgue measurable.</p>
+<p><mark>This can be generalized as follows</mark>: let $X$ be a complete, separable metric space, $f:X\to\R$ continuous. If $B\subseteq X$ is a Borel set then $f(B)\subset\R$ is Lebesgue measurable (but <u>not</u> necessarily Borel).</p>
+<p style="text-align:right"><em>end lect #7</em></p>
+</div>
+
+<div class="env proof" data-label="Example 4.12, conclusion">
+<template class="say">Now the conclusion. By fact one, let E inside g of C be non measurable, and let F be g inverse of E, a subset of the Cantor set. Completeness and the Cantor set being null make F measurable with measure zero. Claim: F is not Borel. Let h be g inverse, continuous. Fact three: the inverse image of a Borel set under a continuous function is Borel. So if F were Borel, h inverse of F, which is E, would be Borel, but E isn't even measurable.</template>
+<p>So by Fact #1 let $E\subseteqg(\mathfrak C)$ be non-measurable. Let
+$$F := g^{-1}(E)\subseteq\mathfrak C.$$
+<span class="step">By the completeness of the Lebesgue measure + $\mathcal L^1(\mathfrak C) = 0$ $\Rightarrow F$ is Lebesgue measurable and $\mathcal L^1(F) = 0$.<span class="why"><p>$F\subseteq\mathfrak C$, a measurable set of measure $0$, and $\mathcal L^1$ is complete (Def 4.8, Carathéodory's theorem), so $F$ is measurable; monotonicity gives $\mathcal L^1(F)\le\mathcal L^1(\mathfrak C) = 0$.</p></span></span></p>
+<p><u>claim</u> <mark>$F$ is <u>not</u> a Borel set</mark></p>
+<pg p="2"/>
+<p>Let $h := g^{-1}:[0,2]\to[0,1]$ continuous.</p>
+<p><mark>Fact #3</mark>: The inverse image of a Borel set under a continuous function is a Borel set (proved below).</p>
+<p><span class="step">So, if $F$ was Borel then $h^{-1}(F) = E$ would be Borel ⚡ (recall, $E$ is <u>not</u> even measurable!).<span class="why"><p>$h^{-1}(F) = \{y\in[0,2] : g^{-1}(y)\in F\} = \{y : y\in g(F)\} = g(F) = g(g^{-1}(E)) = E$, using that $g$ is a bijection $[0,1]\to[0,2]$. Borel sets are Lebesgue measurable (Prop 3.13), so $E$ would be measurable — contradiction.</p></span></span></p>
+</div>
+
+<div>
+<template class="say">Let's elaborate on facts two and three. Fact two: take a non measurable set E inside zero one, and lift it into the plane as the horizontal set E cross one. That's a subset of a line segment, which has two dimensional measure zero: it fits inside a strip of height two epsilon. By completeness it's measurable with measure zero. But projecting onto the x axis, a continuous map, gives back E, which isn't measurable. So continuous images of measurable sets can be non measurable.</template>
+<p>We now elaborate more on Facts #2 and #3.</p>
+<p><mark>Fact #2</mark>. Let $E\subset[0,1]$ be a set that is not measurable (see 3.15 (a)). Consider $F := E\times\{1\}\subset\R^2$.</p>
+<p>Then <span class="step">$F\subseteq[0,1]\times\{1\}$ that has $\mathcal L^2$ measure zero, since $F\subseteq[0,1]\times(1-\eps,1+\eps)$ $\forall\eps\gt0$ and (see Prop 2.9) $(\mathcal L^2)^*(F)\le\ell\big([0,1]\times(1-\eps,1+\eps)\big) = 2\eps$.<span class="why"><p>The rectangle $[0,1]\times(1-\eps,1+\eps)$ covers $F$ by itself, so the outer measure is at most its area $1\cdot2\eps$ (Prop 2.7 / 2.11).</p></span></span></p>
+<p>Let $\eps\to0^+$ and conclude that $(\mathcal L^2)^*(F) = 0$</p>
+<p>Further, $[0,1]\times\{1\}$ is closed, hence it is a Borel set.</p>
+<p>By the completeness of $\mathcal L^2$, it follows that $F$ is Lebesgue measurable with Lebesgue measure zero.</p>
+<p>Consider the continuous projection
+$$\pi:\R^2\to\R,\qquad(x,y)\mapsto x.$$
+Then $\pi(F) = E$ which is not measurable, so
+$$F \text{ Lebesgue measurable} + \pi \text{ continuous}\not\Rightarrow\pi(F)\text{ Lebesgue measurable.}$$</p>
+</div>
+
+<pg p="3"/>
+<div class="env rmk" data-label="Fact #3">
+<template class="say">Fact three: if h is continuous on an interval, preimages of Borel sets are Borel. This is the standard good sets argument, which we'll see again and again. Let M be the collection of sets whose preimage is Borel. Open sets are in M, by continuity. And M is a sigma algebra, because preimages commute with complements and countable unions. So M is a sigma algebra containing the open sets; hence it contains all Borel sets.</template>
+<p>Let $I\subseteq\R$ be an interval and let $h:I\to\R$ be a continuous function.</p>
+<p><u>claim</u> if $B\subseteq\R$ is a Borel set, then $h^{-1}(B)$ is a Borel set [see Remark 8.4 (vi)]</p>
+<p>Define $\M := \{E\subseteq\R : h^{-1}(E) \text{ is a Borel set}\}$</p>
+<p><span class="step">Since $h$ is continuous, if $U\subseteq\R$ is open then $h^{-1}(U)$ is relatively open ($h^{-1}(U) = V\cap I$ for some open set $V$, in case $I$ is not open) and thus $U\in\M$. (4.4)<span class="why"><p>Continuity is exactly: preimages of open sets are (relatively) open. And $V\cap I$ is Borel: $V$ is open, $I$ is an interval (Borel), and Borel sets are closed under intersection.</p></span></span></p>
+<p><span class="step">Now $\M$ is a σ-algebra, because if $E\in\M$ then $h^{-1}(\R\setminus E) = I\setminus h^{-1}(E)$ still a Borel set, and if $E_n\in\M$ then $h^{-1}\big(\bigcup_{n=1}^\infty E_n\big) = \bigcup_{n=1}^\infty h^{-1}(E_n)$ still a Borel set.<span class="why"><p>Preimages respect set operations: $x\in h^{-1}(\R\setminus E)$ iff $h(x)\notin E$ iff $x\notin h^{-1}(E)$ (for $x\in I$); and $h(x)\in\bigcup E_n$ iff $h(x)\in E_n$ for some $n$. Also $h^{-1}(\emptyset) = \emptyset$ is Borel. (Images do <em>not</em> respect complements or intersections — that's why images can fail where preimages succeed.)</p></span></span></p>
+<p><span class="step">So $\{\text{open sets of }\R\}\subset\M$ by (4.4), therefore $\B(\R)\subset\M$ (σ-algebra),<span class="why"><p>$\B(\R)$ is the <em>smallest</em> σ-algebra containing the open sets, and $\M$ is one such σ-algebra.</p></span></span>
+and this proves the claim.</p>
+<p>Note that this continues to hold for a function $h:B\to Y$, continuous, $B\subseteq X$ Borel set, $X$ and $Y$ topological spaces.</p>
+</div>
+
+<div class="env rmk" data-label="Rmk 4.13">
+<template class="say">Remark four point thirteen. So Borel sets are strictly contained in Lebesgue measurable sets, which are strictly contained in all subsets. And later, theorem six point eighteen will show that every Lebesgue measurable set is a Borel set plus a subset of a null set.</template>
+<p>By Example 3.15 a) and Example 4.11 we have
+$$\boxed{\B(\R^N)\subsetneq\{\text{Lebesgue measurable sets}\}\subsetneq\mathcal P(\R^N)}$$
+we will see later on that
+$$\boxed{\mathcal L(\R^N) := \{\text{Lebesgue measurable sets}\} = \B(\R^N)+\mathcal N\ \text{ where }\ \mathcal N := \{A\subseteq\R^N : A\in\mathcal L(\R^N)\text{ and }\mathcal L^N(A) = 0\}.}$$
+(see Thm 6.18)</p>
+</div>
+
+<pg p="4"/>
+<h2>5. Uniqueness</h2>
+<div class="env thm" data-label="Thm 5.1">
+<template class="say">Chapter five: uniqueness. Theorem five point one. Lebesgue measure is the only measure on the Lebesgue sets, or on the Borel sets, that gives every rectangle its volume. Compare with proposition two point fourteen, where we showed that no such measure exists on all subsets.</template>
+<p>If $\mu$ is a measure on $(\R^N,\mathcal L(\R^N))$ (or $(\R^N,\B(\R^N))$) and $\mu(R) = \ell(R)$ $\forall$ rectangle $R$ then $\mu(A) = \mathcal L^N(A)$ for all $A\in\mathcal L(\R^N)$ (or $A\in\B(\R^N)$). [compare with Proposition 2.14]</p>
+</div>
+<div class="env proof" data-label="Proof">
+<template class="say">Three steps. Step one: mu is at most Lebesgue measure, because for any cover by rectangles, subadditivity gives mu of A at most the sum of the volumes, and the infimum is the Lebesgue measure. Step two: on bounded sets, equality. If A sits inside a rectangle R, apply step one to R minus A, and subtract from the common finite value mu of R equals Lebesgue of R. Step three: for an arbitrary A, intersect with growing cubes and use continuity from below.</template>
+<p><u>step 1</u> We prove that $\mu\le\mathcal L^N$.</p>
+<p>Let $A\in\mathcal L(\R^N)$, and let $A\subseteq\bigcup_{n=1}^\infty R_n$, $R_n$ rectangles.</p>
+<p>Then <span class="step">$$\mu(A)\underset{\text{monotonicity + subadditivity}}{\le}\sum_{n=1}^\infty\mu(R_n) = \sum_{n=1}^\infty\mathcal L^N(R_n) = \sum_{n=1}^\infty\ell(R_n)\quad\text{(Prop 2.11)}$$<span class="why"><p>$\mu$ is a measure, so it's monotone (Prop 4.3) and countably subadditive (Prop 4.5); rectangles are Borel so $\mu(R_n)$ makes sense. Then the hypothesis $\mu(R) = \ell(R)$, and Prop 2.11 for $\mathcal L^N(R_n) = \ell(R_n)$.</p></span></span></p>
+<p>and taking the infimum over all such coverings, we get
+$$\mu(A)\le(\mathcal L^N)^*(A) = \mathcal L^N(A).$$</p>
+<p><u>step 2</u> We prove that $\mathcal L^N\le\mu$ on bounded sets</p>
+<p>Let $A\in\mathcal L(\R^N)$ be bounded, say $A\subseteq R$ some rectangle $R$.</p>
+<p>Then by step 1
+<span class="step">$$\mu(R\setminus A)\le\mathcal L^N(R\setminus A)\Leftrightarrow\mu(R)-\mu(A)\le\underbrace{\mathcal L^N(R)}_{=\mu(R)}-\mathcal L^N(A)$$<span class="why"><p>Prop 4.3 (ii) on both sides — allowed because $\mu(A)\le\mu(R) = \ell(R)\lt\infty$ and $\mathcal L^N(A)\le\ell(R)\lt\infty$. Then cancel the equal finite numbers $\mu(R) = \ell(R) = \mathcal L^N(R)$.</p></span></span></p>
+<p>and so $\mathcal L^N(A)\le\mu(A)$.</p>
+<p><u>step 3</u> For arbitrary $A\in\mathcal L(\R^N)$, write $A = \bigcup_{n=1}^\infty A\cap(-n,n)^N$.</p>
+<p>By Proposition 4.6 we have
+<span class="step">$$\mu(A) = \lim_{n\to+\infty}\mu\big(A\cap(-n,n)^N\big)\underset{\text{(step 2)}}{=}\lim_{n\to+\infty}\mathcal L^N\big(A\cap(-n,n)^N\big) = \mathcal L^N(A).\ \blacksquare$$<span class="why"><p>The sets $A\cap(-n,n)^N$ increase with $n$ and their union is $A$ (every point lies in some cube), so continuity from below applies to both $\mu$ and $\mathcal L^N$. In between, each set is bounded, so step 1 + step 2 give $\mu = \mathcal L^N$ on it.</p></span></span></p>
+</div>
+
+<pg p="5"/>
+<div>
+<template class="say">Now in an abstract setting. Two finite measures mu and nu on X agree on a family E of measurable sets, and on X itself. Must they agree on the sigma algebra generated by E? In general, no! If E consists of two sets A and B, the measures can agree on A and on B but disagree on A intersect B. The figure gives a concrete example on four points.</template>
+<p>Now in an abstract setting… Let $X$ be a nonempty set, let $\M$ be a σ-algebra on $X$, and let $\mathcal E\subseteq\M$. Let $\mu,\nu$ be measures on $(X,\M)$ such that $\mu(X) = \nu(X)\lt+\infty$ and $\mu = \nu$ on $\mathcal E$.</p>
+<p>Is it true that $\mu = \nu$ on $\sigma(\mathcal E)$? (5.1)</p>
+<p>The answer, in general, is No!</p>
+<p>Consider $\mathcal E := \{A,B\}$ with $\mu(A) = \nu(A)$, $\mu(B) = \nu(B)$ we could have $\mu(A\cap B)\ne\nu(A\cap B)$.</p>
+</div>
+
+<figure class="viz" data-viz="pi-counter" data-title="Agreeing on A and B is not enough">
+<figcaption>$X = \{1,2,3,4\}$, $A = \{1,2\}$, $B = \{2,3\}$. $\mu$ puts mass $\frac14$ on each point; $\nu_t$ puts $\frac14\pm t$ alternately. For every $t$: $\mu(X) = \nu_t(X)$, $\mu(A) = \nu_t(A)$, $\mu(B) = \nu_t(B)$ — yet $\mu(A\cap B)\ne\nu_t(A\cap B)$ unless $t = 0$. Tick the box to add $A\cap B$ to $\mathcal E$ (making it a π-system): then agreement forces $t = 0$.</figcaption>
+</figure>
+
+<div class="env prop" data-label="Proposition 5.2">
+<template class="say">Proposition five point two: the answer is yes if E is closed under finite intersections. The proof, in quotes because it's incomplete, uses the collection R of sets where mu and nu agree. It contains E, the empty set, complements, because both measures are finite with the same total mass, and increasing unions, by continuity from below. To finish we'd need arbitrary countable unions, and that's where the abstract machinery of pi and lambda systems comes in.</template>
+<p>(5.1) holds if $\mathcal E$ is closed w.r.t. finite intersections.</p>
+</div>
+<div class="env proof" data-label="“Proof”">
+<p>Let $\mathcal R := \{A\in\M : \nu(A) = \mu(A)\}$.</p>
+<p>Clearly $\mathcal E\subseteq\mathcal R$, and if $\mathcal R$ is a σ-algebra then $\sigma(\mathcal E)\subseteq\mathcal R$, proving (5.1).</p>
+<p>(i) $\emptyset\in\mathcal R$ because $\nu(\emptyset) = 0 = \mu(\emptyset)$.</p>
+<p>(ii) <span class="step">If $A\in\mathcal R$ then $\mu(X\setminus A) = \mu(X)-\mu(A) = \nu(X)-\nu(A) = \nu(X\setminus A)$<span class="why"><p>Prop 4.3 (ii), allowed since $\mu(A)\le\mu(X)\lt\infty$ (and the same for $\nu$). The middle equality uses $\mu(X) = \nu(X)$ and $A\in\mathcal R$. This is why we need the total masses to be finite and equal.</p></span></span> so $X\setminus A\in\mathcal R$. (5.2) <span class="note">$\mu(X) = \nu(X)\lt+\infty$</span></p>
+<p>(iii) If $A_n\in\mathcal R$ and $A_n\subseteq A_{n+1}$, $n\in\N$, then by Proposition 4.6
+<span class="step">$$\mu\Big(\bigcup_{n=1}^\infty A_n\Big) = \lim_{n\to+\infty}\mu(A_n) = \lim_{n\to+\infty}\nu(A_n) = \nu\Big(\bigcup_{n=1}^\infty A_n\Big),$$<span class="why"><p>Continuity from below for both measures, and term-by-term agreement $\mu(A_n) = \nu(A_n)$.</p></span></span>
+and so $\bigcup_{n=1}^\infty A_n\in\mathcal R$.</p>
+<pg p="6"/>
+<p>To finish the "proof", we would need to extend (iii) to an arbitrary family $\{A_n\}\subseteq\mathcal R$.</p>
+<p>Let us first remark that (ii) can be extended as follows:</p>
+<p>(ii)′ If $A,B\in\mathcal R$ and $A\subseteq B$ then $B\setminus A\in\mathcal R$.</p>
+<p>Indeed, <span class="step">$$\mu(B\setminus A) = \mu(B)-\mu(A) = \nu(B)-\nu(A) = \nu(B\setminus A),\tag{$*$}$$<span class="why"><p>Same as (ii), with $B$ in place of $X$.</p></span></span>
+where we use the <u>fact</u> in $(*)$ that $\mu(A) = \nu(A)\le\mu(X) = \nu(X)\lt+\infty$</p>
+<p>So the proof of Prop 5.2 actually follows from a more general context</p>
+</div>
+
+<div class="env defn" data-label="Def 5.3">
+<template class="say">Definition five point three. A pi system is a non empty family closed under intersections of two sets.</template>
+<p>We say that $\Pi\subseteq\mathcal P(X)$ is a <mark>π-system</mark> if</p>
+<ol type="i"><li>$\Pi\ne\emptyset$,</li><li>$A,B\in\Pi\Rightarrow A\cap B\in\Pi$.</li></ol>
+</div>
+<div class="env defn" data-label="Def 5.4">
+<template class="say">Definition five point four. A lambda system contains X, is closed under proper differences, B minus A whenever A is inside B, and under increasing countable unions. Note: sigma algebras are both pi systems and lambda systems, and conversely, remark five point seven: a family that's both is a sigma algebra.</template>
+<p>We say that $\Lambda\subseteq\mathcal P(X)$ is a <mark>λ-system</mark> if</p>
+<ol type="i"><li>$X\in\Lambda$,</li><li>$A,B\in\Lambda$, $A\subseteq B\Rightarrow B\setminus A\in\Lambda$,</li><li>$\{A_n\}\subseteq\Lambda$, $A_n\subseteq A_{n+1}\Rightarrow\bigcup_{n=1}^\infty A_n\in\Lambda$.</li></ol>
+<p><u>N.B.</u> σ-algebras are both π-systems and λ-systems, and conversely see Rmk 5.7 (ii)</p>
+</div>
+
+<div class="env thm" data-label="Thm 5.5" data-title="(Dynkin)">
+<template class="say">Theorem five point five, Dynkin's pi lambda theorem. If a lambda system contains a pi system, it contains the whole sigma algebra generated by the pi system. Why is this so useful? Because the sets where two measures agree always form a lambda system, while it's hard to check directly that they form a sigma algebra. So: check agreement on a pi system, and Dynkin gives agreement on the generated sigma algebra.</template>
+<p>If $\Pi$ is a π-system, and $\Lambda$ is a λ-system, then
+$$\boxed{\Pi\subseteq\Lambda\Rightarrow\sigma(\Pi)\subseteq\Lambda.}$$</p>
+</div>
+
+<div>
+<template class="say">We can now reformulate proposition five point two as corollary five point six: if two finite measures agree on a pi system that contains X, they agree on the sigma algebra it generates. For example, a probability measure on the real line is determined by its values on half lines, minus infinity to t, which form a pi system. That's why a distribution is determined by its cumulative distribution function.</template>
+<p>We can now reformulate Prop 5.2 as</p>
+</div>
+<div class="env cor" data-label="Corollary 5.6">
+<p>If $\mu,\nu$ are finite measures that agree on a $\Pi$ (π-system) and $X\in\Pi$, then $\mu = \nu$ on $\sigma(\Pi)$.</p>
+</div>
+<pg p="7"/>
+<div class="env proof" data-label="Proof of Corollary 5.6">
+<p>Let $\Lambda := \{A\in\M : \nu(A) = \mu(A)\}$.</p>
+<p><span class="step">Since $X\in\Pi$, $\Lambda = \mathcal R$ (as in the "proof") is a λ-system in view of (i), (ii)′ and (iii) in the proof of Prop 5.2.<span class="why"><p>Def 5.4 (i): $X\in\Lambda$ because $X\in\Pi$ and the measures agree on $\Pi$. (ii): that's (ii)′. (iii): that's (iii), continuity from below. No closure under arbitrary unions is needed — exactly what we could prove.</p></span></span></p>
+<p>Since $\Pi\subseteq\Lambda$, by Dynkin's Thm we have $\sigma(\Pi)\subseteq\Lambda$. <span class="qed">■</span></p>
+</div>
+
+<div class="explainer" data-scene="good-sets" data-title="The “good sets” principle: π–λ in pictures">
+<template class="say">Here's the strategy behind uniqueness, in one picture. We want to show two measures agree on a huge family of sets, say all Borel sets. Checking that directly is hopeless.</template>
+<template class="say">So we flip it around. Collect the good sets: those where the two measures agree. Call it Lambda. We don't know how big Lambda is, but we can prove it's a lambda system: it contains X, it's closed under proper differences, because finite measures subtract, and under increasing unions, because of continuity from below.</template>
+<template class="say">Next, find a small family Pi that we can check by hand, for instance rectangles, or half lines. It should be closed under intersections: a pi system. And it should generate everything we care about.</template>
+<template class="say">Dynkin's theorem then says: the lambda system generated by Pi is already a sigma algebra. It's sandwiched inside Lambda, so the whole sigma algebra generated by Pi consists of good sets. The measures agree everywhere.</template>
+<template class="say">Why was the intersection property needed? Because a lambda system can't take intersections on its own. Without it, as in our four point example, two measures can agree on A and B but disagree on A intersect B.</template>
+</div>
+
+<div class="env rmk" data-label="Remark 5.7">
+<template class="say">Remark five point seven. One: intersections of lambda systems are lambda systems, so every family generates a lambda system. Two: if a family is both a lambda system and a pi system, it's a sigma algebra. The empty set is X minus X; complements are X minus A; and a countable union can be rewritten as an increasing union of finite unions, whose complements are finite intersections of complements, which stay in the family because it's a pi system.</template>
+<p>(i) The intersection of an arbitrary family of λ-systems is a λ-system. Given $\mathcal C\subseteq\mathcal P(X)$, $\lambda(\mathcal C)$ is the λ-system generated by $\mathcal C$.</p>
+<p>(ii) <mark>If $\Lambda$ is both a λ-system and a π-system then it is a σ-algebra.</mark></p>
+<p>Indeed, by Def 5.4 (i) + (ii) $\emptyset = X\setminus X\in\Lambda$.</p>
+<p>Also by (i) + (ii), if $A\in\Lambda\Rightarrow X\setminus A\in\Lambda$. (5.1)</p>
+<p>Finally, if $\{A_n\}\subseteq\Lambda$, then
+$$\bigcup_{n=1}^\infty A_n = \bigcup_{n=1}^\infty A'_n,\qquad A'_n\subseteq A'_{n+1},\qquad A'_n := \bigcup_{k=1}^n A_k\in\Lambda\ \text{because}$$
+<span class="step">$$X\setminus A'_n = \bigcap_{k=1}^n\underbrace{(X\setminus A_k)}_{\in\Lambda\text{ by }(5.1)}\in\Lambda\ \text{because it is a }\pi\text{-system (+ induction).}$$<span class="why"><p>De Morgan turns the finite union into a finite intersection of complements. Each complement is in $\Lambda$ by (5.1); the π-system property handles intersections of two sets, and induction handles $n$ sets.</p></span></span></p>
+<p>Hence, again by (5.1) we have that $A'_n\in\Lambda$, and by Def 5.4 (iii) we conclude that $\bigcup_{n=1}^\infty A'_n\in\Lambda$.</p>
+<p style="text-align:right"><em>end lect #8</em></p>
+</div>
+
+<div class="env proof" data-label="Proof of Thm 5.5 [Dynkin Thm]">
+<template class="say">The proof of Dynkin's theorem. Claim one: the sigma algebra generated by Pi is inside lambda of Pi, which is inside Lambda. The last inclusion is trivial. For the first, claim two: lambda of Pi is a sigma algebra. By remark five point seven, it's enough to show it's a pi system. Fix C in lambda of Pi and look at the family Lambda C of sets A whose intersection with C stays in lambda of Pi. Claim three: Lambda C is everything. That follows if Lambda C is a lambda system containing Pi, claims four and five. Claim four is a direct check using the lambda system properties.</template>
+<p><u>claim 1</u> $\sigma(\Pi)\subseteq\lambda(\Pi)\subseteq\Lambda$ <span class="note">N.B. σ-algebras are λ-systems $\Rightarrow\lambda(\Pi)\subseteq\sigma(\Pi)$ always!</span></p>
+<p>The last inclusion is trivial since $\Pi\subseteq\Lambda$. Recall that</p>
+<pg p="8"/>
+<p>$\lambda(\Pi)$ is the smallest λ-system that contains $\Pi$.</p>
+<p><u>claim 2</u> $\lambda(\Pi)$ is a σ-algebra.</p>
+<p>If so, since <span class="step">$\Pi\subseteq\lambda(\Pi)\Rightarrow\sigma(\Pi)\subseteq\lambda(\Pi)$, proving claim 1.<span class="why"><p>$\sigma(\Pi)$ is the smallest σ-algebra containing $\Pi$; if $\lambda(\Pi)$ is a σ-algebra containing $\Pi$, it contains $\sigma(\Pi)$.</p></span></span> Now by Remark 5.7 (ii), if $\lambda(\Pi)$ is a π-system then it is a σ-algebra. So we are "reduced" to proving that $\lambda(\Pi)$ is a π-system.</p>
+<p>Def 5.3 (i) * <span class="step">By definition of λ-system, $X\in\lambda(\Pi)$ hence $\lambda(\Pi)\ne\emptyset$<span class="why"><p>Def 5.4 (i).</p></span></span> (see Def 5.3).</p>
+<p>Let $C\in\lambda(\Pi)$ and let $\Lambda_C := \{A\in\lambda(\Pi) : A\cap C\in\lambda(\Pi)\}$.</p>
+<p>Note that $\lambda(\Pi)$ is a π-system <u>if</u></p>
+<p><u>claim 3</u> $\Lambda_C = \lambda(\Pi)$. <span class="note">because then given $C\in\lambda(\Pi)$ and $A\in\lambda(\Pi)\Rightarrow A\cap C\in\lambda(\Pi)$</span></p>
+<p>Clearly, $\Lambda_C\subseteq\lambda(\Pi)$. Conversely, <u>if</u> • $\Lambda_C$ is a λ-system ← claim 4 &nbsp; • $\Pi\subseteq\Lambda_C$ ← claim 5<br>
+<span class="step">then $\lambda(\Pi)\subseteq\Lambda_C$, proving claim 3.<span class="why"><p>$\lambda(\Pi)$ is the smallest λ-system containing $\Pi$; claims 4 and 5 say $\Lambda_C$ is such a λ-system.</p></span></span></p>
+<p><u>claim 4</u> $\Lambda_C$ is a λ-system</p>
+<p>(i) <span class="step">$X\in\lambda(\Pi)$, and $X\cap C = C\in\lambda(\Pi)$, so $X\in\Lambda_C$.<span class="why"><p>$C$ was chosen in $\lambda(\Pi)$.</p></span></span></p>
+<p>(ii) Let $A,B\in\Lambda_C$, $A\subseteq B$.</p>
+<p>Then <span class="step">$$(B\setminus A)\cap C = \underbrace{(B\cap C)}_{\in\lambda(\Pi)}\setminus\underbrace{(A\cap C)}_{\in\lambda(\Pi)}\in\lambda(\Pi)\ \text{(it is a }\lambda\text{-system)}.$$<span class="why"><p>Set identity: a point of $C$ in $B$ but not in $A$. Both pieces are in $\lambda(\Pi)$ since $A,B\in\Lambda_C$, and $A\cap C\subseteq B\cap C$, so Def 5.4 (ii) applies. (Also $B\setminus A\in\lambda(\Pi)$ itself, by (ii).)</p></span></span></p>
+<p>(iii) Let $A_n\in\Lambda_C$, $A_n\subseteq A_{n+1}$, $n\in\N$.</p>
+<p>Then <span class="step">$$\Big(\bigcup_{n=1}^\infty A_n\Big)\cap C = \bigcup_{n=1}^\infty\underbrace{(A_n\cap C)}_{\in\lambda(\Pi)\text{ and increasing}}\in\lambda(\Pi)\ \text{(it is a }\lambda\text{-system)}$$<span class="why"><p>Intersection distributes over unions; the sets $A_n\cap C$ increase with $n$ and are in $\lambda(\Pi)$, so Def 5.4 (iii) applies.</p></span></span></p>
+<p class="ed">The proof continues in <a href="lec09.html">Lecture 9</a> (claim 5).</p>
+</div>
+
+</lecture>

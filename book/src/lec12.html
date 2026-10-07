@@ -1,0 +1,182 @@
+<lecture num="12" title="Operations on Measurable Functions, Almost Everywhere, Simple Functions" desc="Pairs, sums, products, sup/inf/lim of measurable functions; almost everywhere; complete measures and a.e. equality; simple functions; approximation of measurable functions by simple functions; completion and measurability.">
+
+<p class="ed">The first two scanned pages of this lecture repeat notebook pages 77–78 (Remark 8.4 (v) to Remark 8.7), which are at the end of <a href="lec11.html">Lecture 11</a>. The new material starts at notebook page 79, completing Remark 8.7 (ii).</p>
+
+<pg p="3"/>
+<div class="env rmk" data-label="Remark 8.7 (ii), conclusion">
+<template class="say">Lecture twelve. First we finish remark eight point seven: set f tilde equal to g inverse, continuous hence Borel, and g tilde the characteristic function of F, Lebesgue measurable. The preimage of the point one under g tilde composed with f tilde is g of F, which is E, not Lebesgue measurable. So the composition isn't measurable.</template>
+<p>Set <span class="step">$\tilde f := g^{-1}$, continuous hence Borel measurable by Rmk 8.4 (iv), and set $\tilde g := \chi_F$, Lebesgue measurable in view of Example 8.5 (ii).<span class="why"><p>Continuity ⇒ Borel measurability is Rmk 8.4 (v). $\chi_F$ is measurable iff $F$ is (Example 8.5 (ii)), and $F$ is Lebesgue measurable (Example 4.12).</p></span></span></p>
+<p>then $\{1\}\in\B(\R)$ and
+<span class="step">$$(\tilde g\circ\tilde f)^{-1}(\{1\}) = \tilde f^{-1}\big(\tilde g^{-1}(\{1\})\big) = \tilde f^{-1}(F) = g(F) = E$$<span class="why"><p>$\chi_F^{-1}(\{1\}) = F$. And $\tilde f^{-1}(F) = \{y : g^{-1}(y)\in F\} = g(F)$, while $g(F) = g(g^{-1}(E)) = E$ since $g$ is a bijection.</p></span></span>
+which is not Lebesgue measurable, so $\tilde g\circ\tilde f$ is not measurable.</p>
+</div>
+
+<div class="env prop" data-label="Proposition 8.8">
+<template class="say">Proposition eight point eight. Two extended real valued functions f and g are measurable if and only if the pair f comma g, a map into the extended plane, is measurable. Forward: the preimage of an open rectangle U cross V is the intersection of the preimages, and open rectangles generate the Borel sets of the plane. Backward: compose with the continuous projections.</template>
+<p>Let $(X,\M)$ be a measurable space and let $f,g:X\to[-\infty,+\infty]$ be arbitrary. Then
+$$f,g\text{ are measurable }\boxed{\text{iff}}\ (f,g):X\to[-\infty,+\infty]^2\text{ is measurable.}$$</p>
+</div>
+<div class="env proof" data-label="Proof">
+<p>[$\Rightarrow$] Suppose that $f$ and $g$ are measurable. If $U,V\subseteq[-\infty,+\infty]$ are open, then
+<span class="step">$$(f,g)^{-1}(U\times V) = f^{-1}(U)\cap g^{-1}(V)\in\M.$$<span class="why"><p>$(f(x),g(x))\in U\times V$ iff $f(x)\in U$ and $g(x)\in V$. Each preimage is in $\M$ by measurability; $\M$ is closed under intersections.</p></span></span></p>
+<p>In particular, if $R\subseteq[-\infty,+\infty]^2$ is an open rectangle then (recall, $Z\subset[-\infty,+\infty]^2$ is open iff $Z\cap(-\infty,+\infty)^2$ is open) <span class="step">$(f,g)^{-1}(R)\in\M$, and, by Corollary 8.3, $(f,g)$ is measurable.<span class="why"><p>Every open subset of the (extended) plane is a countable union of open rectangles with rational corners (second countability), so open rectangles generate the Borel σ-algebra; Cor 8.3 says it suffices to test on generators.</p></span></span></p>
+<p>[$\Leftarrow$] Let
+$$\pi_1:[-\infty,+\infty]^2\to[-\infty,+\infty],\ (x,y)\mapsto x;\qquad\pi_2:[-\infty,+\infty]^2\to[-\infty,+\infty],\ (x,y)\mapsto y$$
+be the (continuous) canonical projections.</p>
+<p>By Remark 8.4 (iv) $\pi_i$, $i = 1,2$, are Borel measurable, so by Remark 8.7 (i)
+<span class="step">$$f = \pi_1\circ(f,g)\quad\text{and}\quad g = \pi_2\circ(f,g)$$<span class="why"><p>Measurable followed by Borel is measurable (Rmk 8.7 (i)).</p></span></span>
+are measurable functions. <span class="qed">■</span></p>
+</div>
+
+<pg p="4"/>
+<div class="env cor" data-label="Corollary 8.9">
+<template class="say">Corollary eight point nine. If f is measurable into R, so are f squared, absolute value of f, f plus, f minus, and alpha f. If f and g are measurable, so are f plus or minus g, f times g, the min and the max. Each is a continuous function applied to f, or to the pair f comma g.</template>
+<p>Let $(X,\M)$ be a measurable space, and let $f:X\to\R$ be measurable. Then so are $f^2$, $|f|$, $f^+$, $f^-$, $\alpha f$ ($\alpha\in\R$), with $f^+ := \max\{f,0\}$, $f^- := \max\{-f,0\}$.</p>
+<p>Furthermore, if $f,g:X\to\R$ are measurable then so are $f\pm g$, $f\cdot g$, $\min\{f,g\}$, $\max\{f,g\}$.</p>
+</div>
+<div class="env proof" data-label="Proof">
+<p>The first part follows from Remark 8.7 (i), and the second part also uses Prop 8.8.</p>
+<p>For example, <span class="step">if $f,g$ are measurable then $(f,g)$ is measurable, with $f+g = \theta\circ(f,g)$ where $\theta$ is the continuous (hence, Borel) function $\theta:\R^2\to\R$, $(x,y)\mapsto x+y$.<span class="why"><p>Prop 8.8 for $(f,g)$; $\theta$ is continuous hence Borel (Rmk 8.4 (v)); Rmk 8.7 (i) for the composition. The same pattern with $\theta(x,y) = xy$, $\min$, $\max$; and with one-variable continuous $\theta(x) = x^2, |x|, \max(x,0), \alpha x$ for the first part.</p></span></span> <span class="qed">■</span></p>
+</div>
+
+<div class="env rmk" data-label="Remark 8.10">
+<template class="say">Remark eight point ten. There are versions for extended real valued functions, provided the operations are well defined. For f plus g we need to avoid infinity minus infinity. For products, the convention is zero times infinity equals zero.</template>
+<p>There are versions of Corollary 8.9 applicable to functions having values in the extended real line $\bar\R := [-\infty,+\infty]$, provided <u>the operations are well defined</u>.</p>
+<p>For example, for $f+g$ need $(f(x),g(x))\notin\{\pm(\infty,-\infty)\}$ for all $x\in X$. Concerning $f\cdot g$, define $(f\cdot g)(x) = 0$ whenever $f(x)$ or $g(x)$ is zero.</p>
+</div>
+
+<div class="env prop" data-label="Proposition 8.11">
+<template class="say">Proposition eight point eleven. The supremum, infimum, lim sup and lim inf of a sequence of measurable functions are measurable. In particular, a pointwise limit of measurable functions is measurable. Compare with Riemann integrability, which we saw fails to survive pointwise limits. This is the first sign that the measurable world is closed under limits.</template>
+<p>Let $(X,\M)$ be a measurable space, and let $f_n:X\to[-\infty,+\infty]$ be measurable functions. Then $\sup_n f_n$, $\inf_n f_n$, $\limsup_n f_n$, $\liminf_n f_n$ are measurable.</p>
+<p>In particular, if $f_n\to f$ pointwise, i.e. for every $x\in X$ $f(x) = \lim_{n\to+\infty}f_n(x)$, then $f$ is measurable.</p>
+</div>
+<pg p="5"/>
+<div class="env proof" data-label="Proof">
+<template class="say">The proof is short. The sup of f n exceeds a exactly when some f n exceeds a, so the preimage is a countable union of measurable sets. Similarly the inf is below a exactly when some f n is below a. Then lim sup is the inf over n of the sup over k at least n, and lim inf the sup of the infs.</template>
+<p>For every $a\in\R$,
+<span class="step">$$\Big(\sup_n f_n\Big)^{-1}((a,+\infty]) = \bigcup_{n=1}^\infty f_n^{-1}((a,+\infty])\in\M,$$<span class="why"><p>$\sup_n f_n(x)\gt a$ iff some $f_n(x)\gt a$ (if all $f_n(x)\le a$ then $a$ is an upper bound so the sup is $\le a$; conversely if some $f_n(x)\gt a$ the sup is too). Note this fails for $\ge$: the sup can equal $a$ without any term reaching it, which is why we use the open ray.</p></span></span>
+and by Corollary 8.3 and Rmk 8.4 (iv) it follows that $\sup_n f_n$ is measurable. (8.1)</p>
+<p>likewise, <span class="step">$\big(\inf_n f_n\big)^{-1}([-\infty,a)) = \bigcup_{n=1}^\infty f_n^{-1}([-\infty,a))\in\M$,<span class="why"><p>Mirror image: $\inf_n f_n(x)\lt a$ iff some $f_n(x)\lt a$.</p></span></span>
+and again by Corollary 8.3, we have that $\inf_n f_n$ is measurable (8.2)</p>
+<p>[Alternatively: by Rmk 8.10 and Corollary 8.9, $-f_n$ are measurable, so by (8.1) $\sup_n(-f_n)$ is measurable, and again by Rmk 8.10 and Corollary 8.9, we deduce that $\inf f_n = -\sup(-f_n)$ is measurable].</p>
+<p>Now, <span class="step">$\limsup_{n\to+\infty}f_n = \inf_{n\in\N}\big(\sup_{k\ge n}f_k\big)$ which is measurable by (8.1) and (8.2), and similarly, $\liminf_{n\to+\infty}f_n = \sup_{n\in\N}\big(\inf_{k\ge n}f_k\big)$ is measurable.<span class="why"><p>For each $n$, $g_n := \sup_{k\ge n}f_k$ is measurable by (8.1) (applied to the tail sequence); then $\inf_n g_n$ is measurable by (8.2). If $f_n\to f$ pointwise, then $f = \limsup f_n = \liminf f_n$ at every point.</p></span></span> <span class="qed">■</span></p>
+</div>
+
+<div class="env defn" data-label="Def 8.12">
+<template class="say">Definition eight point twelve. A property P holds almost everywhere on a set A if there is a measurable set E of measure zero such that P holds on A minus E. We say P holds a e if it holds a e on X.</template>
+<p>Let $(X,\M,\mu)$ be a measure space. We say that a <mark>property $P$ holds almost everywhere</mark> (a.e.) on a set $A\subseteq X$ if there is a set of measure zero, $E\in\M$, such that $P$ holds on $A\setminus E$. We say that $P$ holds a.e. if it holds a.e. on $X$.</p>
+</div>
+
+<pg p="6"/>
+<div class="env ex" data-label="Example 8.13">
+<template class="say">Examples. Almost every real number is irrational, since the rationals have measure zero. The absolute value function is differentiable almost everywhere: everywhere except zero. And Rademacher's theorem: every Lipschitz function on R is differentiable almost everywhere.</template>
+<ol type="i">
+<li>Almost every real number is irrational.</li>
+<li>The function $f(x) := |x|$, $x\in\R$, is differentiable a.e.</li>
+<li><mark>Rademacher's Thm</mark> Every Lipschitz function $f:\R\to\R$ is differentiable a.e. <span class="note">$\exists L\gt0$ $\forall x,y$ $|f(x)-f(y)|\le L|x-y|$</span></li>
+</ol>
+</div>
+
+<div class="env prop" data-label="Proposition 8.14">
+<template class="say">Proposition eight point fourteen. If mu is complete, and f is measurable, then any g equal to f almost everywhere is also measurable. Changing a function on a null set does not affect measurability, provided the measure is complete.</template>
+<p>Let $(X,\M,\mu)$ be a measure space with <mark>$\mu$ a complete measure</mark>, and let $(Y,\mathcal N)$ be a measurable space.</p>
+<p>Let $f:X\to Y$ be a measurable function, and let $g:X\to Y$ be such that $\boxed{f = g\text{ a.e.}}$. Then $g$ is measurable.</p>
+</div>
+<div class="env proof" data-label="Proof">
+<template class="say">Let E zero be the set where f and g differ. It's inside a null set E, so by completeness it's measurable and null. The preimage of F under g splits into the part outside E zero, where g equals f, giving f inverse of F minus E zero, measurable; and the part inside E zero, which is a subset of a null set, measurable by completeness.</template>
+<p>Let $E_0 := \{x\in X : f(x)\ne g(x)\}$.</p>
+<p>By Def 8.12 $\exists E\in\M$ s.t. $\mu(E) = 0$ and $f(x) = g(x)$ if $x\in X\setminus E$.</p>
+<p>Then <span class="step">$X\setminus E\subseteq X\setminus E_0$, hence $E_0\subseteq E$<span class="why"><p>Points outside $E$ have $f = g$, so they are not in $E_0$. Taking complements reverses the inclusion.</p></span></span>
+and <span class="step">$\mu$ is complete (see Def. 4.8), therefore $E_0\in\M$ and $\mu(E_0) = 0$.<span class="why"><p>Subset of the measurable null set $E$; completeness puts it in $\M$; monotonicity makes it null. (Without completeness, $E_0$ itself might not be measurable — we only know it's inside a null set.)</p></span></span> (8.2)</p>
+<p>Let $F\in\mathcal N$. We have ? $g^{-1}(F)\in\M$?</p>
+<div class="step">$$g^{-1}(F) = \{x\in X\setminus E_0 : g(x)\in F\}\cup\{x\in E_0 : g(x)\in F\} = \{x\in X\setminus E_0 : f(x)\in F\}\cup\{x\in E_0 : g(x)\in F\} = \big(f^{-1}(F)\setminus E_0\big)\cup\{x\in E_0 : g(x)\in F\}.$$<div class="why"><p>Split according to whether $x\in E_0$. Off $E_0$, $f(x) = g(x)$, so the conditions $g(x)\in F$ and $f(x)\in F$ are the same.</p></div></div>
+<p>Now, <span class="step">$f^{-1}(F)\setminus E_0\in\M$ (see (8.2)) and $\{x\in E_0 : g(x)\in F\}\subseteq E_0$, thus it belongs to $\M$ by (8.2) and because $\mu$ is complete.<span class="why"><p>First set: $f$ measurable and $E_0\in\M$, so the difference is in $\M$. Second set: a subset of the null set $E_0$, measurable by completeness — even though we know nothing about $g$ there. Union of two measurable sets.</p></span></span> <span class="qed">■</span></p>
+</div>
+
+<pg p="7"/>
+<div class="env cor" data-label="Corollary 8.15">
+<template class="say">Corollary eight point fifteen. If mu is complete and f n are measurable, and the limit of f n of x exists for almost every x, then the limit, defined arbitrarily on the exceptional null set, is measurable.</template>
+<p>Let $(X,\M,\mu)$ be a measure space, with <mark>$\mu$ a complete measure</mark>. Let $f_n:X\to[-\infty,+\infty]$ be measurable functions.</p>
+<p>If there exists $\lim_{n\to+\infty}f_n(x)$ for <mark>$\mu$ a.e. $x\in X$</mark>, then $\boxed{\lim_{n\to+\infty}f_n\text{ is measurable.}}$</p>
+</div>
+<div class="env proof" data-label="Proof">
+<p>Assume that there exists $E\in\M$, $\mu(E) = 0$, such that $\lim_{n\to+\infty}f_n(x)$ exists for all $x\in X\setminus E$.</p>
+<p>By Proposition 8.11 <span class="step">$f(x) := \lim_{n\to+\infty}f_n(x)$ is measurable on $X\setminus E$,<span class="why"><p>Apply Prop 8.11 to the restrictions $f_n|_{X\setminus E}$ (measurable on the measurable space $X\setminus E$ with the trace σ-algebra); there the limit exists everywhere, so equals $\limsup f_n$. Alternatively: $\limsup_n f_n$ is measurable on all of $X$ and agrees with $g$ below off $E$.</p></span></span> so if we "define" $\lim_{n\to+\infty}f_n$ as
+$$g(x) := \begin{cases}\lim_{n\to+\infty}f_n(x) & \text{if } x\in X\setminus E\\ 0 & \text{otherwise}\end{cases}$$
+(any other definition on $E$ will do…), then by Prop 8.14 <span class="step">$g$ is measurable.<span class="why"><p>$g = \limsup_n f_n$ a.e. (they agree off $E$), and $\limsup_n f_n$ is measurable (Prop 8.11); $\mu$ complete, so Prop 8.14 applies.</p></span></span> <span class="qed">■</span></p>
+</div>
+
+<div class="env defn" data-label="Def 8.16">
+<template class="say">Definition eight point sixteen. A simple function is a measurable function with finitely many values. It can be written as a sum of a i times the characteristic function of E i, where the a i are distinct and E i is the set where s equals a i. That's the standard representation.</template>
+<p>Let $(X,\M)$ be a measurable space. We say that $s:X\to\R$ is a <mark>simple function</mark> if it is measurable and has finite range, i.e.,
+$$s = \sum_{i=1}^n a_i\chi_{E_i},\quad n\in\N,\tag{$*$}$$
+$$a_i\ne a_j\text{ if }i\ne j,\quad E_i := s^{-1}(\{a_i\})\in\M.\tag{$**$}$$
+$(*)+(**)$: <u>standard representation</u> <span class="note">↓ on $\R$ consider $\B(\R)$: $s$ measurable $\Rightarrow E_i\in\M$</span></p>
+</div>
+
+<pg p="8"/>
+<div class="env thm" data-label="Thm 8.17" data-title="[Approximation of Measurable Functions by Simple Functions]">
+<template class="say">Theorem eight point seventeen, the bridge to the Lebesgue integral. Every measurable function f is the pointwise limit of simple functions s n, which increase in absolute value and are bounded by the absolute value of f. If f is bounded, the convergence is uniform. And if f is non negative, so are the s n. The explainer animates the construction: chop the range into dyadic levels of size one over two to the n, up to height n, and round f down to the nearest level.</template>
+<p>Let $(X,\M)$ be a measurable space and let $f:X\to[-\infty,+\infty]$ be a <u>measurable function</u>. Then there exist $s_n:X\to\R$, $n\in\N$, <u>simple functions</u> such that</p>
+<ol type="i">
+<li>$|s_n(x)|\le|s_{n+1}(x)|\le|f(x)|$ for all $n\in\N$, $x\in X$;</li>
+<li>$\lim_{n\to+\infty}s_n(x) = f(x)$ for all $x\in X$;</li>
+<li>if $f$ is bounded then $s_n\to f$ <u>uniformly</u>.</li>
+</ol>
+<p><u>N.B.</u> If $f\ge0$ then $s_n\ge0$ for all $n\in\N$.</p>
+</div>
+
+<div class="explainer" data-scene="dyadic" data-title="Building f from simple functions: the dyadic staircase">
+<template class="say">Here's the construction in theorem eight point seventeen, which underlies the whole Lebesgue integral. Start with a measurable function f. It can be positive, negative, and even unbounded.</template>
+<template class="say">At stage n, cut the range from minus n to n into thin horizontal slabs of height one over two to the n. Above n, or below minus n, we just cap the function.</template>
+<template class="say">Now round f toward zero, to the nearest slab boundary. Where f is positive we round down; where it's negative we round up. The result s n takes finitely many values, and each value is taken on a preimage of an interval, which is measurable. So s n is a simple function.</template>
+<template class="say">Increase n. The slabs halve in height, and the cap moves out. Each staircase sits between the previous one and f. Wherever f is finite, once n passes f's size, the error is at most one over two to the n. And where f shoots up to infinity, s n climbs to infinity too.</template>
+<template class="say">Notice that we chopped the range, not the domain. The steps of s n live on sets that can be scattered anywhere in the domain, and to integrate s n we'll need their measures. That's Lebesgue's idea from the very first lecture, and now we have all the tools to make it precise.</template>
+</div>
+
+<div class="env proof" data-label="Proof">
+<template class="say">The proof defines s n explicitly. Where f is in a dyadic interval from m over two to the n to m plus one over two to the n, with m non negative, s n is m over two to the n, the lower end. For negative m it's the upper end, m plus one over two to the n. Where f is at least n, s n equals n, and where f is less than minus n, it's minus n. Each piece is the characteristic function of a preimage of an interval, so s n is simple. If f is plus or minus infinity, s n goes to plus or minus infinity. If f of x is finite, once n exceeds its size the error is at most one over two to the n, uniformly when f is bounded.</template>
+<p>Define for $n\in\N$
+$$s_n(x) := \begin{cases}\dfrac{m}{2^n} & \text{if } f(x)\in\Big[\dfrac m{2^n},\dfrac{m+1}{2^n}\Big),\ m = 0,\dots,n2^n-1,\\[8pt] \dfrac{m+1}{2^n} & \text{if } f(x)\in\Big[\dfrac m{2^n},\dfrac{m+1}{2^n}\Big),\ m = -1,\dots,-n2^n,\\[8pt] n & \text{if } f(x)\ge n,\\ -n & \text{if } f(x)\lt-n.\end{cases}$$</p>
+<p>Since <span class="step">$f(x)\in\Big[\dfrac m{2^n},\dfrac{m+1}{2^n}\Big)\Leftrightarrow x\in\underbrace{f^{-1}\Big(\Big[\dfrac m{2^n},\dfrac{m+1}{2^n}\Big)\Big)}_{=: A_{m,n}}\in\M$<span class="why"><p>$f$ is measurable and half-open intervals are Borel.</p></span></span> we see that
+<span class="step">$$s_n = \sum_{m=0}^{n2^n-1}\frac m{2^n}\chi_{A_{m,n}}+\sum_{m=-1}^{-n2^n}\frac{m+1}{2^n}\chi_{A_{m,n}}+n\chi_{f^{-1}([n,+\infty])}-n\chi_{f^{-1}([-\infty,-n))}$$<span class="why"><p>The sets $A_{m,n}$ ($-n2^n\le m\lt n2^n$), $f^{-1}([n,\infty])$ and $f^{-1}([-\infty,-n))$ partition $X$ into finitely many measurable sets, and $s_n$ is constant on each. A finite linear combination of characteristic functions of measurable sets is measurable (Example 8.5 (ii) + Cor 8.9) with finite range: simple.</p></span></span>
+is a simple function.</p>
+<p><span class="step">Property (i) follows from the definition of $s_n$.<span class="why"><p>$s_n(x)$ is $f(x)$ rounded toward $0$ to the grid $2^{-n}\Z$, capped at $\pm n$; so $|s_n|\le|f|$ and $s_n$ has the sign of $f$. Passing from $n$ to $n+1$, the grid $2^{-(n+1)}\Z$ contains $2^{-n}\Z$ (finer rounding can only land closer to $f$) and the cap $n+1\gt n$; so $|s_n|\le|s_{n+1}|$.</p></span></span></p>
+<pg p="9"/>
+<p><span class="step">It is clear that if $f(x) = +\infty$ then $s_n(x)\uparrow f(x)$, and if $f(x) = -\infty$ then $s_n(x)\downarrow f(x)$.<span class="why"><p>Then $s_n(x) = n$ (resp. $-n$) for every $n$.</p></span></span> Further, if $f(x)\in\R$ choose $n_0\in\N$ such that $f(x)\in[-n_0,n_0]$.</p>
+<p>If $n\gt n_0$, then $f(x)\in[-n,n]$ and
+<span class="step">$$|s_n(x)-f(x)|\le\frac1{2^n}\underset{n\to+\infty}{\longrightarrow}0.$$<span class="why"><p>Inside $[-n,n)$ the rounding moves $f(x)$ to an endpoint of the dyadic interval of length $2^{-n}$ containing it. (At exactly $f(x) = n$, $s_n(x) = n$, error $0$.)</p></span></span></p>
+<p><span class="step">The latter observation also proves (iii).<span class="why"><p>If $|f|\le M$ everywhere, take $n_0\ge M$, independent of $x$: then $\sup_x|s_n(x)-f(x)|\le2^{-n}$ for all $n\gt n_0$.</p></span></span> <span class="qed">■</span></p>
+<p style="text-align:right"><em>end lect #12</em></p>
+</div>
+
+<figure class="viz" data-viz="dyadic-viz" data-title="Simple functions sₙ → f">
+<figcaption>The staircase $s_n$ (orange) for $f$ (blue). Below the axis: each step's preimage set $A_{m,n}$, coloured by level — it can be a scattered union of pieces. The readout reports $\sup|s_n-f|$ on $\{|f|\le n\}$, which is at most $2^{-n}$. The function has a vertical asymptote, so some of the domain stays capped at $\pm n$ for every $n$.</figcaption>
+</figure>
+
+<div class="env prop" data-label="Prop 8.18">
+<template class="say">Proposition eight point eighteen. A function is measurable for the completion if and only if it equals almost everywhere a function measurable for the original sigma algebra. Backward: the preimage of an open set under f splits into the part off the null set E, which comes from g and is in M, and the part inside E, which is null, hence in the completion. Forward: step one, characteristic functions of sets in the completion: the set is a set B of M plus a null piece inside H; use the characteristic function of B minus H. Step two, simple functions: combine finitely many null exceptional sets. Step three, general f: approximate by simple functions. The notes stop here.</template>
+<p>Let $(X,\M,\mu)$ be a measure space, and let $(X,\M_\mu,\bar\mu)$ be its completion.</p>
+<p>Then $f:X\to\R$ is $\M_\mu$-measurable iff there exists $g:X\to\R$ $\M$-measurable such that $f = g$ a.e. (wrt $\mu$).</p>
+</div>
+<div class="env proof" data-label="Proof">
+<p>[$\Leftarrow$] Let $U\subseteq\R$ be an open set, and let $E := \{x\in X : f(x)\ne g(x)\}$ be such that $E\in\M$ and $\mu(E) = 0$. Thus
+<span class="step">$$f^{-1}(U) = \{x\notin E : f(x)\in U\}\cup\{x\in E : f(x)\in U\} = \{x\in X\setminus E : g(x)\in U\}\cup\{x\in E : f(x)\in U\} = g^{-1}(U)\cap(X\setminus E)\cup\{x\in E : f(x)\in U\}.$$<span class="why"><p>Same splitting as Prop 8.14: off $E$, $f = g$.</p></span></span></p>
+<p>Now, $g^{-1}(U)\cap(X\setminus E)\in\M\subset\M_\mu$ (see Def 7.1) and <span class="step">$\{x\in E : f(x)\in U\}\subset E\in\M$, with $\mu(E) = 0$, i.e., $\{x\in E : f(x)\in U\}\in\mathcal N$ (see before Def. 7.1) with $\mathcal N\subseteq\M_\mu$.<span class="why"><p>It's a subset of a measurable null set, so it is $\mu$-null by definition of $\mathcal N$; and $\mathcal N\subseteq\M_\mu$ (write it as $\emptyset\cup A$ in Def 7.1).</p></span></span></p>
+<p>Since $\M_\mu$ is a σ-algebra (see Thm 7.4), we obtain $f^{-1}(U)\in\M_\mu$.</p>
+<pg p="10"/>
+<p>[$\Rightarrow$] <u>Step 1</u> Suppose that $f = \chi_E$, with $E\in\M_\mu$.</p>
+<p>Then $E = B\cup A$, $B\in\M$, $A\in\mathcal N$ (see Def 7.1), i.e., there exists $H\in\M$ with $\mu(H) = 0$ and $A\subseteq H$.</p>
+<p>Let $g := \chi_{B\setminus H}$, which is $\M$-measurable.</p>
+<p><u>claim</u> if $x\notin H$ then $f(x) = g(x)$.</p>
+<p><span class="step">Indeed, either $x\notin E$ and then $f(x) = g(x) = 0$, or $x\in E$ and $x\notin H\Rightarrow x\in E\setminus A = B$ with $x\notin H\Rightarrow f(x) = 1 = g(x)$.<span class="why"><p>If $x\notin E$ then $x\notin B\subseteq E$, so $g(x) = 0 = f(x)$. If $x\in E\setminus H$, then $x\notin A$ (as $A\subseteq H$), so $x\in B$, and $x\in B\setminus H$. So $f\ne g$ only inside the null set $H$.</p></span></span></p>
+<p><u>Step 2</u> If $s$ is a simple $\M_\mu$-measurable function, then
+$$s = \sum_{i=1}^n a_i\chi_{E_i},\quad a_i\in\R,\ E_i\in\M_\mu,$$
+and by step 1 $s = \tilde s$ $\mu$ a.e., with
+$$\tilde s := \sum_{i=1}^n a_i\chi_{\tilde E_i},\quad\tilde E_i\in\M,\qquad\chi_{\tilde E_i} = \chi_{E_i}\text{ if }x\in X\setminus H_i,\ H_i\in\M,\ \mu(H_i) = 0.$$</p>
+<p>Therefore, <span class="step">$s = \tilde s$ if $x\in X\setminus\big(\bigcup_{i=1}^n H_i\big)$, where $\bigcup_{i=1}^n H_i\in\M$, $\mu\big(\bigcup_{i=1}^n H_i\big) = 0$.<span class="why"><p>Off every $H_i$, every characteristic function agrees, so the linear combinations agree. A finite union of null sets is null (subadditivity).</p></span></span></p>
+<p><u>Step 3</u> for an arbitrary $f$ $\M_\mu$-measurable, by Thm 8.17 let $s_n:X\to\R$ be $\M_\mu$-measurable such that $s_n(x)\to f(x)$ $\forall x\in X$.</p>
+<p class="ed">The handwritten notes end here. (To finish: by Step 2 pick $\M$-measurable $\tilde s_n = s_n$ off a null $H_n\in\M$; off the null set $H = \bigcup_n H_n$, $\tilde s_n\to f$; so $g := \limsup_n\tilde s_n\,\chi_{X\setminus H}$ is $\M$-measurable by Prop 8.11 and $g = f$ off $H$.)</p>
+</div>
+
+</lecture>
